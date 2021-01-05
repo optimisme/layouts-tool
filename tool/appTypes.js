@@ -1,0 +1,683 @@
+let divAutocenter = {
+    typeName: 'divAutocenter',
+    description: 'Autocentered div',
+    image: 'previewAutocenter.png',
+    tag: 'div',
+    childsAllowed: 'all',
+    style: [
+        ['padding', '0 16px', true],
+
+        ['box-sizing', 'border-box', false],
+        ['height', 'max-content', false],
+        ['margin-left', 'auto', false],
+        ['margin-right', 'auto', false],
+        ['max-width', '1200px', false],
+        ['width', '100%', false],
+    ],
+    phone: [],
+    attributes: [],
+    script: ``,
+    text: ``,
+    childs: []
+}
+let div = {
+    typeName: 'div',
+    description: 'Div',
+    image: 'previewDivDecorated.png',
+    tag: 'div',
+    childsAllowed: 'all',
+    style: [
+        ['backdrop-filter', 'initial', true],
+        ['background','initial', true],
+        ['box-shadow', 'initial', true],
+        ['border', 'initial', true],
+        ['border-bottom', 'initial', true],
+        ['border-left', 'initial', true],
+        ['border-right', 'initial', true],
+        ['border-top', 'initial', true],
+        ['border-radius', 'initial', true],
+        ['cursor', 'initial', true],
+        ['filter', 'initial', true],
+        ['height', 'max-content', true],
+        //['min-height', 'initial', true],
+        //['min-width', 'initial', true],
+        //['max-height', 'initial', true],
+        //['max-width', 'initial', true],
+        ['opacity', 'initial', true],
+        ['overflow', 'initial', true],
+        ['padding', 'initial', true],
+        ['transform', 'initial', true],        
+        ['width', 'initial', true],        
+        ['z-index', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['margin', '0', false],
+    ],
+    phone: [
+        ['border', 'initial', true],
+        ['border-bottom', 'initial', true],
+        ['border-left', 'initial', true],
+        ['border-right', 'initial', true],
+        ['border-top', 'initial', true],
+        ['border-radius', 'initial', true],
+        ['height', 'initial', true],
+        //['min-height', 'initial', true],
+        //['min-width', 'initial', true],
+        //['max-height', 'initial', true],
+        //['max-width', 'initial', true],
+        ['padding', 'initial', true],
+        ['width', 'initial', true],
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+let divFlex = {
+    typeName: 'divFlex',
+    description: 'Flex',
+    image: 'previewDivFlexRow.png',
+    tag: 'div',
+    childsAllowed: 'flex',
+    style: [
+        ['align-content', 'initial', true],
+        ['align-items', 'initial', true],
+        ['flex-direction', 'initial', true],
+        ['flex-wrap', 'initial', true],
+        ['height', 'initial', true],
+        ['justify-content', 'initial', true],
+        ['width', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['display', 'flex', false],
+        ['margin', '0', false],
+    ],
+    phone: [
+        ['align-content', 'initial', true],
+        ['align-items', 'initial', true],
+        ['flex-direction', 'initial', true],
+        ['flex-wrap', 'initial', true],
+        ['height', 'initial', true],
+        ['justify-content', 'initial', true],
+        ['width', 'initial', true],
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
+let divFlexChild = {
+    typeName: 'divFlexChild',
+    description: 'Flex child',
+    image: 'previewDivFlexChild.png',
+    tag: 'div',
+    childsAllowed: 'all',
+    style: [
+        ['align-items', 'initial', true],
+        ['align-self', 'initial', true],
+        ['flex-direction', 'initial', true],
+        ['flex-grow', 'initial', true],
+        ['justify-content', 'initial', true],
+        ['min-height', 'initial', true],
+        ['min-width', 'initial', true],
+        ['max-height', 'initial', true],
+        ['max-width', 'initial', true],
+        ['padding', 'initial', true],
+        // ['flex-shrink', 'initial', true],
+        // ['order', 'initial', true],
+        ['box-sizing', 'border-box', false],
+        ['display', 'flex', false],
+        ['margin', '0', false],
+    ],
+    phone: [
+        ['align-items', 'initial', true],
+        ['align-self', 'initial', true],
+        ['flex-direction', 'initial', true],
+        ['flex-grow', 'initial', true],
+        ['justify-content', 'initial', true],
+        ['min-height', 'initial', true],
+        ['min-width', 'initial', true],
+        ['max-height', 'initial', true],
+        ['max-width', 'initial', true],
+        ['padding', 'initial', true],
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+let divStack = {
+    typeName: 'divStack',
+    description: 'Stack',
+    image: 'previewDivStack.png',
+    tag: 'div',
+    childsAllowed: 'stack',
+    style: [
+        ['height', '100%', true],
+        ['width', '100%', true],
+
+        ['box-sizing', 'border-box', false],
+        ['margin', '0', false],
+        ['position', 'relative', false],
+    ],
+    phone: [],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+let divStackChild = {
+    typeName: 'divStackChild',
+    description: 'Stack child',
+    image: 'previewDivStackChild.png',
+    tag: 'div',
+    childsAllowed: 'all',
+    style: [
+        ['bottom', 'initial', true],
+        ['height', 'initial', true],
+        ['left', 'initial', true],
+        ['right', 'initial', true],
+        ['top', 'initial', true],
+        ['width', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['position', 'absolute', false],
+        ['margin', '0', false],
+    ],
+    phone: [
+        ['bottom', 'initial', true],
+        ['height', 'initial', true],
+        ['left', 'initial', true],
+        ['right', 'initial', true],
+        ['top', 'initial', true],
+        ['width', 'initial', true],
+
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+let divSticky = {
+    typeName: 'divSticky',
+    description: 'Sticky div',
+    image: 'previewDivSticky.png',
+    tag: 'div',
+    childsAllowed: 'all',
+    style: [
+        ['top', '0', true],
+
+        ['box-sizing', 'border-box', false],
+        ['margin', '0', false],
+        ['position', 'sticky', false],
+    ],
+    phone: [
+        ['top', '0', true],
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+let divMobile = {
+    typeName: 'divMobile',
+    description: 'Div visible on mobile',
+    image: 'previewDivMobile.png',
+    tag: 'div',
+    childsAllowed: 'all',
+    style: [
+        ['box-sizing', 'border-box', false],
+        ['display', 'none', false],
+        ['height', 'max-content', false],
+        ['margin', '0', false],
+        ['width', '100%', false],
+    ],
+    phone: [
+        ['display', 'block', false], // TODO: comprovar, potser és initial no unset
+    ],
+    attributes: [],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+let divDesktop = {
+    typeName: 'divDesktop',
+    description: 'Div visible on desktop',
+    image: 'previewDivDesktop.png',
+    tag: 'div',
+    childsAllowed: 'all',
+    style: [
+        ['box-sizing', 'border-box', false],
+        ['display', 'block', false],
+        ['height', 'max-content', false],
+        ['margin', '0', false],
+        ['width', '100%', false],
+    ],
+    phone: [
+        ['display', 'none', false],
+    ],
+    attributes: [],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+let text = {
+    typeName: 'text',
+    description: 'Text',
+    image: 'previewText.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [
+        ['color', 'initial', true],
+        ['font-family', 'initial', true],
+        ['font-size', '1em', true],
+        ['font-style', 'initial', true],
+        ['font-weight', 'initial', true],
+        ['height', 'max-content', true],
+        ['padding', 'initial', true],
+        ['text-align', 'initial', true],
+        ['text-decoration', 'initial', true],
+        ['text-transform', 'initial', true],
+        ['width', '100%', true],
+        ['writing-mode', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['margin', '0', false],
+    ],
+    phone: [
+        ['height', 'initial', true],
+        ['padding', 'initial', true],
+        ['text-align', 'initial', true],
+        ['width', 'initial', true],
+        ['writing-mode', 'initial', true],
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: `{{textSmall}}`,
+    childs: []
+}
+
+let textInline = {
+    typeName: 'textInline',
+    description: 'Inline text',
+    image: 'previewTextInline.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [
+        ['color', 'initial', true],
+        ['font-family', 'initial', true],
+        ['font-size', '1em', true],
+        ['font-style', 'initial', true],
+        ['font-weight', 'initial', true],
+        ['text-decoration', 'initial', true],
+        ['text-transform', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['display', 'inline', false],
+        ['height', 'max-content', false],
+        ['margin', '0', false],
+        ['width', 'max-content', false],
+    ],
+    phone: [],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: `{{textSmall}}`,
+    childs: []
+}
+
+let textEllipsis = {
+    typeName: 'textEllipsis',
+    description: 'Text ellipsis',
+    image: 'previewTextEllipsis.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [
+        ['color', 'initial', true],
+        ['font-family', 'initial', true],
+        ['font-size', '1em', true],
+        ['font-style', 'initial', true],
+        ['font-weight', 'initial', true],
+        ['height', 'max-content', true],
+        ['padding', 'initial', true],
+        ['text-align', 'initial', true],
+        ['text-decoration', 'initial', true],
+        ['text-transform', 'initial', true],
+        ['width', '100%', true],
+        ['writing-mode', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['margin', '0', false],
+        ['overflow', 'hidden', false],
+        ['text-overflow', 'ellipsis', false],
+        ['white-space', 'nowrap', false],
+    ],
+    phone: [
+        ['height', 'initial', true],
+        ['padding', 'initial', true],
+        ['text-align', 'initial', true],
+        ['width', 'initial', true],
+        ['writing-mode', 'initial', true],
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: `{{textSmall}}`,
+    childs: []
+}
+
+let titleh1 = {
+    typeName: 'titleh1',
+    description: 'H1',
+    image: 'previewTitleH1.png',
+    tag: 'h1',
+    childsAllowed: 'none',
+    style: [
+        ['color', 'initial', true],
+        ['font-family', 'initial', true],
+        ['font-size', '2em', true],
+        ['font-style', 'initial', true],
+        ['font-weight', '800', true],
+        ['height', 'max-content', true],
+        ['padding', '0', true],
+        ['text-align', 'initial', true],
+        ['text-decoration', 'initial', true],
+        ['text-transform', 'initial', true],
+        ['width', '100%', true],
+        ['writing-mode', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['margin', '0', false],
+    ],
+    phone: [
+        ['height', 'initial', true],
+        ['padding', 'initial', true],
+        ['text-align', 'initial', true],
+        ['width', 'initial', true],
+        ['writing-mode', 'initial', true],
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: `{{title}}`,
+    childs: []
+}
+
+let titleh2 = {
+    typeName: 'titleh2',
+    description: 'H2',
+    image: 'previewTitleH2.png',
+    tag: 'h2',
+    childsAllowed: 'none',
+    style: [
+        ['color', 'initial', true],
+        ['font-family', 'initial', true],
+        ['font-size', '1.5em', true],
+        ['font-style', 'initial', true],
+        ['font-weight', '300', true],
+        ['height', 'max-content', true],
+        ['padding', '0', true],
+        ['text-align', 'initial', true],
+        ['text-decoration', 'initial', true],
+        ['text-transform', 'initial', true],
+        ['width', '100%', true],
+        ['writing-mode', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['margin', '0', false],
+    ],
+    phone: [
+        ['height', 'initial', true],
+        ['padding', 'initial', true],
+        ['text-align', 'initial', true],
+        ['width', 'initial', true],
+        ['writing-mode', 'initial', true],
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: `{{title}}`,
+    childs: []
+}
+
+let titleh3 = {
+    typeName: 'titleh3',
+    description: 'H3',
+    image: 'previewTitleH3.png',
+    tag: 'h3',
+    childsAllowed: 'none',
+    style: [
+        ['color', 'initial', true],
+        ['font-family', 'initial', true],
+        ['font-size', '1.25em', true],
+        ['font-style', 'initial', true],
+        ['font-weight', '600', true],
+        ['height', 'max-content', true],
+        ['padding', '0', true],
+        ['text-align', 'initial', true],
+        ['text-decoration', 'initial', true],
+        ['text-transform', 'initial', true],
+        ['width', '100%', true],
+        ['writing-mode', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['margin', '0', false],
+    ],
+    phone: [
+        ['height', 'initial', true],
+        ['padding', 'initial', true],
+        ['text-align', 'initial', true],
+        ['width', 'initial', true],
+        ['writing-mode', 'initial', true],
+    ],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: `{{title}}`,
+    childs: []
+}
+
+let image = {
+    typeName: 'image',
+    description: 'Image',
+    image: 'previewImage.png',
+    tag: 'img',
+    childsAllowed: 'none',
+    style: [
+        ['filter', 'initial', true],
+        // ['object-fit', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['margin', '0', false],
+    ],
+    phone: [],
+    attributes: [
+        ['id', 'initial'],
+        ['src', './imagesTool/image0.jpg'],
+        ['width', '100%'],
+        ['height', 'initial'],
+        ['alt', 'initial']
+    ],
+    script: ``,
+    text: ``,
+    childs: []  
+}
+
+let imageBackground = {
+    typeName: 'imageBackground',
+    description: 'CSS background image',
+    image: 'previewImageBackground.png',
+    tag: 'div',
+    childsAllowed: 'all',
+    style: [
+        ['background', 'lightgrey', true],
+        ['background-attachment', 'initial', true],
+        ['background-position', 'center', true],
+        ['background-repeat','no-repeat', true],
+        ['background-size', 'cover', true],
+        ['background-image','url("./imagesTool/image0.jpg")', true],
+        ['filter', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['height', '100%', false],
+        ['margin', '0', false],
+        ['width', '100%', false],
+    ],
+    phone: [],
+    attributes: [
+        ['id', 'initial'],
+    ],
+    script: ``,
+    text: ``,
+    childs: []  
+}
+
+let linkBox = {
+    typeName: 'linkBox',
+    description: 'Link box',
+    image: 'previewLinkBox.png',
+    tag: 'a',
+    childsAllowed: 'all',
+    style: [
+        ['text-decoration', 'none', true],
+        ['text-transform', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['display', 'block', false],
+        ['height', 'max-content', false],
+        ['margin', '0', false],
+        ['width', 'max-content', false],
+    ],
+    phone: [],
+    attributes: [
+        ['id', 'initial'],
+        ['href', '/'],
+        ['target', '_blank'],
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+let linkInline = {
+    typeName: 'linkInline',
+    description: 'Inline link',
+    image: 'previewLinkInline.png',
+    tag: 'a',
+    childsAllowed: 'none',
+    style: [
+        ['color', 'initial', true],
+        ['font-family', 'initial', true],
+        ['font-size', '1em', true],
+        ['font-weight', 'initial', true],
+        ['text-decoration', 'initial', true],
+        ['text-transform', 'initial', true],
+
+        ['box-sizing', 'border-box', false],
+        ['display', 'inline', false],
+        ['height', 'max-content', false],
+        ['margin', '0', false],
+        ['width', 'max-content', false],
+    ],
+    phone: [],
+    attributes: [
+        ['id', 'initial'],
+        ['href', '/'],
+        ['target', '_blank'],
+    ],
+    script: ``,
+    text: `{{link}}`,
+    childs: []
+}
+
+/*
+let div = {
+    description: 'Div',
+    image: 'previewDiv.png',
+    tag: 'div',
+    childsAllowed: 'all',
+    style: [
+        ['backdrop-filter', 'initial', true],
+        ['background', 'initial', true],
+        ['background-position', 'initial', true],
+        ['background-repeat','initial', true],
+        ['background-size', 'initial', true],
+        ['background-image','initial', true],
+
+        ['box-shadow', 'initial', true],
+
+        ['position', 'initial', true],
+        ['bottom', 'initial', true],
+        ['left', 'initial', true],
+        ['right', 'initial', true],
+        ['top', 'initial', true],
+
+        ['border-color', 'initial', true],
+        ['border-radius', 'initial', true],
+        ['border-style', 'initial', true],
+        ['border-width', 'initial', true],
+
+        ['border-bottom', 'initial', true],
+        ['border-left', 'initial', true],
+        ['border-right', 'initial', true],
+        ['border-top', 'initial', true],
+
+        ['margin-bottom', 'initial', true],
+        ['margin-left', 'initial', true],
+        ['margin-right', 'initial', true],
+        ['margin-top', 'initial', true],
+
+        ['padding-bottom', 'initial', true],
+        ['padding-left', 'initial', true],
+        ['padding-right', 'initial', true],
+        ['padding-top', 'initial', true],
+
+        ['min-height', 'initial', true],
+        ['max-height', 'initial', true],
+        ['height', 'initial', true],
+
+        ['min-width', 'initial', true],
+        ['max-width', 'initial', true],
+        ['width', 'initial', true],
+
+        ['overflow', 'initial', true],
+
+        ['text-align', 'initial', true],
+        ['writing-mode', 'initial', true],
+    ],
+    phone: [],
+    attributes: [],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+
+
+*/

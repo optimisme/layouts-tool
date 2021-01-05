@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>HTML tool</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
+        <link href="./tool/style.css" rel="stylesheet">
+        <script src="./tool/app.js"></script>
+        <script src="./tool/appList.js"></script>
+        <script src="./tool/appPopup.js"></script>
+        <script src="./tool/appPreview.js"></script>
+        <script src="./tool/appSettings.js"></script>
+        <script src="./tool/appSettingsConfigs.js"></script>
+        <script src="./tool/appTypes.js"></script>
+        <script src="./tool/appTemplates.js"></script>
+    </head>
+    <body>
+        <input id="fileInput" type="file" style="display:none;" onchange="app.uploadWebtemplate(this)" />
+        <sdw-tool-list></sdw-tool-list>
+        <sdw-tool-preview></sdw-tool-preview>
+        <sdw-tool-settings></sdw-tool-settings>
+        <sdw-tool-popup id="popupadd" list="types"></sdw-tool-popup>
+        <sdw-tool-popup id="popuptemplates" list="templates"></sdw-tool-popup>
+    </body>
+</html>
