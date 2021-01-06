@@ -80,10 +80,8 @@ class SdwToolList extends HTMLElement {
                 evt.stopPropagation()
                 if (app.refSelected.childsAllowed == 'all') {
                     document.getElementById('popupadd').showPopup(this.elmRoot.querySelector('div[name="buttonAdd"]'))
-                } else if (app.refSelected.childsAllowed == 'flex') {
-                    app.add('divFlexChild')
-                } else if (app.refSelected.childsAllowed == 'stack') {
-                    app.add('divStackChild')
+                } else if (app.refSelected.childsAllowed != 'none') {
+                    app.add(app.refSelected.childsAllowed)
                 }
             })
             buttons.appendChild(buttonAdd)
@@ -296,7 +294,7 @@ class SdwToolListItem extends HTMLElement {
             overflow: hidden; 
             text-overflow: ellipsis; 
             white-space: nowrap;
-            max-width: calc(100% - ${identWidth - 32}px)
+            max-width: calc(100% - ${identWidth + 24}px)
         }
         .childs {
             transition: height 0.25s ease;

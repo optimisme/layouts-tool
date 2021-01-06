@@ -94,7 +94,56 @@ class SdwToolPreview extends HTMLElement {
         #pexels > a:visited { color: black; }
         .selected {
             border: solid 1px rgb(0, 125, 255) !important;
-        }`
+        }
+        .carouselDots {
+            align-items: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction:column;
+            margin: 0;
+            width: 100%;
+        }
+        .carouselDots > div:first-child {
+            overflow: hidden;
+            width: 100%;
+        }
+        .carouselDots > div:first-child > div {
+            display: flex;
+            height: 100%;
+            transform: translate(0px);
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .carouselDots > div:first-child > div > div {
+            background-color: darkgray;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 100%;
+            min-width: 100%;
+        }
+        .carouselDots > div:last-child {
+            margin-top: 16px;
+        }
+        .carouselDots > div:last-child > div {
+            border: solid 2px lightgrey;
+            border-radius: 100%;
+            cursor: pointer;
+            display: inline-block;
+            height: 10px;
+            margin: 0 15px 0 15px;
+            width: 10px;
+        }
+        .carouselDots > div:last-child > div:first-child {
+            background-color: lightgrey;
+        }
+        .carouselDotsSelected {
+            background-color: lightgrey !important;
+        }
+        .carouselDotsUnselected {
+            background-color: initial !important;
+        }
+        `
         this.shadow.appendChild(this.elmStyle)
 
         this.elmRoot = document.createElement('div')

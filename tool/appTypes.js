@@ -70,6 +70,7 @@ let div = {
     ],
     attributes: [
         ['id', 'initial'],
+        ['class', 'initial']
     ],
     script: ``,
     text: ``,
@@ -81,7 +82,7 @@ let divFlex = {
     description: 'Flex',
     image: 'previewDivFlexRow.png',
     tag: 'div',
-    childsAllowed: 'flex',
+    childsAllowed: 'divFlexChild',
     style: [
         ['align-content', 'initial', true],
         ['align-items', 'initial', true],
@@ -159,7 +160,7 @@ let divStack = {
     description: 'Stack',
     image: 'previewDivStack.png',
     tag: 'div',
-    childsAllowed: 'stack',
+    childsAllowed: 'divStackChild',
     style: [
         ['height', '100%', true],
         ['width', '100%', true],
@@ -615,6 +616,109 @@ let linkInline = {
     text: `{{link}}`,
     childs: []
 }
+
+let carouselDots = {
+    typeName: 'carouselDots',
+    description: 'Carousel with selectors',
+    image: 'previewCarouselDots.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+       ['class', 'carouselDots'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [
+        {
+            typeName: 'carouselDotsFrame',
+            description: 'Carousel frame',
+            tag: 'div',
+            childsAllowed: 'none',
+            style: [
+                ['border-radius', '15px', true],
+                ['box-shadow', '0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)', true],
+                ['height', '350px', true]
+            ],
+            phone: [
+                ['height', 'initial', true]
+            ],
+            attributes: [],
+            script: ``,
+            text: ``,
+            childs: [
+                {
+                    typeName: 'carouselDotsImages',
+                    description: 'Carousel images',
+                    tag: 'div',
+                    childsAllowed: 'carouselDotsImage',
+                    style: [],
+                    phone: [],
+                    attributes: [
+                        ['name', 'images']
+                    ],
+                    script: ``,
+                    text: ``,
+                    childs: [
+                        { typeName: 'carouselDotsImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'none', style: [ ['background-image','url("./imagesTool/image4.jpg")', true], ], phone: [], attributes: [], script: ``, text: ``, childs: [] },
+                        { typeName: 'carouselDotsImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'none', style: [ ['background-image','url("./imagesTool/image8.jpg")', true], ], phone: [], attributes: [], script: ``, text: ``, childs: [] }
+                    ]
+                },
+            ]
+        },
+        {
+            typeName: 'carouselDotsIndicators',
+            description: 'Carousel indicators',
+            tag: 'div',
+            childsAllowed: 'carouselDotsIndicator',
+            style: [],
+            phone: [],
+            attributes: [],
+            script: ``,
+            text: ``,
+            childs: [
+                { typeName: 'carouselDotsIndicator', description: 'Carousel indicator', image: '', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['name', 'indicator'], ['onclick', 'setCarouselDots(this)'] ], script: ``, text: ``, childs: [] },
+                { typeName: 'carouselDotsIndicator', description: 'Carousel indicator', image: '', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['name', 'indicator'], ['onclick', 'setCarouselDots(this)'] ], script: ``, text: ``, childs: [] }
+            ]
+        }
+    ]
+}
+
+let carouselDotsImage = {
+    typeName: 'carouselDotsImage',
+    description: 'Carousel image',
+    image: '',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [
+        ['background-image','url("./imagesTool/image0.jpg")', true],
+    ],
+    phone: [],
+    attributes: [],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+let carouselDotsIndicator = {
+    typeName: 'carouselDotsIndicator',
+    description: 'Carousel indicator',
+    image: '',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['name', 'indicator'],
+        ['onclick', 'setCarouselDots(this)']
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
+// let templateCarousel000 = {"typeName":"templateCarousel00X","image":"templateCarousel000.png","description":"Carousel with right text", "styleName":"","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["box-shadow","0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",true],["border-radius","15px",true],["height","350px",true],["overflow","hidden",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["height","100%",true],["transform","translateX(0px)",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"flex","tag":"div","style":[["height","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["min-width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"imageBackground","description":"CSS background image","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["background-position","center",true],["background-repeat","no-repeat",true],["background-size","cover",true],["background-image","url(\"./imagesTool/image4.jpg\")",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["min-width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"imageBackground","description":"CSS background image","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["background-position","center",true],["background-repeat","no-repeat",true],["background-size","cover",true],["background-image","url(\"./imagesTool/image8.jpg\")",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["min-width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"imageBackground","description":"CSS background image","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["background-position","center",true],["background-repeat","no-repeat",true],["background-size","cover",true],["background-image","url(\"./imagesTool/image9.jpg\")",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""}],"text":""}],"text":""}],"text":""},{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","8px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"divFlex","description":"Flex","childsAllowed":"flex","tag":"div","style":[["align-items","center",true],["height","24px",true],["justify-content","center",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["padding","0 8px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border","solid 2px grey",true],["border-radius","100%",true],["cursor","pointer",true],["height","16px",true],["width","16px",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["padding","0 8px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border","solid 2px grey",true],["border-radius","100%",true],["cursor","pointer",true],["height","16px",true],["width","16px",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["padding","0 8px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border","solid 2px grey",true],["border-radius","100%",true],["cursor","pointer",true],["height","16px",true],["width","16px",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}
 
 /*
 let div = {
