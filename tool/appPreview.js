@@ -26,6 +26,7 @@ class SdwToolPreview extends HTMLElement {
             overflow-y: auto;
             position: absolute;
             top: 0;
+            user-select: unset;
             width: calc(100% - 500px);
         }
         .root > div[name="buttons"] {
@@ -142,6 +143,63 @@ class SdwToolPreview extends HTMLElement {
         }
         .carouselDotsUnselected {
             background-color: initial !important;
+        }
+        .carouselArrows {
+            align-items: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction:column;
+            margin: 0;
+            position: relative;
+            width: 100%;
+        }
+        .carouselArrows > div:first-child {
+            height: 500px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .carouselArrows > div:first-child > div {
+            display: flex;
+            height: 100%;
+            transform: translate(0px);
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+        .carouselArrows > div:first-child > div > div {
+            background-color: darkgray;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 100%;
+            min-width: 100%;
+        }
+        .carouselArrows .carouselArrow {
+            align-items: center;
+            bottom: 0;
+            display: flex;
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+        .carouselArrows .carouselArrow > div {
+            border-top: solid 4px #fff;
+            border-right: solid 4px #fff;
+            cursor: pointer;
+            height: 15px;
+            margin: 15px;
+            opacity: 0.75;
+            transform: rotateZ(-135deg);
+            width: 15px;
+        }
+        .carouselArrows .carouselArrow > div:hover {
+            opacity: 1;
+        }
+        .carouselArrows .carouselArrowRight {
+            left: unset;
+            right: 0;
+        }
+        .carouselArrows .carouselArrowRight > div {
+            transform: rotateZ(45deg);
         }
         `
         this.shadow.appendChild(this.elmStyle)

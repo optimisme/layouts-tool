@@ -69,8 +69,7 @@ let div = {
         ['width', 'initial', true],
     ],
     attributes: [
-        ['id', 'initial'],
-        ['class', 'initial']
+        ['id', 'initial']
     ],
     script: ``,
     text: ``,
@@ -632,7 +631,7 @@ let carouselDots = {
     text: ``,
     childs: [
         {
-            typeName: 'carouselDotsFrame',
+            typeName: 'carouselFrame',
             description: 'Carousel frame',
             tag: 'div',
             childsAllowed: 'none',
@@ -649,10 +648,10 @@ let carouselDots = {
             text: ``,
             childs: [
                 {
-                    typeName: 'carouselDotsImages',
+                    typeName: 'carouselImages',
                     description: 'Carousel images',
                     tag: 'div',
-                    childsAllowed: 'carouselDotsImage',
+                    childsAllowed: 'carouselImage',
                     style: [],
                     phone: [],
                     attributes: [
@@ -661,8 +660,8 @@ let carouselDots = {
                     script: ``,
                     text: ``,
                     childs: [
-                        { typeName: 'carouselDotsImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'none', style: [ ['background-image','url("./imagesTool/image4.jpg")', true], ], phone: [], attributes: [], script: ``, text: ``, childs: [] },
-                        { typeName: 'carouselDotsImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'none', style: [ ['background-image','url("./imagesTool/image8.jpg")', true], ], phone: [], attributes: [], script: ``, text: ``, childs: [] }
+                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background-image','url("./imagesTool/image4.jpg")', true], ], phone: [], attributes: [['name', 'carouselImage']], script: ``, text: ``, childs: [] },
+                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background-image','url("./imagesTool/image8.jpg")', true], ], phone: [], attributes: [['name', 'carouselImage']], script: ``, text: ``, childs: [] }
                     ]
                 },
             ]
@@ -685,40 +684,72 @@ let carouselDots = {
     ]
 }
 
-let carouselDotsImage = {
-    typeName: 'carouselDotsImage',
-    description: 'Carousel image',
-    image: '',
-    tag: 'div',
-    childsAllowed: 'none',
-    style: [
-        ['background-image','url("./imagesTool/image0.jpg")', true],
-    ],
-    phone: [],
-    attributes: [],
-    script: ``,
-    text: ``,
-    childs: []
-}
-
-let carouselDotsIndicator = {
-    typeName: 'carouselDotsIndicator',
-    description: 'Carousel indicator',
-    image: '',
+let carouselArrows = {
+    typeName: 'carouselArrows',
+    description: 'Carousel with arrows',
+    image: 'previewCarouselArrows.png',
     tag: 'div',
     childsAllowed: 'none',
     style: [],
     phone: [],
     attributes: [
-        ['name', 'indicator'],
-        ['onclick', 'setCarouselDots(this)']
+       ['class', 'carouselArrows'],
     ],
     script: ``,
     text: ``,
-    childs: []
+    childs: [
+        {
+            typeName: 'carouselFrame',
+            description: 'Carousel frame',
+            tag: 'div',
+            childsAllowed: 'none',
+            style: [
+                ['border-radius', 'initial', true],
+                ['box-shadow', 'initial', true],
+                ['height', '350px', true]
+            ],
+            phone: [
+                ['height', 'initial', true]
+            ],
+            attributes: [],
+            script: ``,
+            text: ``,
+            childs: [
+                {
+                    typeName: 'carouselImages',
+                    description: 'Carousel images',
+                    tag: 'div',
+                    childsAllowed: 'carouselImage',
+                    style: [],
+                    phone: [],
+                    attributes: [
+                        ['name', 'images']
+                    ],
+                    script: ``,
+                    text: ``,
+                    childs: [
+                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background-image','url("./imagesTool/image4.jpg")', true], ], phone: [], attributes: [['name', 'carouselImage']], script: ``, text: ``, childs: [] },
+                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background-image','url("./imagesTool/image8.jpg")', true], ], phone: [], attributes: [['name', 'carouselImage']], script: ``, text: ``, childs: [] }
+                    ]
+                },
+            ]
+        },
+        { typeName: 'carouselArrowLeftBox', description: 'Left arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow'] ], script: ``, text: ``, childs: [ { typeName: 'carouselArrowLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, "left")'] ], script: ``, text: ``, childs: [] } ] },
+        { typeName: 'carouselArrowRightBox', description: 'Right arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow carouselArrowRight'] ], script: ``, text: ``, childs: [ { typeName: 'carouselArrowRight', description: 'Right arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, "right")'] ], script: ``, text: ``, childs: [] } ] }
+    ]
 }
 
-// let templateCarousel000 = {"typeName":"templateCarousel00X","image":"templateCarousel000.png","description":"Carousel with right text", "styleName":"","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["box-shadow","0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",true],["border-radius","15px",true],["height","350px",true],["overflow","hidden",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["height","100%",true],["transform","translateX(0px)",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"flex","tag":"div","style":[["height","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["min-width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"imageBackground","description":"CSS background image","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["background-position","center",true],["background-repeat","no-repeat",true],["background-size","cover",true],["background-image","url(\"./imagesTool/image4.jpg\")",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["min-width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"imageBackground","description":"CSS background image","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["background-position","center",true],["background-repeat","no-repeat",true],["background-size","cover",true],["background-image","url(\"./imagesTool/image8.jpg\")",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["min-width","100%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"imageBackground","description":"CSS background image","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["background-position","center",true],["background-repeat","no-repeat",true],["background-size","cover",true],["background-image","url(\"./imagesTool/image9.jpg\")",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""}],"text":""}],"text":""}],"text":""},{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","8px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"divFlex","description":"Flex","childsAllowed":"flex","tag":"div","style":[["align-items","center",true],["height","24px",true],["justify-content","center",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["padding","0 8px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border","solid 2px grey",true],["border-radius","100%",true],["cursor","pointer",true],["height","16px",true],["width","16px",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["padding","0 8px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border","solid 2px grey",true],["border-radius","100%",true],["cursor","pointer",true],["height","16px",true],["width","16px",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["padding","0 8px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border","solid 2px grey",true],["border-radius","100%",true],["cursor","pointer",true],["height","16px",true],["width","16px",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}
+let carouselFrame = { typeName: 'carouselFrame', description: 'Carousel frame', tag: 'div', childsAllowed: 'none', style: [['border-radius', 'initial', true], ['box-shadow', 'initial', true], ['height', '350px', true]], phone: [['height', 'initial', true]], attributes: [], script: ``, text: ``, childs: []}
+let carouselImages = { typeName: 'carouselImages', description: 'Carousel images', tag: 'div', childsAllowed: 'carouselImage', style: [], phone: [], attributes: [['name', 'images']], script: ``, text: ``, childs: [] }
+let carouselImage = { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background-image','url("./imagesTool/image0.jpg")', true], ], phone: [], attributes: [['name', 'carouselImage']], script: ``, text: ``, childs: [] }
+let carouselArrowLeft = { typeName: 'carouselArrowLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, "left")'] ], script: ``, text: ``, childs: [] }
+let carouselArrowLeftBox = { typeName: 'carouselArrowLeftBox', description: 'Left arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow'] ], script: ``, text: ``, childs: [ { typeName: 'carouselArrowsLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, "left")'] ], script: ``, text: ``, childs: [] } ] }
+let carouselArrowRight = { typeName: 'carouselArrowRight', description: 'Right arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, "right")'] ], script: ``, text: ``, childs: [] }
+let carouselArrowRightBox = { typeName: 'carouselArrowRightBox', description: 'Right arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow carouselArrowRight'] ], script: ``, text: ``, childs: [] }
+let carouselDotsIndicators = { typeName: 'carouselDotsIndicators', description: 'Carousel indicators', tag: 'div', childsAllowed: 'carouselDotsIndicator', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [] }
+let carouselDotsIndicator = { typeName: 'carouselDotsIndicator', description: 'Carousel indicator', image: '', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['name', 'indicator'], ['onclick', 'setCarouselDots(this)'] ], script: ``, text: ``, childs: [] }
+
+
 
 /*
 let div = {

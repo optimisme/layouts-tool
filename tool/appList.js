@@ -291,6 +291,7 @@ class SdwToolListItem extends HTMLElement {
         }
         .main > div[name="description"] {
             flex-grow: 1;
+            font-size: 0.75em;
             overflow: hidden; 
             text-overflow: ellipsis; 
             white-space: nowrap;
