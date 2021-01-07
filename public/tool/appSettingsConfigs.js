@@ -317,11 +317,9 @@ class SdwConfigSelectCustom extends HTMLElement {
                     let value = this.elmRoot.querySelector('select').value
                     if (value != 'custom') {
                         this.elmRoot.querySelector('input[name="custom"]').value = ''
-                        // this.elmRoot.querySelector('input[name="custom"]').setAttribute('disabled', 'true')
                         this.elmRoot.classList.remove('expanded')
                         this.onchange(this.name, value)
                     } else {
-                        //this.elmRoot.querySelector('input[name="custom"]').removeAttribute('disabled')
                         this.elmRoot.classList.add('expanded')
                     }
                     if (value == 'initial') {
@@ -492,12 +490,13 @@ class SdwConfigPadding extends HTMLElement {
                     evt.preventDefault()
                     let value = this.elmRoot.querySelector('select').value
                     if (value != 'custom') {
-                        this.elmRoot.querySelector('input[name="custom"]').value = ''
-                        this.elmRoot.querySelector('input[name="custom"]').setAttribute('disabled', 'true')
+                        this.elmRoot.querySelector('input[data-type="bottom"]').value = '0'
+                        this.elmRoot.querySelector('input[data-type="left"]').value = '0'
+                        this.elmRoot.querySelector('input[data-type="right"]').value = '0'
+                        this.elmRoot.querySelector('input[data-type="top"]').value = '0'
                         this.elmRoot.classList.remove('expanded')
                         this.onchange(this.name, value)
                     } else {
-                        this.elmRoot.querySelector('input[name="custom"]').removeAttribute('disabled')
                         this.elmRoot.classList.add('expanded')
                     }
                     if (value == 'initial') {
@@ -625,18 +624,6 @@ class SdwConfigPadding extends HTMLElement {
             this.onchange(this.name, refTop.value + ' ' + refRight.value + ' ' + refBottom.value + ' ' + refLeft.value)
             this.elmRoot.querySelector('div[name="name"]').classList.add('notInitial')
         }
-                        /*
-                
-                if (value == '' || value == 'initial') {
-                    value = ''
-                    this.elmRoot.querySelector('input').value = ''
-                    this.elmRoot.querySelectorAll('option')[0].selected = true
-                    this.elmRoot.classList.remove('expanded')
-                    this.elmRoot.querySelector('div[name="name"]').classList.remove('notInitial')
-                } else {
-                    this.onchange(this.name, value)
-                    this.elmRoot.querySelector('div[name="name"]').classList.add('notInitial')
-                }*/
     }
 
     static getObject (name, value, editable, options, onchange) {
