@@ -798,7 +798,7 @@ let iconMaterial = {
     description: 'Icon from material components',
     image: 'previewIconMaterial.png',
     tag: 'span',
-    childsAllowed: 'all',
+    childsAllowed: 'none',
     style: [
         ['color', 'initial', true],
         ['font-size', 'initial', true],
@@ -812,6 +812,33 @@ let iconMaterial = {
     text: `menu`,
     childs: []
 }
+
+let mapGoogle = {
+    typeName: 'mapGoogle',
+    description: 'Map from google maps',
+    image: 'previewMapGoogle.png',
+    tag: 'iframe',
+    childsAllowed: 'none',
+    style: [
+        ['color', 'initial', true],
+        ['font-size', 'initial', true],
+    ],
+    phone: [],
+    attributes: [
+        ['src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95904.2455614195!2d1.8755939871238607!3d41.30869667294398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49ec23b0e0697%3A0x598c8feb8d9536a9!2sPla%C3%A7a%20de%20Catalunya%2C%2008820%20El%20Prat%20de%20Llobregat%2C%20Barcelona!5e0!3m2!1sen!2ses!4v1610024954041!5m2!1sen!2ses'],
+        ['width', '100%'],
+        ['height', '100%'],
+        ['frameborder', '0'],
+        ['allowfullscreen', 'true'],
+        ['aria-hidden', 'false'],
+        ['tabindex', '0'],
+    ],
+    script: ``,
+    text: `menu`,
+    childs: []
+}
+
+// <iframe src="" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 /*
 let div = {
