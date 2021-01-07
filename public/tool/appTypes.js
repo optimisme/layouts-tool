@@ -91,6 +91,7 @@ let divFlex = {
         ['flex-wrap', 'initial', true],
         ['height', 'initial', true],
         ['justify-content', 'initial', true],
+        ['padding', 'initial', true],
         ['width', 'initial', true],
 
         ['box-sizing', 'border-box', false],
@@ -104,6 +105,7 @@ let divFlex = {
         ['flex-wrap', 'initial', true],
         ['height', 'initial', true],
         ['justify-content', 'initial', true],
+        ['padding', 'initial', true],
         ['width', 'initial', true],
     ],
     attributes: [
@@ -222,6 +224,7 @@ let divSticky = {
     childsAllowed: 'all',
     style: [
         ['top', '0', true],
+        ['z-index', '1000', true],
 
         ['box-sizing', 'border-box', false],
         ['margin', '0', false],
