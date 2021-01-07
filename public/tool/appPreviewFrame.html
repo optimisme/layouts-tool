@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
     </head>
@@ -15,6 +16,16 @@
             font-weight: 300;
             margin: 0;
             padding: 0;
+        }
+        a {
+            color: rgb(0, 128, 255);
+            text-decoration: none;
+        }
+        a:hover {
+            color: rgb(100, 200, 255);
+        }
+        a:visited {
+            color: rgb(0, 128, 255);
         }
 
         .selected {
@@ -130,7 +141,9 @@
         .drawer {
             display: none;
             background-color: rgb(100, 100, 100, 0.75);
+            backdrop-filter: blur(2px) saturate(200%);
             bottom: 0;
+            filter: blud(3px) saturate(200%);
             left: 0;
             opacity: 0;
             position: fixed;
@@ -197,11 +210,12 @@
     async function setDrawer (event, id, show) {
         let refBody = document.getElementsByTagName('body')[0]
         let refDrawer = document.getElementById(id)
-    
+
         if (typeof event !== 'undefined' && typeof event.stopPropagation === 'function') {
             if (event.cancelable) event.preventDefault()
             event.stopPropagation()
-            target = event.target.id
+            target = event.target
+            if (target.className != 'drawer') return
         }
     
         if (show) {

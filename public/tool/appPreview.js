@@ -182,17 +182,22 @@ class SdwToolPreview extends HTMLElement {
         }
 
         let classStr = newItem.getAttribute('class')
-        if (classStr != null) {
-            newItem.setAttribute('class', classStr)
-        } else {
-            let styleStr = child.getStyleString()
-            if (styleStr.length > 0) {
-                let newStyle = document.createElement('style')
-                newStyle.setAttribute('id', 'css' + child.appId)
-                newStyle.innerHTML = child.getStyleString()
-                app.refPreviewBody.appendChild(newStyle)
-                newItem.setAttribute('class', `css${child.appId}`)
+        let classArr = []
+        if (classStr != null) { classArr = classStr.split(' ') }
+
+        let styleStr = child.getStyleString()
+        if (styleStr.length > 0) {
+            let newStyle = document.createElement('style')
+            newStyle.setAttribute('id', 'css' + child.appId)
+            newStyle.innerHTML = child.getStyleString()
+            app.refPreviewBody.appendChild(newStyle)
+            if (classArr == 0) {
+                newItem.setAttribute('class', `css${child.appId} `)
+            } else {
+                newItem.setAttribute('class', `css${child.appId} ` + classArr.join(' '))
             }
+        } else if (classArr > 0) {
+            newItem.setAttribute('class', classArr.join(' '))
         }
 
         let newComment = document.createComment(child.description)

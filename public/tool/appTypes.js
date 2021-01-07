@@ -793,6 +793,26 @@ let drawer = {
 
 let drawerSide = { typeName: 'drawerSide', description: 'Drawer', image: '', tag: 'div', childsAllowed: 'all', style: [], phone: [], attributes: [ ['class', 'drawerSide'] ], script: ``, text: ``, childs: [] }
 
+let iconMaterial = {
+    typeName: 'iconMaterial',
+    description: 'Icon from material components',
+    image: 'previewIconMaterial.png',
+    tag: 'span',
+    childsAllowed: 'all',
+    style: [
+        ['color', 'initial', true],
+        ['font-size', 'initial', true],
+    ],
+    phone: [],
+    attributes: [
+        ['id', 'initial'],
+        ['class', 'material-icons'],
+    ],
+    script: ``,
+    text: `menu`,
+    childs: []
+}
+
 /*
 let div = {
     description: 'Div',

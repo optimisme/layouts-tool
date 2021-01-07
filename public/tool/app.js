@@ -4,7 +4,7 @@ let appTypeNames = [
     'divSticky', 'divMobile', 'divDesktop',
     'titleh1', 'titleh2', 'titleh3', 'text', 'textInline', 'textEllipsis', 'linkBox', 'linkInline',
     'image', 'imageBackground', 
-    'carouselDots', 'carouselArrows', 'drawer'
+    'carouselDots', 'carouselArrows', 'drawer', 'iconMaterial'
 ]
 
 let appTemplateNames = [

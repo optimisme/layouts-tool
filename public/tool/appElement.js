@@ -149,9 +149,19 @@ class AppElement {
 
         this.style[positionDestop][1] = value
 
-        let classStr = (this.refPreview.getAttribute('class')).replace(' selected', '')
-        let refStyle = app.refPreviewBody.querySelector(`style[id="${classStr}"]`)
-        refStyle.innerHTML = this.getStyleString()
+        let classStr = (this.refPreview.getAttribute('class'))
+        let classArr = classStr.split(' ')
+        let refStyle = app.refPreviewBody.querySelector(`style[id="${classArr[0]}"]`)
+        if (refStyle == null) {
+            refStyle = document.createElement('style')
+            refStyle.setAttribute('id', 'css' + this.appId)
+            refStyle.innerHTML = this.getStyleString()
+            app.refPreviewBody.appendChild(refStyle)
+            console.log('<', classArr)
+            this.refPreview.setAttribute('class', `css${this.appId} ` + classArr.join(' '))
+        } else {
+            refStyle.innerHTML = this.getStyleString()
+        }
     }
 
     setStylePhone (name, value) {
@@ -162,9 +172,18 @@ class AppElement {
 
         this.phone[positionPhone][1] = value
 
-        let classStr = (this.refPreview.getAttribute('class')).replace(' selected', '')
-        let refStyle = app.refPreviewBody.querySelector(`style[id="${classStr}"]`)
-        refStyle.innerHTML = this.getStyleString()
+        let classStr = (this.refPreview.getAttribute('class'))
+        let classArr = classStr.split(' ')
+        let refStyle = app.refPreviewBody.querySelector(`style[id="${classArr[0]}"]`)
+        if (refStyle == null) {
+            refStyle = document.createElement('style')
+            refStyle.setAttribute('id', 'css' + this.appId)
+            refStyle.innerHTML = this.getStyleString()
+            app.refPreviewBody.appendChild(refStyle)
+            this.refPreview.setAttribute('class', `css${this.appId} ` + classArr.join(' '))
+        } else {
+            refStyle.innerHTML = this.getStyleString()
+        }
     }
 
     getStyleString () {
@@ -203,12 +222,12 @@ class AppElement {
         let position = app.getPropertyPosition(this.attributes, name)
 
         this.attributes[position][1] = value
-/*
+
         if (value != 'initial') {
             this.refPreview.setAttribute(name, value)
         } else {
             this.refPreview.removeAttribute(name)
-        }*/
+        }
     }
 
     moveUp (child) {
