@@ -28,6 +28,7 @@ let selectableSettings = {
     'flex-wrap': ['initial', 'nowrap', 'wrap', 'wrap-reverse'],
     // 'font-family': ['initial', 'custom', 'Arial', 'Verdana', 'Helvetica', 'Tahoma', '"Courier New"', '"Open Sans"', '"Roboto"', '"Raleway"', '"Montserrat"', '"Oswald"', '"Lato"', '"Lora"', '"Cormorant"', '"BioRhyme"', '"Inknut Antiqua"', '"Libre Baskerville"', '"IBM Plex Sans"', '"Anonymous Pro"'],
     'font-family': ['initial', 'custom', 'Arial', 'Verdana', 'Helvetica', 'Tahoma', '"Courier New"', '"Open Sans"'],
+    'font-size': ['initial', 'custom', '0.95em', '1em', '2em'],
     'font-style': ['initial', 'custom', 'normal', 'italic', 'oblique', 'oblique 10deg'],
     'font-weight': ['initial', 'lighter', 'normal', 'bold', 'bolder', '100', '200', '300', '400', '500', '600', '700', '800', '900', 'inherit'],
     'height': ['initial', 'custom', 'min-content', 'max-content', '48px', '100px', '250px', '500px', '50%', '75%', '100%', 'calc(100% - 16px)'],
@@ -42,7 +43,7 @@ let selectableSettings = {
     'overflow': ['initial', 'custom', 'visible', 'hidden', 'clip', 'scroll', 'auto', 'unset'],
     'overflow-x': ['initial', 'visible', 'hidden', 'clip', 'scroll', 'auto', 'unset'],
     'overflow-y': ['initial', 'visible', 'hidden', 'clip', 'scroll', 'auto', 'unset'],
-    'padding': ['initial', 'custom', '0', '0 16px', '16px 24px', '0 0  16px 0'],
+    'padding': ['initial', 'custom', '0'],
     'position': ['initial', 'static', 'relative', 'absolute', 'fixed', 'sticky'],
     'text-align': ['initial', 'left', 'center', 'justify', 'right', 'inherit'],
     'text-decoration': ['initial', 'none', 'overline', 'underline', 'line-through'],
@@ -247,7 +248,9 @@ class SdwToolSettings extends HTMLElement {
         for (let cnt = 0; cnt < ref.style.length; cnt = cnt + 1) {
             let name = ref.style[cnt][0]
             if (typeof selectableSettings[name] == 'object') {
-                if (selectableSettings[name].indexOf('custom') >= 0) {
+                if (name == 'padding') {
+                    this.elmRoot.appendChild(SdwConfigPadding.getObject(name, ref.style[cnt][1], ref.style[cnt][2], selectableSettings[name], (name, value) => { ref.setStyle(name, value) }))
+                } else if (selectableSettings[name].indexOf('custom') >= 0) {
                     this.elmRoot.appendChild(SdwConfigSelectCustom.getObject(name, ref.style[cnt][1], ref.style[cnt][2], selectableSettings[name], (name, value) => { ref.setStyle(name, value) }))
                 } else {
                     this.elmRoot.appendChild(SdwConfigSelect.getObject(name, ref.style[cnt][1], ref.style[cnt][2], selectableSettings[name], (name, value) => { ref.setStyle(name, value) }))
@@ -270,7 +273,9 @@ class SdwToolSettings extends HTMLElement {
         for (let cnt = 0; cnt < ref.phone.length; cnt = cnt + 1) {
             let name = ref.phone[cnt][0]
             if (selectableSettings[name] != undefined) {
-                if (selectableSettings[name].indexOf('custom') >= 0) {
+                if (name == 'padding') {
+                    this.elmRoot.appendChild(SdwConfigPadding.getObject(name, ref.style[cnt][1], ref.style[cnt][2], selectableSettings[name], (name, value) => { ref.setStyle(name, value) }))
+                } else if (selectableSettings[name].indexOf('custom') >= 0) {
                     this.elmRoot.appendChild(SdwConfigSelectCustom.getObject(name, ref.phone[cnt][1], ref.phone[cnt][2], selectableSettings[name], (name, value) => { ref.setStylePhone(name, value) }))
                 } else {
                     this.elmRoot.appendChild(SdwConfigSelect.getObject(name, ref.phone[cnt][1], ref.phone[cnt][2], selectableSettings[name], (name, value) => { ref.setStylePhone(name, value) }))

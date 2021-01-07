@@ -33,6 +33,7 @@ class App {
         customElements.define('sdw-config', SdwConfig)
         customElements.define('sdw-config-select', SdwConfigSelect)
         customElements.define('sdw-config-select-costum', SdwConfigSelectCustom)
+        customElements.define('sdw-config-padding', SdwConfigPadding)
 
         this.counter = 0
         this.styleNames = []
