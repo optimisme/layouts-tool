@@ -114,6 +114,9 @@ class SdwToolPreview extends HTMLElement {
                 buttonLoad.appendChild(LoadIcon)
 
             let buttonCode = document.createElement('div')
+            buttonCode.addEventListener('click', () => {
+                app.toSource()
+            })
             refButtons.appendChild(buttonCode)
 
                 let codeIcon = document.createElement('ion-icon')

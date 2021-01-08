@@ -3,7 +3,7 @@ let appTypeNames = [
     'divFlex', 'divStack',
     'divSticky', 'divMobile', 'divDesktop',
     'titleh1', 'titleh2', 'titleh3', 'text', 'textInline', 'textEllipsis', 'linkBox', 'linkInline',
-    'image', 'imageBackground', 
+    'image', 'imageBackground', 'divGrid',
     'carouselDots', 'carouselArrows', 'drawer', 'iconMaterial', 'mapGoogle'
 ]
 
@@ -13,7 +13,7 @@ let appTemplateNames = [
     'templateText000', 'templateText001', 'templateText002', 'templateText003', 'templateText004', 'templateText005', 'templateText006', 'templateText007',
     'templateImage000', 'templateImage001', 'templateImage002', 'templateImage003', 'templateImage004', 'templateImage005',
     'templatePro000', 'templatePro001', 'templatePro002', 'templatePro003', 'templatePro004', 'templatePro005',
-    'templateMenu000', 'templateMenu001', 'templateSite000'
+    'templateMenu000', 'templateMenu001', 'templateSite000', 'templateGrid000'
 ]
 
 class App {

@@ -129,7 +129,7 @@ class SdwConfigSelect extends HTMLElement {
         }
         .name {
             color: #444;
-            font-size: 0.8em;
+            font-size: ${this.name.length < 15 ? 0.8 : this.name.length < 20 ? 0.7 : 0.6}em;
             padding: 4px 8px;
             text-align: right;
             width: calc(60% - 16px);
@@ -252,7 +252,7 @@ class SdwConfigSelectCustom extends HTMLElement {
         }
         .name {
             color: #444;
-            font-size: 0.8em;
+            font-size: ${this.name.length < 15 ? 0.8 : this.name.length < 20 ? 0.7 : 0.6}em;
             padding: 4px 8px;
             text-align: right;
             width: calc(60% - 16px);
@@ -428,7 +428,7 @@ class SdwConfigPadding extends HTMLElement {
         }
         .name {
             color: #444;
-            font-size: 0.8em;
+            font-size: ${this.name.length < 15 ? 0.8 : this.name.length < 20 ? 0.7 : 0.6}em;
             padding: 4px 8px;
             text-align: right;
             width: calc(60% - 16px);
