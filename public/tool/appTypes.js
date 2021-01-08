@@ -695,16 +695,21 @@ let linkBox = {
     tag: 'a',
     childsAllowed: 'all',
     style: [
+        ['height', 'max-content', true],
+        ['padding', 'max-content', false],
         ['text-decoration', 'none', true],
         ['text-transform', 'initial', true],
+        ['width', 'max-content', true],
 
         ['box-sizing', 'border-box', false],
         ['display', 'block', false],
-        ['height', 'max-content', false],
         ['margin', '0', false],
-        ['width', 'max-content', false],
     ],
-    phone: [],
+    phone: [
+        ['height', 'max-content', true],
+        ['padding', 'max-content', false],
+        ['width', 'max-content', true],
+    ],
     attributes: [
         ['id', 'initial'],
         ['href', '/'],
@@ -869,7 +874,7 @@ let mapGoogle = {
     childs: []
 }
 
-let formInputTextField = { typeName: 'formInputTextField', description: 'Input text', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formName'], ['text', 'text'], ['placeholder', 'yes'], ['pattern', '[^0-9]*'], ['autocomplete', 'off'], ], script: ``, text: ``, childs: [] }
+let formInputTextField = { typeName: 'formInputTextField', description: 'Input text', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formName'], ['type', 'text'], ['placeholder', 'yes'], ['pattern', '[^0-9]*'], ['autocomplete', 'off'], ], script: ``, text: ``, childs: [] }
 let formInputTextLabel = { typeName: 'formInputTextLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Name`, childs: [] }
 let formInputTextSpan = { typeName: 'formInputTextSpan', description: 'Error message', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Numbers are not allowed`, childs: [] }
 
@@ -882,7 +887,7 @@ let formInputText = {
     style: [],
     phone: [],
     attributes: [
-        ['class', 'formInput'],
+        ['class', 'formInputText'],
     ],
     script: ``,
     text: ``,
@@ -891,6 +896,47 @@ let formInputText = {
         formInputTextLabel,
         formInputTextSpan
     ]
+}
+
+let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formDescription'], ['placeholder', 'yes'], ], script: ``, text: ``, childs: [] }
+let formInputTextareaLabel = { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Description`, childs: [] }
+
+let formInputTextarea = {
+    typeName: 'formInputTextarea',
+    description: 'Input textarea',
+    image: 'previewFormInputTextarea.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'formInputTextarea'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [
+        formInputTextareaField,
+        formInputTextareaLabel
+    ]
+}
+
+let formButton = {
+    typeName: 'formButton',
+    description: 'Button for forms',
+    image: 'previewFormButton.png',
+    tag: 'button',
+    childsAllowed: 'none',
+    style: [
+        ['text-transform', 'uppercase', false]
+    ],
+    phone: [],
+    attributes: [
+        ['class', 'formButton'],
+        ['onclick', 'initial'],
+    ],
+    script: ``,
+    text: `Button`,
+    childs: []
 }
 
 /*
