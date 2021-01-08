@@ -1,3 +1,7 @@
+# Important!
+
+Do not use this software for commercial purposes
+
 # Layouts-tool
 
 Nodejs web tool for prototyping and templating HTML sites
