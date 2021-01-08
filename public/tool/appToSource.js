@@ -74,7 +74,8 @@ class Source {
             str = str + '\n  ' + ident + item.text
         }
 
-        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe', 'textarea'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
+        if (['textarea'].indexOf(item.tag) >= 0) str = str + '</' + item.tag + '>'
+        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
 
         return str
     }
@@ -143,7 +144,7 @@ class Source {
     getPredefinedStyles (bodyStr) {
 
         let str = `
-body { background-color: #f2f4f7; font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; }`
+body { background-color: white; font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; }`
 
         if (bodyStr.indexOf('carouselDots') >= 0) {
             str = str + `
