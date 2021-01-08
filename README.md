@@ -2,7 +2,7 @@
 
 Do not use this software for commercial purposes
 
-If you're using the software in question to directly, or indirectly, make money; then you're using the software for a commercial purpose, and the creator(s) will want a licensing fee so that they get paid for their coding work in producing the software.
+If you're using the software in question to directly, or indirectly, make money; then you're using the software for a commercial purpose, and the creator wants a licensing fee to get paid for the coding work in producing the software.
 
 ## Layouts-tool
 

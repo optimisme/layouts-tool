@@ -63,8 +63,7 @@ class Source {
             classStr = ' class="' + classStr + '"'
         }
 
-        str = str + '\n' + ident + '<!-- ' + item.description + ' -->'
-        str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '>'
+        str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '>' + '<!-- ' + item.description + ' -->'
 
         for (let cnt = 0; cnt < item.childs.length; cnt = cnt + 1) {
             str = str + this.toSourceItem(item.childs[cnt])
