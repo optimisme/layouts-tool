@@ -177,25 +177,55 @@ body { background-color: #f2f4f7; font-family: 'Open Sans', sans-serif; margin: 
 .drawer > .drawerSide { background-color: white; height: 100%; overflow-x: hidden; overflow-y: auto; transform: translate3d(-251px, 0, 0); transition: transform 0.3s ease; width: 250px; }`
         }
 
-        if (bodyStr.indexOf('formInput' >= 0)) {
+        if (bodyStr.indexOf('formInputText' >= 0)) {
             str = str + `
-            .formInput      { padding: 15px 0 0; position: relative; }
-            .formInput > input   
-                                { background: transparent; border: 0; border-bottom: 1px solid #d2d2d2; color: #212121; font-family: inherit; font-size: 16px; outline: 0; padding: 7px 0; transition: border-color 0.2s; width: 100%; }
-            .formInput > input::placeholder 
-                                { color: transparent; }
-            .formInput > input:placeholder-shown ~ label 
-                                { cursor: text; font-size: 16px; top: 20px; }
-            .formInput > label, .formInput > input:focus ~ label 
-                                { color: #9b9b9b; display: block; font-size: 12px; position: absolute; top: 0; transition: 0.2s; }
-            .formInput > input:focus ~ label 
-                                { color: rgb(0, 125, 255); }
-            .formInput > input:focus 
-                                { border-bottom: 2px solid rgb(0, 125, 255); padding-bottom: 6px; }
-            .formInput > input:valid ~ span
-                                { color: transparent; }
-            .formInput > input:invalid ~ span
-                                { color: red; }`
+.formInputText      { padding: 15px 0 0; position: relative; }
+.formInputText > input
+                    { background: transparent; border: 0; border-bottom: 1px solid #d2d2d2; color: #212121; font-family: inherit; font-size: 16px; outline: 0; padding: 7px 0; transition: border-color 0.2s; width: 100%; }
+.formInputText > input::placeholder 
+                    { color: transparent; }
+.formInputText > input:placeholder-shown ~ label 
+                    { cursor: text; font-size: 16px; top: 20px; }
+.formInputText > label, .formInputText > input:focus ~ label 
+                    { color: #9b9b9b; display: block; font-size: 12px; position: absolute; top: 0; transition: 0.2s; }
+.formInputText > input:focus ~ label 
+                    { color: rgb(0, 125, 255); }
+.formInputText > input:focus 
+                    { border-bottom: 2px solid rgb(0, 125, 255); padding-bottom: 6px; }
+.formInputText > input:valid ~ span
+                    { color: transparent; }
+.formInputText > input:invalid ~ span
+                    { color: red; }`
+        }
+
+        if (bodyStr.indexOf('formInputTextarea' >= 0)) {
+            str = str + `
+.formInputTextarea  { padding: 15px 0 0; position: relative; }
+.formInputTextarea > textarea
+                    { background: transparent; border: 0; border-bottom: 1px solid #d2d2d2; color: #212121; font-family: inherit; font-size: 16px; outline: 0; padding: 7px 0; transition: border-color 0.2s; width: 100%; }
+.formInputTextarea > textarea::placeholder 
+                    { color: transparent; }
+.formInputTextarea > textarea:placeholder-shown ~ label 
+                    { cursor: text; font-size: 16px; top: 20px; }
+.formInputTextarea > label, .formInputTextarea > textarea:focus ~ label 
+                    { color: #9b9b9b; display: block; font-size: 12px; position: absolute; top: 0; transition: 0.2s; }
+.formInputTextarea > textarea:focus ~ label 
+                    { color: rgb(0, 125, 255); }
+.formInputTextarea > textarea:focus 
+                    { border-bottom: 2px solid rgb(0, 125, 255); padding-bottom: 6px; }
+.formInputTextarea > textarea:valid ~ span
+                    { color: transparent; }
+.formInputTextarea > textarea:invalid ~ span
+                    { color: red; }`
+        }
+
+        if (bodyStr.indexOf('formButton' >= 0)) {
+            str = str + `
+.formButton             { background-color: rgb(0, 125, 255); border: none; border-radius: 4px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); color: white; cursor: pointer; font-weight: 800; height: 36px; margin: 0; min-width: 64px; outline: none; padding: 0 16px; position: relative; text-align: center; text-transform: uppercase; transition: box-shadow 0.2s; }
+.formButton:hover,
+.formButton:focus       { background-color: rgb(50, 150, 255); box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12); }
+.formButton:active      { box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+.formButton:disabled    { color: #eee; background-color: #aaa; box-shadow: none; cursor: initial; }`
         }
 
         return str
