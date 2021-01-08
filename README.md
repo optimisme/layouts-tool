@@ -26,9 +26,9 @@ npm run supervisor
 
 Elements and configs
 
-![Elements](tool/images/toolPreview0.png)
+![Elements](public/tool/images/toolPreview0.png)
 
 Templates
 
-![Templates](tool/images/toolPreview1.png)
+![Templates](public/tool/images/toolPreview1.png)
 
