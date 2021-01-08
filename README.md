@@ -22,4 +22,13 @@ Watch server for changes and restarts it if necessary
 npm run supervisor
 ```
 
+## Tool captures
+
+Elements and configs
+
+![Elements](tool/images/toolPreview0.png)
+
+Templates
+
+![Templates](tool/images/toolPreview1.png)
 
