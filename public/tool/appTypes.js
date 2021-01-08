@@ -748,6 +748,21 @@ let linkInline = {
     childs: []
 }
 
+let carouselImage = { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image0.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
+let carouselImageA = JSON.parse(JSON.stringify(carouselImage))
+    carouselImageA.style[1][1] = 'url(\'/tool/images/image4.jpg\')'
+let carouselImageB = JSON.parse(JSON.stringify(carouselImage))
+    carouselImageB.style[1][1] = 'url(\'/tool/images/image8.jpg\')'
+
+let carouselImages = { typeName: 'carouselImages', description: 'Carousel images', tag: 'div', childsAllowed: 'carouselImage', style: [], phone: [], attributes: [['data-name', 'images']], script: ``, text: ``, childs: [carouselImageA, carouselImageB] }
+let carouselFrame = { typeName: 'carouselFrame', description: 'Carousel frame', tag: 'div', childsAllowed: 'none', style: [['border-radius', 'initial', true], ['box-shadow', 'initial', true], ['height', '350px', true]], phone: [['height', 'initial', true]], attributes: [], script: ``, text: ``, childs: [carouselImages]}
+let carouselArrowLeft = { typeName: 'carouselArrowLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'left\')'] ], script: ``, text: ``, childs: [] }
+let carouselArrowLeftBox = { typeName: 'carouselArrowLeftBox', description: 'Left arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow'] ], script: ``, text: ``, childs: [carouselArrowLeft] }
+let carouselArrowRight = { typeName: 'carouselArrowRight', description: 'Right arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'right\')'] ], script: ``, text: ``, childs: [] }
+let carouselArrowRightBox = { typeName: 'carouselArrowRightBox', description: 'Right arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow carouselArrowRight'] ], script: ``, text: ``, childs: [carouselArrowRight] }
+let carouselDotsIndicator = { typeName: 'carouselDotsIndicator', description: 'Carousel indicator', image: '', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['data-name', 'indicator'], ['onclick', 'setCarouselDots(this)'] ], script: ``, text: ``, childs: [] }
+let carouselDotsIndicators = { typeName: 'carouselDotsIndicators', description: 'Carousel indicators', tag: 'div', childsAllowed: 'carouselDotsIndicator', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [carouselDotsIndicator, carouselDotsIndicator] }
+
 let carouselDots = {
     typeName: 'carouselDots',
     description: 'Carousel with selectors',
@@ -763,57 +778,8 @@ let carouselDots = {
     script: ``,
     text: ``,
     childs: [
-        {
-            typeName: 'carouselFrame',
-            description: 'Carousel frame',
-            tag: 'div',
-            childsAllowed: 'none',
-            style: [
-                ['border-radius', '15px', true],
-                ['box-shadow', '0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)', true],
-                ['height', '350px', true]
-            ],
-            phone: [
-                ['height', 'initial', true]
-            ],
-            attributes: [],
-            script: ``,
-            text: ``,
-            childs: [
-                {
-                    typeName: 'carouselImages',
-                    description: 'Carousel images',
-                    tag: 'div',
-                    childsAllowed: 'carouselImage',
-                    style: [],
-                    phone: [],
-                    attributes: [
-                        ['data-name', 'images']
-                    ],
-                    script: ``,
-                    text: ``,
-                    childs: [
-                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image4.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] },
-                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image8.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
-                    ]
-                },
-            ]
-        },
-        {
-            typeName: 'carouselDotsIndicators',
-            description: 'Carousel indicators',
-            tag: 'div',
-            childsAllowed: 'carouselDotsIndicator',
-            style: [],
-            phone: [],
-            attributes: [],
-            script: ``,
-            text: ``,
-            childs: [
-                { typeName: 'carouselDotsIndicator', description: 'Carousel indicator', image: '', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['data-name', 'indicator'], ['onclick', 'setCarouselDots(this)'] ], script: ``, text: ``, childs: [] },
-                { typeName: 'carouselDotsIndicator', description: 'Carousel indicator', image: '', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['data-name', 'indicator'], ['onclick', 'setCarouselDots(this)'] ], script: ``, text: ``, childs: [] }
-            ]
-        }
+        carouselFrame,
+        carouselDotsIndicators
     ]
 }
 
@@ -832,57 +798,13 @@ let carouselArrows = {
     script: ``,
     text: ``,
     childs: [
-        {
-            typeName: 'carouselFrame',
-            description: 'Carousel frame',
-            tag: 'div',
-            childsAllowed: 'none',
-            style: [
-                ['border-radius', 'initial', true],
-                ['box-shadow', 'initial', true],
-                ['height', '350px', true]
-            ],
-            phone: [
-                ['height', 'initial', true]
-            ],
-            attributes: [],
-            script: ``,
-            text: ``,
-            childs: [
-                {
-                    typeName: 'carouselImages',
-                    description: 'Carousel images',
-                    tag: 'div',
-                    childsAllowed: 'carouselImage',
-                    style: [],
-                    phone: [],
-                    attributes: [
-                        ['data-name', 'images']
-                    ],
-                    script: ``,
-                    text: ``,
-                    childs: [
-                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image4.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] },
-                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image8.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
-                    ]
-                },
-            ]
-        },
-        { typeName: 'carouselArrowLeftBox', description: 'Left arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow'] ], script: ``, text: ``, childs: [ { typeName: 'carouselArrowLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'left\')'] ], script: ``, text: ``, childs: [] } ] },
-        { typeName: 'carouselArrowRightBox', description: 'Right arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow carouselArrowRight'] ], script: ``, text: ``, childs: [ { typeName: 'carouselArrowRight', description: 'Right arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'right\')'] ], script: ``, text: ``, childs: [] } ] }
+        carouselFrame,
+        carouselArrowLeftBox,
+        carouselArrowRightBox,
     ]
 }
 
-let carouselFrame = { typeName: 'carouselFrame', description: 'Carousel frame', tag: 'div', childsAllowed: 'none', style: [['border-radius', 'initial', true], ['box-shadow', 'initial', true], ['height', '350px', true]], phone: [['height', 'initial', true]], attributes: [], script: ``, text: ``, childs: []}
-let carouselImages = { typeName: 'carouselImages', description: 'Carousel images', tag: 'div', childsAllowed: 'carouselImage', style: [], phone: [], attributes: [['data-name', 'images']], script: ``, text: ``, childs: [] }
-let carouselImage = { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image0.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
-let carouselArrowLeft = { typeName: 'carouselArrowLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'left\')'] ], script: ``, text: ``, childs: [] }
-let carouselArrowLeftBox = { typeName: 'carouselArrowLeftBox', description: 'Left arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow'] ], script: ``, text: ``, childs: [ ] }
-let carouselArrowRight = { typeName: 'carouselArrowRight', description: 'Right arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'right\')'] ], script: ``, text: ``, childs: [] }
-let carouselArrowRightBox = { typeName: 'carouselArrowRightBox', description: 'Right arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow carouselArrowRight'] ], script: ``, text: ``, childs: [] }
-let carouselDotsIndicators = { typeName: 'carouselDotsIndicators', description: 'Carousel indicators', tag: 'div', childsAllowed: 'carouselDotsIndicator', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [] }
-let carouselDotsIndicator = { typeName: 'carouselDotsIndicator', description: 'Carousel indicator', image: '', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['data-name', 'indicator'], ['onclick', 'setCarouselDots(this)'] ], script: ``, text: ``, childs: [] }
-
+let drawerSide = { typeName: 'drawerSide', description: 'Drawer', image: '', tag: 'div', childsAllowed: 'all', style: [], phone: [], attributes: [ ['class', 'drawerSide'] ], script: ``, text: ``, childs: [] }
 let drawer = {
     typeName: 'drawer',
     description: 'Drawer',
@@ -898,28 +820,9 @@ let drawer = {
     ],
     script: ``,
     text: ``,
-    childs: [
-        {
-            typeName: 'drawerSide',
-            description: 'Drawer side',
-            image: '',
-            tag: 'div',
-            childsAllowed: 'all',
-            style: [],
-            phone: [],
-            attributes: [
-                ['class', 'drawerSide']
-            ],
-            script: ``,
-            text: ``,
-            childs: [
-        
-            ]
-        }
-    ]
+    childs: [ drawerSide ]
 }
 
-let drawerSide = { typeName: 'drawerSide', description: 'Drawer', image: '', tag: 'div', childsAllowed: 'all', style: [], phone: [], attributes: [ ['class', 'drawerSide'] ], script: ``, text: ``, childs: [] }
 
 let iconMaterial = {
     typeName: 'iconMaterial',
@@ -966,7 +869,65 @@ let mapGoogle = {
     childs: []
 }
 
-// <iframe src="" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+let formInputTextField = { typeName: 'formInputTextField', description: 'Input text', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formName'], ['text', 'text'], ['placeholder', 'yes'], ['pattern', '[^0-9]*'], ['autocomplete', 'off'], ], script: ``, text: ``, childs: [] }
+let formInputTextLabel = { typeName: 'formInputTextLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Name`, childs: [] }
+let formInputTextSpan = { typeName: 'formInputTextSpan', description: 'Error message', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Numbers are not allowed`, childs: [] }
+
+let formInputText = {
+    typeName: 'formInputText',
+    description: 'Input text with pattern validation',
+    image: 'previewFormInputText.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'formInput'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [
+        formInputTextField,
+        formInputTextLabel,
+        formInputTextSpan
+    ]
+}
+
+/*
+let formInputTextarea = {
+    typeName: 'formInputTextarea',
+    description: 'Input textarea',
+    image: 'previewFormInputTextarea.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'formInput'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [
+        { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formDescription'], ['rows', '3'], ['placeholder', 'yes'], ], script: ``, text: ``, childs: [] },
+        { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Description`, childs: [] },
+    ]
+}
+
+let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formDescription'], ['rows', '3'], ['placeholder', 'yes'], ], script: ``, text: ``, childs: [] }
+let formInputTextareaLabel = { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Description`, childs: [] },
+*/
+
+
+/*
+
+<div class="materialGroup">
+            <input id="name" type="text" class="materialField" placeholder="Your name" pattern="[^0-9]*">
+            <label for="name" class="materialLabel">Name</label>
+            <span class="materialError">Numbers are not allowed</span>
+        </div>
+*/
+
+
 
 /*
 let div = {
