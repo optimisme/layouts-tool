@@ -153,7 +153,7 @@ class SdwToolPreview extends HTMLElement {
         let refFrame = document.createElement('iframe')
         refFrame.setAttribute('name', 'content')
         refFrame.setAttribute('scrolling', 'true')
-        refFrame.setAttribute('src', '/tool/appPreviewFrame.html');
+        refFrame.setAttribute('src', '/tool/appPreviewFrame.html')
         this.elmRoot.appendChild(refFrame)
 
         let refPexels = document.createElement('div')

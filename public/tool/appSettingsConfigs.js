@@ -31,7 +31,7 @@ class SdwConfig extends HTMLElement {
             width: calc(60% - 16px);
         }
         .text {
-            font-size: 0.8em;
+            font-size: 0.7em;
             text-align: left; 
         }
         .input {
@@ -135,7 +135,7 @@ class SdwConfigSelect extends HTMLElement {
             width: calc(60% - 16px);
         }
         .text {
-            font-size: 0.8em;
+            font-size: 0.7em;
             text-align: left; 
         }
         .input {
@@ -258,7 +258,7 @@ class SdwConfigSelectCustom extends HTMLElement {
             width: calc(60% - 16px);
         }
         .text {
-            font-size: 0.8em;
+            font-size: 0.7em;
             text-align: left; 
         }
         .input {
@@ -434,7 +434,7 @@ class SdwConfigPadding extends HTMLElement {
             width: calc(60% - 16px);
         }
         .text {
-            font-size: 0.8em;
+            font-size: 0.7em;
             text-align: left; 
         }
         .input {

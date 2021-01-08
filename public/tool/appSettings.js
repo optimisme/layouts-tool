@@ -19,7 +19,7 @@ let selectableSettings = {
     'border-radius': ['initial', 'custom', '0', '5px', '15px', '100%'],
     'box-shadow': ['initial', 'custom', '0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'],
     'box-sizing': ['initial', 'content-box', 'border-box'],
-    'color': ['initial', 'custom', 'white', 'black', 'lightgrey', 'darkgrey', '#abc', '#a5b6c7', 'rgb(50, 100, 150)', 'rgba(0, 0, 0, 0.5)'],
+    'color': ['initial', 'custom', 'white', 'black', 'lightgrey', 'darkgrey', '#abc', '#a5b6c7', 'rgb(0, 150, 255)', 'rgba(0, 0, 0, 0.5)'],
     'column-gap': ['initial', 'custom', '4px', '8px'],
     'cursor': ['initial', 'auto', 'pointer', 'default', 'none', 'context-menu', 'help', 'progress', 'wait', 'cell', 'crosshair', 'text', 'vertical-text', 'alias', 'copy', 'move', 'no-drop', 'not-allowed', 'grab', 'grabbing', 'all-scroll', 'col-resize', 'row-resize', 'n-resize', 'e-resize', 's-resize', 'w-resize', 'ne-resize', 'nw-resize', 'se-resize', 'sw-resize', 'ew-resize', 'ns-resize', 'nesw-resize', 'nwse-resize', 'zoom-in', 'zoom-out'],
     'display': ['initial', 'custom', 'none', 'unset'],
@@ -282,7 +282,7 @@ class SdwToolSettings extends HTMLElement {
             let name = ref.phone[cnt][0]
             if (selectableSettings[name] != undefined) {
                 if (name == 'padding') {
-                    this.elmRoot.appendChild(SdwConfigPadding.getObject(name, ref.style[cnt][1], ref.style[cnt][2], selectableSettings[name], (name, value) => { ref.setStyle(name, value) }))
+                    this.elmRoot.appendChild(SdwConfigPadding.getObject(name, ref.phone[cnt][1], ref.phone[cnt][2], selectableSettings[name], (name, value) => { ref.setStylePhone(name, value) }))
                 } else if (selectableSettings[name].indexOf('custom') >= 0) {
                     this.elmRoot.appendChild(SdwConfigSelectCustom.getObject(name, ref.phone[cnt][1], ref.phone[cnt][2], selectableSettings[name], (name, value) => { ref.setStylePhone(name, value) }))
                 } else {
