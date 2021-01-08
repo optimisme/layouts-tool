@@ -6,14 +6,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
     </head>
     <style>
         body {
             background-color: #f2f4f7;
             font-family: 'Open Sans', sans-serif;
-            font-weight: 300;
             margin: 0;
             padding: 0;
         }
@@ -151,14 +148,6 @@
             transition: transform 0.3s ease;
             width: 250px;
         }
-        body > .mobile {
-            display: block;
-        }
-        @media (max-width: 600px) {
-            body > .mobile {
-                display: none;
-            }
-        }
     </style>
     <script>
 
@@ -258,9 +247,9 @@
     frameLoaded = false
     function init () {
         frameLoaded = true
-        // this.refPreview = app.refPreview.elmRoot.querySelector('iframe').contentDocument.body
     }
 
+    window.addEventListener('DOMContentLoaded', () => { init() })
     </script>
-    <body onload='init()'></body>
+    <body></body>
 </html>

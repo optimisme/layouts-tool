@@ -28,6 +28,9 @@ class AppElement {
     async init () {
 
         if (parent == null) {
+            this.typeName = 'body'
+            this.tag = 'body'
+            this.description = 'Body'
             this.childsAllowed = 'all'
             this.refList = app.refList.shadow.querySelector('sdw-tool-list-item')
             this.refList.refApp = this

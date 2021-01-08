@@ -1,0 +1,280 @@
+<html class="hydrated"><head>
+    <meta charset="utf-8"><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style>
+    <title>HTML tool</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
+<style>
+    body {
+        background-color: #f2f4f7;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        margin: 0;
+        padding: 0;
+    }
+
+    .selected {
+        border: solid 1px rgb(0, 125, 255) !important;
+    }
+
+    .carouselDots {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction:column;
+        margin: 0;
+        width: 100%;
+    }
+    .carouselDots > div:first-child {
+        overflow: hidden;
+        width: 100%;
+    }
+    .carouselDots > div:first-child > div {
+        display: flex;
+        height: 100%;
+        transform: translate(0px);
+        transition: transform 0.3s ease;
+        will-change: transform;
+    }
+    .carouselDots > div:first-child > div > div {
+        background-color: darkgray;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        min-width: 100%;
+    }
+    .carouselDots > div:last-child {
+        margin-top: 16px;
+    }
+    .carouselDots > div:last-child > div {
+        border: solid 2px lightgrey;
+        border-radius: 100%;
+        cursor: pointer;
+        display: inline-block;
+        height: 10px;
+        margin: 0 15px 0 15px;
+        width: 10px;
+    }
+    .carouselDots > div:last-child > div:first-child {
+        background-color: lightgrey;
+    }
+    .carouselDotsSelected {
+        background-color: lightgrey !important;
+    }
+    .carouselDotsUnselected {
+        background-color: initial !important;
+    }
+    .carouselArrows {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction:column;
+        margin: 0;
+        position: relative;
+        width: 100%;
+    }
+    .carouselArrows > div:first-child {
+        height: 500px;
+        overflow: hidden;
+        width: 100%;
+    }
+    .carouselArrows > div:first-child > div {
+        display: flex;
+        height: 100%;
+        transform: translate(0px);
+        transition: transform 0.3s ease;
+        will-change: transform;
+    }
+    .carouselArrows > div:first-child > div > div {
+        background-color: darkgray;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        min-width: 100%;
+    }
+    .carouselArrows .carouselArrow {
+        align-items: center;
+        bottom: 0;
+        display: flex;
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+    .carouselArrows .carouselArrow > div {
+        border-top: solid 4px #fff;
+        border-right: solid 4px #fff;
+        cursor: pointer;
+        height: 15px;
+        margin: 15px;
+        opacity: 0.75;
+        transform: rotateZ(-135deg);
+        width: 15px;
+    }
+    .carouselArrows .carouselArrow > div:hover {
+        opacity: 1;
+    }
+    .carouselArrows .carouselArrowRight {
+        left: unset;
+        right: 0;
+    }
+    .carouselArrows .carouselArrowRight > div {
+        transform: rotateZ(45deg);
+    }
+
+    .drawer {
+        display: none;
+        background-color: rgb(100, 100, 100, 0.75);
+        backdrop-filter: blur(2px) saturate(200%);
+        bottom: 0;
+        filter: blud(3px) saturate(200%);
+        left: 0;
+        opacity: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        transition: opacity 0.3s ease;
+        z-index: 10000;
+    }
+    .drawer > .drawerSide {
+        background-color: white;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transform: translate3d(-251px, 0, 0);
+        transition: transform 0.3s ease;
+        width: 250px;
+    }
+    body > .mobile {
+        display: block;
+    }
+    @media (max-width: 600px) {
+        body > .mobile {
+            display: none;
+        }
+    }
+</style><script>
+
+function setCarouselDots(ref) {
+    let cnt = 0
+    let obj = ref.parentNode.parentNode
+    let refImages = obj.querySelector('div[data-name="images"]')
+    let refIndicators = obj.querySelectorAll('div[data-name="indicator"]')
+
+    for (cnt = 0; cnt < refIndicators.length; cnt = cnt + 1) {
+        if (refIndicators[cnt] == ref) {
+            refImages.style.transform = 'translateX(-' + (cnt * 100) + '%)'
+            refIndicators[cnt].classList.add('carouselDotsSelected')
+            refIndicators[cnt].classList.remove('carouselDotsUnselected')
+        } else {
+            refIndicators[cnt].classList.remove('carouselDotsSelected')
+            refIndicators[cnt].classList.add('carouselDotsUnselected')
+        }
+    }
+}
+
+function setCarouselArrows(ref, direction) {
+    let num = 0
+    let obj = ref.parentNode.parentNode
+    let refImages = obj.querySelector('div[data-name="images"]')
+    let numImages = (refImages.querySelectorAll('div[data-name="carouselImage"]')).length
+
+    if (refImages.style.transform != '') {
+        num = -1 * (parseInt((refImages.style.transform.replace('translateX(', '')).replace('%)', '')) / 100)
+    }
+
+    if (direction == 'left') { num = num - 1; } else { num = num + 1; }
+    if (num < 0) { num = numImages - 1; } 
+    if (num >= numImages) { num = 0; }
+
+    refImages.style.transform = 'translateX(-' + (num * 100) + '%)'
+}
+
+async function setDrawer (event, id, show) {
+    let refBody = document.getElementsByTagName('body')[0]
+    let refDrawer = document.getElementById(id)
+
+    if (typeof event !== 'undefined' && typeof event.stopPropagation === 'function') {
+        if (event.cancelable) event.preventDefault()
+        event.stopPropagation()
+        target = event.target
+        if (target.className != 'drawer') return
+    }
+
+    if (show) {
+        refBody.style.overflow = 'hidden'
+        refDrawer.style.display = 'flex'
+        await promiseWaitUntilPropertyValue(refDrawer, 'display', 'flex')  
+        refDrawer.style.opacity = '1'
+        refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(0px, 0, 0)'
+    } else {
+        refDrawer.style.opacity = '0'
+        refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(-250px, 0, 0)'
+        await promiseTransitionEnd(refDrawer)
+        refBody.style.overflow = 'initial'
+        refDrawer.style.display = 'none'
+    }
+}
+
+async function promiseWait (time) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => { resolve() }, time)
+    })
+}
+
+function promiseWaitUntilPropertyValue (ref, property, value) {
+    return new Promise(async (resolve, reject) => {
+        let style = window.getComputedStyle(ref)
+        let now = style.getPropertyValue(property)
+
+        if (now === value) {
+            resolve()
+        } else {
+            await promiseWait(1)
+            await promiseWaitUntilPropertyValue(ref, property, value)
+        }
+    }) 
+}
+
+function promiseTransitionEnd (ref) {
+    return new Promise(async (resolve, reject) => {
+        ref.addEventListener('transitionend', () => {
+            resolve()
+        })
+    })  
+}
+
+function scrollToBottom () {
+    document.body.scrollTop = document.body.scrollHeight
+}
+
+frameLoaded = false
+function init () {
+    frameLoaded = true
+    // this.refPreview = app.refPreview.elmRoot.querySelector('iframe').contentDocument.body
+}
+
+</script></head>
+
+
+<body onload="init()" class="" style="overflow: initial;">
+<div class="css1 "><!--Sticky div - Menu-->
+<div id="drawer" class="drawer" onclick="setDrawer(event, 'drawer', false)" style="display: none; opacity: 0;"><!--Drawer - Phone drawer--><div class="drawerSide" style="transform: translate3d(-250px, 0px, 0px);"><!--Drawer side - Contents--><a href="/" target="_blank" onclick="setDrawer(this, 'drawer', false)" class="css4 "><!--Inline link-->Close</a></div></div><div class="css5 "><!--Div visible on mobile - Menu--><div class="css6 "><!--Div--><div class="css7 "><!--Flex--><div class="css8 "><!--Flex child--><a href="/" target="_blank" class="css9 "><!--Link box--><span class="css10 material-icons"><!--Icon from material components-->storefront</span></a></div><div class="css11 "><!--Flex child - Expand--></div><div class="css12 "><!--Flex child--><a href="javascript://" target="_self" onclick="setDrawer(this, 'drawer', true)" class="css13 "><!--Link box--><span class="css14 material-icons"><!--Icon from material components-->menu</span></a></div></div></div></div><div class="css15 "><!--Div visible on desktop - Menu--><div class="css16 "><!--Div--><div class="css17 "><!--Flex--><div class="css18 "><!--Flex child--><a href="/" target="_blank" class="css19 "><!--Link box--><span class="css20 material-icons"><!--Icon from material components-->storefront</span></a></div><div class="css21 "><!--Flex child - Expand--></div><div class="css22 "><!--Flex child--><a href="/" target="_blank" class="css23 "><!--Link box--><div class="css24 "><!--Div--><div class="css25 "><!--Text-->Store</div></div></a></div><div class="css26 "><!--Flex child--><a href="/" target="_blank" class="css27 "><!--Link box--><div class="css28 "><!--Div--><div class="css29 "><!--Text-->Log In</div></div></a></div></div></div></div></div><style id="css1">.css1 { top:0;z-index:1000;box-sizing:border-box;margin:0;position:sticky; }
+@media only screen and (max-width: 768px) { .css1 { top:0; } }</style><style id="css4">.css4 { font-size:1em;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style><style id="css5">.css5 { box-sizing:border-box;display:none;height:max-content;margin:0;width:100%; }
+@media only screen and (max-width: 768px) { .css5 { display:block; } }</style><style id="css6">.css6 { backdrop-filter:blur(3px);background:rgba(255, 255, 255, 0.75);height:max-content;box-sizing:border-box;margin:0; }</style><style id="css7">.css7 { align-items:center;box-sizing:border-box;display:flex;margin:0; }</style><style id="css8">.css8 { padding:0 16px;box-sizing:border-box;display:flex;margin:0; }</style><style id="css9">.css9 { text-decoration:none;box-sizing:border-box;display:block;height:max-content;margin:0;width:max-content; }</style><style id="css10">.css10 { color:black;font-size:2em; }</style><style id="css11">.css11 { flex-grow:1;min-height:48px;box-sizing:border-box;display:flex;margin:0; }</style><style id="css12">.css12 { padding:0 16px;box-sizing:border-box;display:flex;margin:0; }</style><style id="css13">.css13 { text-decoration:none;box-sizing:border-box;display:block;height:max-content;margin:0;width:max-content; }</style><style id="css14">.css14 { color:black;font-size:2em; }</style><style id="css15">.css15 { box-sizing:border-box;display:block;height:max-content;margin:0;width:100%; }
+@media only screen and (max-width: 768px) { .css15 { display:none; } }</style><style id="css16">.css16 { backdrop-filter:blur(3px);background:rgba(255, 255, 255, 0.75);height:max-content;box-sizing:border-box;margin:0; }</style><style id="css17">.css17 { align-items:center;padding:0 8px;box-sizing:border-box;display:flex;margin:0; }</style><style id="css18">.css18 { padding:0 16px;box-sizing:border-box;display:flex;margin:0; }</style><style id="css19">.css19 { text-decoration:none;box-sizing:border-box;display:block;height:max-content;margin:0;width:max-content; }</style><style id="css20">.css20 { color:black;font-size:2em; }</style><style id="css21">.css21 { flex-grow:1;min-height:48px;box-sizing:border-box;display:flex;margin:0; }</style><style id="css22">.css22 { box-sizing:border-box;display:flex;margin:0; }</style><style id="css23">.css23 { text-decoration:none;box-sizing:border-box;display:block;height:max-content;margin:0;width:max-content; }</style><style id="css24">.css24 { height:max-content;padding:0 16px;box-sizing:border-box;margin:0; }</style><style id="css25">.css25 { font-size:1em;height:max-content;width:100%;box-sizing:border-box;margin:0; }</style><style id="css26">.css26 { box-sizing:border-box;display:flex;margin:0; }</style><style id="css27">.css27 { text-decoration:none;box-sizing:border-box;display:block;height:max-content;margin:0;width:max-content; }</style><style id="css28">.css28 { background:darkgrey;border-radius:15px;height:max-content;padding:4px 16px;box-sizing:border-box;margin:0; }</style><style id="css29">.css29 { color:white;font-size:1em;height:max-content;width:100%;box-sizing:border-box;margin:0; }</style><div class="css30 "><!--Autocentered div - Separator--><div class="css31 "><!--Div--></div></div><style id="css30">.css30 { padding:0 16px;box-sizing:border-box;height:max-content;margin-left:auto;margin-right:auto;max-width:1200px;width:100%; }</style><style id="css31">.css31 { height:64px;box-sizing:border-box;margin:0; }</style><div class="css32 "><!--Autocentered div - Text+Picture--><div class="css33 "><!--Flex--><div class="css34 "><!--Flex child - Text--><h1 class="css35 "><!--H1-->The magic inside</h1><div class="css36 "><!--Text-->Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div></div><div class="css37 "><!--Flex child - Picture--><div class="css38 "><!--Div--><img src="/tool/images/image0.jpg" width="100%" class="css39 "><div class="css40 "><!--Text ellipsis-->Achieving your goals</div></div></div></div></div><style id="css32">.css32 { padding:0 16px;box-sizing:border-box;height:max-content;margin-left:auto;margin-right:auto;max-width:1200px;width:100%; }</style><style id="css33">.css33 { align-items:center;justify-content:center;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css33 { flex-direction:column; } }</style><style id="css34">.css34 { flex-direction:column;min-width:50%;max-width:50%;padding:0 0  16px 0;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css34 { min-width:100%;max-width:100%; } }</style><style id="css35">.css35 { font-size:2em;font-weight:800;height:max-content;padding:0 0  16px 0;text-align:center;width:100%;box-sizing:border-box;margin:0; }</style><style id="css36">.css36 { font-size:1em;height:max-content;padding:0;text-align:center;width:100%;box-sizing:border-box;margin:0; }</style><style id="css37">.css37 { flex-direction:column;min-width:50%;max-width:50%;padding:0 16px;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css37 { min-width:100%;max-width:100%;padding:0 0  16px 0; } }</style><style id="css38">.css38 { box-shadow:0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);height:max-content;overflow:hidden;padding:8px;transform:rotateZ(-2deg);box-sizing:border-box;margin:0; }</style><style id="css39">.css39 { filter:saturate(200%);box-sizing:border-box;margin:0; }</style><style id="css40">.css40 { font-size:1em;height:max-content;padding:4px 0 0 0;text-align:center;width:100%;box-sizing:border-box;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }</style><div class="css41 "><!--Autocentered div - Map+Text--><div class="css42 "><!--Flex--><div class="css43 "><!--Flex child - Map--><div class="css44 "><!--Div--><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95904.2455614195!2d1.8755939871238607!3d41.30869667294398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49ec23b0e0697%3A0x598c8feb8d9536a9!2sPla%C3%A7a%20de%20Catalunya%2C%2008820%20El%20Prat%20de%20Llobregat%2C%20Barcelona!5e0!3m2!1sen!2ses!4v1610024954041!5m2!1sen!2ses" width="100%" height="100%" frameborder="0" allowfullscreen="true" aria-hidden="false" tabindex="0"><!--Map from google maps-->menu</iframe></div></div><div class="css46 "><!--Flex child - Text--><h1 class="css47 "><!--H1-->Where innovation meets humans</h1><div class="css48 "><!--Text-->Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div></div></div></div><style id="css41">.css41 { padding:0 16px;box-sizing:border-box;height:max-content;margin-left:auto;margin-right:auto;max-width:1200px;width:100%; }</style><style id="css42">.css42 { align-items:center;justify-content:center;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css42 { flex-direction:column-reverse; } }</style><style id="css43">.css43 { flex-direction:column;min-width:50%;max-width:50%;padding:0 16px;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css43 { min-width:100%;max-width:100%;padding:0 0  16px 0; } }</style><style id="css44">.css44 { box-shadow:0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);height:500px;overflow:hidden;padding:8px;transform:rotateZ(-2deg);box-sizing:border-box;margin:0; }
+@media only screen and (max-width: 768px) { .css44 { height:250px; } }</style><style id="css46">.css46 { flex-direction:column;min-width:50%;max-width:50%;padding:0 0  16px 0;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css46 { min-width:100%;max-width:100%; } }</style><style id="css47">.css47 { font-size:2em;font-weight:800;height:max-content;padding:0 0  16px 0;text-align:center;width:100%;box-sizing:border-box;margin:0; }</style><style id="css48">.css48 { font-size:1em;height:max-content;padding:0;text-align:center;width:100%;box-sizing:border-box;margin:0; }</style><div class="css49 "><!--Autocentered div - Separator--><div class="css50 "><!--Div  - Separator--></div></div><style id="css49">.css49 { padding:0 16px;box-sizing:border-box;height:max-content;margin-left:auto;margin-right:auto;max-width:1200px;width:100%; }</style><style id="css50">.css50 { height:64px;box-sizing:border-box;margin:0; }</style><div class="css51 selected"><!--Div - Footer--><div class="css52"><!--Flex--><div class="css53"><!--Flex child - Logo--><span class="css54 material-icons"><!--Icon from material components-->storefront</span><h1 class="css55 "><!--H1-->Marmot</h1></div><div class="css56"><!--Flex child - Explore--><h3 class="css57 "><!--H3-->Explore</h3><div class="css58 "><!--Div - Separator--></div><a href="/" target="_blank" class="css59 "><!--Inline link - Home-->Home</a><a href="/" target="_blank" class="css60 "><!--Inline link - About-->About</a><a href="/" target="_blank" class="css61 "><!--Inline link - Careers-->Careers</a><a href="/" target="_blank" class="css62 "><!--Inline link - Store-->Store</a></div><div class="css63"><!--Flex child - Follow--><h3 class="css64 "><!--H3-->Follow</h3><div class="css65 "><!--Div - Separator--></div><a href="/" target="_blank" class="css66 "><!--Inline link - Instagram-->Instagram</a><a href="/" target="_blank" class="css67 "><!--Inline link - Twitter-->Twitter</a><a href="/" target="_blank" class="css68 "><!--Inline link - Linkedin-->Linkedin</a></div><div class="css69"><!--Flex child - Legal--><h3 class="css70 "><!--H3-->Legal</h3><div class="css71 "><!--Div - Separator--></div><a href="/" target="_blank" class="css72 "><!--Inline link - Terms-->Terms</a><a href="/" target="_blank" class="css73 "><!--Inline link - Privacy-->Privacy</a></div></div></div><style id="css51">.css51 { background:lightblue;height:max-content;box-sizing:border-box;margin:0; }</style><style id="css52">.css52 { justify-content:center;padding:16px 24px;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css52 { flex-direction:column; } }</style><style id="css53">.css53 { align-items:center;padding:0 36px;box-sizing:border-box;display:flex;margin:0; }</style><style id="css54">.css54 { color:white;font-size:3em; }</style><style id="css55">.css55 { color:white;font-size:2em;font-weight:800;height:max-content;padding:0;width:100%;box-sizing:border-box;margin:0; }</style><style id="css56">.css56 { flex-direction:column;padding:0 36px;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css56 { padding:16px 24px; } }</style><style id="css57">.css57 { color:white;font-size:1.25em;font-weight:600;height:max-content;padding:0;width:100%;box-sizing:border-box;margin:0; }</style><style id="css58">.css58 { height:24px;box-sizing:border-box;margin:0; }</style><style id="css59">.css59 { color:rgb(0, 150, 255);font-size:1em;text-decoration:none;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style><style id="css60">.css60 { color:rgb(0, 150, 255);font-size:1em;text-decoration:none;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style><style id="css61">.css61 { color:rgb(0, 150, 255);font-size:1em;text-decoration:none;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style><style id="css62">.css62 { color:rgb(0, 150, 255);font-size:1em;text-decoration:none;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style><style id="css63">.css63 { flex-direction:column;padding:0 36px;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css63 { padding:16px 24px; } }</style><style id="css64">.css64 { color:white;font-size:1.25em;font-weight:600;height:max-content;padding:0;width:100%;box-sizing:border-box;margin:0; }</style><style id="css65">.css65 { height:24px;box-sizing:border-box;margin:0; }</style><style id="css66">.css66 { color:rgb(0, 150, 255);font-size:1em;text-decoration:none;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style><style id="css67">.css67 { color:rgb(0, 150, 255);font-size:1em;text-decoration:none;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style><style id="css68">.css68 { color:rgb(0, 150, 255);font-size:1em;text-decoration:none;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style><style id="css69">.css69 { flex-direction:column;padding:0 36px;box-sizing:border-box;display:flex;margin:0; }
+@media only screen and (max-width: 768px) { .css69 { padding:16px 24px; } }</style><style id="css70">.css70 { color:white;font-size:1.25em;font-weight:600;height:max-content;padding:0;width:100%;box-sizing:border-box;margin:0; }</style><style id="css71">.css71 { height:24px;box-sizing:border-box;margin:0; }</style><style id="css72">.css72 { color:rgb(0, 150, 255);;font-size:1em;text-decoration:none;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style><style id="css73">.css73 { color:rgb(0, 150, 255);font-size:1em;text-decoration:none;box-sizing:border-box;display:inline;height:max-content;margin:0;width:max-content; }</style></body></html>

@@ -18,6 +18,7 @@ class SdwToolList extends HTMLElement {
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            font-weight: 300;
             height: 100%;
             position: absolute;
             right: 250px;

@@ -544,12 +544,15 @@ class SdwConfigPadding extends HTMLElement {
         let arr = this.value.split(' ')
 
         if (arr.length == 1) {
+            if (['initial', 'unset', 'inherit'].indexOf(arr[0]) != -1) {
+                arr[0] = 0
+            }
             switch(type) {
                 case 'bottom':  return arr[0]
                 case 'left':    return arr[0]
                 case 'right':   return arr[0]
                 case 'top':     return arr[0]
-            }     
+            }
         } else if (arr.length == 2) {
             switch(type) {
                 case 'bottom':  return arr[0]

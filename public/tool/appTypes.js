@@ -1,3 +1,16 @@
+let body = {
+    typeName: 'body',
+    description: 'Body',
+    image: '',
+    tag: 'body',
+    childsAllowed: 'all',
+    style: [],
+    phone: [],
+    attributes: [],
+    script: ``,
+    text: ``,
+    childs: []
+}
 let divAutocenter = {
     typeName: 'divAutocenter',
     description: 'Autocentered div',
@@ -543,7 +556,7 @@ let imageBackground = {
     style: [
         ['background', 'initial', true],
         ['background-attachment', 'initial', true],
-        ['background-image','url("/tool/images/image0.jpg")', true],
+        ['background-image','url(\'/tool/images/image0.jpg\')', true],
         ['background-position', 'center', true],
         ['background-repeat','no-repeat', true],
         ['background-size', 'cover', true],
@@ -668,8 +681,8 @@ let carouselDots = {
                     script: ``,
                     text: ``,
                     childs: [
-                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url("/tool/images/image4.jpg")', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] },
-                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url("/tool/images/image8.jpg")', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
+                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image4.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] },
+                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image8.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
                     ]
                 },
             ]
@@ -737,8 +750,8 @@ let carouselArrows = {
                     script: ``,
                     text: ``,
                     childs: [
-                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url("/tool/images/image4.jpg")', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] },
-                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url("/tool/images/image8.jpg")', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
+                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image4.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] },
+                        { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image8.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
                     ]
                 },
             ]
@@ -750,7 +763,7 @@ let carouselArrows = {
 
 let carouselFrame = { typeName: 'carouselFrame', description: 'Carousel frame', tag: 'div', childsAllowed: 'none', style: [['border-radius', 'initial', true], ['box-shadow', 'initial', true], ['height', '350px', true]], phone: [['height', 'initial', true]], attributes: [], script: ``, text: ``, childs: []}
 let carouselImages = { typeName: 'carouselImages', description: 'Carousel images', tag: 'div', childsAllowed: 'carouselImage', style: [], phone: [], attributes: [['data-name', 'images']], script: ``, text: ``, childs: [] }
-let carouselImage = { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url("/tool/images/image0.jpg")', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
+let carouselImage = { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image0.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
 let carouselArrowLeft = { typeName: 'carouselArrowLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, "left")'] ], script: ``, text: ``, childs: [] }
 let carouselArrowLeftBox = { typeName: 'carouselArrowLeftBox', description: 'Left arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow'] ], script: ``, text: ``, childs: [ { typeName: 'carouselArrowsLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, "left")'] ], script: ``, text: ``, childs: [] } ] }
 let carouselArrowRight = { typeName: 'carouselArrowRight', description: 'Right arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, "right")'] ], script: ``, text: ``, childs: [] }
@@ -837,7 +850,7 @@ let mapGoogle = {
         ['tabindex', '0'],
     ],
     script: ``,
-    text: `menu`,
+    text: ``,
     childs: []
 }
 
