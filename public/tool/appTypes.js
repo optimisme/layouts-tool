@@ -898,7 +898,7 @@ let formInputText = {
     ]
 }
 
-let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formDescription'], ['placeholder', 'yes'], ], script: ``, text: ``, childs: [] }
+let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formDescription'], ['placeholder', 'yes'], ['rows', 'initial'], ], script: ``, text: ``, childs: [] }
 let formInputTextareaLabel = { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Description`, childs: [] }
 
 let formInputTextarea = {
@@ -938,41 +938,6 @@ let formButton = {
     text: `Button`,
     childs: []
 }
-
-/*
-let formInputTextarea = {
-    typeName: 'formInputTextarea',
-    description: 'Input textarea',
-    image: 'previewFormInputTextarea.png',
-    tag: 'div',
-    childsAllowed: 'none',
-    style: [],
-    phone: [],
-    attributes: [
-        ['class', 'formInput'],
-    ],
-    script: ``,
-    text: ``,
-    childs: [
-        { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formDescription'], ['rows', '3'], ['placeholder', 'yes'], ], script: ``, text: ``, childs: [] },
-        { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Description`, childs: [] },
-    ]
-}
-
-let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formDescription'], ['rows', '3'], ['placeholder', 'yes'], ], script: ``, text: ``, childs: [] }
-let formInputTextareaLabel = { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Description`, childs: [] },
-*/
-
-
-/*
-
-<div class="materialGroup">
-            <input id="name" type="text" class="materialField" placeholder="Your name" pattern="[^0-9]*">
-            <label for="name" class="materialLabel">Name</label>
-            <span class="materialError">Numbers are not allowed</span>
-        </div>
-*/
-
 
 
 /*
