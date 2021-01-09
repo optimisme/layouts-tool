@@ -60,7 +60,7 @@ let div = {
         ['overflow', 'initial', true],
         ['padding', 'initial', true],
         ['transform', 'initial', true],
-        ['transition', 'initial', true],   
+        ['transition', 'initial', true],
         ['width', 'initial', true],        
         ['z-index', 'initial', true],
 

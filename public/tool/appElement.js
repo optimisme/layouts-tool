@@ -235,6 +235,7 @@ class AppElement {
 
     moveUp (child) {
         let position = child.getPosition()
+
         let tmp = this.childs[position - 1]
         this.childs[position - 1] = this.childs[position]
         this.childs[position] = tmp
@@ -257,13 +258,18 @@ class AppElement {
         app.select(this.childs[position + 1])
     }
 
+    moveAt (newParent, newPosition, child) {
+        let childPosition = child.getPosition()
+        newParent.childs.splice(newPosition, 0, child.parent.childs[childPosition]) // Add to newParent
+        child.parent.childs.splice(childPosition, 1) // Remove chid
+        child.parent = newParent
+
+        app.refList.rebuild()
+        app.refPreview.rebuild()
+    }
+
     getPosition () {
-        for (let cnt = 0; cnt < this.parent.childs.length; cnt = cnt + 1) {
-            let child = this.parent.childs[cnt]
-            if (child == this) {
-                return cnt
-            }
-        }
+        return this.parent.childs.indexOf(this)
     }
 
     mixArrays (arrBase, arrValues) {
