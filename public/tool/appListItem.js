@@ -23,7 +23,7 @@ class SdwToolListItem extends HTMLElement {
         }
         .main {
             align-items: center;
-            border-bottom: solid 1px lightgrey;
+            /* border-bottom: solid 1px lightgrey; */
             cursor: pointer;
             display: flex;
             height: 30px;
@@ -226,7 +226,7 @@ class SdwToolListItem extends HTMLElement {
 
     setChildsHeight () {
         let numChilds = this.getNumberOfExpandedChilds()
-        this.elmRoot.querySelector('div[name="childs"]').style.height = (numChilds * 32) + 'px'
+        this.elmRoot.querySelector('div[name="childs"]').style.height = (numChilds * 30) + 'px'
         if (this.refApp.parent !== null) {
             this.refApp.parent.refList.setChildsHeight()
         }
