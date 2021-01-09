@@ -123,6 +123,9 @@ class App {
     }
 
     canDrag (parent) {
+        if (parent == this.refDrag) {
+            return false
+        }
         if (parent.childsAllowed == 'all' && this.refDrag.typeName.indexOf('Child') == -1) {
             return true
         }
