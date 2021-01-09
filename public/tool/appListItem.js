@@ -23,7 +23,6 @@ class SdwToolListItem extends HTMLElement {
         }
         .main {
             align-items: center;
-            /* border-bottom: solid 1px lightgrey; */
             cursor: pointer;
             display: flex;
             height: 30px;
