@@ -98,7 +98,7 @@ class SdwToolListItem extends HTMLElement {
                 ctx.strokeStyle = 'lightgrey'
                 ctx.strokeRect(0, 0, 150, 30)
                 let img = new Image()
-                img.src = cnv.toDataURL('image/jpeg', 0.5)
+                img.src = cnv.toDataURL('image/jpeg', 1)
 
                 e.dataTransfer.setDragImage(img, 10, 10)
                 app.refDrag = this.refApp
