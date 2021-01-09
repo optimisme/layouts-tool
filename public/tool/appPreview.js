@@ -83,6 +83,9 @@ class SdwToolPreview extends HTMLElement {
         }
         #pexels > a { color: black; }
         #pexels > a:visited { color: black; }
+        .buttonDrag {
+            border: dashed 2px rgb(0, 150, 255)
+        }
         .dragOver {
             background-color: darkgrey;
         }
@@ -108,6 +111,7 @@ class SdwToolPreview extends HTMLElement {
 
             let buttonLoad = document.createElement('div')
             buttonLoad.setAttribute('name', 'buttonLoad')
+            buttonLoad.setAttribute('class', 'buttonDrag')
             buttonLoad.addEventListener('click', () => {
                 document.getElementById('fileInput').click()
             })
