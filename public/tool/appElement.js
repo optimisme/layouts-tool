@@ -258,16 +258,6 @@ class AppElement {
         app.select(this.childs[position + 1])
     }
 
-    moveAt (newParent, newPosition, child) {
-        let childPosition = child.getPosition()
-        newParent.childs.splice(newPosition, 0, child.parent.childs[childPosition]) // Add to newParent
-        child.parent.childs.splice(childPosition, 1) // Remove chid
-        child.parent = newParent
-
-        app.refList.rebuild()
-        app.refPreview.rebuild()
-    }
-
     getPosition () {
         return this.parent.childs.indexOf(this)
     }

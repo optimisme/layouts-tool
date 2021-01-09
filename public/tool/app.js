@@ -39,6 +39,7 @@ class App {
         this.counter = 0
         this.styleNames = []
         this.refSelected = null
+        this.refDrag = null
 
         this.refList = document.querySelector('sdw-tool-list')
         this.refPreview = document.querySelector('sdw-tool-preview')
@@ -108,6 +109,27 @@ class App {
         if (this.refSelected != null) {
             this.refSelected.parent.moveDown(this.refSelected)
         } 
+    }
+
+    moveAt (newParent, child) {
+        let newPosition = 0
+        let childPosition = child.getPosition()
+        newParent.childs.splice(newPosition, 0, child.parent.childs[childPosition]) // Add to newParent
+        child.parent.childs.splice(childPosition, 1) // Remove chid
+        child.parent = newParent
+
+        app.refList.rebuild()
+        app.refPreview.rebuild()
+    }
+
+    canDrag (parent) {
+        if (parent.childsAllowed == 'all' && this.refDrag.typeName.indexOf('Child') == -1) {
+            return true
+        }
+        if (parent.childsAllowed == this.refDrag.typeName) {
+            return true
+        }
+        return false
     }
 
     select (ref) {
@@ -246,7 +268,6 @@ class App {
                 console.log(e)
             }
         }
-        console.log(file)
         reader.readAsText(file)
     }
 

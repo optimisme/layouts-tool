@@ -129,8 +129,9 @@ class SdwToolPreview extends HTMLElement {
                 e.preventDefault()
                 e.stopPropagation()
                 this.elmRoot.querySelector(`div[name="buttonLoad"]`).classList.remove('dragOver')
-                console.log(e.dataTransfer.files[0]);
-                app.uploadWebtemplate(e.dataTransfer.files[0])
+                if(e.dataTransfer.files[0]) {
+                    app.uploadWebtemplate(e.dataTransfer.files[0])
+                }
             })
             refButtons.appendChild(buttonLoad)
             

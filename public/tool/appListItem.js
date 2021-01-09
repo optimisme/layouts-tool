@@ -26,7 +26,7 @@ class SdwToolListItem extends HTMLElement {
             border-bottom: solid 1px lightgrey;
             cursor: pointer;
             display: flex;
-            height: 31px;
+            height: 30px;
             padding: 0 8px;
             width: 100%;
         }
@@ -58,11 +58,75 @@ class SdwToolListItem extends HTMLElement {
         }
         .childs {
             transition: height 0.25s ease;
+        }
+        .dragOver {
+            background-color: grey;
         }`
         this.shadow.appendChild(this.elmStyle)
 
         this.elmRoot = document.createElement('div')
         this.elmRoot.setAttribute('class', `root`)
+
+        if (this.refApp && this.refApp.parent != null) {
+            this.elmRoot.setAttribute('draggable', `true`)
+            this.elmRoot.addEventListener('dragstart', (e) => {
+                e.stopPropagation()
+
+                let cnv = document.createElement('canvas')
+                cnv.setAttribute('height', '30')
+                cnv.setAttribute('width', '150')
+                let ctx = cnv.getContext("2d")
+                ctx.fillStyle = 'white'
+                ctx.fillRect(0, 0, 150, 30)
+                ctx.fillStyle = 'grey'
+                ctx.font = "12px 'Open Sans', Arial"
+                let txt = this.refApp.description
+                let width = ctx.measureText(txt).width
+                let ellipsis = false
+                while (width > 100) {
+                    txt = txt.slice(0, -1)
+                    width = ctx.measureText(txt).width
+                    ellipsis = true
+                }
+                if (ellipsis) {
+                    ctx.fillText(txt + '...', 25, 20)
+                } else {
+                    ctx.fillText(txt, 25, 20)
+                }
+                
+                ctx.lineWidth = 2
+                ctx.strokeStyle = 'lightgrey'
+                ctx.strokeRect(0, 0, 150, 30)
+                let img = new Image()
+                img.src = cnv.toDataURL('image/jpeg', 0.5)
+
+                e.dataTransfer.setDragImage(img, 10, 10)
+                app.refDrag = this.refApp
+            })
+            this.elmRoot.addEventListener('dragend', (e) => {
+                app.refDrag = null
+            })
+        }
+        this.elmRoot.addEventListener('dragover', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            if (app.canDrag(this.refApp)) {
+                this.elmRoot.classList.add('dragOver')
+            }
+        })
+        this.elmRoot.addEventListener('dragleave', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            this.elmRoot.classList.remove('dragOver')
+        })
+        this.elmRoot.addEventListener('drop', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            this.elmRoot.classList.remove('dragOver')
+            if (app.canDrag(this.refApp)) {
+                app.moveAt(this.refApp, app.refDrag)
+            }
+        })
 
             let divMain = document.createElement('div')
             divMain.setAttribute('name', 'main')
