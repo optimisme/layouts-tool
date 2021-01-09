@@ -38,7 +38,7 @@
         <script src="./appTypes.js"></script>
     </head>
     <body>
-        <input id="fileInput" type="file" style="display:none;" onchange="app.uploadWebtemplate(this)" />
+        <input id="fileInput" type="file" style="display:none;" onchange="app.uploadWebtemplate(this.files[0])" />
         <sdw-tool-list></sdw-tool-list>
         <sdw-tool-preview></sdw-tool-preview>
         <sdw-tool-settings></sdw-tool-settings>

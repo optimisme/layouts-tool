@@ -223,8 +223,7 @@ class App {
         document.body.removeChild(element);
     }
 
-    uploadWebtemplate (ref) {
-        let file = ref.files[0]
+    uploadWebtemplate (file) {
         let reader = new FileReader()
 
         if (!file) { return }
@@ -247,7 +246,7 @@ class App {
                 console.log(e)
             }
         }
-        
+        console.log(file)
         reader.readAsText(file)
     }
 

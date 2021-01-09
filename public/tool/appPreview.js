@@ -83,6 +83,9 @@ class SdwToolPreview extends HTMLElement {
         }
         #pexels > a { color: black; }
         #pexels > a:visited { color: black; }
+        .dragOver {
+            background-color: darkgrey;
+        }
         `
         this.shadow.appendChild(this.elmStyle)
 
@@ -104,8 +107,26 @@ class SdwToolPreview extends HTMLElement {
                 buttonSave.appendChild(SaveIcon)
 
             let buttonLoad = document.createElement('div')
+            buttonLoad.setAttribute('name', 'buttonLoad')
             buttonLoad.addEventListener('click', () => {
                 document.getElementById('fileInput').click()
+            })
+            buttonLoad.addEventListener('dragover', (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                this.elmRoot.querySelector(`div[name="buttonLoad"]`).classList.add('dragOver')
+            })
+            buttonLoad.addEventListener('dragleave', (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                this.elmRoot.querySelector(`div[name="buttonLoad"]`).classList.remove('dragOver')
+            })
+            buttonLoad.addEventListener('drop', (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                this.elmRoot.querySelector(`div[name="buttonLoad"]`).classList.remove('dragOver')
+                console.log(e.dataTransfer.files[0]);
+                app.uploadWebtemplate(e.dataTransfer.files[0])
             })
             refButtons.appendChild(buttonLoad)
             
