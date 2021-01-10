@@ -347,9 +347,9 @@ class App {
     }
 
     deleteFont (name) {
-        // TODO: recórrer tot l'arbre i posar a 'initial' els textos que fan servir aquesta font
         this.googleFonts.splice(this.googleFonts.indexOf(name), 1)
         selectableSettings['font-family'].splice(selectableSettings['font-family'].indexOf(name), 1)
+        app.elementsRoot.deleteFont(name)
         app.refSettings.setSettings(this.elementsRoot)
     }
 }

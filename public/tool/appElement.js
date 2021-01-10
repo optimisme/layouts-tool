@@ -297,4 +297,23 @@ class AppElement {
             return 'initial'
         }
     }
+
+    deleteFont (name) {
+
+        for (let cnt = 0; cnt < this.style.length; cnt = cnt + 1) {
+            if (this.style[cnt][0] == 'font-family' && this.style[cnt][1] == name) {
+                this.setStyle('font-family', 'initial')
+            }
+        }
+
+        for (let cnt = 0; cnt < this.phone.length; cnt = cnt + 1) {
+            if (this.phone[cnt][0] == 'font-family' && this.phone[cnt][1] == name) {
+                this.setStylePhone('font-family', 'initial')
+            }
+        }
+
+        for (let cnt = 0; cnt < this.childs.length; cnt = cnt + 1) {
+            this.childs[cnt].deleteFont(name)
+        }
+    }
 }
