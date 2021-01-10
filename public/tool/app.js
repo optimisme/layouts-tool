@@ -55,7 +55,6 @@ class App {
         this.elementsRoot = new AppElement(null, 'body')
         this.elementsRoot.init()
 
-        this.addFont('Dancing Script') // As an example
         this.select(this.elementsRoot)
     }
 

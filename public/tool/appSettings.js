@@ -122,6 +122,7 @@ class SdwToolSettings extends HTMLElement {
             width: 100%;
         }
         .root > .rowAction > input {
+            font-size: 0.8em;
             width: 100%;
         }
         .root > .rowAction > div:last-child {
@@ -242,6 +243,7 @@ class SdwToolSettings extends HTMLElement {
 
             let inputFont = document.createElement('input')
             inputFont.setAttribute('name', 'siteFont')
+            inputFont.setAttribute('placeholder', 'Type the name, ex: Dancing Script')
             inputFont.value = ''
             inputFont.addEventListener('change', (evt) => {
                 evt.preventDefault()
