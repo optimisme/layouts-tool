@@ -41,6 +41,10 @@ class App {
         this.refSelected = null
         this.refDrag = null
 
+        this.siteName = 'template'
+        this.backgroundColor = 'white'
+        this.googleFonts = []
+
         this.refList = document.querySelector('sdw-tool-list')
         this.refPreview = document.querySelector('sdw-tool-preview')
         this.refSettings = document.querySelector('sdw-tool-settings')
@@ -50,6 +54,8 @@ class App {
 
         this.elementsRoot = new AppElement(null, 'body')
         this.elementsRoot.init()
+
+        this.addFont('Dancing Script') // As an example
         this.select(this.elementsRoot)
     }
 
@@ -241,9 +247,18 @@ class App {
 
     downloadWebtemplate () {
         let element = document.createElement('a');
+        let obj = {
+            settings: {
+                appVersion: 1.0,
+                siteName: app.siteName,
+                backgroundColor: app.backgroundColor,
+                googleFonts: app.googleFonts
+            },
+            elementsRoot: JSON.parse(app.elementsRoot.toString())
+        }
 
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(app.elementsRoot.toString()));
-        element.setAttribute('download', 'webtemplate.json');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(obj)));
+        element.setAttribute('download', app.siteName + '.json');
       
         element.style.display = 'none';
         document.body.appendChild(element);
@@ -266,9 +281,19 @@ class App {
                     this.elementsRoot.remove(this.elementsRoot.childs[0])
                 }
 
-                for (let cnt = 0; cnt < obj.childs.length; cnt = cnt + 1) {
-                    this.elementsRoot.addTemplate(obj.childs[cnt])
+                for (let cnt = 0; cnt < obj.elementsRoot.childs.length; cnt = cnt + 1) {
+                    this.elementsRoot.addTemplate(obj.elementsRoot.childs[cnt])
                 }
+
+                app.siteName = obj.settings.siteName
+                app.backgroundColor = obj.settings.backgroundColor
+
+                this.refPreview.setBackgroundColor(obj.settings.backgroundColor)
+
+                for (let cnt = 0; cnt < obj.settings.googleFonts.length; cnt = cnt + 1) {
+                    app.addFont(obj.settings.googleFonts[cnt])
+                }
+
                 this.select(this.elementsRoot)
 
             } catch (e) {
@@ -284,7 +309,7 @@ class App {
         let element = document.createElement('a');
 
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(obj.toSource()));
-        element.setAttribute('download', 'template.html');
+        element.setAttribute('download', app.siteName + '.html');
       
         element.style.display = 'none';
         document.body.appendChild(element);
@@ -292,6 +317,40 @@ class App {
         element.click();
       
         document.body.removeChild(element);
+    }
+
+    addFont (name) {
+
+        if (this.googleFonts.indexOf(name) == -1) {
+
+            this.googleFonts.push(name)
+
+            let linkTool = document.createElement('link')
+            linkTool.setAttribute('href', `https://fonts.googleapis.com/css2?family=${name.replaceAll(' ', '+')}:wght@300;400;600;800&display=swap`)
+            linkTool.setAttribute('rel', 'stylesheet')
+            linkTool.setAttribute('type', 'text/css')
+            linkTool.setAttribute('media', 'all')
+            document.querySelector('head').appendChild(linkTool)
+
+            let linkPreview = document.createElement('link')
+            linkPreview.setAttribute('href', `https://fonts.googleapis.com/css2?family=${name.replaceAll(' ', '+')}:wght@300;400;600;800&display=swap`)
+            linkPreview.setAttribute('rel', 'stylesheet')
+            linkPreview.setAttribute('type', 'text/css')
+            linkPreview.setAttribute('media', 'all')
+            document.querySelector('head').appendChild(linkPreview)
+            app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(linkPreview)
+    
+            selectableSettings['font-family'].push(name)
+        }
+
+        app.refSettings.setSettings(this.elementsRoot)
+    }
+
+    deleteFont (name) {
+        // TODO: recórrer tot l'arbre i posar a 'initial' els textos que fan servir aquesta font
+        this.googleFonts.splice(this.googleFonts.indexOf(name), 1)
+        selectableSettings['font-family'].splice(selectableSettings['font-family'].indexOf(name), 1)
+        app.refSettings.setSettings(this.elementsRoot)
     }
 }
 

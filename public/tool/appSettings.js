@@ -107,6 +107,32 @@ class SdwToolSettings extends HTMLElement {
         }
         .root > .rowRandom > button {
             margin-left: 4px;
+        }
+        .root > .rowAction {
+            display: flex;
+            margin: 8px 0;
+            width: 100%;
+        }
+        .root > .rowAction > div:first-child {
+            align-items: center;
+            font-size: 0.9em; 
+            flex-grow: 1;
+            padding-right: 8px;
+            text-align: right;
+            width: 100%;
+        }
+        .root > .rowAction > input {
+            width: 100%;
+        }
+        .root > .rowAction > div:last-child {
+            align-items: center;
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+        }
+        .root > .rowAction > div:last-child > ion-icon {
+            cursor: pointer;
+            font-size: 1.2em;
         }`
         this.shadow.appendChild(this.elmStyle)
 
@@ -131,33 +157,143 @@ class SdwToolSettings extends HTMLElement {
             this.elmRoot.removeChild(this.elmRoot.lastChild) 
         }
 
-        if (ref.parent != null) {
-            let titleDescription = document.createElement('div')
-            titleDescription.setAttribute('class', 'title')
-            titleDescription.innerText = 'Description:'
-            this.elmRoot.appendChild(titleDescription)
-    
-            let divRow0 = document.createElement('div')
-            divRow0.setAttribute('class', 'row')
-            this.elmRoot.appendChild(divRow0)
-
-                let textDescription = document.createElement('input')
-                textDescription.setAttribute('name', 'description')
-                textDescription.value = ref.description
-                textDescription.addEventListener('keyup', (evt) => {
-                    evt.preventDefault()
-                    let value = this.elmRoot.querySelector('input[name="description"]').value
-                    if (value == '') { value = app.getNamedObject(ref.typeName).description }
-                    ref.setDescription(value)
-                })
-                textDescription.addEventListener('change', (evt) => {
-                    evt.preventDefault()
-                    let value = this.elmRoot.querySelector('input[name="description"]').value
-                    if (value == '') { value = app.getNamedObject(ref.typeName).description; this.elmRoot.querySelector('input[name="description"]').value = value }
-                    ref.setDescription(value)
-                })
-                divRow0.appendChild(textDescription)
+        if (ref.parent == null) {
+            await this.getSettingsBody()
+        } else {
+            await this.getSettingsElement(ref)
         }
+    }
+
+    async getSettingsBody () {
+
+        let titleName = document.createElement('div')
+        titleName.setAttribute('class', 'title')
+        titleName.innerText = 'Site name:'
+        this.elmRoot.appendChild(titleName)
+
+        let divRow0 = document.createElement('div')
+        divRow0.setAttribute('class', 'row')
+        this.elmRoot.appendChild(divRow0)
+
+            let inputName = document.createElement('input')
+            inputName.setAttribute('name', 'siteName')
+            inputName.value = app.siteName
+            inputName.addEventListener('change', (evt) => {
+                evt.preventDefault()
+                let value = this.elmRoot.querySelector('input[name="siteName"]').value
+                if (value == '') { value = 'template'; this.elmRoot.querySelector('input[name="siteName"]').value = value }
+                app.siteName = value
+            })
+            divRow0.appendChild(inputName)
+
+        let titleColor = document.createElement('div')
+        titleColor.setAttribute('class', 'title')
+        titleColor.innerText = 'Background color:'
+        this.elmRoot.appendChild(titleColor)
+    
+        let divRow1 = document.createElement('div')
+        divRow1.setAttribute('class', 'row')
+        this.elmRoot.appendChild(divRow1)
+
+            let inputColor = document.createElement('input')
+            inputColor.setAttribute('name', 'siteColor')
+            inputColor.value = app.backgroundColor
+            inputColor.addEventListener('change', (evt) => {
+                evt.preventDefault()
+                let value = this.elmRoot.querySelector('input[name="siteColor"]').value
+                if (value == '') { value = 'white'; this.elmRoot.querySelector('input[name="siteColor"]').value = value }
+                app.backgroundColor = value
+                app.refPreview.setBackgroundColor(value)
+            })
+            divRow1.appendChild(inputColor)
+
+        let titleFonts = document.createElement('div')
+        titleFonts.setAttribute('class', 'title')
+        titleFonts.innerText = 'Google fonts:'
+        this.elmRoot.appendChild(titleFonts)
+
+        for (let cnt = 0; cnt < app.googleFonts.length; cnt = cnt + 1) {
+            let fontRow = document.createElement('div')
+            fontRow.setAttribute('class', 'rowAction')
+            this.elmRoot.appendChild(fontRow)
+
+                let fontType = document.createElement('div')
+                fontType.setAttribute('style', 'font-family:"' + app.googleFonts[cnt] + '";')
+                fontType.innerText = app.googleFonts[cnt]
+                fontRow.appendChild(fontType)
+
+                let divTmp = document.createElement('div')
+                fontRow.appendChild(divTmp)
+
+                    let fontDelete = document.createElement('ion-icon')
+                    fontDelete.setAttribute('name', 'close-outline')
+                    fontDelete.innerText = app.googleFonts[cnt]
+                    fontDelete.addEventListener('click', (evt) => {
+                        evt.preventDefault()
+                        evt.stopPropagation()
+                        app.deleteFont(app.googleFonts[cnt])
+                    })
+                    divTmp.appendChild(fontDelete)
+        }
+
+        let divRow2 = document.createElement('div')
+        divRow2.setAttribute('class', 'rowAction')
+        this.elmRoot.appendChild(divRow2)
+
+            let inputFont = document.createElement('input')
+            inputFont.setAttribute('name', 'siteFont')
+            inputFont.value = ''
+            inputFont.addEventListener('change', (evt) => {
+                evt.preventDefault()
+                let value = this.elmRoot.querySelector('input[name="siteFont"]').value
+                if (value != '') { 
+                    app.addFont(value)
+                }
+            })
+            divRow2.appendChild(inputFont)
+
+            let divFont = document.createElement('div')
+            divRow2.appendChild(divFont)
+
+                let inputButton = document.createElement('ion-icon')
+                inputButton.setAttribute('name', 'add-outline')
+                inputButton.addEventListener('click', (evt) => {
+                    evt.preventDefault()
+                    let value = this.elmRoot.querySelector('input[name="siteFont"]').value
+                    if (value != '') { 
+                        app.addFont(value)
+                    }
+                })
+                divFont.appendChild(inputButton)
+    }
+
+    async getSettingsElement (ref) {
+
+        let titleDescription = document.createElement('div')
+        titleDescription.setAttribute('class', 'title')
+        titleDescription.innerText = 'Description:'
+        this.elmRoot.appendChild(titleDescription)
+
+        let divRow0 = document.createElement('div')
+        divRow0.setAttribute('class', 'row')
+        this.elmRoot.appendChild(divRow0)
+
+            let textDescription = document.createElement('input')
+            textDescription.setAttribute('name', 'description')
+            textDescription.value = ref.description
+            textDescription.addEventListener('keyup', (evt) => {
+                evt.preventDefault()
+                let value = this.elmRoot.querySelector('input[name="description"]').value
+                if (value == '') { value = app.getNamedObject(ref.typeName).description }
+                ref.setDescription(value)
+            })
+            textDescription.addEventListener('change', (evt) => {
+                evt.preventDefault()
+                let value = this.elmRoot.querySelector('input[name="description"]').value
+                if (value == '') { value = app.getNamedObject(ref.typeName).description; this.elmRoot.querySelector('input[name="description"]').value = value }
+                ref.setDescription(value)
+            })
+            divRow0.appendChild(textDescription)
 
         if (ref.text != '') {
             let titleText = document.createElement('div')

@@ -39,7 +39,7 @@ class AppElement {
 
     toString () {
 
-        return JSON.stringify({
+        let obj = {
             typeName: this.typeName,
             description: this.description,
             styleName: this.styleName,
@@ -51,7 +51,9 @@ class AppElement {
             childs: this.childs.map((x)=>{ return JSON.parse(x.toString()) }),
             text: this.text,
             script: this.srcript
-        })
+        }
+
+        return JSON.stringify(obj)
     }
 
     add (obj) {

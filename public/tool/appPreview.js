@@ -270,6 +270,10 @@ class SdwToolPreview extends HTMLElement {
         ref.refPreview.setAttribute('data-desription', value)
     }
 
+    setBackgroundColor (color) {
+       this.elmRoot.querySelector('iframe[name="content"]').contentDocument.body.style.backgroundColor = color
+    }
+
     setVisualization (type) {
 
         if (type == 'phone' && this.visualization == 'desktop') {
