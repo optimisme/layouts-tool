@@ -80,7 +80,7 @@ class Source {
         }
 
         if (['textarea'].indexOf(item.tag) >= 0) str = str + '</' + item.tag + '>'
-        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
+        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe', 'select', 'option'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
 
         return str
     }
@@ -218,6 +218,22 @@ body { background-color: ${app.backgroundColor}; font-family: 'Open Sans', sans-
 .formButton:focus       { background-color: rgb(50, 150, 255); box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12); }
 .formButton:active      { box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
 .formButton:disabled    { color: #eee; background-color: #aaa; box-shadow: none; cursor: initial; }`
+        }
+
+        if (bodyStr.indexOf('formSelect') >= 0) {
+            str = str + `
+.formSelect { position: relative; width: 100%; }
+.formSelect:after { border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid rgba(0, 0, 0, 0.12); content: ''; height: 0; padding: 0; pointer-events: none; position: absolute; right: 10px; top: 28px; width: 0; }
+.formSelect > select { appearance: none; -webkit-appearance:none; background-color: transparent; border: none; border-bottom: 1px solid rgba(0,0,0, 0.12); border-radius: 0; font-family: inherit; padding: 0px 10px 10px 0; padding-top: 20px; position: relative; font-size: 18px; width: 100%; }
+.formSelect > select:focus { border-bottom: 1px solid rgba(0,0,0, 0);  outline: none; }
+.formSelect > label { color: rgba(0,0,0, 0.26); font-size: 18px; font-weight: normal; left: 0; position: absolute; pointer-events: none; top: 15px; transition: 0.2s ease all; }
+.formSelect > select:focus ~ label, .formSelect > select:valid ~ label {  color: #2F80ED; top: 0px; transition: 0.2s ease all; }
+.formSelect > span:nth-child(2) { height: 60%; left: 0; opacity: 0.5; pointer-events: none; position: absolute; top: 25%; width: 100px; }
+.formSelect > span:nth-child(3) { display: block; position: relative; width: 100%; }
+.formSelect > span:nth-child(3):before, .formSelect > span:nth-child(3):after { background: #2F80ED; bottom: 1px; content: ''; height: 2px; position: absolute; transition: 0.2s ease all; width: 0; }
+.formSelect > span:nth-child(3):before { left: 50%; }
+.formSelect > span:nth-child(3):after { right: 50%; }
+.formSelect > select:focus ~ span:nth-child(3):before, .formSelect > select:focus ~ span:nth-child(3):after { width: 50%; }`
         }
 
         return str

@@ -920,6 +920,35 @@ let formInputTextarea = {
     ]
 }
 
+let formInputSelectEmpty = { typeName: 'formInputSelectMain', description: 'Select option', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', '']], script: ``, text: ``, childs: [] }
+let formInputSelectOption = { typeName: 'formInputSelectMain', description: 'Select option', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', 'initial']], script: ``, text: `Option`, childs: [] }
+let formInputSelectMain = { typeName: 'formInputSelectMain', description: 'Select main', image: '', tag: 'select', childsAllowed: 'formInputSelectOption', style: [], phone: [], attributes: [['required', 'false'],], script: ``, text: ``, childs: [formInputSelectEmpty,formInputSelectOption] }
+let formInputSelectHighlight = { typeName: 'formInputSelectHighlight', description: 'Select highlight', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [] }
+let formInputSelectBar = { typeName: 'formInputSelectBar', description: 'Select bar', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [] }
+let formInputSelectLabel = { typeName: 'formInputSelectLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Select`, childs: [] }
+
+let formInputSelect = {
+    typeName: 'formInputSelect',
+    description: 'Select options',
+    image: 'previewFormSelect.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'formSelect'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [
+        formInputSelectMain,
+        formInputSelectHighlight,
+        formInputSelectBar,
+        formInputSelectLabel
+    ]
+}
+
+
 let formButton = {
     typeName: 'formButton',
     description: 'Button for forms',
