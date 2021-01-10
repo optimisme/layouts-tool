@@ -104,7 +104,7 @@ class SdwToolListItem extends HTMLElement {
             e.stopPropagation()
             this.elmRoot.classList.remove('dragOver')
             if (app.canDrag(this.refApp)) {
-                app.moveAt(this.refApp, app.refDrag)
+                app.moveAt(this.refApp, app.refDrag, 0)
             }
         })
 

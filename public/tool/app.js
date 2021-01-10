@@ -89,6 +89,9 @@ class App {
     duplicate () {
         if (this.refSelected != null) {
             this.refSelected.parent.addTemplate(JSON.parse(this.refSelected.toString()))
+            let position = this.refSelected.getPosition()
+            let lastChild = this.refSelected.parent.childs.length - 1
+            this.moveAt(this.refSelected.parent, this.refSelected.parent.childs[lastChild], position + 1)
         }
     }
 
@@ -111,11 +114,11 @@ class App {
         } 
     }
 
-    moveAt (newParent, child) {
-        let newPosition = 0
+    moveAt (newParent, child, parentPosition) {
         let childPosition = child.getPosition()
-        newParent.childs.splice(newPosition, 0, child.parent.childs[childPosition]) // Add to newParent
+        let tmp = child
         child.parent.childs.splice(childPosition, 1) // Remove chid
+        newParent.childs.splice(parentPosition, 0, tmp) // Add to newParent
         child.parent = newParent
 
         app.refList.rebuild()
