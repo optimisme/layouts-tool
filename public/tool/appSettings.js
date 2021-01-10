@@ -5,7 +5,7 @@ let selectableSettings = {
     'align-self': ['initial', 'auto', 'start', 'flex-start', 'center', 'stretch', 'baseline', 'stretch', 'end', 'flex-end'],
     'align-items': ['initial', 'start', 'flex-start', 'center', 'stretch', 'baseline', 'end', 'flex-end'],
     'backdrop-filter': ['initial', 'custom', 'saturate(200%)', 'grayscale(25%) sepia(50%)', 'blur(3px)', 'brightness(50%)', 'contrast(50%)', 'grayscale(100%)', 'hue-rotate(-50deg)', 'hue-rotate(120deg)', 'invert(50%)', 'opacity(20%)', 'sepia(90%)', 'saturate(200%)  blur(3px)'],
-    'background': ['initial', 'custom', 'white', 'black', 'lightgrey', 'darkgrey', '#abc', '#a5b6c7', 'rgb(50, 100, 150)', 'rgba(0, 0, 0, 0.5)'],
+    'background': ['initial', 'custom', 'white', 'black', 'lightgrey', 'darkgrey', '#abc', '#a5b6c7', 'rgb(50, 100, 150)', 'rgba(255, 255, 255, 0.5)', 'rgba(0, 0, 0, 0.5)'],
     'background-attachment': ['initial', 'fixed', 'local', 'scroll'],
     'background-color': ['initial', 'custom', 'white', 'black', 'lightgrey', 'darkgrey', '#abc', '#a5b6c7', 'rgb(50, 100, 150)', 'rgba(0, 0, 0, 0.5)'],
     'background-position': ['initial', 'custom', 'top', 'bottom', 'left', 'center', 'right', '0 0', '25% 75%', 'bottom 10px right 20px', 'bottom 10px right', 'top right 10px'],
