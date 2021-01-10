@@ -334,7 +334,7 @@ function promiseTransitionEnd (ref) {
         return `<html>
 <head>
     <meta charset="utf-8"/>
-    <title>HTML tool</title>
+    <title>${this.capitalize(app.siteName)}</title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">${fontsStr}

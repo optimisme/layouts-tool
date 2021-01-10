@@ -339,17 +339,18 @@ class App {
             linkPreview.setAttribute('media', 'all')
             document.querySelector('head').appendChild(linkPreview)
             app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(linkPreview)
-    
-            selectableSettings['font-family'].push(name)
+
+            selectableSettings['font-family'].push(`"${name}"`)
         }
 
         app.refSettings.setSettings(this.elementsRoot)
     }
 
     deleteFont (name) {
+        
         this.googleFonts.splice(this.googleFonts.indexOf(name), 1)
-        selectableSettings['font-family'].splice(selectableSettings['font-family'].indexOf(name), 1)
-        app.elementsRoot.deleteFont(name)
+        selectableSettings['font-family'].splice(selectableSettings['font-family'].indexOf(`"${name}"`), 1)
+        app.elementsRoot.deleteFont(`"${name}"`)
         app.refSettings.setSettings(this.elementsRoot)
     }
 }
