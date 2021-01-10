@@ -262,6 +262,17 @@ class AppElement {
         return this.parent.childs.indexOf(this)
     }
 
+
+    isChildOf (ref) {
+        if (this.parent == null) {
+            return false
+        }
+        if (this == ref) {
+            return true
+        }
+        return this.parent.isChildOf(ref)
+    }
+
     mixArrays (arrBase, arrValues) {
         let arr = JSON.parse(JSON.stringify(arrBase))
 

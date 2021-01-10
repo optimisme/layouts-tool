@@ -6,6 +6,8 @@ class SdwToolListItem extends HTMLElement {
         this.refApp = null
         this.ident = 0
         this.expanded = false
+        this.itemHeight = 25
+        this.dragImage = new Image()
 
         this.shadow = this.attachShadow({ mode: 'open' })
     }
@@ -23,9 +25,10 @@ class SdwToolListItem extends HTMLElement {
         }
         .main {
             align-items: center;
+            box-sizing: border-box;
             cursor: pointer;
             display: flex;
-            height: 30px;
+            height: ${this.itemHeight}px;
             padding: 0 8px;
             width: 100%;
         }
@@ -59,7 +62,7 @@ class SdwToolListItem extends HTMLElement {
             transition: height 0.25s ease;
         }
         .dragOver {
-            background-color: grey;
+            background-color: #f6e2b1;
         }`
         this.shadow.appendChild(this.elmStyle)
 
@@ -70,42 +73,21 @@ class SdwToolListItem extends HTMLElement {
             this.elmRoot.setAttribute('draggable', `true`)
             this.elmRoot.addEventListener('dragstart', (e) => {
                 e.stopPropagation()
-
-                let cnv = document.createElement('canvas')
-                cnv.setAttribute('height', '30')
-                cnv.setAttribute('width', '150')
-                let ctx = cnv.getContext("2d")
-                ctx.fillStyle = 'white'
-                ctx.fillRect(0, 0, 150, 30)
-                ctx.fillStyle = 'grey'
-                ctx.font = "12px 'Open Sans', Arial"
-                let txt = this.refApp.description
-                let width = ctx.measureText(txt).width
-                let ellipsis = false
-                while (width > 100) {
-                    txt = txt.slice(0, -1)
-                    width = ctx.measureText(txt).width
-                    ellipsis = true
-                }
-                if (ellipsis) {
-                    ctx.fillText(txt + '...', 25, 20)
-                } else {
-                    ctx.fillText(txt, 25, 20)
-                }
-                
-                ctx.lineWidth = 2
-                ctx.strokeStyle = 'lightgrey'
-                ctx.strokeRect(0, 0, 150, 30)
-                let img = new Image()
-                img.src = cnv.toDataURL('image/jpeg', 1)
-
-                e.dataTransfer.setDragImage(img, 10, 10)
                 app.refDrag = this.refApp
+                e.dataTransfer.setDragImage(this.dragImage, 10, 10)
             })
             this.elmRoot.addEventListener('dragend', (e) => {
                 app.refDrag = null
             })
+            this.setDragImage()
         }
+        this.elmRoot.addEventListener('dragenter', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            if (app.canDrag(this.refApp)) {
+                this.elmRoot.classList.add('dragOver')
+            }
+        })
         this.elmRoot.addEventListener('dragover', (e) => {
             e.preventDefault()
             e.stopPropagation()
@@ -225,7 +207,7 @@ class SdwToolListItem extends HTMLElement {
 
     setChildsHeight () {
         let numChilds = this.getNumberOfExpandedChilds()
-        this.elmRoot.querySelector('div[name="childs"]').style.height = (numChilds * 30) + 'px'
+        this.elmRoot.querySelector('div[name="childs"]').style.height = (numChilds * this.itemHeight) + 'px'
         if (this.refApp.parent !== null) {
             this.refApp.parent.refList.setChildsHeight()
         }
@@ -250,7 +232,38 @@ class SdwToolListItem extends HTMLElement {
 
     setDescription (value) {
 
-        this.description = value
         this.elmRoot.querySelector('div[name="description"]').textContent = value
+        this.setDragImage()
+    }
+
+    setDragImage () {
+        let cnv = document.createElement('canvas')
+        cnv.setAttribute('height', 25)
+        cnv.setAttribute('width', '150')
+        let ctx = cnv.getContext("2d")
+        ctx.fillStyle = 'white'
+        ctx.fillRect(0, 0, 150, 25)
+        ctx.fillStyle = 'grey'
+        ctx.font = "12px 'Open Sans', Arial"
+        let txt = this.refApp.description
+        let width = ctx.measureText(txt).width
+        let ellipsis = false
+        while (width > 100) {
+            txt = txt.slice(0, -1)
+            width = ctx.measureText(txt).width
+            ellipsis = true
+        }
+        if (ellipsis) {
+            ctx.fillText(txt + '...', 25, 16)
+        } else {
+            ctx.fillText(txt, 25, 16)
+        }
+        
+        ctx.lineWidth = 2
+        ctx.strokeStyle = 'lightgrey'
+        ctx.strokeRect(0, 0, 150, 25)
+
+        this.dragImage = new Image()
+        this.dragImage.src = cnv.toDataURL('image/jpeg', 1)
     }
 }

@@ -122,14 +122,14 @@ class App {
         app.refPreview.rebuild()
     }
 
-    canDrag (parent) {
-        if (parent == this.refDrag) {
+    canDrag (desiredParent) {
+        if (desiredParent == this.refDrag.parent || desiredParent == this.refDrag || desiredParent.isChildOf(this.refDrag)) {
             return false
         }
-        if (parent.childsAllowed == 'all' && this.refDrag.typeName.indexOf('Child') == -1) {
+        if (desiredParent.childsAllowed == 'all' && this.refDrag.typeName.indexOf('Child') == -1) {
             return true
         }
-        if (parent.childsAllowed == this.refDrag.typeName) {
+        if (desiredParent.childsAllowed == this.refDrag.typeName) {
             return true
         }
         return false
