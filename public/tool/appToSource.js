@@ -225,7 +225,7 @@ body { background-color: ${app.backgroundColor}; font-family: 'Open Sans', sans-
 .formSelect { position: relative; width: 100%; }
 .formSelect:after { border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid rgba(0, 0, 0, 0.12); content: ''; height: 0; padding: 0; pointer-events: none; position: absolute; right: 10px; top: 22px; width: 0; }
 .formSelect > select { appearance: none; -webkit-appearance:none; background-color: transparent; border: none; border-bottom: 1px solid rgba(0,0,0, 0.12); border-radius: 0; font-family: inherit; padding: 15px 10px 10px 0; position: relative; font-size: 18px; width: 100%; }
-.formSelect > select:focus { border-bottom: 1px solid rgba(0,0,0, 0);  outline: none; }
+.formSelect > select:focus { border-bottom: 1px solid rgba(0,0,0, 0); outline: none; }
 .formSelect > label { color: rgba(0,0,0, 0.26); font-size: 18px; font-weight: normal; left: 0; position: absolute; pointer-events: none; top: 12px; transition: 0.2s ease all; }
 .formSelect > select:focus ~ label, .formSelect > select:valid ~ label {  color: #2F80ED; font-size: 12px; top: 0px; transition: 0.2s ease all; }
 .formSelect > span:nth-child(2) { height: 60%; left: 0; opacity: 0.5; pointer-events: none; position: absolute; top: 25%; width: 100px; }
