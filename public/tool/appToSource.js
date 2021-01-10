@@ -333,7 +333,6 @@ function promiseTransitionEnd (ref) {
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 </head>
 <style>${styleStr}
 </style>

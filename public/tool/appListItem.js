@@ -5,7 +5,6 @@ class SdwToolListItem extends HTMLElement {
 
         this.refApp = null
         this.ident = 0
-        this.expanded = false
         this.itemHeight = 25
         this.dragImage = new Image()
 
@@ -130,7 +129,7 @@ class SdwToolListItem extends HTMLElement {
                 divArrow.setAttribute('name', 'arrow')
                 divArrow.addEventListener('click', (evt) => { 
                     evt.stopPropagation()
-                    if (this.expanded) {
+                    if (this.refApp.expanded) {
                         this.colapse()
                     } else {
                         this.expand()
@@ -168,7 +167,12 @@ class SdwToolListItem extends HTMLElement {
 
         this.elmRoot.querySelector('div[name="childs"]').appendChild(newItem)
         this.elmRoot.querySelector('div[name="arrow"]').style.display = 'initial'
-        this.expand()
+
+        if (this.refApp.parent == null) {
+            this.expand()
+        } else {
+            this.setChildsHeight()
+        }
 
         return newItem
     }
@@ -190,13 +194,13 @@ class SdwToolListItem extends HTMLElement {
     }
 
     expand () {
-        this.expanded = true
+        this.refApp.expanded = true
         this.elmRoot.querySelector('div[name="arrow"]').classList.add('expanded')
         this.setChildsHeight()
     }
 
     colapse () {
-        this.expanded = false
+        this.refApp.expanded = false
         this.elmRoot.querySelector('div[name="arrow"]').classList.remove('expanded')
         this.elmRoot.querySelector('div[name="childs"]').style.height = '0'
         if (this.refApp.parent !== null) {
@@ -217,7 +221,7 @@ class SdwToolListItem extends HTMLElement {
         let rst = 0
         let child = null
 
-        if (this.expanded) {
+        if (this.refApp.expanded) {
             for (let cnt = 0; cnt < this.refApp.childs.length; cnt = cnt + 1) {
                 rst = rst + 1
                 child = this.refApp.childs[cnt]

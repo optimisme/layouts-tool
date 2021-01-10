@@ -20,9 +20,8 @@ class AppElement {
         this.childs = []
 
         this.refList = null
+        this.expanded = false
         this.refPreview = null
-
-
     }
 
     async init () {
