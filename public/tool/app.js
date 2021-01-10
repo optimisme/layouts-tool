@@ -120,6 +120,8 @@ class App {
 
         app.refList.rebuild()
         app.refPreview.rebuild()
+
+        this.select(child)
     }
 
     canDrag (desiredParent) {
