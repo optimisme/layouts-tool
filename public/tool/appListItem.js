@@ -83,6 +83,7 @@ class SdwToolListItem extends HTMLElement {
         this.elmRoot.addEventListener('dragenter', (e) => {
             e.preventDefault()
             e.stopPropagation()
+            if (app.refDrag == null) return
             if (app.canDrag(this.refApp)) {
                 this.elmRoot.classList.add('dragOver')
             }
@@ -90,6 +91,7 @@ class SdwToolListItem extends HTMLElement {
         this.elmRoot.addEventListener('dragover', (e) => {
             e.preventDefault()
             e.stopPropagation()
+            if (app.refDrag == null) return
             if (app.canDrag(this.refApp)) {
                 this.elmRoot.classList.add('dragOver')
             }
