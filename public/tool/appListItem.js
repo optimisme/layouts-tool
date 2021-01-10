@@ -127,6 +127,7 @@ class SdwToolListItem extends HTMLElement {
 
                 let divArrow = document.createElement('div')
                 divArrow.setAttribute('name', 'arrow')
+                if (this.refApp && this.refApp.expanded) divArrow.setAttribute('class', 'expanded')
                 divArrow.addEventListener('click', (evt) => { 
                     evt.stopPropagation()
                     if (this.refApp.expanded) {
