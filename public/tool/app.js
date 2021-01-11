@@ -13,6 +13,7 @@ let appTemplateNames = [
     'templateTitle000', 'templateTitle001', 
     'templateText000', 'templateText001', 'templateText002', 'templateText003', 'templateText004', 'templateText005', 'templateText006', 'templateText007',
     'templateImage000', 'templateImage001', 'templateImage002', 'templateImage003', 'templateImage004', 'templateImage005',
+    'templateCards000',
     'templatePro000', 'templatePro001', 'templatePro002', 'templatePro003', 'templatePro004', 'templatePro005',
     'templateGrid000', 'templateMenu000', 'templateMenu001', 'templateFooter000', 'templateContact000', 'templateContact001', 'templateSite000'
 ]

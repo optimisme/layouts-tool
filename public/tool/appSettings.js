@@ -17,7 +17,7 @@ let selectableSettings = {
     'border-right': ['initial', 'custom', 'solid 1px lightgrey', 'dashed 1px grey', 'dotted 1px grey'],
     'border-top': ['initial', 'custom', 'solid 1px lightgrey', 'dashed 1px grey', 'dotted 1px grey'],
     'border-radius': ['initial', 'custom', '0', '5px', '15px', '100%'],
-    'box-shadow': ['initial', 'custom', '0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'],
+    'box-shadow': ['initial', 'custom', '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)', '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)', '0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)'],
     'box-sizing': ['initial', 'content-box', 'border-box'],
     'color': ['initial', 'custom', 'white', 'black', 'lightgrey', 'darkgrey', '#abc', '#a5b6c7', 'rgb(0, 150, 255)', 'rgba(0, 0, 0, 0.5)'],
     'column-gap': ['initial', 'custom', '4px', '8px'],
