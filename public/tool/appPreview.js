@@ -38,6 +38,12 @@ class SdwToolPreview extends HTMLElement {
             top: 16px;
             width: calc(100% - 64px);
         }
+        .root > div[name="buttons"] > div[name="buttonPhone"] {
+            margin: 0 4px;
+        }
+        .root > div[name="buttons"] > div[name="buttonTablet"] {
+            margin: 0;
+        }
         .root > div[name="buttons"] > div {
             border-radius: 5px;
             color: rgb(0, 125, 255);
@@ -72,6 +78,12 @@ class SdwToolPreview extends HTMLElement {
         }
         .root > .contentSizePhone {
             width: 320px !important;
+        }
+        .root > .contentSizeTablet {
+            width: 769px !important;
+        }
+        .root > .contentSizeDesktop {
+            width: calc(100% - 64px) !important;
         }
         #pexels {
             bottom: 15px;
@@ -163,6 +175,17 @@ class SdwToolPreview extends HTMLElement {
                 let phoneIcon = document.createElement('ion-icon')
                 phoneIcon.setAttribute('name', 'phone-portrait-outline')
                 buttonPhone.appendChild(phoneIcon)
+
+            let buttonTablet = document.createElement('div')
+            buttonTablet.setAttribute('name', 'buttonTablet')
+            buttonTablet.addEventListener('click', () => {
+                app.setVisualization('tablet')
+            })
+            refButtons.appendChild(buttonTablet)
+
+                let tabletIcon = document.createElement('ion-icon')
+                tabletIcon.setAttribute('name', 'tablet-landscape-outline')
+                buttonTablet.appendChild(tabletIcon)
 
             let buttonDesktop = document.createElement('div')
             buttonDesktop.setAttribute('name', 'buttonDesktop')
@@ -276,15 +299,26 @@ class SdwToolPreview extends HTMLElement {
 
     setVisualization (type) {
 
-        if (type == 'phone' && this.visualization == 'desktop') {
+        this.elmRoot.querySelector('iframe[name="content"]').classList.remove('contentSizePhone')
+        this.elmRoot.querySelector('iframe[name="content"]').classList.remove('contentSizeTablet')
+        this.elmRoot.querySelector('iframe[name="content"]').classList.remove('contentSizeDesktop')
+
+        this.elmRoot.querySelector('div[name="buttonPhone"]').classList.remove('buttonSelected')
+        this.elmRoot.querySelector('div[name="buttonTablet"]').classList.remove('buttonSelected')
+        this.elmRoot.querySelector('div[name="buttonDesktop"]').classList.remove('buttonSelected')
+
+        if (type == 'phone') {
             this.elmRoot.querySelector('iframe[name="content"]').classList.add('contentSizePhone')
             this.elmRoot.querySelector('div[name="buttonPhone"]').classList.add('buttonSelected')
-            this.elmRoot.querySelector('div[name="buttonDesktop"]').classList.remove('buttonSelected')
         }
 
-        if (type == 'desktop' && this.visualization == 'phone') {
-            this.elmRoot.querySelector('iframe[name="content"]').classList.remove('contentSizePhone')
-            this.elmRoot.querySelector('div[name="buttonPhone"]').classList.remove('buttonSelected')
+        if (type == 'tablet') {
+            this.elmRoot.querySelector('iframe[name="content"]').classList.add('contentSizeTablet')
+            this.elmRoot.querySelector('div[name="buttonTablet"]').classList.add('buttonSelected')
+        }
+
+        if (type == 'desktop') {
+            this.elmRoot.querySelector('iframe[name="content"]').classList.add('contentSizeDesktop')
             this.elmRoot.querySelector('div[name="buttonDesktop"]').classList.add('buttonSelected')
         }
 
