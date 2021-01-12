@@ -60,7 +60,7 @@ let selectableSettings = {
     'transition': ['initial', 'custom', 'opacity 0.3s ease', 'transform 0.3s ease'],
     'width': ['initial', 'custom', 'min-content', 'max-content', '48px', '100px', '250px', '25%', '50%', '75%', '100%', 'calc(100% - 32px)'],
     'writing-mode': ['initial', 'horizontal-tb', 'vertical-rl', 'vertical-lr', 'inherit', 'unset'],
-    'z-index': ['initial', 'custom', '0', '1', '2', '10', '50', '100'],
+    'z-index': ['initial', 'custom', '0', '1', '2', '10', '50', '1000'],
 }
 
 class SdwToolSettings extends HTMLElement {
