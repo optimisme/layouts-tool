@@ -244,7 +244,7 @@ class SdwConfigSelectCustom extends HTMLElement {
             transition: height 0.25s ease;
         }
         .expanded {
-            height: 54px;
+            height: max-content;
         }
         .row {
             align-items: center;
@@ -420,7 +420,7 @@ class SdwConfigPadding extends HTMLElement {
             transition: height 0.25s ease;
         }
         .expanded {
-            height: 142px;
+            height: max-content;
         }
         .row {
             align-items: center;
