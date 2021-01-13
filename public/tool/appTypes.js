@@ -696,7 +696,7 @@ let linkBox = {
     childsAllowed: 'all',
     style: [
         ['height', 'max-content', true],
-        ['padding', 'max-content', false],
+        ['padding', '0', false],
         ['text-decoration', 'none', true],
         ['text-transform', 'initial', true],
         ['width', 'max-content', true],
@@ -707,7 +707,7 @@ let linkBox = {
     ],
     phone: [
         ['height', 'max-content', true],
-        ['padding', 'max-content', false],
+        ['padding', '0', false],
         ['width', 'max-content', true],
     ],
     attributes: [
