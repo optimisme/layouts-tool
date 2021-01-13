@@ -20,7 +20,7 @@ npm install
 npm start
 ```
 
-### Run supervised server
+### Run supervised server (usefull for development)
 
 Watch server for changes and restarts it if necessary
 
