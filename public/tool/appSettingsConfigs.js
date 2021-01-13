@@ -243,9 +243,11 @@ class SdwConfigSelectCustom extends HTMLElement {
             overflow: hidden;
             transition: height 0.25s ease;
         }
+        @-moz-document url-prefix() { .root { height: 41px; } }
         .expanded {
-            height: max-content;
+            height: 58px;
         }
+        @-moz-document url-prefix() { .expanded { height: 82px; } }
         .row {
             align-items: center;
             display: flex;
@@ -419,9 +421,11 @@ class SdwConfigPadding extends HTMLElement {
             overflow: hidden;
             transition: height 0.25s ease;
         }
+        @-moz-document url-prefix() { .root { height: 41px; } }
         .expanded {
-            height: max-content;
+            height: 145px;
         }
+        @-moz-document url-prefix() { .expanded { height: 205px; } }
         .row {
             align-items: center;
             display: flex;
