@@ -51,6 +51,7 @@ class SdwToolPopup extends HTMLElement {
             cursor: pointer;
             font-size: 0.9em;
             height: 50px;
+            padding: 2px 0;
         }
         .item > img {
             border: solid 1px lightgrey;

@@ -28,6 +28,20 @@ Watch server for changes and restarts it if necessary
 npm run supervisor
 ```
 
+### Run the server 'forever'
+
+Ensure that the keeps running and restarts on production enviroments
+
+```
+npm run foreverStart
+```
+
+Stop the running server:
+
+```
+npm run foreverStop
+```
+
 ## Tool captures
 
 Elements and configs
