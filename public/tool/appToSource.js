@@ -377,11 +377,9 @@ async function setDrawer (event, id, show) {
     let refBody = document.getElementsByTagName('body')[0]
     let refDrawer = document.getElementById(id)
 
-    if (typeof event !== 'undefined' && typeof event.stopPropagation === 'function') {
-        if (event.cancelable) event.preventDefault()
+    if (event.srcElement) {
         event.stopPropagation()
-        target = event.target
-        if (target.className != 'drawer') return
+        if (event.srcElement.getAttribute('href')) { return }
     }
 
     if (show) {
