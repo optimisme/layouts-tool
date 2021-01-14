@@ -79,7 +79,9 @@ class App {
         let obj = this.getNamedObject(type)
         if (this.refSelected != null) {
             this.refSelected.add(obj)
-            app.refPreview.scrollToBottom()
+            if (this.refSelected.parent == null) {
+                app.refPreview.scrollToBottom()
+            }
         }
     }
 
