@@ -40,6 +40,10 @@ class SdwToolListItem extends HTMLElement {
         .main > div[name="ident"] {
             width: ${identWidth}px;
         }
+        .main > div[name="empty"] {
+            display: block;
+            width: 16px;
+        }
         .main > div[name="arrow"] {
             display: none;
             transform: rotateZ(0deg);
@@ -144,6 +148,11 @@ class SdwToolListItem extends HTMLElement {
                     arrowIcon.setAttribute('name', 'chevron-forward-outline')
                     divArrow.appendChild(arrowIcon)
 
+                let divEmpty = document.createElement('div')
+                divEmpty.setAttribute('name', 'empty')
+                if (this.refApp && this.refApp.expanded) divEmpty.setAttribute('class', 'expanded')
+                divMain.appendChild(divEmpty)
+
                 let divText = document.createElement('div')
                 divText.setAttribute('name', 'description')
                 divMain.appendChild(divText)
@@ -170,6 +179,7 @@ class SdwToolListItem extends HTMLElement {
 
         this.elmRoot.querySelector('div[name="childs"]').appendChild(newItem)
         this.elmRoot.querySelector('div[name="arrow"]').style.display = 'initial'
+        this.elmRoot.querySelector('div[name="empty"]').style.display = 'none'
 
         if (this.refApp.parent == null) {
             this.expand()
@@ -185,6 +195,7 @@ class SdwToolListItem extends HTMLElement {
         if (this.refApp.childs.length == 1) {
             this.colapse()
             this.elmRoot.querySelector('div[name="arrow"]').style.display = 'none'
+            this.elmRoot.querySelector('div[name="empty"]').style.display = 'initial'
         }
     }
 
