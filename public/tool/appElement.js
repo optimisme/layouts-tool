@@ -16,7 +16,6 @@ class AppElement {
         this.phone = []
         this.attributes = []
         this.text = ''
-        this.script = ``
         this.childs = []
 
         this.refList = null
@@ -49,8 +48,7 @@ class AppElement {
             phone: JSON.parse(JSON.stringify(this.phone.filter((x) => { return x[1] != 'initial' && x[2] != false }))),
             attributes: JSON.parse(JSON.stringify(this.attributes.filter((x) => { return x[1] != 'initial' && x[2] != false }))),
             childs: this.childs.map((x)=>{ return JSON.parse(x.toString()) }),
-            text: this.text,
-            script: this.srcript
+            text: this.text
         }
 
         return JSON.stringify(obj)
@@ -68,7 +66,6 @@ class AppElement {
         child.style = JSON.parse(JSON.stringify(obj.style))
         child.phone = JSON.parse(JSON.stringify(obj.phone))
         child.attributes = JSON.parse(JSON.stringify(obj.attributes))
-        child.script = obj.script
         child.text = obj.text
 
         child.refList = this.refList.add(child)
@@ -98,7 +95,6 @@ class AppElement {
         child.style = arrStyle
         child.phone = arrPhone
         child.attributes = arrAttributes
-        child.script = obj.script
         child.text = obj.text
 
         child.refList = this.refList.add(child)
