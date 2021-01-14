@@ -236,6 +236,85 @@ body { background-color: ${app.backgroundColor}; font-family: 'Open Sans', sans-
 .formSelect > select:focus ~ span:nth-child(3):before, .formSelect > select:focus ~ span:nth-child(3):after { width: 50%; }`
         }
 
+        if (bodyStr.indexOf('formCheckbox') >= 0) {
+            str =str + `
+.formCheckbox { color: rgba(0, 0, 0, 0.87); display: block; font-size: 16px; line-height: 1.5; position: relative; z-index: 0; }
+.formCheckbox > input { appearance: none; background-color: rgba(0, 0, 0, 0.6); border-radius: 50%; box-shadow: none; display: block; height: 40px; left: -10px; margin: 0; opacity: 0; outline: none; pointer-events: none; position: absolute; top: -8px; transition: opacity 0.3s, transform 0.2s; transform: scale(1); width: 40px; z-index: -1; }
+.formCheckbox > span { cursor: pointer; display: inline-block; width: 100%; }
+.formCheckbox > span::before { border: solid 2px; border-color: rgba(0, 0, 0, 0.6); border-radius: 2px; box-sizing: border-box; content: ""; display: inline-block; height: 18px; margin: 3px 11px 3px 1px; transition: border-color 0.2s, background-color 0.2s; vertical-align: top; width: 18px; }
+.formCheckbox > span::after { border: solid 2px transparent; border-right: none; border-top: none; content: ""; display: block; height: 5px; left: 1px; position: absolute; top: 3px; transform: translate(3px, 4px) rotate(-45deg); width: 10px; }
+.formCheckbox > input:checked,
+.formCheckbox > input:indeterminate { background-color: rgb(33, 150, 243) }
+.formCheckbox > input:checked + span::before,
+.formCheckbox > input:indeterminate + span::before { background-color: rgb(33, 150, 243); border-color: rgb(33, 150, 243); }
+.formCheckbox > input:checked + span::after,
+.formCheckbox > input:indeterminate + span::after { border-color: rgb(255, 255, 255); }
+.formCheckbox > input:indeterminate + span::after { border-left: none; transform: translate(4px, 3px); }
+.formCheckbox:hover > input { opacity: 0.04; }
+.formCheckbox > input:focus {   opacity: 0.12;  }
+.formCheckbox:hover > input:focus { opacity: 0.16;  }
+.formCheckbox > input:active { opacity: 1; transform: scale(0); transition: transform 0s, opacity 0s; }
+.formCheckbox > input:active + span::before { border-color: rgb(33, 150, 243); }
+.formCheckbox > input:checked:active + span::before { background-color: rgba(0, 0, 0, 0.6); border-color: transparent; }
+.formCheckbox > input:disabled { opacity: 0; }
+.formCheckbox > input:disabled + span { color: rgba(0, 0, 0, 0.38); cursor: initial; }
+.formCheckbox > input:disabled + span::before { border-color: currentColor; }
+.formCheckbox > input:checked:disabled + span::before,
+.formCheckbox > input:indeterminate:disabled + span::before { background-color: currentColor; border-color: transparent; }`
+        }
+
+        if (bodyStr.indexOf('formRadio') >= 0) {
+            str =str + `
+.formRadio { color: rgba(0, 0, 0, 0.87); display: block; font-size: 16px; line-height: 1.5; position: relative; z-index: 0; }
+.formRadio > input { appearance: none; background-color: rgba(0, 0, 0, 0.6); border-radius: 50%; display: block; height: 40px; left: -10px; margin: 0; opacity: 0; outline: none; pointer-events: none; position: absolute; top: -8px; transform: scale(1); transition: opacity 0.3s, transform 0.2s; width: 40px; z-index: -1; }
+.formRadio > span { cursor: pointer; display: inline-block; width: 100%; }
+.formRadio > span::before { border: solid 2px; border-color: rgba(0, 0, 0, 0, 0.6); border-radius: 50%; box-sizing: border-box; content: ""; display: inline-block; height: 20px; margin: 2px 10px 2px 0; transition: border-color 0.2s; vertical-align: top; width: 20px; }
+.formRadio > span::after { background-color: rgb(033, 150, 243); border-radius: 50%; content: ""; display: block; height: 10px; left: 0; position: absolute; top: 2px; transform: translate(5px, 5px) scale(0); transition: transform 0.2s; width: 10px; }
+.formRadio > input:checked { background-color: rgb(0, 33, 150, 243); }
+.formRadio > input:checked + span::before { border-color: rgb(33, 150, 243); }
+.formRadio > input:checked + span::after { transform: translate(5px, 5px) scale(1); }
+.formRadio:hover > input { opacity: 0.04; }
+.formRadio > input:focus { opacity: 0.12; }
+.formRadio:hover > input:focus { opacity: 0.16; }
+.formRadio > input:active { opacity: 1; transform: scale(0); transition: transform 0s, opacity 0s; }
+.formRadio > input:active + span::before { border-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243)); }
+.formRadio > input:disabled { opacity: 0; }
+.formRadio > input:disabled + span { color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38); cursor: initial; }
+.formRadio > input:disabled + span::before { border-color: currentColor; }
+.formRadio > input:disabled + span::after { background-color: currentColor; }`
+        }
+
+        if (bodyStr.indexOf('formRange') >= 0) {
+            str =str + `
+.formRange { display: inline-block; color: rgba(0, 0, 0, 0.87); font-family: inherit; font-size: 16px; line-height: 1.5; width: 200px; }
+.formRange > input { appearance: none; -webkit-appearance: none; background-color: transparent; cursor: pointer; display: block; height: 36px; margin: 0 0 -36px; position: relative; top: 24px; width: 100%; }
+.formRange > input:last-child { margin: 0; position: static; }
+.formRange > span { color: #9b9b9b; display: inline-block; font-size: 12px; margin-bottom: 36px; }
+.formRange > input:focus { outline: none; }
+.formRange > input:focus ~ span { color: rgb(33, 150, 243); }
+.formRange > input:disabled { cursor: default; opacity: 0.38; }
+.formRange > input:disabled + span { color: rgba(0, 0, 0, 0.38); }
+.formRange > input::-webkit-slider-runnable-track { background-color: rgba(33, 150, 243, 0.24); border-radius: 1px; height: 2px; margin: 17px 0; width: 100%; }
+.formRange > input::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; background-color: rgb(33, 150, 243); border: none; border-radius: 50%; height: 2px; transform: scale(6, 6); transition: box-shadow 0.2s; width: 2px; }
+.formRange:hover > input::-webkit-slider-thumb { box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.04); }
+.formRange > input:focus::-webkit-slider-thumb { box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.12); }
+.formRange:hover > input:focus::-webkit-slider-thumb { box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.16); }
+.formRange > input:active::-webkit-slider-thumb { box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.24) !important; }
+.formRange > input:disabled::-webkit-slider-runnable-track { background-color: rgba(0, 0, 0, 0.38); }
+.formRange > input:disabled::-webkit-slider-thumb { background-color: rgb(var(--pure-material-onsurface-rgb, 0, 0, 0)); box-shadow: 0 0 0 1px rgb(var(--pure-material-surface-rgb, 255, 255, 255)) !important; color: rgb(var(--pure-material-surface-rgb, 255, 255, 255)); transform: scale(4, 4); }
+.formRange > input::-moz-range-track { background-color: rgba(33, 150, 243, 0.24); border-radius: 1px; margin: 17px 0; height: 2px; width: 100%; }
+.formRange > input::-moz-range-thumb { appearance: none; -moz-appearance: none; background-color: rgb(33, 150, 243); border: none; border-radius: 50%; height: 2px; transform: scale(6, 6); transition: box-shadow 0.2s; width: 2px; }
+.formRange > input::-moz-range-progress { background-color: rgb(33, 150, 243); border-radius: 1px; height: 2px; }
+.formRange:hover > input:hover::-moz-range-thumb { box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.04); }
+.formRange > input:focus::-moz-range-thumb { box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.12); }
+.formRange:hover > input:focus::-moz-range-thumb { box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.16); }
+.formRange > input:active::-moz-range-thumb { box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.24) !important; }
+.formRange > input:disabled::-moz-range-track { background-color: rgba(0, 0, 0, 0.38); }
+.formRange > input:disabled::-moz-range-progress { background-color: rgba(0, 0, 0, 0.87); }
+.formRange > input:disabled::-moz-range-thumb { background-color: rgb(0, 0, 0); box-shadow: 0 0 0 1px rgb(255, 255, 255) !important; transform: scale(4, 4); }
+.formRange > input::-moz-focus-outer { border: none; }`
+        }
+
         return str
     }
 

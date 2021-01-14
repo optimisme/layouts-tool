@@ -948,6 +948,72 @@ let formInputSelect = {
     ]
 }
 
+let formInputCheckboxMain = { typeName: 'formInputCheckboxMain', description: 'Checkbox main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'checkboxGroup'], ['type', 'checkbox'], ], script: ``, text: ``, childs: [] }
+let formInputCheckboxSpan = { typeName: 'formInputCheckboxSpan', description: 'Checkbox span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Checkbox`, childs: [] }
+
+let formInputCheckbox = {
+    typeName: 'formInputCheckbox',
+    description: 'Checkbox',
+    image: 'previewFormCheckbox.png',
+    tag: 'label',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'formCheckbox'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [
+        formInputCheckboxMain,
+        formInputCheckboxSpan,
+    ]
+}
+
+let formInputRadioMain = { typeName: 'formInputRadioMain', description: 'Radio main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'radioGroup'], ['type', 'radio'], ], script: ``, text: ``, childs: [] }
+let formInputRadioSpan = { typeName: 'formInputRadioSpan', description: 'Radio span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Radio`, childs: [] }
+
+let formInputRadio = {
+    typeName: 'formInputRadio',
+    description: 'Radio',
+    image: 'previewFormRadio.png',
+    tag: 'label',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'formRadio'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [
+        formInputRadioMain,
+        formInputRadioSpan,
+    ]
+}
+
+let formInputRangeMain = { typeName: 'formInputRangeMain', description: 'Range main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['list', 'initial'], ['min', '0'], ['max', '100'], ['step', 'initial'], ['type', 'range'], ], script: ``, text: ``, childs: [] }
+let formInputRangeSpan = { typeName: 'formInputRangeSpan', description: 'Range span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Range slider`, childs: [] }
+
+let formInputRange = {
+    typeName: 'formInputRange',
+    description: 'Range slider',
+    image: 'previewFormRange.png',
+    tag: 'label',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'formRange'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [
+        formInputRangeMain,
+        formInputRangeSpan,
+    ]
+}
+
 
 let formButton = {
     typeName: 'formButton',
