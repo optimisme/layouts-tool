@@ -352,4 +352,8 @@ class SdwToolPreview extends HTMLElement {
     scrollToBottom () {
         this.elmRoot.querySelector('iframe').contentWindow.scrollToBottom()
     }
+
+    setScript (value) {
+        this.elmRoot.querySelector('iframe').contentWindow.eval(value)
+    }
 }

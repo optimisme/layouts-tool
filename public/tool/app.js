@@ -15,7 +15,7 @@ let appTemplateNames = [
     'templateImage000', 'templateImage001', 'templateImage002', 'templateImage003', 'templateImage004', 'templateImage005',
     'templateCards000',
     'templatePro000', 'templatePro001', 'templatePro002', 'templatePro003', 'templatePro004', 'templatePro005',
-    'templateGrid000', 'templateMenu000', 'templateMenu001', 'templateFooter000', 'templateContact000', 'templateContact001', 'templateSite000'
+    'templateGrid000', 'templateMenu000', 'templateMenu001', 'templateFooter000', 'templateForm000', 'templateContact000', 'templateContact001', 'templateSite000'
 ]
 
 class App {
@@ -45,6 +45,7 @@ class App {
         this.siteName = 'template'
         this.backgroundColor = 'white'
         this.googleFonts = []
+        this.scripts = []
 
         this.refList = document.querySelector('sdw-tool-list')
         this.refPreview = document.querySelector('sdw-tool-preview')
@@ -87,6 +88,14 @@ class App {
 
     addTemplate (type) {
         let obj = this.getNamedObject(type)
+        
+        // TODO: Arreglar la càrrega de templates, i tenir en compte els scripts i fonts
+        if (obj.scripts) {
+            for (let cnt = 0; cnt < obj.scripts.length; cnt = cnt + 1) {
+                app.addScript(obj.scripts[cnt])
+            }
+        }
+
         if (this.refSelected != null) {
             for (let cnt = 0; cnt < obj.childs.length; cnt = cnt + 1) {
                 this.refSelected.addTemplate(obj.childs[cnt])
@@ -255,7 +264,8 @@ class App {
                 appVersion: 1.0,
                 siteName: app.siteName,
                 backgroundColor: app.backgroundColor,
-                googleFonts: app.googleFonts
+                googleFonts: app.googleFonts,
+                scripts: app.scripts
             },
             elementsRoot: JSON.parse(app.elementsRoot.toString())
         }
@@ -295,6 +305,12 @@ class App {
 
                 for (let cnt = 0; cnt < obj.settings.googleFonts.length; cnt = cnt + 1) {
                     app.addFont(obj.settings.googleFonts[cnt])
+                }
+
+                if (obj.settings.scripts) {
+                    for (let cnt = 0; cnt < obj.settings.scripts.length; cnt = cnt + 1) {
+                        app.addScript(obj.settings.scripts[cnt])
+                    }
                 }
 
                 this.select(this.elementsRoot)
@@ -340,7 +356,6 @@ class App {
             linkPreview.setAttribute('rel', 'stylesheet')
             linkPreview.setAttribute('type', 'text/css')
             linkPreview.setAttribute('media', 'all')
-            document.querySelector('head').appendChild(linkPreview)
             app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(linkPreview)
 
             selectableSettings['font-family'].push(`"${name}"`)
@@ -354,6 +369,27 @@ class App {
         this.googleFonts.splice(this.googleFonts.indexOf(name), 1)
         selectableSettings['font-family'].splice(selectableSettings['font-family'].indexOf(`"${name}"`), 1)
         app.elementsRoot.deleteFont(`"${name}"`)
+        app.refSettings.setSettings(this.elementsRoot)
+    }
+
+    addScript (value) {
+
+        if (this.scripts.indexOf(value) == -1) {
+
+            this.scripts.push(value)
+
+            let linkPreview = document.createElement('script')
+            linkPreview.setAttribute('src', value)
+            linkPreview.setAttribute('type', 'text/javascript')
+            app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(linkPreview)
+        }
+
+        app.refSettings.setSettings(this.elementsRoot)
+    }
+
+    deleteScript (value) {
+        
+        this.scripts.splice(this.scripts.indexOf(value), 1)
         app.refSettings.setSettings(this.elementsRoot)
     }
 }

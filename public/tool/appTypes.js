@@ -874,7 +874,7 @@ let mapGoogle = {
     childs: []
 }
 
-let formInputTextField = { typeName: 'formInputTextField', description: 'Input text', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formName'], ['type', 'text'], ['placeholder', 'yes'], ['pattern', '[^0-9]*'], ['autocomplete', 'off'], ], script: ``, text: ``, childs: [] }
+let formInputTextField = { typeName: 'formInputTextField', description: 'Input text', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formText'], ['type', 'text'], ['placeholder', 'yes'], ['pattern', '[^0-9]*'], ['autocomplete', 'off'], ], script: ``, text: ``, childs: [] }
 let formInputTextLabel = { typeName: 'formInputTextLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Name`, childs: [] }
 let formInputTextSpan = { typeName: 'formInputTextSpan', description: 'Error message', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Numbers are not allowed`, childs: [] }
 
@@ -898,7 +898,7 @@ let formInputText = {
     ]
 }
 
-let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formDescription'], ['placeholder', 'yes'], ['rows', 'initial'], ], script: ``, text: ``, childs: [] }
+let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formArea'], ['placeholder', 'yes'], ['rows', 'initial'], ], script: ``, text: ``, childs: [] }
 let formInputTextareaLabel = { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Description`, childs: [] }
 
 let formInputTextarea = {
@@ -920,9 +920,9 @@ let formInputTextarea = {
     ]
 }
 
-let formInputSelectEmpty = { typeName: 'formInputSelectMain', description: 'Select option', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', '']], script: ``, text: ``, childs: [] }
-let formInputSelectOption = { typeName: 'formInputSelectMain', description: 'Select option', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', 'initial']], script: ``, text: `Option`, childs: [] }
-let formInputSelectMain = { typeName: 'formInputSelectMain', description: 'Select main', image: '', tag: 'select', childsAllowed: 'formInputSelectOption', style: [], phone: [], attributes: [['required', 'false'],], script: ``, text: ``, childs: [formInputSelectEmpty,formInputSelectOption] }
+let formInputSelectEmpty = { typeName: 'formInputSelectEmpty', description: 'Select option empty', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', '']], script: ``, text: ``, childs: [] }
+let formInputSelectOption = { typeName: 'formInputSelectOption', description: 'Select option', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', 'initial']], script: ``, text: `Option`, childs: [] }
+let formInputSelectMain = { typeName: 'formInputSelectMain', description: 'Select main', image: '', tag: 'select', childsAllowed: 'formInputSelectOption', style: [], phone: [], attributes: [['id', 'formSelect'], ['required', 'false'],], script: ``, text: ``, childs: [formInputSelectEmpty,formInputSelectOption] }
 let formInputSelectHighlight = { typeName: 'formInputSelectHighlight', description: 'Select highlight', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [] }
 let formInputSelectBar = { typeName: 'formInputSelectBar', description: 'Select bar', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [] }
 let formInputSelectLabel = { typeName: 'formInputSelectLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Select`, childs: [] }
@@ -948,7 +948,7 @@ let formInputSelect = {
     ]
 }
 
-let formInputCheckboxMain = { typeName: 'formInputCheckboxMain', description: 'Checkbox main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'checkboxGroup'], ['type', 'checkbox'], ], script: ``, text: ``, childs: [] }
+let formInputCheckboxMain = { typeName: 'formInputCheckboxMain', description: 'Checkbox main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'groupCheckbox'], ['type', 'checkbox'], ], script: ``, text: ``, childs: [] }
 let formInputCheckboxSpan = { typeName: 'formInputCheckboxSpan', description: 'Checkbox span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Checkbox`, childs: [] }
 
 let formInputCheckbox = {
@@ -970,7 +970,7 @@ let formInputCheckbox = {
     ]
 }
 
-let formInputRadioMain = { typeName: 'formInputRadioMain', description: 'Radio main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'radioGroup'], ['type', 'radio'], ], script: ``, text: ``, childs: [] }
+let formInputRadioMain = { typeName: 'formInputRadioMain', description: 'Radio main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'groupRadio'], ['type', 'radio'], ], script: ``, text: ``, childs: [] }
 let formInputRadioSpan = { typeName: 'formInputRadioSpan', description: 'Radio span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Radio`, childs: [] }
 
 let formInputRadio = {
@@ -992,7 +992,7 @@ let formInputRadio = {
     ]
 }
 
-let formInputRangeMain = { typeName: 'formInputRangeMain', description: 'Range main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['list', 'initial'], ['min', '0'], ['max', '100'], ['step', 'initial'], ['type', 'range'], ], script: ``, text: ``, childs: [] }
+let formInputRangeMain = { typeName: 'formInputRangeMain', description: 'Range main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formRange'], ['value', 'initial'], ['list', 'initial'], ['min', '0'], ['max', '100'], ['step', 'initial'], ['type', 'range'], ], script: ``, text: ``, childs: [] }
 let formInputRangeSpan = { typeName: 'formInputRangeSpan', description: 'Range span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Range slider`, childs: [] }
 
 let formInputRange = {

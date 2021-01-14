@@ -99,6 +99,9 @@ class SdwToolSettings extends HTMLElement {
             resize: vertical;
             width: 100%;
         }
+        .root > .rowGrow {
+            flex-grow: 1;
+        }
         .root > .rowRandom {
             display: flex;
             justify-content: flex-end;
@@ -118,8 +121,14 @@ class SdwToolSettings extends HTMLElement {
             font-size: 0.9em; 
             flex-grow: 1;
             padding-right: 8px;
+            overflow: hidden;
             text-align: right;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             width: 100%;
+        }
+        .root > .rowAction > .itemText {
+            font-size: 0.8em !important; 
         }
         .root > .rowAction > input {
             font-size: 0.8em;
@@ -208,6 +217,66 @@ class SdwToolSettings extends HTMLElement {
             })
             divRow1.appendChild(inputColor)
 
+        let titleScript = document.createElement('div')
+        titleScript.setAttribute('class', 'title')
+        titleScript.innerText = 'Scripts:'
+        this.elmRoot.appendChild(titleScript)
+
+        for (let cnt = 0; cnt < app.scripts.length; cnt = cnt + 1) {
+            let scriptRow = document.createElement('div')
+            scriptRow.setAttribute('class', 'rowAction')
+            this.elmRoot.appendChild(scriptRow)
+
+                let scriptName = document.createElement('div')
+                scriptName.setAttribute('class', 'itemText')
+                scriptName.innerText = app.scripts[cnt]
+                scriptRow.appendChild(scriptName)
+
+                let divTmp = document.createElement('div')
+                scriptRow.appendChild(divTmp)
+
+                    let scriptDelete = document.createElement('ion-icon')
+                    scriptDelete.setAttribute('name', 'close-outline')
+                    scriptDelete.innerText = app.scripts[cnt]
+                    scriptDelete.addEventListener('click', (evt) => {
+                        evt.preventDefault()
+                        evt.stopPropagation()
+                        app.deleteScript(app.scripts[cnt])
+                    })
+                    divTmp.appendChild(scriptDelete)
+        }
+
+        let divRow2 = document.createElement('div')
+        divRow2.setAttribute('class', 'rowAction')
+        this.elmRoot.appendChild(divRow2)
+
+            let inputScript = document.createElement('input')
+            inputScript.setAttribute('name', 'siteScript')
+            inputScript.setAttribute('placeholder', 'Script location, ex: /script.js')
+            inputScript.value = ''
+            inputScript.addEventListener('change', (evt) => {
+                evt.preventDefault()
+                let value = this.elmRoot.querySelector('input[name="siteScript"]').value
+                if (value != '') { 
+                    app.addScript(value)
+                }
+            })
+            divRow2.appendChild(inputScript)
+        
+            let divScript = document.createElement('div')
+            divRow2.appendChild(divScript)
+
+                let inputButtonScript = document.createElement('ion-icon')
+                inputButtonScript.setAttribute('name', 'add-outline')
+                inputButtonScript.addEventListener('click', (evt) => {
+                    evt.preventDefault()
+                    let value = this.elmRoot.querySelector('input[name="siteScript"]').value
+                    if (value != '') { 
+                        app.addScript(value)
+                    }
+                })
+                divScript.appendChild(inputButtonScript)
+
         let titleFonts = document.createElement('div')
         titleFonts.setAttribute('class', 'title')
         titleFonts.innerText = 'Google fonts:'
@@ -237,9 +306,9 @@ class SdwToolSettings extends HTMLElement {
                     divTmp.appendChild(fontDelete)
         }
 
-        let divRow2 = document.createElement('div')
-        divRow2.setAttribute('class', 'rowAction')
-        this.elmRoot.appendChild(divRow2)
+        let divRow3 = document.createElement('div')
+        divRow3.setAttribute('class', 'rowAction')
+        this.elmRoot.appendChild(divRow3)
 
             let inputFont = document.createElement('input')
             inputFont.setAttribute('name', 'siteFont')
@@ -252,21 +321,21 @@ class SdwToolSettings extends HTMLElement {
                     app.addFont(value)
                 }
             })
-            divRow2.appendChild(inputFont)
+            divRow3.appendChild(inputFont)
 
             let divFont = document.createElement('div')
-            divRow2.appendChild(divFont)
+            divRow3.appendChild(divFont)
 
-                let inputButton = document.createElement('ion-icon')
-                inputButton.setAttribute('name', 'add-outline')
-                inputButton.addEventListener('click', (evt) => {
+                let inputButtonFont = document.createElement('ion-icon')
+                inputButtonFont.setAttribute('name', 'add-outline')
+                inputButtonFont.addEventListener('click', (evt) => {
                     evt.preventDefault()
                     let value = this.elmRoot.querySelector('input[name="siteFont"]').value
                     if (value != '') { 
                         app.addFont(value)
                     }
                 })
-                divFont.appendChild(inputButton)
+                divFont.appendChild(inputButtonFont)
     }
 
     async getSettingsElement (ref) {

@@ -18,13 +18,17 @@ class Source {
             }
         }
 
-        let fontsStr = ''
-
+        let fontsList = ''
         for (let cnt = 0; cnt < app.googleFonts.length; cnt = cnt + 1) {
-            fontsStr = fontsStr + `\n    <link href="https://fonts.googleapis.com/css2?family=${app.googleFonts[cnt].replaceAll(' ', '+')}:wght@300;400;600;800&display=swap" rel="stylesheet">`
+            fontsList = fontsList + `\n    <link href="https://fonts.googleapis.com/css2?family=${app.googleFonts[cnt].replaceAll(' ', '+')}:wght@300;400;600;800&display=swap" rel="stylesheet">`
         }
 
-        return this.getHTML(fontsStr, styleStr, scriptsStr, bodyStr)
+        let scriptsList = ''
+        for (let cnt = 0; cnt < app.scripts.length; cnt = cnt + 1) {
+            scriptsList = scriptsList + `\n    <script src="${app.scripts[cnt]}"></script>`
+        }
+
+        return this.getHTML(fontsList, scriptsList, styleStr, scriptsStr, bodyStr)
     }
 
     toSourceItem (item) {
@@ -69,7 +73,11 @@ class Source {
             classStr = ' class="' + classStr + '"'
         }
 
-        str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '>' + '<!-- ' + item.description + ' -->'
+        if (item.tag != 'textarea') {
+            str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '>' + '<!-- ' + item.description + ' -->'
+        } else {
+            str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '>'
+        }
 
         for (let cnt = 0; cnt < item.childs.length; cnt = cnt + 1) {
             str = str + this.toSourceItem(item.childs[cnt])
@@ -80,7 +88,7 @@ class Source {
         }
 
         if (['textarea'].indexOf(item.tag) >= 0) str = str + '</' + item.tag + '>'
-        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe', 'select', 'option'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
+        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe', 'select', 'option', 'button'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
 
         return str
     }
@@ -185,7 +193,7 @@ body { background-color: ${app.backgroundColor}; font-family: 'Open Sans', sans-
 
         if (bodyStr.indexOf('formInputText') >= 0) {
             str = str + `
-.formInputText { padding: 15px 0 0; position: relative; }
+.formInputText { padding: 15px 0 0; position: relative; width: 100%; }
 .formInputText > input { background: transparent; border: 0; border-bottom: 1px solid #d2d2d2; color: #212121; font-family: inherit; font-size: 16px; outline: 0; padding: 7px 0; transition: border-color 0.2s; width: 100%; }
 .formInputText > input::placeholder { color: transparent; }
 .formInputText > input:placeholder-shown ~ label { cursor: text; font-size: 16px; top: 20px; }
@@ -199,7 +207,7 @@ body { background-color: ${app.backgroundColor}; font-family: 'Open Sans', sans-
 
         if (bodyStr.indexOf('formInputTextarea') >= 0) {
             str = str + `
-.formInputTextarea { padding: 15px 0 0; position: relative; }
+.formInputTextarea { padding: 15px 0 0; position: relative; width: 100%; }
 .formInputTextarea > textarea { background: transparent; border: 0; border-bottom: 1px solid #d2d2d2; color: #212121; font-family: inherit; font-size: 16px; outline: 0; padding: 7px 0; resize: none; transition: border-color 0.2s; width: 100%; }
 .formInputTextarea > textarea::placeholder { color: transparent; }
 .formInputTextarea > textarea:placeholder-shown ~ label { cursor: text; font-size: 16px; top: 20px; }
@@ -286,7 +294,7 @@ body { background-color: ${app.backgroundColor}; font-family: 'Open Sans', sans-
 
         if (bodyStr.indexOf('formRange') >= 0) {
             str =str + `
-.formRange { display: inline-block; color: rgba(0, 0, 0, 0.87); font-family: inherit; font-size: 16px; line-height: 1.5; width: 200px; }
+.formRange { display: inline-block; color: rgba(0, 0, 0, 0.87); font-family: inherit; font-size: 16px; line-height: 1.5; width: 100%; }
 .formRange > input { appearance: none; -webkit-appearance: none; background-color: transparent; cursor: pointer; display: block; height: 36px; margin: 0 0 -36px; position: relative; top: 24px; width: 100%; }
 .formRange > input:last-child { margin: 0; position: static; }
 .formRange > span { color: #9b9b9b; display: inline-block; font-size: 12px; margin-bottom: 36px; }
@@ -417,6 +425,53 @@ function promiseTransitionEnd (ref) {
 }`
         }
 
+        if (bodyStr.indexOf('form') >= 0) {
+            str = str + `
+function getFormValue (id) {
+    let ref = document.getElementById(id)
+    if (ref.tagName.toUpperCase() == 'INPUT') {
+        let type = ref.getAttribute('type')
+        if (type == 'text') {
+            return ref.value
+        } else if (type == 'checkbox') {
+            return ref.checked
+        } else if (type == 'radio') {
+            return ref.checked
+        } else if (type == 'range') {
+            return ref.value
+        }
+    } else if (ref.tagName.toUpperCase() == 'TEXTAREA') {
+        return ref.value
+    } else if (ref.tagName.toUpperCase() == 'SELECT') {
+        if (ref.value) {
+            return ref.value
+        } else {
+            return ref.options[ref.selectedIndex].text
+        }
+    }
+}
+
+function setFormValue (id, value) {
+    let ref = document.getElementById(id)
+    if (ref.tagName.toUpperCase() == 'INPUT') {
+        let type = ref.getAttribute('type')
+        if (type == 'text') {
+            ref.value = value
+        } else if (type == 'checkbox') {
+            ref.checked = value
+        } else if (type == 'radio') {
+            ref.checked = value
+        } else if (type == 'range') {
+            ref.value = value
+        }
+    } else if (ref.tagName.toUpperCase() == 'TEXTAREA') {
+        ref.value = value
+    } else if (ref.tagName.toUpperCase() == 'SELECT') {
+        ref.value = value
+    }
+}`
+        }
+
         if (bodyStr.indexOf('') >= 0) {
             str = str + ``
         }
@@ -424,7 +479,7 @@ function promiseTransitionEnd (ref) {
         return str
     }
 
-    getHTML (fontsStr, styleStr, scriptsStr, bodyStr) {
+    getHTML (fontsList, scriptsList, styleStr, scriptsStr, bodyStr) {
 
         return `<html>
 <head>
@@ -432,8 +487,8 @@ function promiseTransitionEnd (ref) {
     <title>${this.capitalize(app.siteName)}</title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">${fontsStr}
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">${fontsList}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">${scriptsList}
 </head>
 <style>${styleStr}
 </style>
