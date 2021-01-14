@@ -1048,7 +1048,7 @@ let waitSpinner = {
     style: [],
     phone: [],
     attributes: [
-        ['class', 'spinner'],
+        ['class', 'waitSpinner'],
     ],
     script: ``,
     text: ``,

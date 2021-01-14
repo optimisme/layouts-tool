@@ -323,6 +323,16 @@ body { background-color: ${app.backgroundColor}; font-family: 'Open Sans', sans-
 .formRange > input::-moz-focus-outer { border: none; }`
         }
 
+        if (bodyStr.indexOf('waitSpinner') >= 0) {
+            str =str + `
+.waitSpinner { height: 100%; overflow: hidden; width: 100%; }
+.waitSpinner svg { animation: spinnerRotate 1.5s linear infinite; height: 100%; width: 100%; }
+.waitSpinner circle { animation: spinnerDash 1.5s ease-in-out infinite 0s, spinnerColor 6s ease-in-out infinite -0.75s; stroke-dasharray: 1,200; stroke-dashoffset: 0; stroke-linecap: round; fill: none; stroke-width:3; }
+@keyframes spinnerRotate { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@keyframes spinnerDash { 0% { stroke-dasharray: 1,200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 89,200; stroke-dashoffset: -35; } 100% { stroke-dasharray: 89,200; stroke-dashoffset: -124; } }
+@keyframes spinnerColor { 100%, 0% { stroke: #4285F4; } 25% {  stroke: #DE3E35; } 50% { stroke: #F7C223; } 75% { stroke: #1DA760; } }`
+        }
+
         return str
     }
 

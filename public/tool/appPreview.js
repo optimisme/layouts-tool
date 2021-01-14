@@ -225,6 +225,11 @@ class SdwToolPreview extends HTMLElement {
     childAdd (parent, child) {
 
         let newItem = document.createElement(child.tag)
+
+        if (["svg","circle"].indexOf(child.tag) >= 0) {
+            newItem = document.createElementNS('http://www.w3.org/2000/svg', child.tag)
+        }
+
         parent.refPreview.appendChild(newItem)
 
         for (let cnt = 0; cnt < child.attributes.length; cnt = cnt + 1) {
