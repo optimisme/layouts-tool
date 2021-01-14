@@ -4,7 +4,7 @@ let appTypeNames = [
     'divSticky', 'divMobile', 'divDesktop',
     'titleh1', 'titleh2', 'titleh3', 'text', 'textInline', 'textEllipsis', 'linkBox', 'linkInline',
     'image', 'imageBackground', 'divGrid',
-    'formInputText', 'formInputTextarea', 'formInputSelect', 'formInputCheckbox', 'formInputRadio', 'formInputRange', 'formButton',
+    'formInputText', 'formInputTextarea', 'formInputSelect', 'formInputCheckbox', 'formInputRadio', 'formInputRange', 'formButton', 'waitSpinner',
     'carouselDots', 'carouselArrows', 'drawer', 'iconMaterial', 'mapGoogle'
 ]
 

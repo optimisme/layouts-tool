@@ -73,7 +73,7 @@ class Source {
             classStr = ' class="' + classStr + '"'
         }
 
-        if (item.tag != 'textarea') {
+        if (item.tag != 'textarea' && item.tag != 'a') {
             str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '>' + '<!-- ' + item.description + ' -->'
         } else {
             str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '>'

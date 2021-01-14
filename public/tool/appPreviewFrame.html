@@ -272,6 +272,14 @@
         .formRange > input:disabled::-moz-range-progress { background-color: rgba(0, 0, 0, 0.87); }
         .formRange > input:disabled::-moz-range-thumb { background-color: rgb(0, 0, 0); box-shadow: 0 0 0 1px rgb(255, 255, 255) !important; transform: scale(4, 4); }
         .formRange > input::-moz-focus-outer { border: none; }
+
+        .spinner { height: 50px; width: 50px; }
+        .spinner svg { animation: spinnerRotate 1.5s linear infinite; height: 100%; width: 100%; }
+        .spinner circle { animation: spinnerDash 1.5s ease-in-out infinite 0s, spinnerColor 6s ease-in-out infinite -0.75s; stroke-dasharray: 1,200; stroke-dashoffset: 0; stroke-linecap: round; fill: none; stroke-width:3; }
+        @keyframes spinnerRotate { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+        @keyframes spinnerDash { 0% { stroke-dasharray: 1,200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 89,200; stroke-dashoffset: -35; } 100% { stroke-dasharray: 89,200; stroke-dashoffset: -124; } }
+        @keyframes spinnerColor { 100%, 0% { stroke: #4285F4; } 25% {  stroke: #DE3E35; } 50% { stroke: #F7C223; } 75% { stroke: #1DA760; } }
+
     </style>
     <script>
     function setCarouselDots(ref) {
@@ -313,11 +321,9 @@
         let refBody = document.getElementsByTagName('body')[0]
         let refDrawer = document.getElementById(id)
 
-        if (typeof event !== 'undefined' && typeof event.stopPropagation === 'function') {
-            if (event.cancelable) event.preventDefault()
+        if (event.srcElement) {
             event.stopPropagation()
-            target = event.target
-            if (target.className != 'drawer') return
+            if (event.srcElement.getAttribute('href')) { return }
         }
     
         if (show) {

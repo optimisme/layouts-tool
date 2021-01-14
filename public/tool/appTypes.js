@@ -702,6 +702,7 @@ let linkBox = {
         ['width', 'max-content', true],
 
         ['box-sizing', 'border-box', false],
+        ['cursor', 'pointer', false],
         ['display', 'block', false],
         ['margin', '0', false],
     ],
@@ -712,7 +713,7 @@ let linkBox = {
     ],
     attributes: [
         ['id', 'initial'],
-        ['href', '/'],
+        ['href', 'initial'],
         ['target', '_blank'],
         ['onclick', 'initial'],
     ],
@@ -736,6 +737,7 @@ let linkInline = {
         ['text-transform', 'initial', true],
 
         ['box-sizing', 'border-box', false],
+        ['cursor', 'pointer', false],
         ['display', 'inline', false],
         ['height', 'max-content', false],
         ['margin', '0', false],
@@ -744,7 +746,7 @@ let linkInline = {
     phone: [],
     attributes: [
         ['id', 'initial'],
-        ['href', '/'],
+        ['href', 'initial'],
         ['target', '_blank'],
         ['onclick', 'initial'],
     ],
@@ -1034,6 +1036,24 @@ let formButton = {
     childs: []
 }
 
+let waitSpinnerCircle = { typeName: 'waitSpinnerCircle', description: 'Spinner circle', image: '', tag: 'circle', childsAllowed: 'none', style: [], phone: [], attributes: [ ['cx', '50'], ['cy', '50'], ['r', '20'], ], script: ``, text: ``, childs: [] }
+let waitSpinnerMain = { typeName: 'waitSpinnerMain', description: 'Spinner main', image: '', tag: 'svg', childsAllowed: 'none', style: [], phone: [], attributes: [ ['viewBox', '0 0 100 100'] ], script: ``, text: ``, childs: [ waitSpinnerCircle ] }
+
+let waitSpinner = {
+    typeName: 'waitSpinner',
+    description: 'Wait spinner',
+    image: 'previewWaitSpinner.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'spinner'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [ waitSpinnerMain ]
+}
 
 /*
 let div = {
