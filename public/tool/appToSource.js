@@ -38,7 +38,7 @@ class Source {
         let attributes = this.getSourceAttributes(item)
         let classStr = ''
         
-        let typeClassName = 'def' + this.capitalize(item.typeName)
+        let typeClassName = 'def' + app.capitalize(item.typeName)
         let itemClassName = 'elm' + item.appId
         let typeClassStr = ''
         let itemClassStr = ''
@@ -46,7 +46,7 @@ class Source {
 
         let attributeId = this.getItemAttribute(item, 'id') 
         if (attributeId != '' && attributeId != 'initial') {
-            itemClassName = 'elm' + this.capitalize(attributeId)
+            itemClassName = 'elm' + app.capitalize(attributeId)
         }
 
         if (typeof this.classes[typeClassName] == 'undefined') {
@@ -147,11 +147,6 @@ class Source {
         }
 
         return str
-    }
-
-    capitalize (s) {
-        if (typeof s !== 'string') return ''
-        return s.charAt(0).toUpperCase() + s.slice(1)
     }
 
     getPredefinedStyles (bodyStr) {
@@ -492,7 +487,7 @@ function setFormValue (id, value) {
         return `<html>
 <head>
     <meta charset="utf-8"/>
-    <title>${this.capitalize(app.siteName)}</title>
+    <title>${app.capitalize(app.siteName)}</title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">${fontsList}

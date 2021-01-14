@@ -8,15 +8,44 @@ let appTypeNames = [
     'carouselDots', 'carouselArrows', 'drawer', 'iconMaterial', 'mapGoogle'
 ]
 
-let appTemplateNames = [
-    'templateDivider000', 'templateDivider001', 'templateDivider002', 'templateDivider003', 'templateDivider004',
-    'templateTitle000', 'templateTitle001', 
-    'templateText000', 'templateText001', 'templateText002', 'templateText003', 'templateText004', 'templateText005', 'templateText006', 'templateText007',
-    'templateImage000', 'templateImage001', 'templateImage002', 'templateImage003', 'templateImage004', 'templateImage005',
-    'templateCards000',
-    'templatePro000', 'templatePro001', 'templatePro002', 'templatePro003', 'templatePro004', 'templatePro005',
-    'templateGrid000', 'templateMenu000', 'templateMenu001', 'templateFooter000', 'templateForm000', 'templateContact000', 'templateContact001', 'templateSite000'
-]
+let appTemplates = {
+    templateDivider000: 'Divider 64px empty',
+    templateDivider001: 'Divider 32px empty',
+    templateDivider002: 'Divider 64px lined',
+    templateDivider003: 'Divider 64px text',
+    templateDivider004: 'Divider 64px shadow',
+    templateTitle000: 'Title with subtitle',
+    templateTitle001: 'Title with subtitle in flex',
+    templateText000: 'Text sized in flex',
+    templateText001: 'Text sized in flex with background',
+    templateText002: 'Left title, right text',
+    templateText003: 'Left title, text and right hint',
+    templateText004: 'Text and right hint',
+    templateText005: '50% texts with title',
+    templateText006: '25% texts with title, flex-start',
+    templateText007: '25% texts with title, stretch',
+    templateImage000: 'Image full size',
+    templateImage001: 'Text and Polaroid picture',
+    templateImage002: 'Text and vintage picture',
+    templateImage003: 'Picture and text',
+    templateImage004: 'Picture and text with background',
+    templateImage005: 'Columns: Image, H3 and text',
+    templateCards000: 'Cards',
+    templatePro000: 'Background image, with centered texts',
+    templatePro001: 'Background fixed image, centered texts',
+    templatePro002: 'Background image, right boxed texts',
+    templatePro003: 'Background image, left boxed texts',
+    templatePro004: 'Background image, bottom boxed texts',
+    templatePro005: 'Carousel images with texts',
+    templateGrid000: 'Grid',
+    templateMenu000: 'Menu with mobile drawer',
+    templateMenu001: 'Menu sticky with mobile drawer',
+    templateFooter000: 'Footer',
+    templateForm000: 'Form with script',
+    templateContact000: 'Contact with map',
+    templateContact001: 'Contact with form',
+    templateSite000: 'Site example',
+}
 
 class App {
 
@@ -86,22 +115,42 @@ class App {
         }
     }
 
-    addTemplate (type) {
-        let obj = this.getNamedObject(type)
-        
-        // TODO: Arreglar la càrrega de templates, i tenir en compte els scripts i fonts
-        if (obj.scripts) {
-            for (let cnt = 0; cnt < obj.scripts.length; cnt = cnt + 1) {
-                app.addScript(obj.scripts[cnt])
+    loadJson (file) {
+        return new Promise((resolve, reject) => {
+            let xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    try {
+                        resolve(JSON.parse(xhttp.responseText))
+                    } catch (e) {
+                        console.error(e)
+                    }
+                    
+                }
+            };
+            xhttp.open("GET", file, true)
+            xhttp.send()
+        })
+    }
+
+    async addTemplate (type) {
+        let obj = await app.loadJson('/tool/templates/' + type + '.json')
+       
+        for (let cnt = 0; cnt < obj.elementsRoot.childs.length; cnt = cnt + 1) {
+            this.elementsRoot.addTemplate(obj.elementsRoot.childs[cnt])
+        }
+
+        for (let cnt = 0; cnt < obj.settings.googleFonts.length; cnt = cnt + 1) {
+            app.addFont(obj.settings.googleFonts[cnt])
+        }
+
+        if (obj.settings.scripts) {
+            for (let cnt = 0; cnt < obj.settings.scripts.length; cnt = cnt + 1) {
+                app.addScript(obj.settings.scripts[cnt])
             }
         }
 
-        if (this.refSelected != null) {
-            for (let cnt = 0; cnt < obj.childs.length; cnt = cnt + 1) {
-                this.refSelected.addTemplate(obj.childs[cnt])
-            }
-            app.refPreview.scrollToBottom()
-        }
+        app.refPreview.scrollToBottom()
     }
 
     duplicate () {
@@ -391,6 +440,11 @@ class App {
         
         this.scripts.splice(this.scripts.indexOf(value), 1)
         app.refSettings.setSettings(this.elementsRoot)
+    }
+
+    capitalize (s) {
+        if (typeof s !== 'string') return ''
+        return s.charAt(0).toUpperCase() + s.slice(1)
     }
 }
 

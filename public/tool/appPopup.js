@@ -143,25 +143,28 @@ class SdwToolPopup extends HTMLElement {
         divPopup.setAttribute('class', `popup`)
         this.elmRoot.appendChild(divPopup)
 
-        for (let cnt = 0; cnt < appTemplateNames.length; cnt = cnt + 1) {
+        let templateNames = Object.keys(appTemplates)
+
+        for (let cnt = 0; cnt < templateNames.length; cnt = cnt + 1) {
+            let templateName = templateNames[cnt]
             let divItem = document.createElement('div')
-            let obj = app.getNamedObject(appTemplateNames[cnt])
+
             divItem.setAttribute('class', `item`)
             divItem.addEventListener('click', (evt) => {
                 evt.stopPropagation()
-                app.addTemplate(obj.typeName)
+                app.addTemplate(templateName)
                 this.hidePopup()
             })
             divPopup.appendChild(divItem)
 
             let divItemImage = document.createElement('img')
-            divItemImage.setAttribute('src', `/tool/images/${obj.image}`)
+            divItemImage.setAttribute('src', `/tool/images/${templateName}.png`)
             divItemImage.setAttribute('width', `75`)
             divItem.appendChild(divItemImage)
 
             let divItemText = document.createElement('div')
             divItemText.setAttribute('width', `100`)
-            divItemText.innerText = obj.description
+            divItemText.innerText = appTemplates[templateName]
             divItem.appendChild(divItemText)
         }
     }
