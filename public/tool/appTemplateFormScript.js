@@ -21,4 +21,5 @@ function getValues () {
     setFormValue('formRadio1', false)
     setFormValue('formRadio2', true)
     setFormValue('formRange', 25)
+    getValues()
   }
