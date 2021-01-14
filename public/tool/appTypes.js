@@ -1055,6 +1055,23 @@ let waitSpinner = {
     childs: [ waitSpinnerMain ]
 }
 
+let waitProgressUnknown = {
+    typeName: 'waitProgressUnknown',
+    description: 'Wait progress unknown',
+    image: 'previewProgressUnknown.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'waitProgressUnknown'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [ waitSpinnerMain ]
+}
+
+
 /*
 let div = {
     description: 'Div',

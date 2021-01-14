@@ -280,6 +280,10 @@
         @keyframes spinnerDash { 0% { stroke-dasharray: 1,200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 89,200; stroke-dashoffset: -35; } 100% { stroke-dasharray: 89,200; stroke-dashoffset: -124; } }
         @keyframes spinnerColor { 100%, 0% { stroke: #4285F4; } 25% {  stroke: #DE3E35; } 50% { stroke: #F7C223; } 75% { stroke: #1DA760; } }
 
+        .waitProgressUnknown, .waitProgressUnknown:before { height: 3px; margin: 0; width: 100%; }
+        .waitProgressUnknown { background-color: #b3d4fc; display: -webkit-flex; display: flex; }
+        .waitProgressUnknown:before { animation: progressUnknownRunning 2s cubic-bezier(0.4, 0, 0.2, 1) infinite; -webkit-animation: progressUnknownRunning 2s cubic-bezier(0.4, 0, 0.2, 1) infinite; background-color: #3f51b5; content: ''; } 
+        @keyframes progressUnknownRunning { 0% { margin-left: 0px; margin-right: 100%; } 50% { margin-left: 25%; margin-right: 0%; } 100% { margin-left: 100%; margin-right: 0; } }
     </style>
     <script>
     function setCarouselDots(ref) {
