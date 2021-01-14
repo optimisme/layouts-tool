@@ -861,7 +861,7 @@ let mapGoogle = {
     ],
     phone: [],
     attributes: [
-        ['src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95904.2455614195!2d1.8755939871238607!3d41.30869667294398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49ec23b0e0697%3A0x598c8feb8d9536a9!2sPla%C3%A7a%20de%20Catalunya%2C%2008820%20El%20Prat%20de%20Llobregat%2C%20Barcelona!5e0!3m2!1sen!2ses!4v1610024954041!5m2!1sen!2ses'],
+        ['src', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.4493037886214!2d2.167108915743791!3d41.38604790404046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2f3fecaf857%3A0x3ec5c68faba42d52!2sPla%C3%A7a%20de%20Catalunya%2C%201%2C%2008002%20Barcelona!5e0!3m2!1sca!2ses!4v1610619420858!5m2!1sca!2ses'],
         ['width', '100%'],
         ['height', '100%'],
         ['frameborder', '0'],
