@@ -1,11 +1,12 @@
 {
   "settings": {
     "appVersion": 1,
-    "siteName": "templateImage001",
+    "siteName": "template",
     "backgroundColor": "white",
     "googleFonts": [
       "Dancing Script",
-      "Pacifico"
+      "Pacifico",
+      "Architects Daughter"
     ],
     "scripts": []
   },
@@ -120,6 +121,11 @@
                       [
                         "font-size",
                         "2em",
+                        true
+                      ],
+                      [
+                        "font-weight",
+                        "800",
                         true
                       ],
                       [
@@ -302,6 +308,11 @@
                         "tag": "div",
                         "text": "Achieving your goals",
                         "style": [
+                          [
+                            "font-family",
+                            "\"Architects Daughter\"",
+                            true
+                          ],
                           [
                             "font-size",
                             "1em",

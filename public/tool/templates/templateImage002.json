@@ -4,7 +4,8 @@
     "siteName": "templateImage002",
     "backgroundColor": "white",
     "googleFonts": [
-      "Dancing Script"
+      "Dancing Script",
+      "Architects Daughter"
     ],
     "scripts": []
   },
@@ -353,13 +354,13 @@
                                 true
                               ],
                               [
-                                "font-size",
-                                "1em",
+                                "font-family",
+                                "\"Architects Daughter\"",
                                 true
                               ],
                               [
-                                "font-style",
-                                "italic",
+                                "font-size",
+                                "1em",
                                 true
                               ],
                               [
