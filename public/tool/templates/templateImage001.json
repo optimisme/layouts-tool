@@ -4,7 +4,8 @@
     "siteName": "templateImage001",
     "backgroundColor": "white",
     "googleFonts": [
-      "Dancing Script"
+      "Dancing Script",
+      "Pacifico"
     ],
     "scripts": []
   },
@@ -109,16 +110,16 @@
                     "description": "H1",
                     "childsAllowed": "none",
                     "tag": "h1",
-                    "text": "The magic inside",
+                    "text": "To the infinity and beyond",
                     "style": [
                       [
-                        "font-size",
-                        "2em",
+                        "font-family",
+                        "\"Pacifico\"",
                         true
                       ],
                       [
-                        "font-weight",
-                        "800",
+                        "font-size",
+                        "2em",
                         true
                       ],
                       [

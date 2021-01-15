@@ -112,6 +112,11 @@
                     "text": "The magic inside",
                     "style": [
                       [
+                        "font-family",
+                        "\"Dancing Script\"",
+                        true
+                      ],
+                      [
                         "font-size",
                         "2em",
                         true
