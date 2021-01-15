@@ -50,6 +50,7 @@ let div = {
         ['border-top', 'initial', true],
         ['border-radius', 'initial', true],
         ['cursor', 'initial', true],
+        ['display', 'initial', true],
         ['filter', 'initial', true],
         ['height', 'max-content', true],
         //['min-height', 'initial', true],
@@ -1028,8 +1029,10 @@ let formButton = {
     ],
     phone: [],
     attributes: [
+        ['id', 'initial'],
         ['class', 'formButton'],
         ['onclick', 'initial'],
+        ['disabled', 'initial']
     ],
     script: ``,
     text: `Button`,

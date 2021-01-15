@@ -428,10 +428,10 @@ class App {
 
             this.scripts.push(value)
 
-            let linkPreview = document.createElement('script')
-            linkPreview.setAttribute('src', value)
-            linkPreview.setAttribute('type', 'text/javascript')
-            app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(linkPreview)
+            let srcScript = document.createElement('script')
+            srcScript.setAttribute('src', value)
+            srcScript.setAttribute('type', 'text/javascript')
+            app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(srcScript)
         }
 
         app.refSettings.setSettings(this.elementsRoot)
@@ -440,6 +440,16 @@ class App {
     deleteScript (value) {
         
         this.scripts.splice(this.scripts.indexOf(value), 1)
+        app.refSettings.setSettings(this.elementsRoot)
+    }
+
+    reloadScript (value) {
+
+        let srcScript = document.createElement('script')
+        srcScript.setAttribute('src', value + '?' + parseInt(Math.random() * 1000000000))
+        srcScript.setAttribute('type', 'text/javascript')
+        app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(srcScript)
+
         app.refSettings.setSettings(this.elementsRoot)
     }
 

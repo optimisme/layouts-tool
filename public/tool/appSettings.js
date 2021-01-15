@@ -140,6 +140,10 @@ class SdwToolSettings extends HTMLElement {
             flex-grow: 1;
             justify-content: center;
         }
+        .root > .rowAction > div:nth-child(2) > ion-icon {
+            cursor: pointer;
+            font-size: 1.1em;
+        }
         .root > .rowAction > div:last-child > ion-icon {
             cursor: pointer;
             font-size: 1.2em;
@@ -232,8 +236,21 @@ class SdwToolSettings extends HTMLElement {
                 scriptName.innerText = app.scripts[cnt]
                 scriptRow.appendChild(scriptName)
 
-                let divTmp = document.createElement('div')
-                scriptRow.appendChild(divTmp)
+                let divTmp0 = document.createElement('div')
+                scriptRow.appendChild(divTmp0)
+
+                    let scriptRefresh = document.createElement('ion-icon')
+                    scriptRefresh.setAttribute('name', 'refresh-outline')
+                    scriptRefresh.innerText = app.scripts[cnt]
+                    scriptRefresh.addEventListener('click', (evt) => {
+                        evt.preventDefault()
+                        evt.stopPropagation()
+                        app.reloadScript(app.scripts[cnt])
+                    })
+                    divTmp0.appendChild(scriptRefresh)
+
+                let divTmp1 = document.createElement('div')
+                scriptRow.appendChild(divTmp1)
 
                     let scriptDelete = document.createElement('ion-icon')
                     scriptDelete.setAttribute('name', 'close-outline')
@@ -243,7 +260,7 @@ class SdwToolSettings extends HTMLElement {
                         evt.stopPropagation()
                         app.deleteScript(app.scripts[cnt])
                     })
-                    divTmp.appendChild(scriptDelete)
+                    divTmp1.appendChild(scriptDelete)
         }
 
         let divRow2 = document.createElement('div')

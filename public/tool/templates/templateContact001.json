@@ -1,12 +1,14 @@
 {
   "settings": {
     "appVersion": 1,
-    "siteName": "templateContact001",
+    "siteName": "template",
     "backgroundColor": "white",
     "googleFonts": [
       "Dancing Script"
     ],
-    "scripts": []
+    "scripts": [
+      "/tool/templates/templateContact001.js"
+    ]
   },
   "elementsRoot": {
     "typeName": "body",
@@ -195,6 +197,10 @@
                           [
                             "autocomplete",
                             "off"
+                          ],
+                          [
+                            "onchange",
+                            "checkForm()"
                           ]
                         ],
                         "childs": []
@@ -266,6 +272,10 @@
                           [
                             "autocomplete",
                             "off"
+                          ],
+                          [
+                            "onchange",
+                            "checkForm()"
                           ]
                         ],
                         "childs": []
@@ -325,6 +335,10 @@
                           [
                             "placeholder",
                             "yes"
+                          ],
+                          [
+                            "onchange",
+                            "checkForm()"
                           ]
                         ],
                         "childs": []
@@ -343,52 +357,431 @@
                     ]
                   },
                   {
-                    "typeName": "divFlex",
-                    "description": "Flex",
-                    "childsAllowed": "divFlexChild",
+                    "typeName": "div",
+                    "description": "Div - boxButton",
+                    "childsAllowed": "all",
                     "tag": "div",
                     "text": "",
                     "style": [
                       [
-                        "justify-content",
-                        "center",
+                        "height",
+                        "max-content",
                         true
                       ]
                     ],
                     "phone": [],
-                    "attributes": [],
+                    "attributes": [
+                      [
+                        "id",
+                        "boxButton"
+                      ]
+                    ],
                     "childs": [
                       {
-                        "typeName": "divFlexChild",
-                        "description": "Flex child",
-                        "childsAllowed": "all",
+                        "typeName": "divFlex",
+                        "description": "Flex",
+                        "childsAllowed": "divFlexChild",
                         "tag": "div",
                         "text": "",
                         "style": [
                           [
-                            "padding",
-                            "16px 0 0 0",
+                            "justify-content",
+                            "center",
                             true
                           ]
                         ],
                         "phone": [],
-                        "attributes": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "flexButton"
+                          ]
+                        ],
                         "childs": [
                           {
-                            "typeName": "formButton",
-                            "description": "Button for forms",
-                            "childsAllowed": "none",
-                            "tag": "button",
-                            "text": "Send",
-                            "style": [],
-                            "phone": [],
-                            "attributes": [
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
                               [
-                                "class",
-                                "formButton"
+                                "padding",
+                                "16px 0 0 0",
+                                true
                               ]
                             ],
-                            "childs": []
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "formButton",
+                                "description": "Button for forms",
+                                "childsAllowed": "none",
+                                "tag": "button",
+                                "text": "Send",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "id",
+                                    "formButton"
+                                  ],
+                                  [
+                                    "class",
+                                    "formButton"
+                                  ],
+                                  [
+                                    "onclick",
+                                    "queryContact()"
+                                  ],
+                                  [
+                                    "disabled",
+                                    "true"
+                                  ]
+                                ],
+                                "childs": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - boxSpinner",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "display",
+                        "none",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "id",
+                        "boxSpinner"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "divFlex",
+                        "description": "Flex",
+                        "childsAllowed": "divFlexChild",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "justify-content",
+                            "center",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "flexButton"
+                          ]
+                        ],
+                        "childs": [
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "div",
+                                "description": "Div",
+                                "childsAllowed": "all",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "height",
+                                    "40px",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "40px",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "waitSpinner",
+                                    "description": "Wait spinner",
+                                    "childsAllowed": "none",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "class",
+                                        "waitSpinner"
+                                      ]
+                                    ],
+                                    "childs": [
+                                      {
+                                        "typeName": "waitSpinnerMain",
+                                        "description": "Spinner main",
+                                        "childsAllowed": "none",
+                                        "tag": "svg",
+                                        "text": "",
+                                        "style": [],
+                                        "phone": [],
+                                        "attributes": [
+                                          [
+                                            "viewBox",
+                                            "0 0 100 100"
+                                          ]
+                                        ],
+                                        "childs": [
+                                          {
+                                            "typeName": "waitSpinnerCircle",
+                                            "description": "Spinner circle",
+                                            "childsAllowed": "none",
+                                            "tag": "circle",
+                                            "text": "",
+                                            "style": [],
+                                            "phone": [],
+                                            "attributes": [
+                                              [
+                                                "cx",
+                                                "50"
+                                              ],
+                                              [
+                                                "cy",
+                                                "50"
+                                              ],
+                                              [
+                                                "r",
+                                                "20"
+                                              ]
+                                            ],
+                                            "childs": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - boxOk",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "display",
+                        "none",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "id",
+                        "boxOk"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "divFlex",
+                        "description": "Flex",
+                        "childsAllowed": "divFlexChild",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "justify-content",
+                            "center",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "flexButton"
+                          ]
+                        ],
+                        "childs": [
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "text",
+                                "description": "Text",
+                                "childsAllowed": "none",
+                                "tag": "div",
+                                "text": "Data sent properly",
+                                "style": [
+                                  [
+                                    "color",
+                                    "green",
+                                    true
+                                  ],
+                                  [
+                                    "font-size",
+                                    "1em",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "100%",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - boxError",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "display",
+                        "none",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "id",
+                        "boxError"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "divFlex",
+                        "description": "Flex",
+                        "childsAllowed": "divFlexChild",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "justify-content",
+                            "center",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "flexButton"
+                          ]
+                        ],
+                        "childs": [
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "text",
+                                "description": "Text",
+                                "childsAllowed": "none",
+                                "tag": "div",
+                                "text": "Error sending data",
+                                "style": [
+                                  [
+                                    "color",
+                                    "red",
+                                    true
+                                  ],
+                                  [
+                                    "font-size",
+                                    "1em",
+                                    true
+                                  ],
+                                  [
+                                    "font-weight",
+                                    "600",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "100%",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
                           }
                         ]
                       }
