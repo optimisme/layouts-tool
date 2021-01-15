@@ -17,7 +17,7 @@ async function checkForm () {
     if (refFormMail.value == '') validMail = false
     if (refFormDescription == '') validDescription = false
 
-    if (validName && validMail) {
+    if (validName && validMail && validDescription) {
         refFormButton.removeAttribute('disabled')
     } else {
         refFormButton.setAttribute('disabled', 'true')
