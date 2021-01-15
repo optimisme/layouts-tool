@@ -1,1 +1,389 @@
-{"settings":{"appVersion":1,"siteName":"templatePro000","backgroundColor":"white","googleFonts":["Dancing Script"],"scripts":[]},"elementsRoot":{"typeName":"body","description":"Body","styleName":"","childsAllowed":"all","tag":"body","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["height","500px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"imageBackground","description":"CSS background image","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["background-image","url('/tool/images/image5.jpg')",true],["background-position","center",true],["background-repeat","no-repeat",true],["background-size","cover",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"divFlexChild","tag":"div","style":[["align-items","center",true],["flex-direction","column",true],["height","100%",true],["justify-content","center",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh1","description":"H1","childsAllowed":"none","tag":"h1","style":[["color","white",true],["font-size","2em",true],["font-weight","800",true],["height","max-content",true],["padding","0",true],["text-align","center",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Transform the way you care about your customers"}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["padding","0 16px 32px 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh2","description":"H2","childsAllowed":"none","tag":"h2","style":[["color","white",true],["font-size","1.5em",true],["font-weight","300",true],["height","max-content",true],["padding","0",true],["text-align","center",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Where innovation meets humans"}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"linkBox","description":"Link box","childsAllowed":"all","tag":"a","style":[["height","max-content",true],["text-decoration","none",true],["width","max-content",true]],"phone":[["height","max-content",true],["width","max-content",true]],"attributes":[["href","/"],["target","_blank"]],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["background","darkgrey",true],["border","solid 1px white",true],["border-radius","15px",true],["height","max-content",true],["padding","8px 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["color","white",true],["font-size","1em",true],["font-weight","600",true],["height","max-content",true],["text-transform","uppercase",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Dragonfly"}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}}
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "templatePro000",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": []
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "div",
+        "description": "Div",
+        "childsAllowed": "all",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "height",
+            "500px",
+            true
+          ]
+        ],
+        "phone": [],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "imageBackground",
+            "description": "CSS background image",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "background",
+                "lightgrey",
+                true
+              ],
+              [
+                "background-image",
+                "url('/tool/images/image5.jpg')",
+                true
+              ],
+              [
+                "background-position",
+                "center",
+                true
+              ],
+              [
+                "background-repeat",
+                "no-repeat",
+                true
+              ],
+              [
+                "background-size",
+                "cover",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "divFlex",
+                "description": "Flex",
+                "childsAllowed": "divFlexChild",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "align-items",
+                    "center",
+                    true
+                  ],
+                  [
+                    "flex-direction",
+                    "column",
+                    true
+                  ],
+                  [
+                    "height",
+                    "100%",
+                    true
+                  ],
+                  [
+                    "justify-content",
+                    "center",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "padding",
+                        "0 16px",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "titleh1",
+                        "description": "H1",
+                        "childsAllowed": "none",
+                        "tag": "h1",
+                        "text": "Transform the way you care about your customers",
+                        "style": [
+                          [
+                            "color",
+                            "white",
+                            true
+                          ],
+                          [
+                            "font-size",
+                            "2em",
+                            true
+                          ],
+                          [
+                            "font-weight",
+                            "800",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "0",
+                            true
+                          ],
+                          [
+                            "text-align",
+                            "center",
+                            true
+                          ],
+                          [
+                            "width",
+                            "100%",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "padding",
+                        "0 16px 32px 16px",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "titleh2",
+                        "description": "H2",
+                        "childsAllowed": "none",
+                        "tag": "h2",
+                        "text": "Where innovation meets humans",
+                        "style": [
+                          [
+                            "color",
+                            "white",
+                            true
+                          ],
+                          [
+                            "font-size",
+                            "1.5em",
+                            true
+                          ],
+                          [
+                            "font-weight",
+                            "300",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "0",
+                            true
+                          ],
+                          [
+                            "text-align",
+                            "center",
+                            true
+                          ],
+                          [
+                            "width",
+                            "100%",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "padding",
+                        "0 16px",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "linkBox",
+                        "description": "Link box",
+                        "childsAllowed": "all",
+                        "tag": "a",
+                        "text": "",
+                        "style": [
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "text-decoration",
+                            "none",
+                            true
+                          ],
+                          [
+                            "width",
+                            "max-content",
+                            true
+                          ]
+                        ],
+                        "phone": [
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "width",
+                            "max-content",
+                            true
+                          ]
+                        ],
+                        "attributes": [
+                          [
+                            "href",
+                            "/"
+                          ],
+                          [
+                            "target",
+                            "_blank"
+                          ]
+                        ],
+                        "childs": [
+                          {
+                            "typeName": "div",
+                            "description": "Div",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "background",
+                                "darkgrey",
+                                true
+                              ],
+                              [
+                                "border",
+                                "solid 1px white",
+                                true
+                              ],
+                              [
+                                "border-radius",
+                                "15px",
+                                true
+                              ],
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ],
+                              [
+                                "padding",
+                                "8px 16px",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "text",
+                                "description": "Text",
+                                "childsAllowed": "none",
+                                "tag": "div",
+                                "text": "Dragonfly",
+                                "style": [
+                                  [
+                                    "color",
+                                    "white",
+                                    true
+                                  ],
+                                  [
+                                    "font-size",
+                                    "1em",
+                                    true
+                                  ],
+                                  [
+                                    "font-weight",
+                                    "600",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "text-transform",
+                                    "uppercase",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "100%",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

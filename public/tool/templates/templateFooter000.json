@@ -1,1 +1,1009 @@
-{"settings":{"appVersion":1,"siteName":"templateFooter000","backgroundColor":"white","googleFonts":["Dancing Script"],"scripts":[]},"elementsRoot":{"typeName":"body","description":"Body","styleName":"","childsAllowed":"all","tag":"body","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div - Footer","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["height","max-content",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divAutocenter","description":"Autocentered div","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"divFlexChild","tag":"div","style":[["justify-content","center",true],["padding","16px 0",true]],"phone":[["align-items","center",true],["flex-direction","column",true]],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child - Logo","childsAllowed":"all","tag":"div","style":[["align-items","center",true],["flex-direction","column",true],["justify-content","center",true],["padding","0 36px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"iconMaterial","description":"Icon from material components","childsAllowed":"none","tag":"span","style":[["color","white",true],["font-size","3em",true]],"phone":[],"attributes":[["class","material-icons"]],"childs":[],"text":"storefront"},{"typeName":"titleh1","description":"H1","childsAllowed":"none","tag":"h1","style":[["color","white",true],["font-size","2em",true],["font-weight","800",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Marmot"}],"text":""},{"typeName":"divFlexChild","description":"Flex child - Explore","childsAllowed":"all","tag":"div","style":[["padding","0 36px",true]],"phone":[["min-width","50%",true],["padding","16px 24px",true]],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border-left","solid 1px white",true],["height","max-content",true],["padding","0 0 0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"divFlexChild","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["flex-direction","column",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh3","description":"H3","childsAllowed":"none","tag":"h3","style":[["color","white",true],["font-size","1.25em",true],["font-weight","600",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Explore"},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","24px",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"linkInline","description":"Inline link - Home","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"Home"},{"typeName":"linkInline","description":"Inline link - About","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"About"},{"typeName":"linkInline","description":"Inline link - Careers","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"Careers"},{"typeName":"linkInline","description":"Inline link - Store","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"Store"}],"text":""}],"text":""}],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child - Follow","childsAllowed":"all","tag":"div","style":[["flex-direction","column",true],["padding","0 36px",true]],"phone":[["min-width","50%",true],["padding","16px 24px",true]],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border-left","solid 1px white",true],["height","max-content",true],["padding","0 0 0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"divFlexChild","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["flex-direction","column",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh3","description":"H3","childsAllowed":"none","tag":"h3","style":[["color","white",true],["font-size","1.25em",true],["font-weight","600",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Explore"},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","24px",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"linkInline","description":"Inline link - Instagram","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"Instagram"},{"typeName":"linkInline","description":"Inline link - Twitter","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"Twitter"},{"typeName":"linkInline","description":"Inline link - LinkedIn","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"LinkedIn"},{"typeName":"linkInline","description":"Inline link - Store","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"Store"}],"text":""}],"text":""}],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child - Follow","childsAllowed":"all","tag":"div","style":[["flex-direction","column",true],["padding","0 36px",true]],"phone":[["min-width","50%",true],["padding","16px 24px",true]],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border-left","solid 1px white",true],["height","max-content",true],["padding","0 0 0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"divFlexChild","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["flex-direction","column",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh3","description":"H3","childsAllowed":"none","tag":"h3","style":[["color","white",true],["font-size","1.25em",true],["font-weight","600",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Legal"},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","24px",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"linkInline","description":"Inline link - Terms","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"Terms"},{"typeName":"linkInline","description":"Inline link - Privacy","childsAllowed":"none","tag":"a","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["text-decoration","none",true]],"phone":[],"attributes":[["href","/"],["target","_blank"]],"childs":[],"text":"Privacy"}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}}
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "templateFooter000",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": []
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "div",
+        "description": "Div - Footer",
+        "childsAllowed": "all",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "background",
+            "lightgrey",
+            true
+          ],
+          [
+            "height",
+            "max-content",
+            true
+          ]
+        ],
+        "phone": [],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "divAutocenter",
+            "description": "Autocentered div",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "padding",
+                "0 16px",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "divFlex",
+                "description": "Flex",
+                "childsAllowed": "divFlexChild",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "justify-content",
+                    "center",
+                    true
+                  ],
+                  [
+                    "padding",
+                    "16px 0",
+                    true
+                  ]
+                ],
+                "phone": [
+                  [
+                    "align-items",
+                    "center",
+                    true
+                  ],
+                  [
+                    "flex-direction",
+                    "column",
+                    true
+                  ]
+                ],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child - Logo",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "align-items",
+                        "center",
+                        true
+                      ],
+                      [
+                        "flex-direction",
+                        "column",
+                        true
+                      ],
+                      [
+                        "justify-content",
+                        "center",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 36px",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "iconMaterial",
+                        "description": "Icon from material components",
+                        "childsAllowed": "none",
+                        "tag": "span",
+                        "text": "storefront",
+                        "style": [
+                          [
+                            "color",
+                            "white",
+                            true
+                          ],
+                          [
+                            "font-size",
+                            "3em",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "class",
+                            "material-icons"
+                          ]
+                        ],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "titleh1",
+                        "description": "H1",
+                        "childsAllowed": "none",
+                        "tag": "h1",
+                        "text": "Marmot",
+                        "style": [
+                          [
+                            "color",
+                            "white",
+                            true
+                          ],
+                          [
+                            "font-size",
+                            "2em",
+                            true
+                          ],
+                          [
+                            "font-weight",
+                            "800",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "0",
+                            true
+                          ],
+                          [
+                            "width",
+                            "100%",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child - Explore",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "padding",
+                        "0 36px",
+                        true
+                      ]
+                    ],
+                    "phone": [
+                      [
+                        "min-width",
+                        "50%",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "16px 24px",
+                        true
+                      ]
+                    ],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "div",
+                        "description": "Div",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "border-left",
+                            "solid 1px white",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "0 0 0 16px",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "divFlex",
+                            "description": "Flex",
+                            "childsAllowed": "divFlexChild",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "divFlexChild",
+                                "description": "Flex child",
+                                "childsAllowed": "all",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "flex-direction",
+                                    "column",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "titleh3",
+                                    "description": "H3",
+                                    "childsAllowed": "none",
+                                    "tag": "h3",
+                                    "text": "Explore",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "white",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1.25em",
+                                        true
+                                      ],
+                                      [
+                                        "font-weight",
+                                        "600",
+                                        true
+                                      ],
+                                      [
+                                        "height",
+                                        "max-content",
+                                        true
+                                      ],
+                                      [
+                                        "padding",
+                                        "0",
+                                        true
+                                      ],
+                                      [
+                                        "width",
+                                        "100%",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "div",
+                                    "description": "Div - Separator",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [
+                                      [
+                                        "height",
+                                        "24px",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - Home",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "Home",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - About",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "About",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - Careers",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "Careers",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - Store",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "Store",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child - Follow",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "flex-direction",
+                        "column",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 36px",
+                        true
+                      ]
+                    ],
+                    "phone": [
+                      [
+                        "min-width",
+                        "50%",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "16px 24px",
+                        true
+                      ]
+                    ],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "div",
+                        "description": "Div",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "border-left",
+                            "solid 1px white",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "0 0 0 16px",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "divFlex",
+                            "description": "Flex",
+                            "childsAllowed": "divFlexChild",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "divFlexChild",
+                                "description": "Flex child",
+                                "childsAllowed": "all",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "flex-direction",
+                                    "column",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "titleh3",
+                                    "description": "H3",
+                                    "childsAllowed": "none",
+                                    "tag": "h3",
+                                    "text": "Explore",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "white",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1.25em",
+                                        true
+                                      ],
+                                      [
+                                        "font-weight",
+                                        "600",
+                                        true
+                                      ],
+                                      [
+                                        "height",
+                                        "max-content",
+                                        true
+                                      ],
+                                      [
+                                        "padding",
+                                        "0",
+                                        true
+                                      ],
+                                      [
+                                        "width",
+                                        "100%",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "div",
+                                    "description": "Div - Separator",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [
+                                      [
+                                        "height",
+                                        "24px",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - Instagram",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "Instagram",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - Twitter",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "Twitter",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - LinkedIn",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "LinkedIn",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - Store",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "Store",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child - Follow",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "flex-direction",
+                        "column",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 36px",
+                        true
+                      ]
+                    ],
+                    "phone": [
+                      [
+                        "min-width",
+                        "50%",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "16px 24px",
+                        true
+                      ]
+                    ],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "div",
+                        "description": "Div",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "border-left",
+                            "solid 1px white",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "0 0 0 16px",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "divFlex",
+                            "description": "Flex",
+                            "childsAllowed": "divFlexChild",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "divFlexChild",
+                                "description": "Flex child",
+                                "childsAllowed": "all",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "flex-direction",
+                                    "column",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "titleh3",
+                                    "description": "H3",
+                                    "childsAllowed": "none",
+                                    "tag": "h3",
+                                    "text": "Legal",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "white",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1.25em",
+                                        true
+                                      ],
+                                      [
+                                        "font-weight",
+                                        "600",
+                                        true
+                                      ],
+                                      [
+                                        "height",
+                                        "max-content",
+                                        true
+                                      ],
+                                      [
+                                        "padding",
+                                        "0",
+                                        true
+                                      ],
+                                      [
+                                        "width",
+                                        "100%",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "div",
+                                    "description": "Div - Separator",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [
+                                      [
+                                        "height",
+                                        "24px",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - Terms",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "Terms",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  },
+                                  {
+                                    "typeName": "linkInline",
+                                    "description": "Inline link - Privacy",
+                                    "childsAllowed": "none",
+                                    "tag": "a",
+                                    "text": "Privacy",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "rgb(0, 150, 255)",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "1em",
+                                        true
+                                      ],
+                                      [
+                                        "text-decoration",
+                                        "none",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "href",
+                                        "/"
+                                      ],
+                                      [
+                                        "target",
+                                        "_blank"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

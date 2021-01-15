@@ -12,10 +12,10 @@ class AppElement {
         this.childsAllowed = 'all'
 
         this.tag = 'div'
+        this.text = ''
         this.style = []
         this.phone = []
         this.attributes = []
-        this.text = ''
         this.childs = []
 
         this.refList = null
@@ -44,11 +44,11 @@ class AppElement {
             styleName: this.styleName,
             childsAllowed: this.childsAllowed,
             tag: this.tag,
+            text: this.text,
             style: JSON.parse(JSON.stringify(this.style.filter((x) => { return x[1] != 'initial' && x[2] != false }))),
             phone: JSON.parse(JSON.stringify(this.phone.filter((x) => { return x[1] != 'initial' && x[2] != false }))),
             attributes: JSON.parse(JSON.stringify(this.attributes.filter((x) => { return x[1] != 'initial' && x[2] != false }))),
-            childs: this.childs.map((x)=>{ return JSON.parse(x.toString()) }),
-            text: this.text
+            childs: this.childs.map((x)=>{ return JSON.parse(x.toString()) })
         }
 
         return JSON.stringify(obj)

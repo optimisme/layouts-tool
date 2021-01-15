@@ -320,7 +320,7 @@ class App {
             elementsRoot: JSON.parse(app.elementsRoot.toString())
         }
 
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(obj)));
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(obj, null, 2)));
         element.setAttribute('download', app.siteName + '.json');
       
         element.style.display = 'none';

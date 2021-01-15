@@ -1,1 +1,87 @@
-{"settings":{"appVersion":1,"siteName":"templateDivider002","backgroundColor":"white","googleFonts":["Dancing Script"],"scripts":[]},"elementsRoot":{"typeName":"body","description":"Body","styleName":"","childsAllowed":"all","tag":"body","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divAutocenter","description":"Autocentered div","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["height","64px",true],["padding","32px 0 0 0",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["border-bottom","solid 1px lightgrey",true],["height","max-content",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""}],"text":""}],"text":""}}
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "templateDivider002",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": []
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "divAutocenter",
+        "description": "Autocentered div",
+        "childsAllowed": "all",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "padding",
+            "0 16px",
+            true
+          ]
+        ],
+        "phone": [],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "div",
+            "description": "Div",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "height",
+                "64px",
+                true
+              ],
+              [
+                "padding",
+                "32px 0 0 0",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "div",
+                "description": "Div",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "border-bottom",
+                    "solid 1px lightgrey",
+                    true
+                  ],
+                  [
+                    "height",
+                    "max-content",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,1 +1,215 @@
-{"settings":{"appVersion":1,"siteName":"templateDivider003","backgroundColor":"white","googleFonts":["Dancing Script"],"scripts":[]},"elementsRoot":{"typeName":"body","description":"Body","styleName":"","childsAllowed":"all","tag":"body","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divAutocenter","description":"Autocentered div","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"flex","tag":"div","style":[["align-items","center",true],["height","64px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["flex-grow","1",true],["padding","0 16px 0 0",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["background","linear-gradient(270deg, rgba(196,196,196,1) 0%, rgba(255,255,255,0) 100%)",true],["height","1px",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["max-width","75%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"textEllipsis","description":"Text ellipsis","childsAllowed":"none","tag":"div","style":[["color","darkgrey",true],["font-size","1em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Enjoy teamworking"}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["flex-grow","1",true],["padding","0 0 0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["background","linear-gradient(90deg, rgba(196,196,196,1) 0%, rgba(255,255,255,0) 100%)",true],["height","1px",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}}
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "templateDivider003",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": []
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "divAutocenter",
+        "description": "Autocentered div",
+        "childsAllowed": "all",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "padding",
+            "0 16px",
+            true
+          ]
+        ],
+        "phone": [],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "divFlex",
+            "description": "Flex",
+            "childsAllowed": "flex",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "align-items",
+                "center",
+                true
+              ],
+              [
+                "height",
+                "64px",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "divFlexChild",
+                "description": "Flex child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "flex-grow",
+                    "1",
+                    true
+                  ],
+                  [
+                    "padding",
+                    "0 16px 0 0",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "div",
+                    "description": "Div",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "background",
+                        "linear-gradient(270deg, rgba(196,196,196,1) 0%, rgba(255,255,255,0) 100%)",
+                        true
+                      ],
+                      [
+                        "height",
+                        "1px",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divFlexChild",
+                "description": "Flex child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "max-width",
+                    "75%",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "textEllipsis",
+                    "description": "Text ellipsis",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "Enjoy teamworking",
+                    "style": [
+                      [
+                        "color",
+                        "darkgrey",
+                        true
+                      ],
+                      [
+                        "font-size",
+                        "1em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divFlexChild",
+                "description": "Flex child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "flex-grow",
+                    "1",
+                    true
+                  ],
+                  [
+                    "padding",
+                    "0 0 0 16px",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "div",
+                    "description": "Div",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "background",
+                        "linear-gradient(90deg, rgba(196,196,196,1) 0%, rgba(255,255,255,0) 100%)",
+                        true
+                      ],
+                      [
+                        "height",
+                        "1px",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

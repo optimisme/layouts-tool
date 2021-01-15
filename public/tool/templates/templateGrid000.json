@@ -1,1 +1,652 @@
-{"settings":{"appVersion":1,"siteName":"templateGrid000","backgroundColor":"white","googleFonts":["Dancing Script"],"scripts":[]},"elementsRoot":{"typeName":"body","description":"Body","styleName":"","childsAllowed":"all","tag":"body","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divAutocenter","description":"Autocentered div","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divGrid","description":"Grid","childsAllowed":"divGridChild","tag":"div","style":[["grid-template-columns","25% 25% 25% 25%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[["grid-column-start","1",true],["grid-column-end","5",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh2","description":"H2","childsAllowed":"none","tag":"h2","style":[["font-size","1.5em",true],["font-weight","300",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Table"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[["border-bottom","solid 1px lightgrey",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh3","description":"H3","childsAllowed":"none","tag":"h3","style":[["font-size","1em",true],["font-weight","600",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Col 1"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[["border-bottom","solid 1px lightgrey",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh3","description":"H3","childsAllowed":"none","tag":"h3","style":[["font-size","1em",true],["font-weight","600",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Col 2"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[["border-bottom","solid 1px lightgrey",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh3","description":"H3","childsAllowed":"none","tag":"h3","style":[["font-size","1em",true],["font-weight","600",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Col 3"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[["border-bottom","solid 1px lightgrey",true]],"phone":[],"attributes":[],"childs":[{"typeName":"titleh3","description":"H3","childsAllowed":"none","tag":"h3","style":[["font-size","1em",true],["font-weight","600",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Col 4"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","0.95em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Salmon"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","0.95em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Haddock"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","0.95em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Dragonfly"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","0.95em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Crocodile"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","0.95em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Hyena"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","0.95em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Tortoise"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","0.95em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Beetle"}],"text":""},{"typeName":"divGridChild","description":"Grid child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","0.95em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Albatross"}],"text":""}],"text":""}],"text":""}],"text":""}}
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "templateGrid000",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": []
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "divAutocenter",
+        "description": "Autocentered div",
+        "childsAllowed": "all",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "padding",
+            "0 16px",
+            true
+          ]
+        ],
+        "phone": [],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "divGrid",
+            "description": "Grid",
+            "childsAllowed": "divGridChild",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "grid-template-columns",
+                "25% 25% 25% 25%",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "grid-column-start",
+                    "1",
+                    true
+                  ],
+                  [
+                    "grid-column-end",
+                    "5",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "titleh2",
+                    "description": "H2",
+                    "childsAllowed": "none",
+                    "tag": "h2",
+                    "text": "Table",
+                    "style": [
+                      [
+                        "font-size",
+                        "1.5em",
+                        true
+                      ],
+                      [
+                        "font-weight",
+                        "300",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "border-bottom",
+                    "solid 1px lightgrey",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "titleh3",
+                    "description": "H3",
+                    "childsAllowed": "none",
+                    "tag": "h3",
+                    "text": "Col 1",
+                    "style": [
+                      [
+                        "font-size",
+                        "1em",
+                        true
+                      ],
+                      [
+                        "font-weight",
+                        "600",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "border-bottom",
+                    "solid 1px lightgrey",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "titleh3",
+                    "description": "H3",
+                    "childsAllowed": "none",
+                    "tag": "h3",
+                    "text": "Col 2",
+                    "style": [
+                      [
+                        "font-size",
+                        "1em",
+                        true
+                      ],
+                      [
+                        "font-weight",
+                        "600",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "border-bottom",
+                    "solid 1px lightgrey",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "titleh3",
+                    "description": "H3",
+                    "childsAllowed": "none",
+                    "tag": "h3",
+                    "text": "Col 3",
+                    "style": [
+                      [
+                        "font-size",
+                        "1em",
+                        true
+                      ],
+                      [
+                        "font-weight",
+                        "600",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "border-bottom",
+                    "solid 1px lightgrey",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "titleh3",
+                    "description": "H3",
+                    "childsAllowed": "none",
+                    "tag": "h3",
+                    "text": "Col 4",
+                    "style": [
+                      [
+                        "font-size",
+                        "1em",
+                        true
+                      ],
+                      [
+                        "font-weight",
+                        "600",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "text",
+                    "description": "Text",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "Salmon",
+                    "style": [
+                      [
+                        "font-size",
+                        "0.95em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "text",
+                    "description": "Text",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "Haddock",
+                    "style": [
+                      [
+                        "font-size",
+                        "0.95em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "text",
+                    "description": "Text",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "Dragonfly",
+                    "style": [
+                      [
+                        "font-size",
+                        "0.95em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "text",
+                    "description": "Text",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "Crocodile",
+                    "style": [
+                      [
+                        "font-size",
+                        "0.95em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "text",
+                    "description": "Text",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "Hyena",
+                    "style": [
+                      [
+                        "font-size",
+                        "0.95em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "text",
+                    "description": "Text",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "Tortoise",
+                    "style": [
+                      [
+                        "font-size",
+                        "0.95em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "text",
+                    "description": "Text",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "Beetle",
+                    "style": [
+                      [
+                        "font-size",
+                        "0.95em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              },
+              {
+                "typeName": "divGridChild",
+                "description": "Grid child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "text",
+                    "description": "Text",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "Albatross",
+                    "style": [
+                      [
+                        "font-size",
+                        "0.95em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,1 +1,1010 @@
-{"settings":{"appVersion":1,"siteName":"template","backgroundColor":"white","googleFonts":["Dancing Script"],"scripts":["/tool/templates/templateForm000.js"]},"elementsRoot":{"typeName":"body","description":"Body","styleName":"","childsAllowed":"all","tag":"body","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divAutocenter","description":"Autocentered div","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex - Form","childsAllowed":"divFlexChild","tag":"div","style":[["justify-content","center",true],["padding","0 0 8px 0",true]],"phone":[["flex-direction","column",true]],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["flex-direction","column",true],["min-width","50%",true],["max-width","50%",true],["padding","24px 8px 0 0",true]],"phone":[["justify-content","center",true],["min-width","100%",true],["max-width","100%",true],["padding","16px 0",true]],"attributes":[],"childs":[{"typeName":"formInputText","description":"Input text with pattern validation","childsAllowed":"none","tag":"div","style":[],"phone":[],"attributes":[["class","formInputText"]],"childs":[{"typeName":"formInputTextField","description":"Input text","childsAllowed":"none","tag":"input","style":[],"phone":[],"attributes":[["id","formText"],["type","text"],["placeholder","yes"],["pattern","[^0-9]*"],["autocomplete","off"]],"childs":[],"text":""},{"typeName":"formInputTextLabel","description":"Label","childsAllowed":"none","tag":"label","style":[],"phone":[],"attributes":[],"childs":[],"text":"Name"},{"typeName":"formInputTextSpan","description":"Error message","childsAllowed":"none","tag":"span","style":[],"phone":[],"attributes":[],"childs":[],"text":"Numbers are not allowed"}],"text":""},{"typeName":"formInputSelect","description":"Select options","childsAllowed":"none","tag":"div","style":[],"phone":[],"attributes":[["class","formSelect"]],"childs":[{"typeName":"formInputSelectMain","description":"Select main","childsAllowed":"formInputSelectOption","tag":"select","style":[],"phone":[],"attributes":[["id","formSelect"],["required","false"]],"childs":[{"typeName":"formInputSelectEmpty","description":"Select option empty","childsAllowed":"none","tag":"option","style":[],"phone":[],"attributes":[["value",""]],"childs":[],"text":""},{"typeName":"formInputSelectOption","description":"Select option","childsAllowed":"none","tag":"option","style":[],"phone":[],"attributes":[],"childs":[],"text":"Hola"},{"typeName":"formInputSelectOption","description":"Select option","childsAllowed":"none","tag":"option","style":[],"phone":[],"attributes":[],"childs":[],"text":"Adeu"}],"text":""},{"typeName":"formInputSelectHighlight","description":"Select highlight","childsAllowed":"none","tag":"span","style":[],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"formInputSelectBar","description":"Select bar","childsAllowed":"none","tag":"span","style":[],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"formInputSelectLabel","description":"Label","childsAllowed":"none","tag":"label","style":[],"phone":[],"attributes":[],"childs":[],"text":"Select"}],"text":""},{"typeName":"formInputTextarea","description":"Input textarea","childsAllowed":"none","tag":"div","style":[],"phone":[],"attributes":[["class","formInputTextarea"]],"childs":[{"typeName":"formInputTextareaField","description":"Input textarea","childsAllowed":"none","tag":"textarea","style":[],"phone":[],"attributes":[["id","formArea"],["placeholder","yes"]],"childs":[],"text":""},{"typeName":"formInputTextareaLabel","description":"Label","childsAllowed":"none","tag":"label","style":[],"phone":[],"attributes":[],"childs":[],"text":"Description"}],"text":""},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","0 0 8px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"formInputCheckbox","description":"Checkbox","childsAllowed":"none","tag":"label","style":[],"phone":[],"attributes":[["class","formCheckbox"]],"childs":[{"typeName":"formInputCheckboxMain","description":"Checkbox main","childsAllowed":"none","tag":"input","style":[],"phone":[],"attributes":[["id","formCheck1"],["value","c1"],["checked","true"],["type","checkbox"]],"childs":[],"text":""},{"typeName":"formInputCheckboxSpan","description":"Checkbox span","childsAllowed":"none","tag":"span","style":[],"phone":[],"attributes":[],"childs":[],"text":"Checkbox 1"}],"text":""},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","0 0 8px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"formInputCheckbox","description":"Checkbox","childsAllowed":"none","tag":"label","style":[],"phone":[],"attributes":[["class","formCheckbox"]],"childs":[{"typeName":"formInputCheckboxMain","description":"Checkbox main","childsAllowed":"none","tag":"input","style":[],"phone":[],"attributes":[["id","formCheck2"],["value","c2"],["type","checkbox"]],"childs":[],"text":""},{"typeName":"formInputCheckboxSpan","description":"Checkbox span","childsAllowed":"none","tag":"span","style":[],"phone":[],"attributes":[],"childs":[],"text":"Checkbox 2"}],"text":""},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","0 0 8px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"formInputRadio","description":"Radio","childsAllowed":"none","tag":"label","style":[],"phone":[],"attributes":[["class","formRadio"]],"childs":[{"typeName":"formInputRadioMain","description":"Radio main","childsAllowed":"none","tag":"input","style":[],"phone":[],"attributes":[["id","formRadio1"],["value","r1"],["name","groupRadio"],["type","radio"]],"childs":[],"text":""},{"typeName":"formInputRadioSpan","description":"Radio span","childsAllowed":"none","tag":"span","style":[],"phone":[],"attributes":[],"childs":[],"text":"Radio 1"}],"text":""},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","0 0 8px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"formInputRadio","description":"Radio","childsAllowed":"none","tag":"label","style":[],"phone":[],"attributes":[["class","formRadio"]],"childs":[{"typeName":"formInputRadioMain","description":"Radio main","childsAllowed":"none","tag":"input","style":[],"phone":[],"attributes":[["id","formRadio2"],["value","r2"],["name","groupRadio"],["type","radio"]],"childs":[],"text":""},{"typeName":"formInputRadioSpan","description":"Radio span","childsAllowed":"none","tag":"span","style":[],"phone":[],"attributes":[],"childs":[],"text":"Radio 2"}],"text":""},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","0 0 8px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"divFlex","description":"Flex - Range & Value","childsAllowed":"divFlexChild","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["min-width","75%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"formInputRange","description":"Range slider","childsAllowed":"none","tag":"label","style":[],"phone":[],"attributes":[["class","formRange"]],"childs":[{"typeName":"formInputRangeMain","description":"Range main","childsAllowed":"none","tag":"input","style":[],"phone":[],"attributes":[["id","formRange"],["min","0"],["max","100"],["type","range"],["oninput","setSliderValue(this)"]],"childs":[],"text":""},{"typeName":"formInputRangeSpan","description":"Range span","childsAllowed":"none","tag":"span","style":[],"phone":[],"attributes":[],"childs":[],"text":"Percentage"}],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["align-items","center",true],["min-width","25%",true]],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","1em",true],["height","max-content",true],["text-align","center",true],["width","100%",true]],"phone":[],"attributes":[["id","sliderValue"]],"childs":[],"text":"50%"}],"text":""}],"text":""},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","0 0 8px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"formButton","description":"Button set","childsAllowed":"none","tag":"button","style":[],"phone":[],"attributes":[["class","formButton"],["onclick","setValues()"]],"childs":[],"text":"Set values"},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","0 0 8px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"formButton","description":"Button get","childsAllowed":"none","tag":"button","style":[],"phone":[],"attributes":[["class","formButton"],["onclick","getValues()"]],"childs":[],"text":"Get values"},{"typeName":"div","description":"Div - Separator","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","0 0 16px 0",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"titleh3","description":"H3","childsAllowed":"none","tag":"h3","style":[["font-size","1.25em",true],["font-weight","600",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Form data:"},{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","1em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[["id","formResult"]],"childs":[],"text":" "}],"text":""}],"text":""}],"text":""}],"text":""}}
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "templateForm000",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": [
+      "/tool/templates/templateForm000.js"
+    ]
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "divAutocenter",
+        "description": "Autocentered div",
+        "childsAllowed": "all",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "padding",
+            "0 16px",
+            true
+          ]
+        ],
+        "phone": [],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "divFlex",
+            "description": "Flex - Form",
+            "childsAllowed": "divFlexChild",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "justify-content",
+                "center",
+                true
+              ],
+              [
+                "padding",
+                "0 0 8px 0",
+                true
+              ]
+            ],
+            "phone": [
+              [
+                "flex-direction",
+                "column",
+                true
+              ]
+            ],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "divFlexChild",
+                "description": "Flex child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "flex-direction",
+                    "column",
+                    true
+                  ],
+                  [
+                    "min-width",
+                    "50%",
+                    true
+                  ],
+                  [
+                    "max-width",
+                    "50%",
+                    true
+                  ],
+                  [
+                    "padding",
+                    "24px 8px 0 0",
+                    true
+                  ]
+                ],
+                "phone": [
+                  [
+                    "justify-content",
+                    "center",
+                    true
+                  ],
+                  [
+                    "min-width",
+                    "100%",
+                    true
+                  ],
+                  [
+                    "max-width",
+                    "100%",
+                    true
+                  ],
+                  [
+                    "padding",
+                    "16px 0",
+                    true
+                  ]
+                ],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "formInputText",
+                    "description": "Input text with pattern validation",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formInputText"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "formInputTextField",
+                        "description": "Input text",
+                        "childsAllowed": "none",
+                        "tag": "input",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "formText"
+                          ],
+                          [
+                            "type",
+                            "text"
+                          ],
+                          [
+                            "placeholder",
+                            "yes"
+                          ],
+                          [
+                            "pattern",
+                            "[^0-9]*"
+                          ],
+                          [
+                            "autocomplete",
+                            "off"
+                          ]
+                        ],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "formInputTextLabel",
+                        "description": "Label",
+                        "childsAllowed": "none",
+                        "tag": "label",
+                        "text": "Name",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "formInputTextSpan",
+                        "description": "Error message",
+                        "childsAllowed": "none",
+                        "tag": "span",
+                        "text": "Numbers are not allowed",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "formInputSelect",
+                    "description": "Select options",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formSelect"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "formInputSelectMain",
+                        "description": "Select main",
+                        "childsAllowed": "formInputSelectOption",
+                        "tag": "select",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "formSelect"
+                          ],
+                          [
+                            "required",
+                            "false"
+                          ]
+                        ],
+                        "childs": [
+                          {
+                            "typeName": "formInputSelectEmpty",
+                            "description": "Select option empty",
+                            "childsAllowed": "none",
+                            "tag": "option",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "value",
+                                ""
+                              ]
+                            ],
+                            "childs": []
+                          },
+                          {
+                            "typeName": "formInputSelectOption",
+                            "description": "Select option",
+                            "childsAllowed": "none",
+                            "tag": "option",
+                            "text": "Hola",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": []
+                          },
+                          {
+                            "typeName": "formInputSelectOption",
+                            "description": "Select option",
+                            "childsAllowed": "none",
+                            "tag": "option",
+                            "text": "Adeu",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": []
+                          }
+                        ]
+                      },
+                      {
+                        "typeName": "formInputSelectHighlight",
+                        "description": "Select highlight",
+                        "childsAllowed": "none",
+                        "tag": "span",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "formInputSelectBar",
+                        "description": "Select bar",
+                        "childsAllowed": "none",
+                        "tag": "span",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "formInputSelectLabel",
+                        "description": "Label",
+                        "childsAllowed": "none",
+                        "tag": "label",
+                        "text": "Select",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "formInputTextarea",
+                    "description": "Input textarea",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": "",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formInputTextarea"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "formInputTextareaField",
+                        "description": "Input textarea",
+                        "childsAllowed": "none",
+                        "tag": "textarea",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "formArea"
+                          ],
+                          [
+                            "placeholder",
+                            "yes"
+                          ]
+                        ],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "formInputTextareaLabel",
+                        "description": "Label",
+                        "childsAllowed": "none",
+                        "tag": "label",
+                        "text": "Description",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - Separator",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 0 8px 0",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "formInputCheckbox",
+                    "description": "Checkbox",
+                    "childsAllowed": "none",
+                    "tag": "label",
+                    "text": "",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formCheckbox"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "formInputCheckboxMain",
+                        "description": "Checkbox main",
+                        "childsAllowed": "none",
+                        "tag": "input",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "formCheck1"
+                          ],
+                          [
+                            "value",
+                            "c1"
+                          ],
+                          [
+                            "checked",
+                            "true"
+                          ],
+                          [
+                            "type",
+                            "checkbox"
+                          ]
+                        ],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "formInputCheckboxSpan",
+                        "description": "Checkbox span",
+                        "childsAllowed": "none",
+                        "tag": "span",
+                        "text": "Checkbox 1",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - Separator",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 0 8px 0",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "formInputCheckbox",
+                    "description": "Checkbox",
+                    "childsAllowed": "none",
+                    "tag": "label",
+                    "text": "",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formCheckbox"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "formInputCheckboxMain",
+                        "description": "Checkbox main",
+                        "childsAllowed": "none",
+                        "tag": "input",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "formCheck2"
+                          ],
+                          [
+                            "value",
+                            "c2"
+                          ],
+                          [
+                            "type",
+                            "checkbox"
+                          ]
+                        ],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "formInputCheckboxSpan",
+                        "description": "Checkbox span",
+                        "childsAllowed": "none",
+                        "tag": "span",
+                        "text": "Checkbox 2",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - Separator",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 0 8px 0",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "formInputRadio",
+                    "description": "Radio",
+                    "childsAllowed": "none",
+                    "tag": "label",
+                    "text": "",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formRadio"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "formInputRadioMain",
+                        "description": "Radio main",
+                        "childsAllowed": "none",
+                        "tag": "input",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "formRadio1"
+                          ],
+                          [
+                            "value",
+                            "r1"
+                          ],
+                          [
+                            "name",
+                            "groupRadio"
+                          ],
+                          [
+                            "type",
+                            "radio"
+                          ]
+                        ],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "formInputRadioSpan",
+                        "description": "Radio span",
+                        "childsAllowed": "none",
+                        "tag": "span",
+                        "text": "Radio 1",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - Separator",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 0 8px 0",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "formInputRadio",
+                    "description": "Radio",
+                    "childsAllowed": "none",
+                    "tag": "label",
+                    "text": "",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formRadio"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "formInputRadioMain",
+                        "description": "Radio main",
+                        "childsAllowed": "none",
+                        "tag": "input",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "id",
+                            "formRadio2"
+                          ],
+                          [
+                            "value",
+                            "r2"
+                          ],
+                          [
+                            "name",
+                            "groupRadio"
+                          ],
+                          [
+                            "type",
+                            "radio"
+                          ]
+                        ],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "formInputRadioSpan",
+                        "description": "Radio span",
+                        "childsAllowed": "none",
+                        "tag": "span",
+                        "text": "Radio 2",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - Separator",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 0 8px 0",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "divFlex",
+                    "description": "Flex - Range & Value",
+                    "childsAllowed": "divFlexChild",
+                    "tag": "div",
+                    "text": "",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "divFlexChild",
+                        "description": "Flex child",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "min-width",
+                            "75%",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "formInputRange",
+                            "description": "Range slider",
+                            "childsAllowed": "none",
+                            "tag": "label",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "class",
+                                "formRange"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "formInputRangeMain",
+                                "description": "Range main",
+                                "childsAllowed": "none",
+                                "tag": "input",
+                                "text": "",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "id",
+                                    "formRange"
+                                  ],
+                                  [
+                                    "min",
+                                    "0"
+                                  ],
+                                  [
+                                    "max",
+                                    "100"
+                                  ],
+                                  [
+                                    "type",
+                                    "range"
+                                  ],
+                                  [
+                                    "oninput",
+                                    "setSliderValue(this)"
+                                  ]
+                                ],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputRangeSpan",
+                                "description": "Range span",
+                                "childsAllowed": "none",
+                                "tag": "span",
+                                "text": "Percentage",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "typeName": "divFlexChild",
+                        "description": "Flex child",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "align-items",
+                            "center",
+                            true
+                          ],
+                          [
+                            "min-width",
+                            "25%",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "text",
+                            "description": "Text",
+                            "childsAllowed": "none",
+                            "tag": "div",
+                            "text": "50%",
+                            "style": [
+                              [
+                                "font-size",
+                                "1em",
+                                true
+                              ],
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ],
+                              [
+                                "text-align",
+                                "center",
+                                true
+                              ],
+                              [
+                                "width",
+                                "100%",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "id",
+                                "sliderValue"
+                              ]
+                            ],
+                            "childs": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - Separator",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 0 8px 0",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "formButton",
+                    "description": "Button set",
+                    "childsAllowed": "none",
+                    "tag": "button",
+                    "text": "Set values",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formButton"
+                      ],
+                      [
+                        "onclick",
+                        "setValues()"
+                      ]
+                    ],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - Separator",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 0 8px 0",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "formButton",
+                    "description": "Button get",
+                    "childsAllowed": "none",
+                    "tag": "button",
+                    "text": "Get values",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formButton"
+                      ],
+                      [
+                        "onclick",
+                        "getValues()"
+                      ]
+                    ],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "div",
+                    "description": "Div - Separator",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0 0 16px 0",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "titleh3",
+                    "description": "H3",
+                    "childsAllowed": "none",
+                    "tag": "h3",
+                    "text": "Form data:",
+                    "style": [
+                      [
+                        "font-size",
+                        "1.25em",
+                        true
+                      ],
+                      [
+                        "font-weight",
+                        "600",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "0",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": []
+                  },
+                  {
+                    "typeName": "text",
+                    "description": "Text",
+                    "childsAllowed": "none",
+                    "tag": "div",
+                    "text": " ",
+                    "style": [
+                      [
+                        "font-size",
+                        "1em",
+                        true
+                      ],
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "id",
+                        "formResult"
+                      ]
+                    ],
+                    "childs": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

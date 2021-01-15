@@ -1,1 +1,261 @@
-{"settings":{"appVersion":1,"siteName":"templateImage004","backgroundColor":"white","googleFonts":["Dancing Script"],"scripts":[]},"elementsRoot":{"typeName":"body","description":"Body","styleName":"","childsAllowed":"all","tag":"body","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divAutocenter","description":"Autocentered div","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["background","lightgrey",true],["border-radius","15px",true],["height","max-content",true],["overflow","hidden",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"divFlexChild","tag":"div","style":[["align-items","center",true]],"phone":[["flex-direction","column",true]],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["min-width","50%",true],["max-width","50%",true]],"phone":[["min-width","100%",true],["max-width","100%",true]],"attributes":[],"childs":[{"typeName":"image","description":"Image","childsAllowed":"none","tag":"img","style":[],"phone":[],"attributes":[["src","/tool/images/image0.jpg"],["width","100%"]],"childs":[],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["flex-direction","column",true],["min-width","50%",true],["max-width","50%",true],["padding","16px 24px",true]],"phone":[["min-width","100%",true],["max-width","100%",true]],"attributes":[],"childs":[{"typeName":"titleh1","description":"H1","childsAllowed":"none","tag":"h1","style":[["font-size","2em",true],["font-weight","800",true],["height","max-content",true],["padding","0 0  16px 0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"What makes it great"},{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["font-size","1em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}}
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "templateImage004",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": []
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "divAutocenter",
+        "description": "Autocentered div",
+        "childsAllowed": "all",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "padding",
+            "0 16px",
+            true
+          ]
+        ],
+        "phone": [],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "div",
+            "description": "Div",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "background",
+                "lightgrey",
+                true
+              ],
+              [
+                "border-radius",
+                "15px",
+                true
+              ],
+              [
+                "height",
+                "max-content",
+                true
+              ],
+              [
+                "overflow",
+                "hidden",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "divFlex",
+                "description": "Flex",
+                "childsAllowed": "divFlexChild",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "align-items",
+                    "center",
+                    true
+                  ]
+                ],
+                "phone": [
+                  [
+                    "flex-direction",
+                    "column",
+                    true
+                  ]
+                ],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "min-width",
+                        "50%",
+                        true
+                      ],
+                      [
+                        "max-width",
+                        "50%",
+                        true
+                      ]
+                    ],
+                    "phone": [
+                      [
+                        "min-width",
+                        "100%",
+                        true
+                      ],
+                      [
+                        "max-width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "image",
+                        "description": "Image",
+                        "childsAllowed": "none",
+                        "tag": "img",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "src",
+                            "/tool/images/image0.jpg"
+                          ],
+                          [
+                            "width",
+                            "100%"
+                          ]
+                        ],
+                        "childs": []
+                      }
+                    ]
+                  },
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "flex-direction",
+                        "column",
+                        true
+                      ],
+                      [
+                        "min-width",
+                        "50%",
+                        true
+                      ],
+                      [
+                        "max-width",
+                        "50%",
+                        true
+                      ],
+                      [
+                        "padding",
+                        "16px 24px",
+                        true
+                      ]
+                    ],
+                    "phone": [
+                      [
+                        "min-width",
+                        "100%",
+                        true
+                      ],
+                      [
+                        "max-width",
+                        "100%",
+                        true
+                      ]
+                    ],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "titleh1",
+                        "description": "H1",
+                        "childsAllowed": "none",
+                        "tag": "h1",
+                        "text": "What makes it great",
+                        "style": [
+                          [
+                            "font-size",
+                            "2em",
+                            true
+                          ],
+                          [
+                            "font-weight",
+                            "800",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "0 0  16px 0",
+                            true
+                          ],
+                          [
+                            "width",
+                            "100%",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      },
+                      {
+                        "typeName": "text",
+                        "description": "Text",
+                        "childsAllowed": "none",
+                        "tag": "div",
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                        "style": [
+                          [
+                            "font-size",
+                            "1em",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "width",
+                            "100%",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

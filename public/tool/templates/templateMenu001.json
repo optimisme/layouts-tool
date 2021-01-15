@@ -1,1 +1,988 @@
-{"settings":{"appVersion":1,"siteName":"templateMenu001","backgroundColor":"white","googleFonts":["Dancing Script"],"scripts":[]},"elementsRoot":{"typeName":"body","description":"Body","styleName":"","childsAllowed":"all","tag":"body","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"divSticky","description":"Sticky div","childsAllowed":"all","tag":"div","style":[["top","0",true],["z-index","1000",true]],"phone":[["top","0",true]],"attributes":[],"childs":[{"typeName":"drawer","description":"Drawer","childsAllowed":"none","tag":"div","style":[],"phone":[],"attributes":[["id","drawer"],["class","drawer"],["onclick","setDrawer(event, 'drawer', false)"]],"childs":[{"typeName":"drawerSide","description":"Drawer side","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[["class","drawerSide"]],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"divFlexChild","tag":"div","style":[["flex-direction","column",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"linkInline","description":"Inline link","childsAllowed":"none","tag":"a","style":[["font-size","1em",true]],"phone":[],"attributes":[["href","http://google.com"],["target","_blank"]],"childs":[],"text":"Google"}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"linkInline","description":"Inline link","childsAllowed":"none","tag":"a","style":[["font-size","1em",true]],"phone":[],"attributes":[["target","_blank"],["onclick","setDrawer(this, 'drawer', false)"]],"childs":[],"text":"Close"}],"text":""}],"text":""}],"text":""}],"text":""},{"typeName":"divMobile","description":"Div visible on mobile","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["backdrop-filter","blur(3px)",true],["background","rgba(255, 255, 255, 0.75)",true],["height","max-content",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divAutocenter","description":"Autocentered div","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"divFlexChild","tag":"div","style":[["align-items","center",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"linkBox","description":"Link box","childsAllowed":"all","tag":"a","style":[["height","max-content",true],["text-decoration","none",true],["width","max-content",true]],"phone":[["height","max-content",true],["width","max-content",true]],"attributes":[["href","/"],["target","_blank"]],"childs":[{"typeName":"iconMaterial","description":"Icon from material components","childsAllowed":"all","tag":"span","style":[["color","black",true],["font-size","2em",true]],"phone":[],"attributes":[["class","material-icons"]],"childs":[],"text":"storefront"}],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"titleh1","description":"H1","childsAllowed":"none","tag":"h1","style":[["font-size","1.5em",true],["font-weight","800",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Marmot"}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["flex-grow","1",true],["min-height","48px",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"linkBox","description":"Link box","childsAllowed":"all","tag":"a","style":[["height","max-content",true],["text-decoration","none",true],["width","max-content",true]],"phone":[["height","max-content",true],["width","max-content",true]],"attributes":[["href","javascript://"],["target","_self"],["onclick","setDrawer(this, 'drawer', true)"]],"childs":[{"typeName":"iconMaterial","description":"Icon from material components","childsAllowed":"all","tag":"span","style":[["color","black",true],["font-size","2em",true]],"phone":[],"attributes":[["class","material-icons"]],"childs":[],"text":"menu"}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""},{"typeName":"divDesktop","description":"Div visible on desktop","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["backdrop-filter","blur(3px)",true],["background","rgba(255, 255, 255, 0.75)",true],["height","max-content",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divAutocenter","description":"Autocentered div","childsAllowed":"all","tag":"div","style":[["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlex","description":"Flex","childsAllowed":"divFlexChild","tag":"div","style":[["align-items","center",true]],"phone":[],"attributes":[],"childs":[{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"linkBox","description":"Link box","childsAllowed":"all","tag":"a","style":[["height","max-content",true],["text-decoration","none",true],["width","max-content",true]],"phone":[["height","max-content",true],["width","max-content",true]],"attributes":[["href","/"],["target","_blank"]],"childs":[{"typeName":"iconMaterial","description":"Icon from material components","childsAllowed":"none","tag":"span","style":[["color","black",true],["font-size","2em",true]],"phone":[],"attributes":[["class","material-icons"]],"childs":[],"text":"storefront"}],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"titleh1","description":"H1","childsAllowed":"none","tag":"h1","style":[["font-size","1.5em",true],["font-weight","800",true],["height","max-content",true],["padding","0",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Marmot"}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[["flex-grow","1",true],["min-height","48px",true]],"phone":[],"attributes":[],"childs":[],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"linkBox","description":"Link box","childsAllowed":"all","tag":"a","style":[["height","max-content",true],["text-decoration","none",true],["width","max-content",true]],"phone":[["height","max-content",true],["width","max-content",true]],"attributes":[["href","/"],["target","_blank"]],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["height","max-content",true],["padding","0 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["color","rgb(0, 150, 255)",true],["font-size","1em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Store"}],"text":""}],"text":""}],"text":""},{"typeName":"divFlexChild","description":"Flex child","childsAllowed":"all","tag":"div","style":[],"phone":[],"attributes":[],"childs":[{"typeName":"linkBox","description":"Link box","childsAllowed":"all","tag":"a","style":[["height","max-content",true],["text-decoration","none",true],["width","max-content",true]],"phone":[["height","max-content",true],["width","max-content",true]],"attributes":[["href","/"],["target","_blank"]],"childs":[{"typeName":"div","description":"Div","childsAllowed":"all","tag":"div","style":[["background","darkgrey",true],["border-radius","15px",true],["height","max-content",true],["padding","4px 16px",true]],"phone":[],"attributes":[],"childs":[{"typeName":"text","description":"Text","childsAllowed":"none","tag":"div","style":[["color","white",true],["font-size","1em",true],["height","max-content",true],["width","100%",true]],"phone":[],"attributes":[],"childs":[],"text":"Log In"}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}],"text":""}}
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "templateMenu001",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": []
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "divSticky",
+        "description": "Sticky div",
+        "childsAllowed": "all",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "top",
+            "0",
+            true
+          ],
+          [
+            "z-index",
+            "1000",
+            true
+          ]
+        ],
+        "phone": [
+          [
+            "top",
+            "0",
+            true
+          ]
+        ],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "drawer",
+            "description": "Drawer",
+            "childsAllowed": "none",
+            "tag": "div",
+            "text": "",
+            "style": [],
+            "phone": [],
+            "attributes": [
+              [
+                "id",
+                "drawer"
+              ],
+              [
+                "class",
+                "drawer"
+              ],
+              [
+                "onclick",
+                "setDrawer(event, 'drawer', false)"
+              ]
+            ],
+            "childs": [
+              {
+                "typeName": "drawerSide",
+                "description": "Drawer side",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [
+                  [
+                    "class",
+                    "drawerSide"
+                  ]
+                ],
+                "childs": [
+                  {
+                    "typeName": "divFlex",
+                    "description": "Flex",
+                    "childsAllowed": "divFlexChild",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "flex-direction",
+                        "column",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "divFlexChild",
+                        "description": "Flex child",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "linkInline",
+                            "description": "Inline link",
+                            "childsAllowed": "none",
+                            "tag": "a",
+                            "text": "Google",
+                            "style": [
+                              [
+                                "font-size",
+                                "1em",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "href",
+                                "http://google.com"
+                              ],
+                              [
+                                "target",
+                                "_blank"
+                              ]
+                            ],
+                            "childs": []
+                          }
+                        ]
+                      },
+                      {
+                        "typeName": "divFlexChild",
+                        "description": "Flex child",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "linkInline",
+                            "description": "Inline link",
+                            "childsAllowed": "none",
+                            "tag": "a",
+                            "text": "Close",
+                            "style": [
+                              [
+                                "font-size",
+                                "1em",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "target",
+                                "_blank"
+                              ],
+                              [
+                                "onclick",
+                                "setDrawer(this, 'drawer', false)"
+                              ]
+                            ],
+                            "childs": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "typeName": "divMobile",
+            "description": "Div visible on mobile",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "div",
+                "description": "Div",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "backdrop-filter",
+                    "blur(3px)",
+                    true
+                  ],
+                  [
+                    "background",
+                    "rgba(255, 255, 255, 0.75)",
+                    true
+                  ],
+                  [
+                    "height",
+                    "max-content",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "divAutocenter",
+                    "description": "Autocentered div",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "padding",
+                        "0 16px",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "divFlex",
+                        "description": "Flex",
+                        "childsAllowed": "divFlexChild",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "align-items",
+                            "center",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "linkBox",
+                                "description": "Link box",
+                                "childsAllowed": "all",
+                                "tag": "a",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "text-decoration",
+                                    "none",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "phone": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "attributes": [
+                                  [
+                                    "href",
+                                    "/"
+                                  ],
+                                  [
+                                    "target",
+                                    "_blank"
+                                  ]
+                                ],
+                                "childs": [
+                                  {
+                                    "typeName": "iconMaterial",
+                                    "description": "Icon from material components",
+                                    "childsAllowed": "all",
+                                    "tag": "span",
+                                    "text": "storefront",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "black",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "2em",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "class",
+                                        "material-icons"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "titleh1",
+                                "description": "H1",
+                                "childsAllowed": "none",
+                                "tag": "h1",
+                                "text": "Marmot",
+                                "style": [
+                                  [
+                                    "font-size",
+                                    "1.5em",
+                                    true
+                                  ],
+                                  [
+                                    "font-weight",
+                                    "800",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "padding",
+                                    "0",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "100%",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "flex-grow",
+                                "1",
+                                true
+                              ],
+                              [
+                                "min-height",
+                                "48px",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": []
+                          },
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "linkBox",
+                                "description": "Link box",
+                                "childsAllowed": "all",
+                                "tag": "a",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "text-decoration",
+                                    "none",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "phone": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "attributes": [
+                                  [
+                                    "href",
+                                    "javascript://"
+                                  ],
+                                  [
+                                    "target",
+                                    "_self"
+                                  ],
+                                  [
+                                    "onclick",
+                                    "setDrawer(this, 'drawer', true)"
+                                  ]
+                                ],
+                                "childs": [
+                                  {
+                                    "typeName": "iconMaterial",
+                                    "description": "Icon from material components",
+                                    "childsAllowed": "all",
+                                    "tag": "span",
+                                    "text": "menu",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "black",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "2em",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "class",
+                                        "material-icons"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "typeName": "divDesktop",
+            "description": "Div visible on desktop",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "div",
+                "description": "Div",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "backdrop-filter",
+                    "blur(3px)",
+                    true
+                  ],
+                  [
+                    "background",
+                    "rgba(255, 255, 255, 0.75)",
+                    true
+                  ],
+                  [
+                    "height",
+                    "max-content",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "divAutocenter",
+                    "description": "Autocentered div",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "padding",
+                        "0 16px",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "divFlex",
+                        "description": "Flex",
+                        "childsAllowed": "divFlexChild",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "align-items",
+                            "center",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "linkBox",
+                                "description": "Link box",
+                                "childsAllowed": "all",
+                                "tag": "a",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "text-decoration",
+                                    "none",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "phone": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "attributes": [
+                                  [
+                                    "href",
+                                    "/"
+                                  ],
+                                  [
+                                    "target",
+                                    "_blank"
+                                  ]
+                                ],
+                                "childs": [
+                                  {
+                                    "typeName": "iconMaterial",
+                                    "description": "Icon from material components",
+                                    "childsAllowed": "none",
+                                    "tag": "span",
+                                    "text": "storefront",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "black",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "2em",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [
+                                      [
+                                        "class",
+                                        "material-icons"
+                                      ]
+                                    ],
+                                    "childs": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "titleh1",
+                                "description": "H1",
+                                "childsAllowed": "none",
+                                "tag": "h1",
+                                "text": "Marmot",
+                                "style": [
+                                  [
+                                    "font-size",
+                                    "1.5em",
+                                    true
+                                  ],
+                                  [
+                                    "font-weight",
+                                    "800",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "padding",
+                                    "0",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "100%",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "flex-grow",
+                                "1",
+                                true
+                              ],
+                              [
+                                "min-height",
+                                "48px",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": []
+                          },
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "linkBox",
+                                "description": "Link box",
+                                "childsAllowed": "all",
+                                "tag": "a",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "text-decoration",
+                                    "none",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "phone": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "attributes": [
+                                  [
+                                    "href",
+                                    "/"
+                                  ],
+                                  [
+                                    "target",
+                                    "_blank"
+                                  ]
+                                ],
+                                "childs": [
+                                  {
+                                    "typeName": "div",
+                                    "description": "Div",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [
+                                      [
+                                        "height",
+                                        "max-content",
+                                        true
+                                      ],
+                                      [
+                                        "padding",
+                                        "0 16px",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": [
+                                      {
+                                        "typeName": "text",
+                                        "description": "Text",
+                                        "childsAllowed": "none",
+                                        "tag": "div",
+                                        "text": "Store",
+                                        "style": [
+                                          [
+                                            "color",
+                                            "rgb(0, 150, 255)",
+                                            true
+                                          ],
+                                          [
+                                            "font-size",
+                                            "1em",
+                                            true
+                                          ],
+                                          [
+                                            "height",
+                                            "max-content",
+                                            true
+                                          ],
+                                          [
+                                            "width",
+                                            "100%",
+                                            true
+                                          ]
+                                        ],
+                                        "phone": [],
+                                        "attributes": [],
+                                        "childs": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "linkBox",
+                                "description": "Link box",
+                                "childsAllowed": "all",
+                                "tag": "a",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "text-decoration",
+                                    "none",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "phone": [
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "attributes": [
+                                  [
+                                    "href",
+                                    "/"
+                                  ],
+                                  [
+                                    "target",
+                                    "_blank"
+                                  ]
+                                ],
+                                "childs": [
+                                  {
+                                    "typeName": "div",
+                                    "description": "Div",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [
+                                      [
+                                        "background",
+                                        "darkgrey",
+                                        true
+                                      ],
+                                      [
+                                        "border-radius",
+                                        "15px",
+                                        true
+                                      ],
+                                      [
+                                        "height",
+                                        "max-content",
+                                        true
+                                      ],
+                                      [
+                                        "padding",
+                                        "4px 16px",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": [
+                                      {
+                                        "typeName": "text",
+                                        "description": "Text",
+                                        "childsAllowed": "none",
+                                        "tag": "div",
+                                        "text": "Log In",
+                                        "style": [
+                                          [
+                                            "color",
+                                            "white",
+                                            true
+                                          ],
+                                          [
+                                            "font-size",
+                                            "1em",
+                                            true
+                                          ],
+                                          [
+                                            "height",
+                                            "max-content",
+                                            true
+                                          ],
+                                          [
+                                            "width",
+                                            "100%",
+                                            true
+                                          ]
+                                        ],
+                                        "phone": [],
+                                        "attributes": [],
+                                        "childs": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
