@@ -378,27 +378,25 @@ function setCarouselArrows(ref, direction) {
 
         if (bodyStr.indexOf('setDrawer') >= 0) {
             str = str + `
-async function setDrawer (event, id, show) {
+async function setDrawer (id, show, event) {
     let refBody = document.getElementsByTagName('body')[0]
     let refDrawer = document.getElementById(id)
+    let performAction = false
 
-    if (event.srcElement) {
-        event.stopPropagation()
-        if (event.srcElement.getAttribute('href')) { return }
-    }
-
-    if (show) {
-        refBody.style.overflow = 'hidden'
-        refDrawer.style.display = 'flex'
-        await promiseWaitUntilPropertyValue(refDrawer, 'display', 'flex')  
-        refDrawer.style.opacity = '1'
-        refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(0px, 0, 0)'
-    } else {
-        refDrawer.style.opacity = '0'
-        refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(-250px, 0, 0)'
-        await promiseTransitionEnd(refDrawer)
-        refBody.style.overflow = 'initial'
-        refDrawer.style.display = 'none'
+    if (typeof event == 'undefined' || (event.target && event.target.getAttribute('id') == id)) {
+        if (show) {
+            refBody.style.overflow = 'hidden'
+            refDrawer.style.display = 'flex'
+            await promiseWaitUntilPropertyValue(refDrawer, 'display', 'flex')  
+            refDrawer.style.opacity = '1'
+            refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(0px, 0, 0)'
+        } else {
+            refDrawer.style.opacity = '0'
+            refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(-250px, 0, 0)'
+            await promiseTransitionEnd(refDrawer)
+            refBody.style.overflow = 'initial'
+            refDrawer.style.display = 'none'
+        }
     }
 }
 async function promiseWait (time) {

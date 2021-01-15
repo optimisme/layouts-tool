@@ -823,7 +823,7 @@ let drawer = {
     attributes: [
         ['id', 'drawer'],
         ['class', 'drawer'],
-        ['onclick', 'setDrawer(event, "drawer", false)']
+        ['onclick', 'setDrawer("drawer", false, event)']
     ],
     script: ``,
     text: ``,

@@ -65,7 +65,7 @@
               ],
               [
                 "onclick",
-                "setDrawer(event, 'drawer', false)"
+                "setDrawer('drawer', false, event)"
               ]
             ],
             "childs": [
@@ -169,7 +169,7 @@
                               ],
                               [
                                 "onclick",
-                                "setDrawer(this, 'drawer', false)"
+                                "setDrawer('drawer', false)"
                               ]
                             ],
                             "childs": []
@@ -464,7 +464,7 @@
                                   ],
                                   [
                                     "onclick",
-                                    "setDrawer(this, 'drawer', true)"
+                                    "setDrawer('drawer', true)"
                                   ]
                                 ],
                                 "childs": [
