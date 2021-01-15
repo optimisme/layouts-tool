@@ -373,47 +373,43 @@
         })  
     }
 
-    function getFormValue (id) {
+    function getForm (id) {
         let ref = document.getElementById(id)
-        if (ref.tagName.toUpperCase() == 'INPUT') {
-            let type = ref.getAttribute('type')
-            if (type == 'text') {
-                return ref.value
-            } else if (type == 'checkbox') {
-                return ref.checked
-            } else if (type == 'radio') {
-                return ref.checked
-            } else if (type == 'range') {
-                return ref.value
-            }
-        } else if (ref.tagName.toUpperCase() == 'TEXTAREA') {
+        let type = (ref.tagName).toLowerCase()
+        if (type == 'input') {
+            type = (ref.getAttribute('type')).toLowerCase()
+        }
+        switch (type) {
+        case 'text':
+        case 'textarea':
+        case 'range':
             return ref.value
-        } else if (ref.tagName.toUpperCase() == 'SELECT') {
-            if (ref.value) {
-                return ref.value
-            } else {
-                return ref.options[ref.selectedIndex].text
-            }
+        case 'checkbox':
+        case 'radio':
+            return ref.checked
+        case 'select':
+            // ref.options[ref.selectedIndex].text
+            return ref.value
         }
     }
 
-    function setFormValue (id, value) {
+    function setForm (id, value) {
         let ref = document.getElementById(id)
-        if (ref.tagName.toUpperCase() == 'INPUT') {
-            let type = ref.getAttribute('type')
-            if (type == 'text') {
-                ref.value = value
-            } else if (type == 'checkbox') {
-                ref.checked = value
-            } else if (type == 'radio') {
-                ref.checked = value
-            } else if (type == 'range') {
-                ref.value = value
-            }
-        } else if (ref.tagName.toUpperCase() == 'TEXTAREA') {
+        let type = (ref.tagName).toLowerCase()
+        if (type == 'input') {
+            type = (ref.getAttribute('type')).toLowerCase()
+        }
+        switch (type) {
+        case 'text':
+        case 'textarea':
+        case 'range':
+        case 'select':
             ref.value = value
-        } else if (ref.tagName.toUpperCase() == 'SELECT') {
-            ref.value = value
+            break
+        case 'checkbox':
+        case 'radio':
+            ref.checked = value
+            break
         }
     }
 
