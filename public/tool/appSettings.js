@@ -140,14 +140,16 @@ class SdwToolSettings extends HTMLElement {
             flex-grow: 1;
             justify-content: center;
         }
-        .root > .rowAction > div:nth-child(2) > ion-icon {
+        .root > .rowAction > div > .refreshIcon {
+            animation: refreshRotate 0.5s linear normal;
             cursor: pointer;
             font-size: 1.1em;
         }
         .root > .rowAction > div:last-child > ion-icon {
             cursor: pointer;
             font-size: 1.2em;
-        }`
+        }
+        @keyframes refreshRotate { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }`
         this.shadow.appendChild(this.elmStyle)
 
         this.elmRoot = document.createElement('div')
@@ -241,6 +243,7 @@ class SdwToolSettings extends HTMLElement {
 
                     let scriptRefresh = document.createElement('ion-icon')
                     scriptRefresh.setAttribute('name', 'refresh-outline')
+                    scriptRefresh.setAttribute('class', 'refreshIcon')
                     scriptRefresh.innerText = app.scripts[cnt]
                     scriptRefresh.addEventListener('click', (evt) => {
                         evt.preventDefault()
