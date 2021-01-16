@@ -428,7 +428,7 @@ class App {
             srcScript.setAttribute('src', value)
             srcScript.setAttribute('type', 'text/javascript')
             app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(srcScript)
-            // TODO: Detect if properly added
+            // TODO: Detect if properly added before adding it to 'this.scripts'
             this.scripts.push(value)
         }
 
@@ -447,7 +447,7 @@ class App {
         srcScript.setAttribute('src', value + '?' + parseInt(Math.random() * 1000000000))
         srcScript.setAttribute('type', 'text/javascript')
         app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(srcScript)
-
+        // TODO: Detect if properly added and remove it from 'this.scripts' if not
         app.refSettings.setSettings(this.elementsRoot)
     }
 
