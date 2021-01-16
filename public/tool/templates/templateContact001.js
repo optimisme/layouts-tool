@@ -56,6 +56,8 @@ async function queryContact () {
         refFormName.value = ''
         refFormMail.value = ''
         refFormDescription.value = ''
+        checkForm()
+
         await showElement('boxOk')
         await wait(3500)
         await hideElement('boxOk')
