@@ -4,8 +4,8 @@
     "siteName": "templateImage002",
     "backgroundColor": "white",
     "googleFonts": [
-      "Dancing Script",
-      "Architects Daughter"
+      "Fredericka the Great",
+      "Reenie Beanie"
     ],
     "scripts": []
   },
@@ -114,7 +114,7 @@
                     "style": [
                       [
                         "font-family",
-                        "\"Dancing Script\"",
+                        "\"Fredericka the Great\"",
                         true
                       ],
                       [
@@ -124,7 +124,7 @@
                       ],
                       [
                         "font-weight",
-                        "800",
+                        "200",
                         true
                       ],
                       [
@@ -355,12 +355,12 @@
                               ],
                               [
                                 "font-family",
-                                "\"Architects Daughter\"",
+                                "\"Reenie Beanie\"",
                                 true
                               ],
                               [
                                 "font-size",
-                                "1em",
+                                "1.5em",
                                 true
                               ],
                               [
