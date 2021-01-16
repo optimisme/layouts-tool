@@ -79,6 +79,8 @@ class App {
 
         this.refList = document.querySelector('sdw-tool-list')
         this.refPreview = document.querySelector('sdw-tool-preview')
+        this.refPreviewDocument = app.refPreview.shadow.querySelector('iframe').contentDocument
+        this.refPreviewWindow = app.refPreview.shadow.querySelector('iframe').contentWindow
         this.refSettings = document.querySelector('sdw-tool-settings')
 
         while (!app.refPreview.elmRoot.querySelector('iframe').contentWindow.frameLoaded) { await promiseWait(1) }
@@ -422,12 +424,12 @@ class App {
 
         if (this.scripts.indexOf(value) == -1) {
 
-            this.scripts.push(value)
-
             let srcScript = document.createElement('script')
             srcScript.setAttribute('src', value)
             srcScript.setAttribute('type', 'text/javascript')
             app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(srcScript)
+            // TODO: Detect if properly added
+            this.scripts.push(value)
         }
 
         app.refSettings.setSettings(this.elementsRoot)
