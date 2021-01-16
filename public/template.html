@@ -1,0 +1,260 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Template</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/tool/templates/templateContact001.js"></script>
+</head>
+<style>
+body { background-color: white; font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; }
+.formInputText { padding: 15px 0 0; position: relative; width: 100%; }
+.formInputText > input { background: transparent; border: 0; border-bottom: 1px solid #d2d2d2; color: #212121; font-family: inherit; font-size: 16px; outline: 0; padding: 7px 0; transition: border-color 0.2s; width: 100%; }
+.formInputText > input::placeholder { color: transparent; }
+.formInputText > input:placeholder-shown ~ label { cursor: text; font-size: 16px; top: 20px; }
+.formInputText > label, 
+.formInputText > input:focus ~ label { color: #9b9b9b; display: block; font-size: 12px; position: absolute; top: 0; transition: 0.2s; }
+.formInputText > input:focus ~ label { color: rgb(0, 125, 255); }
+.formInputText > input:focus { border-bottom: 2px solid rgb(0, 125, 255); padding-bottom: 6px; }
+.formInputText > input:valid ~ span { color: transparent; }
+.formInputText > input:invalid ~ span { color: red; }
+.formInputTextarea { padding: 15px 0 0; position: relative; width: 100%; }
+.formInputTextarea > textarea { background: transparent; border: 0; border-bottom: 1px solid #d2d2d2; color: #212121; font-family: inherit; font-size: 16px; outline: 0; padding: 7px 0; resize: none; transition: border-color 0.2s; width: 100%; }
+.formInputTextarea > textarea::placeholder { color: transparent; }
+.formInputTextarea > textarea:placeholder-shown ~ label { cursor: text; font-size: 16px; top: 20px; }
+.formInputTextarea > label, 
+.formInputTextarea > textarea:focus ~ label { color: #9b9b9b; display: block; font-size: 12px; position: absolute; top: 0; transition: 0.2s; }
+.formInputTextarea > textarea:focus ~ label { color: rgb(0, 125, 255); }
+.formInputTextarea > textarea:focus { border-bottom: 2px solid rgb(0, 125, 255); padding-bottom: 6px; }
+.formInputTextarea > textarea:valid ~ span { color: transparent; }
+.formInputTextarea > textarea:invalid ~ span { color: red; }
+.formButton             { background-color: rgb(0, 125, 255); border: none; border-radius: 4px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); color: white; cursor: pointer; font-weight: 800; height: 36px; margin: 0; min-width: 64px; outline: none; padding: 0 16px; position: relative; text-align: center; text-transform: uppercase; transition: box-shadow 0.2s; }
+.formButton:hover,
+.formButton:focus       { background-color: rgb(50, 150, 255); box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12); }
+.formButton:active      { box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+.formButton:disabled    { color: #eee; background-color: #aaa; box-shadow: none; cursor: initial; }
+.waitSpinner { height: 100%; overflow: hidden; width: 100%; }
+.waitSpinner svg { animation: spinnerRotate 1.5s linear infinite; height: 100%; width: 100%; }
+.waitSpinner circle { animation: spinnerDash 1.5s ease-in-out infinite 0s, spinnerColor 6s ease-in-out infinite -0.75s; stroke-dasharray: 1,200; stroke-dashoffset: 0; stroke-linecap: round; fill: none; stroke-width: 5; }
+@keyframes spinnerRotate { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@keyframes spinnerDash { 0% { stroke-dasharray: 1,200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 89,200; stroke-dashoffset: -45; } 100% { stroke-dasharray: 89,200; stroke-dashoffset: -124; } }
+@keyframes spinnerColor { 100%, 0% { stroke: #4285F4; } 25% {  stroke: #DE3E35; } 50% { stroke: #F7C223; } 75% { stroke: #1DA760; } }
+.defDiv { height:max-content; box-sizing:border-box; margin:0; }
+.defDivAutocenter { padding:0 16px; box-sizing:border-box; height:max-content; margin-left:auto; margin-right:auto; max-width:1200px; width:100%; }
+.defDivFlex { box-sizing:border-box; display:flex; margin:0; }
+.defDivFlexChild { box-sizing:border-box; display:flex; margin:0; }
+.defFormButton { text-transform:uppercase; }
+.defImage { box-sizing:border-box; margin:0; }
+.defLinkBox { height:max-content; padding:0; text-decoration:none; width:max-content; box-sizing:border-box; cursor:pointer; display:block; margin:0; }
+@media only screen and (max-width: 768px) { .defLinkBox { height:max-content; padding:0; width:max-content; } }
+.defText { font-size:1em; height:max-content; width:100%; box-sizing:border-box; margin:0; }
+.defTitleh1 { font-size:2em; font-weight:800; height:max-content; padding:0; width:100%; box-sizing:border-box; margin:0; }
+.defTitleh2 { font-size:1.5em; font-weight:300; height:max-content; padding:0; width:100%; box-sizing:border-box; margin:0; }
+.elm2 { box-sizing:border-box; display:flex; margin:0; }
+@media only screen and (max-width: 768px) { .elm2 { flex-direction:column; } }
+.elm24 { height:40px; width:40px; box-sizing:border-box; margin:0; }
+.elm3 { flex-direction:column; flex-grow:1; padding:0 32px 0 0; box-sizing:border-box; display:flex; margin:0; }
+@media only screen and (max-width: 768px) { .elm3 { padding:0 0 32px 0; } }
+.elm31 { color:green; font-size:1em; height:max-content; width:100%; box-sizing:border-box; margin:0; }
+.elm35 { color:red; font-size:1em; font-weight:600; height:max-content; width:100%; box-sizing:border-box; margin:0; }
+.elm36 { min-width:25%; max-width:25%; box-sizing:border-box; display:flex; margin:0; }
+@media only screen and (max-width: 768px) { .elm36 { min-width:100%; max-width:100%; } }
+.elm37 { border:dashed 1px grey; border-radius:15px; height:max-content; padding:16px; width:100%; box-sizing:border-box; margin:0; }
+.elm39 { height:max-content; padding:0; text-decoration:none; width:100%; box-sizing:border-box; cursor:pointer; display:block; margin:0; }
+@media only screen and (max-width: 768px) { .elm39 { height:max-content; padding:0; width:max-content; } }
+.elm4 { font-size:2em; font-weight:800; height:max-content; padding:0 0 16px 0; width:100%; box-sizing:border-box; margin:0; }
+.elm40 { color:rgb(0, 150, 255); font-size:1em; height:max-content; text-align:right; width:100%; box-sizing:border-box; margin:0; }
+.elm42 { height:max-content; padding:0; text-decoration:none; width:100%; box-sizing:border-box; cursor:pointer; display:block; margin:0; }
+@media only screen and (max-width: 768px) { .elm42 { height:max-content; padding:0; width:max-content; } }
+.elm43 { color:rgb(0, 150, 255); font-size:1em; height:max-content; text-align:right; width:100%; box-sizing:border-box; margin:0; }
+.elm45 { font-size:1em; height:max-content; text-align:right; width:100%; box-sizing:border-box; margin:0; }
+.elm46 { font-size:1em; height:max-content; text-align:right; width:100%; box-sizing:border-box; margin:0; }
+.elm48 { justify-content:flex-end; box-sizing:border-box; display:flex; margin:0; }
+.elm5 { font-size:1em; height:max-content; padding:0 0 16px 0; width:100%; box-sizing:border-box; margin:0; }
+.elm50 { height:max-content; padding:4px; box-sizing:border-box; margin:0; }
+.elm54 { height:max-content; padding:4px; box-sizing:border-box; margin:0; }
+.elm58 { height:max-content; padding:4px; box-sizing:border-box; margin:0; }
+.elmBoxButton { height:55px; box-sizing:border-box; margin:0; }
+.elmBoxError { display:none; height:55px; box-sizing:border-box; margin:0; }
+.elmBoxOk { display:none; height:55px; box-sizing:border-box; margin:0; }
+.elmBoxSpinner { display:none; height:55px; box-sizing:border-box; margin:0; }
+.elmFlexButton { justify-content:center; padding:16px 0 0 0; box-sizing:border-box; display:flex; margin:0; }
+</style>
+<script>
+function getForm (id) {
+    let ref = document.getElementById(id)
+    let type = (ref.tagName).toLowerCase()
+    if (type == 'input') {
+        type = (ref.getAttribute('type')).toLowerCase()
+    }
+    switch (type) {
+    case 'text':
+    case 'textarea':
+    case 'range':
+        return ref.value
+    case 'checkbox':
+    case 'radio':
+        return ref.checked
+    case 'select':
+        // ref.options[ref.selectedIndex].text
+        return ref.value
+    }
+}
+
+function setForm (id, value) {
+    let ref = document.getElementById(id)
+    let type = (ref.tagName).toLowerCase()
+    if (type == 'input') {
+        type = (ref.getAttribute('type')).toLowerCase()
+    }
+    switch (type) {
+    case 'text':
+    case 'textarea':
+    case 'range':
+    case 'select':
+        ref.value = value
+        break
+    case 'checkbox':
+    case 'radio':
+        ref.checked = value
+        break
+    }
+}
+</script>
+
+<body><!-- Body -->
+<div class="defDivAutocenter"><!-- Autocentered div -->
+  <div class="defDivFlex elm2"><!-- Flex -->
+    <div class="defDivFlexChild elm3"><!-- Flex child -->
+      <h1 class="defTitleh1 elm4"><!-- H1 -->
+        Contact us
+      </h1>
+      <div class="defText elm5"><!-- Text -->
+        We are here to answer any questions you may have about our services. Reach out to  us and we'll respond as soon as we can.
+      </div>
+      <div class="formInputText"><!-- Input text with pattern validation -->
+        <input id="formName" type="text" placeholder="yes" pattern="[^0-9]*" autocomplete="off" onkeyup="checkForm()"><!-- Input text -->
+        <label><!-- Label -->
+          Name
+        </label>
+        <span><!-- Error message -->
+          Numbers are not allowed
+        </span>
+      </div>
+      <div class="formInputText"><!-- Input text with pattern validation -->
+        <input id="formMail" type="text" placeholder="yes" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" autocomplete="off" onkeyup="checkForm()"><!-- Input text -->
+        <label><!-- Label -->
+          Mail
+        </label>
+        <span><!-- Error message -->
+          This is not an email
+        </span>
+      </div>
+      <div class="formInputTextarea"><!-- Input textarea -->
+        <textarea id="formDescription" placeholder="yes" onkeyup="checkForm()"></textarea>
+        <label><!-- Label -->
+          Description
+        </label>
+      </div>
+      <div id="boxButton" class="defDiv elmBoxButton"><!-- Div - boxButton -->
+        <div id="flexButton" class="defDivFlex elmFlexButton"><!-- Flex -->
+          <div class="defDivFlexChild"><!-- Flex child -->
+            <button id="formButton" onclick="queryContact()" disabled="true" class="defFormButton formButton"><!-- Button for forms -->
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="boxSpinner" class="defDiv elmBoxSpinner"><!-- Div - boxSpinner -->
+        <div id="flexButton" class="defDivFlex elmFlexButton"><!-- Flex -->
+          <div class="defDivFlexChild"><!-- Flex child -->
+            <div class="defDiv elm24"><!-- Div -->
+              <div class="waitSpinner"><!-- Wait spinner -->
+                <svg viewBox="0 0 50 50"><!-- Spinner main -->
+                  <circle cx="25" cy="25" r="20"><!-- Spinner circle -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="boxOk" class="defDiv elmBoxOk"><!-- Div - boxOk -->
+        <div id="flexButton" class="defDivFlex elmFlexButton"><!-- Flex -->
+          <div class="defDivFlexChild"><!-- Flex child -->
+            <div class="defText elm31"><!-- Text -->
+              Data sent properly
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="boxError" class="defDiv elmBoxError"><!-- Div - boxError -->
+        <div id="flexButton" class="defDivFlex elmFlexButton"><!-- Flex -->
+          <div class="defDivFlexChild"><!-- Flex child -->
+            <div class="defText elm35"><!-- Text -->
+              Error sending data
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="defDivFlexChild elm36"><!-- Flex child -->
+      <div class="defDiv elm37"><!-- Div -->
+        <h2 class="defTitleh2"><!-- H2 -->
+          Phone
+        </h2>
+        <a href="tel:+0123456" target="_blank" class="defLinkBox elm39">
+          <div class="defText elm40"><!-- Text -->
+            +0123456
+          </div>
+        </a>
+        <h2 class="defTitleh2"><!-- H2 -->
+          Mail
+        </h2>
+        <a href="mailto:mail@domain.com" target="_blank" class="defLinkBox elm42">
+          <div class="defText elm43"><!-- Text -->
+            mail@domain.com
+          </div>
+        </a>
+        <h2 class="defTitleh2"><!-- H2 -->
+          Address
+        </h2>
+        <div class="defText elm45"><!-- Text -->
+          Pç Catalunya 1
+        </div>
+        <div class="defText elm46"><!-- Text -->
+          08002 Barcelona
+        </div>
+        <h2 class="defTitleh2"><!-- H2 -->
+          Follow us at
+        </h2>
+        <div class="defDivFlex elm48"><!-- Flex -->
+          <div class="defDivFlexChild"><!-- Flex child -->
+            <div class="defDiv elm50"><!-- Div -->
+              <a href="/" target="_blank" class="defLinkBox">
+                <img src="/tool/images/logo-linkedin.svg" width="24px" height="24px" class="defImage"><!-- Image -->
+              </a>
+            </div>
+          </div>
+          <div class="defDivFlexChild"><!-- Flex child -->
+            <div class="defDiv elm54"><!-- Div -->
+              <a href="/" target="_blank" class="defLinkBox">
+                <img src="/tool/images/logo-facebook.svg" width="24px" height="24px" class="defImage"><!-- Image -->
+              </a>
+            </div>
+          </div>
+          <div class="defDivFlexChild"><!-- Flex child -->
+            <div class="defDiv elm58"><!-- Div -->
+              <a href="/" target="_blank" class="defLinkBox">
+                <img src="/tool/images/logo-instagram.svg" width="24px" height="24px" class="defImage"><!-- Image -->
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

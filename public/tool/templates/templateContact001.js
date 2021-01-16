@@ -59,11 +59,11 @@ async function queryContact () {
         checkForm()
 
         await showElement('boxOk')
-        await wait(3500)
+        await wait(2000)
         await hideElement('boxOk')
     } else {
         await showElement('boxError')
-        await wait(3500)
+        await wait(3000)
         await hideElement('boxError')
     }
 
