@@ -141,7 +141,6 @@ class SdwToolSettings extends HTMLElement {
             justify-content: center;
         }
         .root > .rowAction > div > .refreshIcon {
-            animation: refreshRotate 0.5s linear normal;
             cursor: pointer;
             font-size: 1.1em;
         }
@@ -245,9 +244,11 @@ class SdwToolSettings extends HTMLElement {
                     scriptRefresh.setAttribute('name', 'refresh-outline')
                     scriptRefresh.setAttribute('class', 'refreshIcon')
                     scriptRefresh.innerText = app.scripts[cnt]
-                    scriptRefresh.addEventListener('click', (evt) => {
+                    scriptRefresh.addEventListener('click', async (evt) => {
                         evt.preventDefault()
                         evt.stopPropagation()
+                        scriptRefresh.style.animation = 'refreshRotate 0.5s linear normal'
+                        await app.wait(500)
                         app.reloadScript(app.scripts[cnt])
                     })
                     divTmp0.appendChild(scriptRefresh)
