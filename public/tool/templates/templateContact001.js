@@ -25,7 +25,7 @@ async function checkForm () {
 }
 
 /**
- * Sends the data form the form to the server
+ * Sends the data to the server
  * with a query of type 'contact'
  */
 async function queryContact () {
