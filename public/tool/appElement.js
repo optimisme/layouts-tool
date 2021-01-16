@@ -144,7 +144,7 @@ class AppElement {
     setStyle (name, value) {
 
         let positionDestop = -1
-
+console.log(name, value)
         positionDestop = app.getPropertyPosition(this.style, name)
 
         this.style[positionDestop][1] = value

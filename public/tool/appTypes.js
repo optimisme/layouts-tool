@@ -877,7 +877,7 @@ let mapGoogle = {
     childs: []
 }
 
-let formInputTextField = { typeName: 'formInputTextField', description: 'Input text', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formText'], ['type', 'text'], ['placeholder', 'yes'], ['pattern', '[^0-9]*'], ['autocomplete', 'off'], ['onchange', 'initial'], ], script: ``, text: ``, childs: [] }
+let formInputTextField = { typeName: 'formInputTextField', description: 'Input text', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formText'], ['type', 'text'], ['placeholder', 'yes'], ['pattern', '[^0-9]*'], ['autocomplete', 'off'], ['onkeyup', 'initial'], ['onchange', 'initial'], ], script: ``, text: ``, childs: [] }
 let formInputTextLabel = { typeName: 'formInputTextLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Name`, childs: [] }
 let formInputTextSpan = { typeName: 'formInputTextSpan', description: 'Error message', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Numbers are not allowed`, childs: [] }
 
@@ -901,7 +901,7 @@ let formInputText = {
     ]
 }
 
-let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formArea'], ['placeholder', 'yes'], ['rows', 'initial'], ['onchange', 'initial'], ], script: ``, text: ``, childs: [] }
+let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formArea'], ['placeholder', 'yes'], ['rows', 'initial'], ['onkeyup', 'initial'], ['onchange', 'initial'], ], script: ``, text: ``, childs: [] }
 let formInputTextareaLabel = { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Description`, childs: [] }
 
 let formInputTextarea = {
@@ -1039,8 +1039,8 @@ let formButton = {
     childs: []
 }
 
-let waitSpinnerCircle = { typeName: 'waitSpinnerCircle', description: 'Spinner circle', image: '', tag: 'circle', childsAllowed: 'none', style: [], phone: [], attributes: [ ['cx', '50'], ['cy', '50'], ['r', '20'], ], script: ``, text: ``, childs: [] }
-let waitSpinnerMain = { typeName: 'waitSpinnerMain', description: 'Spinner main', image: '', tag: 'svg', childsAllowed: 'none', style: [], phone: [], attributes: [ ['viewBox', '0 0 100 100'] ], script: ``, text: ``, childs: [ waitSpinnerCircle ] }
+let waitSpinnerCircle = { typeName: 'waitSpinnerCircle', description: 'Spinner circle', image: '', tag: 'circle', childsAllowed: 'none', style: [], phone: [], attributes: [ ['cx', '25'], ['cy', '25'], ['r', '20'], ], script: ``, text: ``, childs: [] }
+let waitSpinnerMain = { typeName: 'waitSpinnerMain', description: 'Spinner main', image: '', tag: 'svg', childsAllowed: 'none', style: [], phone: [], attributes: [ ['viewBox', '0 0 50 50'] ], script: ``, text: ``, childs: [ waitSpinnerCircle ] }
 
 let waitSpinner = {
     typeName: 'waitSpinner',

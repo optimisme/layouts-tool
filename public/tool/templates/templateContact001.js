@@ -51,7 +51,6 @@ async function queryContact () {
         console.log(e)
     }
     await hideElement('boxSpinner')
-    await showElement('boxButton')
 
     if (response.status == 'ok') {
         refFormName.value = ''
@@ -65,6 +64,8 @@ async function queryContact () {
         await wait(3500)
         await hideElement('boxError')
     }
+
+    await showElement('boxButton')
 }
 
 /**

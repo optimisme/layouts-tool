@@ -199,7 +199,7 @@
                             "off"
                           ],
                           [
-                            "onchange",
+                            "onkeyup",
                             "checkForm()"
                           ]
                         ],
@@ -274,7 +274,7 @@
                             "off"
                           ],
                           [
-                            "onchange",
+                            "onkeyup",
                             "checkForm()"
                           ]
                         ],
@@ -337,7 +337,7 @@
                             "yes"
                           ],
                           [
-                            "onchange",
+                            "onkeyup",
                             "checkForm()"
                           ]
                         ],
@@ -365,7 +365,7 @@
                     "style": [
                       [
                         "height",
-                        "max-content",
+                        "55px",
                         true
                       ]
                     ],
@@ -388,6 +388,11 @@
                             "justify-content",
                             "center",
                             true
+                          ],
+                          [
+                            "padding",
+                            "16px 0 0 0",
+                            true
                           ]
                         ],
                         "phone": [],
@@ -404,13 +409,7 @@
                             "childsAllowed": "all",
                             "tag": "div",
                             "text": "",
-                            "style": [
-                              [
-                                "padding",
-                                "16px 0 0 0",
-                                true
-                              ]
-                            ],
+                            "style": [],
                             "phone": [],
                             "attributes": [],
                             "childs": [
@@ -462,7 +461,7 @@
                       ],
                       [
                         "height",
-                        "max-content",
+                        "55px",
                         true
                       ]
                     ],
@@ -484,6 +483,11 @@
                           [
                             "justify-content",
                             "center",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "16px 0 0 0",
                             true
                           ]
                         ],
@@ -552,7 +556,7 @@
                                         "attributes": [
                                           [
                                             "viewBox",
-                                            "0 0 100 100"
+                                            "0 0 50 50"
                                           ]
                                         ],
                                         "childs": [
@@ -567,11 +571,11 @@
                                             "attributes": [
                                               [
                                                 "cx",
-                                                "50"
+                                                "25"
                                               ],
                                               [
                                                 "cy",
-                                                "50"
+                                                "25"
                                               ],
                                               [
                                                 "r",
@@ -606,7 +610,7 @@
                       ],
                       [
                         "height",
-                        "max-content",
+                        "55px",
                         true
                       ]
                     ],
@@ -628,6 +632,11 @@
                           [
                             "justify-content",
                             "center",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "16px 0 0 0",
                             true
                           ]
                         ],
@@ -701,7 +710,7 @@
                       ],
                       [
                         "height",
-                        "max-content",
+                        "55px",
                         true
                       ]
                     ],
@@ -723,6 +732,11 @@
                           [
                             "justify-content",
                             "center",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "16px 0 0 0",
                             true
                           ]
                         ],

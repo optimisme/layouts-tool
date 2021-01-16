@@ -97,10 +97,6 @@ class App {
         })
     }
 
-    setSettings () {
-
-    }
-
     getNamedObject (name) {
 
         return eval(name)
