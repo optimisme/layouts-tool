@@ -1,11 +1,20 @@
 let express = require('express')
+let googleLib = require('./server/googleLib.js')
+let glib = new googleLib()
+let gSheet = '1bC0Jsdo3yZ1xAeSikBXh-VHSfLgKMbixMMlr7mQwCuY'
 
 let port = 8000
 let app = express()
 
 async function main () {
 
-    app.post('/query', (request, response) => { answerQuery(request, response) })
+    try {
+        await glib.googleAuthorize()
+    } catch (err) {
+        console.log(err)
+    }
+
+    app.post('/query', async (request, response) => { await answerQuery(request, response) })
 
     app.use(express.static('./public'))
 
@@ -29,11 +38,11 @@ async function answerQuery (request, response) {
 
   switch (data.type) {
   case 'contact':
-      rst = await queryContact(data)
-      break
+        rst = await queryContact(data)
+        break
   }
    
-  response.json({ status: 'ok', result: rst })
+  response.json(rst)
 }
 
 /**
@@ -41,7 +50,9 @@ async function answerQuery (request, response) {
  * @param {data} received data from client's navigator
  */
 async function queryContact (data) {
-  console.log('Rebut', data)
+    console.log('Rebut', data)
+    await glib.append(gSheet, 'Contacte', [[data.name, data.mail, data.description]])
+    return { status: 'ok', result: 'Dades mostrades' }
 }
 
 /**

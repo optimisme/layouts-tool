@@ -12,7 +12,9 @@
   "dependencies": {
     "express": "latest",
     "forever": "latest",
-    "supervisor": "latest"
+    "supervisor": "latest",
+    "googleapis": "latest",
+    "readline": "latest"
   },
   "devDependencies": {},
   "bundleDependencies": [],

@@ -73,8 +73,10 @@ class Source {
             classStr = ' class="' + classStr + '"'
         }
 
-        if (item.tag != 'textarea' && item.tag != 'a') {
+        if (item.tag != 'textarea' && item.tag != 'a' && item.tag != 'circle') {
             str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '>' + '<!-- ' + item.description + ' -->'
+        } else if (item.tag == 'circle') {
+            str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '/>'
         } else {
             str = str + '\n' + ident + '<' + item.tag + attributes + classStr + '>'
         }
@@ -88,7 +90,7 @@ class Source {
         }
 
         if (['textarea'].indexOf(item.tag) >= 0) str = str + '</' + item.tag + '>'
-        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe', 'select', 'option', 'button'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
+        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe', 'select', 'option', 'button', 'svg'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
 
         return str
     }

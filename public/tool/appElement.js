@@ -144,7 +144,6 @@ class AppElement {
     setStyle (name, value) {
 
         let positionDestop = -1
-console.log(name, value)
         positionDestop = app.getPropertyPosition(this.style, name)
 
         this.style[positionDestop][1] = value
@@ -157,7 +156,6 @@ console.log(name, value)
             refStyle.setAttribute('id', 'css' + this.appId)
             refStyle.innerHTML = this.getStyleString()
             app.refPreviewBody.appendChild(refStyle)
-            console.log('<', classArr)
             this.refPreview.setAttribute('class', `css${this.appId} ` + classArr.join(' '))
         } else {
             refStyle.innerHTML = this.getStyleString()
