@@ -13,8 +13,7 @@
     "express": "latest",
     "forever": "latest",
     "supervisor": "latest",
-    "googleapis": "latest",
-    "readline": "latest"
+    "sqlite3": "latest"
   },
   "devDependencies": {},
   "bundleDependencies": [],

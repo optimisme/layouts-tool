@@ -1,39 +1,36 @@
 let express = require('express')
-let googleLib = require('./server/googleLib.js')
-let glib = new googleLib()
-let gSheet = '1bC0Jsdo3yZ1xAeSikBXh-VHSfLgKMbixMMlr7mQwCuY'
+let utilsLib = require('./server/utils.js')
 
 let port = 8000
 let app = express()
+let utils = new utilsLib()
 
 async function main () {
 
-    try {
-        await glib.googleAuthorize()
-    } catch (err) {
-        console.log(err)
-    }
-
+    await utils.query('CREATE TABLE IF NOT EXISTS contact (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, mail TEXT NOT NULL, description TEXT NOT NULL)')
+    
     app.post('/query', async (request, response) => { await answerQuery(request, response) })
-
     app.use(express.static('./public'))
 
-    app.listen(port, () => {
+    utils.server = app.listen(port, () => {
       console.log(`Navigate to: http://localhost:${port}`)
       console.log(`Navigate to: http://localhost:${port}/tool`)
     })
+
+    process.on('SIGTERM', () => { console.log('SIGTERM', utils); utils.shutDown() })  
+    process.on('SIGINT', () => { console.log('SIGINT'); utils.shutDown() })  
 }
-main() 
+main()
 
 /**
  * Answers a query
- * Calls each function depending on 'data.type' requested
+ * Calls each function depending on 'data.type' requested 
  * @param {request} full request data
  * @param {response} object to return an answer
  */
 async function answerQuery (request, response) {
 
-  let data = await getPostData(request)
+  let data = await utils.getPostData(request) 
   let rst = {}
 
   switch (data.type) {
@@ -50,37 +47,12 @@ async function answerQuery (request, response) {
  * @param {data} received data from client's navigator
  */
 async function queryContact (data) {
-    console.log('Rebut', data)
-    await glib.append(gSheet, 'Contacte', [[data.name, data.mail, data.description]])
-    return { status: 'ok', result: 'Dades mostrades' }
-}
 
-/**
- * Reads the stream of data input and 
- * transforms it into a JSON object
- * @param {request} query data
- */
-async function getPostData (request) {
-  return new Promise(async (resolve, reject) => {
-      let body = '',
-          error = null
+    await utils.query(`INSERT INTO contact (name, mail, description) VALUES ("${data.name}", "${data.mail}", "${data.description}")`)
 
-      request.on('data', (data) => { body = body + data.toString() })
-      request.on('close', () => { /* TODO - Client closed connection, destroy everything! */ })
-      request.on('error', (err) => { error = 'Error getting data' })
-      request.on('end', async () => {
-          if (error !== null) {
-              console.log('Error getting data from post: ', error)
-              return reject(error)
-          } else {
-              try {
-                  return resolve(JSON.parse(body))
-              } catch (e) {
-                  console.log('Error parsing data from post: ', error)
-                  return reject(e)
-              }
-              
-          }
-      })
-  })
+    console.log(await utils.query('SELECT * FROM contact'))
+
+    utils.shutDown()
+
+    return { status: 'ok', result: 'Dades mostrades' } 
 }
