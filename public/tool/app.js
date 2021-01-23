@@ -4,9 +4,9 @@ let appTypeNames = [
     'divSticky', 'divMobile', 'divDesktop',
     'titleh1', 'titleh2', 'titleh3', 'text', 'textInline', 'textEllipsis', 'linkBox', 'linkInline',
     'image', 'imageBackground', 'divGrid',
-    'formInputText', 'formInputTextarea', 'formInputSelect', 'formInputCheckbox', 'formInputRadio', 'formInputRange', 'formButton', 
+    'formInputText', 'formInputPassword', 'formInputTextarea', 'formInputSelect', 'formInputCheckbox', 'formInputRadio', 'formInputRange', 'formButton', 
     'waitSpinner', 'waitProgressUnknown',
-    'carouselDots', 'carouselArrows', 'drawer', 'iconMaterial', 'mapGoogle'
+    'carouselDots', 'carouselArrows', 'drawer', 'modal', 'iconMaterial', 'mapGoogle'
 ]
 
 let appTemplates = {
@@ -329,7 +329,7 @@ class App {
         document.body.removeChild(element);
     }
 
-    uploadWebtemplate (file) {
+    uploadWebTemplate (refresh, file) {
         let reader = new FileReader()
 
         if (!file) { return }
@@ -338,8 +338,10 @@ class App {
             try {
                 let obj = JSON.parse(e.target.result)
 
-                while (this.elementsRoot.childs.length > 0) {
-                    this.elementsRoot.remove(this.elementsRoot.childs[0])
+                if (refresh) {
+                    while (this.elementsRoot.childs.length > 0) {
+                        this.elementsRoot.remove(this.elementsRoot.childs[0])
+                    }
                 }
 
                 for (let cnt = 0; cnt < obj.elementsRoot.childs.length; cnt = cnt + 1) {

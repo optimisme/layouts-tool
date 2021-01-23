@@ -1,0 +1,2151 @@
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "pageSignInTools",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": [
+      "/user.js"
+    ]
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "modal",
+        "description": "Modal window - SignIn",
+        "childsAllowed": "none",
+        "tag": "div",
+        "text": "",
+        "style": [],
+        "phone": [],
+        "attributes": [
+          [
+            "id",
+            "modalSignIn"
+          ],
+          [
+            "class",
+            "modal"
+          ],
+          [
+            "onclick",
+            "setModal(\"modalSignIn\", false, event)"
+          ]
+        ],
+        "childs": [
+          {
+            "typeName": "modalWindow",
+            "description": "Modal",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [],
+            "phone": [],
+            "attributes": [
+              [
+                "class",
+                "modalWindow"
+              ]
+            ],
+            "childs": [
+              {
+                "typeName": "divFlex",
+                "description": "Flex - SignIn form",
+                "childsAllowed": "divFlexChild",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "align-items",
+                    "center",
+                    true
+                  ],
+                  [
+                    "height",
+                    "100%",
+                    true
+                  ],
+                  [
+                    "justify-content",
+                    "center",
+                    true
+                  ],
+                  [
+                    "width",
+                    "100%",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "flex-direction",
+                        "column",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "div",
+                        "description": "Div",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "border",
+                            "solid 1px lightgrey",
+                            true
+                          ],
+                          [
+                            "border-radius",
+                            "5px",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "8px",
+                            true
+                          ],
+                          [
+                            "width",
+                            "300px",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "titleh2",
+                            "description": "H2",
+                            "childsAllowed": "none",
+                            "tag": "h2",
+                            "text": "Sign In",
+                            "style": [
+                              [
+                                "font-size",
+                                "1.5em",
+                                true
+                              ],
+                              [
+                                "font-weight",
+                                "300",
+                                true
+                              ],
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ],
+                              [
+                                "padding",
+                                "0",
+                                true
+                              ],
+                              [
+                                "text-align",
+                                "center",
+                                true
+                              ],
+                              [
+                                "width",
+                                "100%",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": []
+                          },
+                          {
+                            "typeName": "formInputText",
+                            "description": "Input text with pattern validation",
+                            "childsAllowed": "none",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "class",
+                                "formInputText"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "formInputTextField",
+                                "description": "Input text",
+                                "childsAllowed": "none",
+                                "tag": "input",
+                                "text": "",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "id",
+                                    "formMail"
+                                  ],
+                                  [
+                                    "type",
+                                    "text"
+                                  ],
+                                  [
+                                    "placeholder",
+                                    "yes"
+                                  ],
+                                  [
+                                    "pattern",
+                                    "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"
+                                  ],
+                                  [
+                                    "autocomplete",
+                                    "off"
+                                  ],
+                                  [
+                                    "onkeyup",
+                                    "user.checkFormSignIn()"
+                                  ]
+                                ],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextLabel",
+                                "description": "Label",
+                                "childsAllowed": "none",
+                                "tag": "label",
+                                "text": "Email",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextSpan",
+                                "description": "Error message",
+                                "childsAllowed": "none",
+                                "tag": "span",
+                                "text": "This is not an email",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "formInputPassword",
+                            "description": "Input password with pattern validation",
+                            "childsAllowed": "none",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "class",
+                                "formInputText"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "formInputTextPwd",
+                                "description": "Input password",
+                                "childsAllowed": "none",
+                                "tag": "input",
+                                "text": "",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "id",
+                                    "formPassword"
+                                  ],
+                                  [
+                                    "type",
+                                    "password"
+                                  ],
+                                  [
+                                    "placeholder",
+                                    "yes"
+                                  ],
+                                  [
+                                    "pattern",
+                                    "[^' ']+"
+                                  ],
+                                  [
+                                    "autocomplete",
+                                    "off"
+                                  ],
+                                  [
+                                    "onkeyup",
+                                    "user.checkFormSignIn()"
+                                  ]
+                                ],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextLabel",
+                                "description": "Label",
+                                "childsAllowed": "none",
+                                "tag": "label",
+                                "text": "Password",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextSpan",
+                                "description": "Error message",
+                                "childsAllowed": "none",
+                                "tag": "span",
+                                "text": "Whitespaces not allowed",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "div",
+                            "description": "Div - Button",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "id",
+                                "boxButton"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "divFlex",
+                                "description": "Flex",
+                                "childsAllowed": "divFlexChild",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "align-items",
+                                    "center",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "48px",
+                                    true
+                                  ],
+                                  [
+                                    "justify-content",
+                                    "center",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "divFlexChild",
+                                    "description": "Flex child",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": [
+                                      {
+                                        "typeName": "formButton",
+                                        "description": "Button for forms",
+                                        "childsAllowed": "none",
+                                        "tag": "button",
+                                        "text": "Next",
+                                        "style": [],
+                                        "phone": [],
+                                        "attributes": [
+                                          [
+                                            "id",
+                                            "formButton"
+                                          ],
+                                          [
+                                            "class",
+                                            "formButton"
+                                          ],
+                                          [
+                                            "onclick",
+                                            "user.signIn()"
+                                          ],
+                                          [
+                                            "disabled",
+                                            "true"
+                                          ]
+                                        ],
+                                        "childs": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "div",
+                            "description": "Div - Spinner",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "display",
+                                "none",
+                                true
+                              ],
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "id",
+                                "boxSpinner"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "divFlex",
+                                "description": "Flex",
+                                "childsAllowed": "divFlexChild",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "align-items",
+                                    "center",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "48px",
+                                    true
+                                  ],
+                                  [
+                                    "justify-content",
+                                    "center",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "divFlexChild",
+                                    "description": "Flex child",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": [
+                                      {
+                                        "typeName": "div",
+                                        "description": "Div",
+                                        "childsAllowed": "all",
+                                        "tag": "div",
+                                        "text": "",
+                                        "style": [
+                                          [
+                                            "height",
+                                            "48",
+                                            true
+                                          ]
+                                        ],
+                                        "phone": [],
+                                        "attributes": [],
+                                        "childs": [
+                                          {
+                                            "typeName": "waitSpinner",
+                                            "description": "Wait spinner",
+                                            "childsAllowed": "none",
+                                            "tag": "div",
+                                            "text": "",
+                                            "style": [],
+                                            "phone": [],
+                                            "attributes": [
+                                              [
+                                                "class",
+                                                "waitSpinner"
+                                              ]
+                                            ],
+                                            "childs": [
+                                              {
+                                                "typeName": "waitSpinnerMain",
+                                                "description": "Spinner main",
+                                                "childsAllowed": "none",
+                                                "tag": "svg",
+                                                "text": "",
+                                                "style": [],
+                                                "phone": [],
+                                                "attributes": [
+                                                  [
+                                                    "viewBox",
+                                                    "0 0 50 50"
+                                                  ]
+                                                ],
+                                                "childs": [
+                                                  {
+                                                    "typeName": "waitSpinnerCircle",
+                                                    "description": "Spinner circle",
+                                                    "childsAllowed": "none",
+                                                    "tag": "circle",
+                                                    "text": "",
+                                                    "style": [],
+                                                    "phone": [],
+                                                    "attributes": [
+                                                      [
+                                                        "cx",
+                                                        "25"
+                                                      ],
+                                                      [
+                                                        "cy",
+                                                        "25"
+                                                      ],
+                                                      [
+                                                        "r",
+                                                        "20"
+                                                      ]
+                                                    ],
+                                                    "childs": []
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "div",
+                            "description": "Div - Error",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "display",
+                                "none",
+                                true
+                              ],
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "id",
+                                "boxError"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "divFlex",
+                                "description": "Flex",
+                                "childsAllowed": "divFlexChild",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "align-items",
+                                    "center",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "48px",
+                                    true
+                                  ],
+                                  [
+                                    "justify-content",
+                                    "center",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "divFlexChild",
+                                    "description": "Flex child",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": [
+                                      {
+                                        "typeName": "text",
+                                        "description": "Text",
+                                        "childsAllowed": "none",
+                                        "tag": "div",
+                                        "text": "Could not Sign In",
+                                        "style": [
+                                          [
+                                            "color",
+                                            "red",
+                                            true
+                                          ],
+                                          [
+                                            "font-size",
+                                            "1em",
+                                            true
+                                          ],
+                                          [
+                                            "height",
+                                            "max-content",
+                                            true
+                                          ],
+                                          [
+                                            "width",
+                                            "100%",
+                                            true
+                                          ]
+                                        ],
+                                        "phone": [],
+                                        "attributes": [],
+                                        "childs": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "typeName": "divFlex",
+                        "description": "Flex",
+                        "childsAllowed": "divFlexChild",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "padding",
+                            "8px 0 0 0",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "padding",
+                                "0 8px 0 0",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "text",
+                                "description": "Text",
+                                "childsAllowed": "none",
+                                "tag": "div",
+                                "text": "Need an account?",
+                                "style": [
+                                  [
+                                    "font-size",
+                                    "0.95em",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "linkInline",
+                                "description": "Inline link",
+                                "childsAllowed": "none",
+                                "tag": "a",
+                                "text": "Create an account",
+                                "style": [
+                                  [
+                                    "color",
+                                    "rgb(0, 150, 255)",
+                                    true
+                                  ],
+                                  [
+                                    "font-size",
+                                    "0.95em",
+                                    true
+                                  ],
+                                  [
+                                    "text-decoration",
+                                    "none",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "target",
+                                    "_self"
+                                  ],
+                                  [
+                                    "onclick",
+                                    "user.swapModal('modalSignUp')"
+                                  ]
+                                ],
+                                "childs": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "typeName": "modal",
+        "description": "Modal window - SignUp",
+        "childsAllowed": "none",
+        "tag": "div",
+        "text": "",
+        "style": [],
+        "phone": [],
+        "attributes": [
+          [
+            "id",
+            "modalSignUp"
+          ],
+          [
+            "class",
+            "modal"
+          ],
+          [
+            "onclick",
+            "setModal(\"modalSignUp\", false, event)"
+          ]
+        ],
+        "childs": [
+          {
+            "typeName": "modalWindow",
+            "description": "Modal",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [],
+            "phone": [],
+            "attributes": [
+              [
+                "class",
+                "modalWindow"
+              ]
+            ],
+            "childs": [
+              {
+                "typeName": "divFlex",
+                "description": "Flex - SignUp form",
+                "childsAllowed": "divFlexChild",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "align-items",
+                    "center",
+                    true
+                  ],
+                  [
+                    "height",
+                    "100%",
+                    true
+                  ],
+                  [
+                    "justify-content",
+                    "center",
+                    true
+                  ],
+                  [
+                    "width",
+                    "100%",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "divFlexChild",
+                    "description": "Flex child",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "flex-direction",
+                        "column",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "div",
+                        "description": "Div",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "border",
+                            "solid 1px lightgrey",
+                            true
+                          ],
+                          [
+                            "border-radius",
+                            "5px",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "8px",
+                            true
+                          ],
+                          [
+                            "width",
+                            "300px",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "titleh2",
+                            "description": "H2",
+                            "childsAllowed": "none",
+                            "tag": "h2",
+                            "text": "Create an account",
+                            "style": [
+                              [
+                                "font-size",
+                                "1.5em",
+                                true
+                              ],
+                              [
+                                "font-weight",
+                                "300",
+                                true
+                              ],
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ],
+                              [
+                                "padding",
+                                "0",
+                                true
+                              ],
+                              [
+                                "text-align",
+                                "center",
+                                true
+                              ],
+                              [
+                                "width",
+                                "100%",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": []
+                          },
+                          {
+                            "typeName": "formInputText",
+                            "description": "Input mail",
+                            "childsAllowed": "none",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "class",
+                                "formInputText"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "formInputTextField",
+                                "description": "Input text",
+                                "childsAllowed": "none",
+                                "tag": "input",
+                                "text": "",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "id",
+                                    "formMail"
+                                  ],
+                                  [
+                                    "type",
+                                    "text"
+                                  ],
+                                  [
+                                    "placeholder",
+                                    "yes"
+                                  ],
+                                  [
+                                    "pattern",
+                                    "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"
+                                  ],
+                                  [
+                                    "autocomplete",
+                                    "off"
+                                  ],
+                                  [
+                                    "onkeyup",
+                                    "user.checkFormSignUp()"
+                                  ]
+                                ],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextLabel",
+                                "description": "Label",
+                                "childsAllowed": "none",
+                                "tag": "label",
+                                "text": "Email",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextSpan",
+                                "description": "Error message",
+                                "childsAllowed": "none",
+                                "tag": "span",
+                                "text": "This is not an email",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "formInputPassword",
+                            "description": "Input password",
+                            "childsAllowed": "none",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "class",
+                                "formInputText"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "formInputTextPwd",
+                                "description": "Input password",
+                                "childsAllowed": "none",
+                                "tag": "input",
+                                "text": "",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "id",
+                                    "formPassword"
+                                  ],
+                                  [
+                                    "type",
+                                    "password"
+                                  ],
+                                  [
+                                    "placeholder",
+                                    "yes"
+                                  ],
+                                  [
+                                    "pattern",
+                                    "[^' ']+"
+                                  ],
+                                  [
+                                    "autocomplete",
+                                    "off"
+                                  ],
+                                  [
+                                    "onkeyup",
+                                    "user.checkFormSignUp()"
+                                  ]
+                                ],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextLabel",
+                                "description": "Label",
+                                "childsAllowed": "none",
+                                "tag": "label",
+                                "text": "Password",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextSpan",
+                                "description": "Error message",
+                                "childsAllowed": "none",
+                                "tag": "span",
+                                "text": "Whitespaces not allowed",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "formInputText",
+                            "description": "Input name",
+                            "childsAllowed": "none",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "class",
+                                "formInputText"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "formInputTextField",
+                                "description": "Input text",
+                                "childsAllowed": "none",
+                                "tag": "input",
+                                "text": "",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "id",
+                                    "formName"
+                                  ],
+                                  [
+                                    "type",
+                                    "text"
+                                  ],
+                                  [
+                                    "placeholder",
+                                    "yes"
+                                  ],
+                                  [
+                                    "pattern",
+                                    "[^0-9]*"
+                                  ],
+                                  [
+                                    "autocomplete",
+                                    "off"
+                                  ],
+                                  [
+                                    "onkeyup",
+                                    "user.checkFormSignUp()"
+                                  ]
+                                ],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextLabel",
+                                "description": "Label",
+                                "childsAllowed": "none",
+                                "tag": "label",
+                                "text": "Name",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextSpan",
+                                "description": "Error message",
+                                "childsAllowed": "none",
+                                "tag": "span",
+                                "text": "This is not a valid name",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "formInputText",
+                            "description": "Input surname",
+                            "childsAllowed": "none",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "class",
+                                "formInputText"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "formInputTextField",
+                                "description": "Input text",
+                                "childsAllowed": "none",
+                                "tag": "input",
+                                "text": "",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "id",
+                                    "formSurname"
+                                  ],
+                                  [
+                                    "type",
+                                    "text"
+                                  ],
+                                  [
+                                    "placeholder",
+                                    "yes"
+                                  ],
+                                  [
+                                    "pattern",
+                                    "[^0-9]*"
+                                  ],
+                                  [
+                                    "autocomplete",
+                                    "off"
+                                  ],
+                                  [
+                                    "onkeyup",
+                                    "user.checkFormSignUp()"
+                                  ]
+                                ],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextLabel",
+                                "description": "Label",
+                                "childsAllowed": "none",
+                                "tag": "label",
+                                "text": "Surname",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              },
+                              {
+                                "typeName": "formInputTextSpan",
+                                "description": "Error message",
+                                "childsAllowed": "none",
+                                "tag": "span",
+                                "text": "This is not a valid name",
+                                "style": [],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "div",
+                            "description": "Div - Button",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "id",
+                                "boxButton"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "divFlex",
+                                "description": "Flex",
+                                "childsAllowed": "divFlexChild",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "align-items",
+                                    "center",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "48px",
+                                    true
+                                  ],
+                                  [
+                                    "justify-content",
+                                    "center",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "divFlexChild",
+                                    "description": "Flex child",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": [
+                                      {
+                                        "typeName": "formButton",
+                                        "description": "Button for forms",
+                                        "childsAllowed": "none",
+                                        "tag": "button",
+                                        "text": "Create",
+                                        "style": [],
+                                        "phone": [],
+                                        "attributes": [
+                                          [
+                                            "id",
+                                            "formButton"
+                                          ],
+                                          [
+                                            "class",
+                                            "formButton"
+                                          ],
+                                          [
+                                            "onclick",
+                                            "user.signUp()"
+                                          ],
+                                          [
+                                            "disabled",
+                                            "true"
+                                          ]
+                                        ],
+                                        "childs": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "div",
+                            "description": "Div - Spinner",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "display",
+                                "none",
+                                true
+                              ],
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "id",
+                                "boxSpinner"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "divFlex",
+                                "description": "Flex",
+                                "childsAllowed": "divFlexChild",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "align-items",
+                                    "center",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "48px",
+                                    true
+                                  ],
+                                  [
+                                    "justify-content",
+                                    "center",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "divFlexChild",
+                                    "description": "Flex child",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": [
+                                      {
+                                        "typeName": "div",
+                                        "description": "Div",
+                                        "childsAllowed": "all",
+                                        "tag": "div",
+                                        "text": "",
+                                        "style": [
+                                          [
+                                            "height",
+                                            "48",
+                                            true
+                                          ]
+                                        ],
+                                        "phone": [],
+                                        "attributes": [],
+                                        "childs": [
+                                          {
+                                            "typeName": "waitSpinner",
+                                            "description": "Wait spinner",
+                                            "childsAllowed": "none",
+                                            "tag": "div",
+                                            "text": "",
+                                            "style": [],
+                                            "phone": [],
+                                            "attributes": [
+                                              [
+                                                "class",
+                                                "waitSpinner"
+                                              ]
+                                            ],
+                                            "childs": [
+                                              {
+                                                "typeName": "waitSpinnerMain",
+                                                "description": "Spinner main",
+                                                "childsAllowed": "none",
+                                                "tag": "svg",
+                                                "text": "",
+                                                "style": [],
+                                                "phone": [],
+                                                "attributes": [
+                                                  [
+                                                    "viewBox",
+                                                    "0 0 50 50"
+                                                  ]
+                                                ],
+                                                "childs": [
+                                                  {
+                                                    "typeName": "waitSpinnerCircle",
+                                                    "description": "Spinner circle",
+                                                    "childsAllowed": "none",
+                                                    "tag": "circle",
+                                                    "text": "",
+                                                    "style": [],
+                                                    "phone": [],
+                                                    "attributes": [
+                                                      [
+                                                        "cx",
+                                                        "25"
+                                                      ],
+                                                      [
+                                                        "cy",
+                                                        "25"
+                                                      ],
+                                                      [
+                                                        "r",
+                                                        "20"
+                                                      ]
+                                                    ],
+                                                    "childs": []
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "div",
+                            "description": "Div - Error",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "display",
+                                "none",
+                                true
+                              ],
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [
+                              [
+                                "id",
+                                "boxError"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "divFlex",
+                                "description": "Flex",
+                                "childsAllowed": "divFlexChild",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "align-items",
+                                    "center",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "48px",
+                                    true
+                                  ],
+                                  [
+                                    "justify-content",
+                                    "center",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "divFlexChild",
+                                    "description": "Flex child",
+                                    "childsAllowed": "all",
+                                    "tag": "div",
+                                    "text": "",
+                                    "style": [],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": [
+                                      {
+                                        "typeName": "text",
+                                        "description": "Text",
+                                        "childsAllowed": "none",
+                                        "tag": "div",
+                                        "text": "Could not Sign Up",
+                                        "style": [
+                                          [
+                                            "color",
+                                            "red",
+                                            true
+                                          ],
+                                          [
+                                            "font-size",
+                                            "1em",
+                                            true
+                                          ],
+                                          [
+                                            "height",
+                                            "max-content",
+                                            true
+                                          ],
+                                          [
+                                            "width",
+                                            "100%",
+                                            true
+                                          ]
+                                        ],
+                                        "phone": [],
+                                        "attributes": [],
+                                        "childs": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "typeName": "divFlex",
+                        "description": "Flex",
+                        "childsAllowed": "divFlexChild",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "padding",
+                            "8px 0 0 0",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "text",
+                                "description": "Text",
+                                "childsAllowed": "none",
+                                "tag": "div",
+                                "text": "Has an account?",
+                                "style": [
+                                  [
+                                    "font-size",
+                                    "0.95em",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "padding",
+                                    "0 8px 0 0",
+                                    true
+                                  ],
+                                  [
+                                    "width",
+                                    "max-content",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "divFlexChild",
+                            "description": "Flex child",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "linkInline",
+                                "description": "Inline link",
+                                "childsAllowed": "none",
+                                "tag": "a",
+                                "text": "Sign In",
+                                "style": [
+                                  [
+                                    "color",
+                                    "rgb(0, 150, 255)",
+                                    true
+                                  ],
+                                  [
+                                    "font-size",
+                                    "0.95em",
+                                    true
+                                  ],
+                                  [
+                                    "text-decoration",
+                                    "none",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "target",
+                                    "_self"
+                                  ],
+                                  [
+                                    "onclick",
+                                    "user.swapModal('modalSignIn')"
+                                  ]
+                                ],
+                                "childs": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "typeName": "divFlex",
+        "description": "Flex - Signed user",
+        "childsAllowed": "divFlexChild",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "align-items",
+            "center",
+            true
+          ],
+          [
+            "height",
+            "32px",
+            true
+          ],
+          [
+            "justify-content",
+            "center",
+            true
+          ]
+        ],
+        "phone": [],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "divFlexChild",
+            "description": "Flex child",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "div",
+                "description": "Div - boxSignIn",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "height",
+                    "max-content",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [
+                  [
+                    "id",
+                    "boxSignIn"
+                  ]
+                ],
+                "childs": [
+                  {
+                    "typeName": "linkBox",
+                    "description": "Link box",
+                    "childsAllowed": "all",
+                    "tag": "a",
+                    "text": "",
+                    "style": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "text-decoration",
+                        "none",
+                        true
+                      ],
+                      [
+                        "width",
+                        "max-content",
+                        true
+                      ]
+                    ],
+                    "phone": [
+                      [
+                        "height",
+                        "max-content",
+                        true
+                      ],
+                      [
+                        "width",
+                        "max-content",
+                        true
+                      ]
+                    ],
+                    "attributes": [
+                      [
+                        "target",
+                        "_self"
+                      ],
+                      [
+                        "onclick",
+                        "setModal('modalSignIn', true)"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "div",
+                        "description": "Div",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "background",
+                            "rgb(0, 150, 255)",
+                            true
+                          ],
+                          [
+                            "border-radius",
+                            "15px",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "padding",
+                            "2px 8px 4px 8px",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "text",
+                            "description": "Text",
+                            "childsAllowed": "none",
+                            "tag": "div",
+                            "text": "Sign In",
+                            "style": [
+                              [
+                                "color",
+                                "white",
+                                true
+                              ],
+                              [
+                                "font-size",
+                                "0.95em",
+                                true
+                              ],
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ],
+                              [
+                                "width",
+                                "100%",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "typeName": "divFlexChild",
+            "description": "Flex child",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [],
+            "phone": [],
+            "attributes": [],
+            "childs": [
+              {
+                "typeName": "div",
+                "description": "Div - bosSignOut",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "display",
+                    "none",
+                    true
+                  ],
+                  [
+                    "height",
+                    "max-content",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [
+                  [
+                    "id",
+                    "boxSignOut"
+                  ]
+                ],
+                "childs": [
+                  {
+                    "typeName": "divFlex",
+                    "description": "Flex",
+                    "childsAllowed": "divFlexChild",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
+                      [
+                        "align-items",
+                        "center",
+                        true
+                      ],
+                      [
+                        "height",
+                        "32px",
+                        true
+                      ],
+                      [
+                        "justify-content",
+                        "center",
+                        true
+                      ]
+                    ],
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "divFlexChild",
+                        "description": "Flex child",
+                        "childsAllowed": "all",
+                        "tag": "div",
+                        "text": "",
+                        "style": [
+                          [
+                            "align-items",
+                            "center",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": [
+                          {
+                            "typeName": "div",
+                            "description": "Div",
+                            "childsAllowed": "all",
+                            "tag": "div",
+                            "text": "",
+                            "style": [
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ],
+                              [
+                                "padding",
+                                "0 8px 0 0",
+                                true
+                              ]
+                            ],
+                            "phone": [],
+                            "attributes": [],
+                            "childs": [
+                              {
+                                "typeName": "linkInline",
+                                "description": "Inline link",
+                                "childsAllowed": "none",
+                                "tag": "a",
+                                "text": "Username",
+                                "style": [
+                                  [
+                                    "color",
+                                    "rgb(0, 150, 255)",
+                                    true
+                                  ],
+                                  [
+                                    "font-size",
+                                    "1em",
+                                    true
+                                  ],
+                                  [
+                                    "text-decoration",
+                                    "none",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [
+                                  [
+                                    "id",
+                                    "textSignedName"
+                                  ],
+                                  [
+                                    "href",
+                                    "/pageUserEdit.html"
+                                  ],
+                                  [
+                                    "target",
+                                    "_self"
+                                  ]
+                                ],
+                                "childs": []
+                              }
+                            ]
+                          },
+                          {
+                            "typeName": "linkBox",
+                            "description": "Link box",
+                            "childsAllowed": "all",
+                            "tag": "a",
+                            "text": "",
+                            "style": [
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ],
+                              [
+                                "text-decoration",
+                                "none",
+                                true
+                              ],
+                              [
+                                "width",
+                                "max-content",
+                                true
+                              ]
+                            ],
+                            "phone": [
+                              [
+                                "height",
+                                "max-content",
+                                true
+                              ],
+                              [
+                                "width",
+                                "max-content",
+                                true
+                              ]
+                            ],
+                            "attributes": [
+                              [
+                                "target",
+                                "_blank"
+                              ],
+                              [
+                                "onclick",
+                                "user.signOut()"
+                              ]
+                            ],
+                            "childs": [
+                              {
+                                "typeName": "div",
+                                "description": "Div",
+                                "childsAllowed": "all",
+                                "tag": "div",
+                                "text": "",
+                                "style": [
+                                  [
+                                    "background",
+                                    "rgb(0, 150, 255)",
+                                    true
+                                  ],
+                                  [
+                                    "border-radius",
+                                    "15px",
+                                    true
+                                  ],
+                                  [
+                                    "height",
+                                    "max-content",
+                                    true
+                                  ],
+                                  [
+                                    "padding",
+                                    "2px 8px 4px 8px",
+                                    true
+                                  ]
+                                ],
+                                "phone": [],
+                                "attributes": [],
+                                "childs": [
+                                  {
+                                    "typeName": "text",
+                                    "description": "Text",
+                                    "childsAllowed": "none",
+                                    "tag": "div",
+                                    "text": "Sign Out",
+                                    "style": [
+                                      [
+                                        "color",
+                                        "white",
+                                        true
+                                      ],
+                                      [
+                                        "font-size",
+                                        "0.95em",
+                                        true
+                                      ],
+                                      [
+                                        "height",
+                                        "max-content",
+                                        true
+                                      ],
+                                      [
+                                        "width",
+                                        "100%",
+                                        true
+                                      ]
+                                    ],
+                                    "phone": [],
+                                    "attributes": [],
+                                    "childs": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

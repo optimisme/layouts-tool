@@ -21,7 +21,8 @@
         <script src="./appTypes.js"></script>
     </head>
     <body>
-        <input id="fileInput" type="file" style="display:none;" onchange="app.uploadWebtemplate(this.files[0])" />
+        <input id="fileInputRefresh" type="file" style="display:none;" onchange="app.uploadWebTemplate(true, this.files[0])" />
+        <input id="fileInputAppend"  type="file" style="display:none;" onchange="app.uploadWebTemplate(false, this.files[0])" />
         <sdw-tool-list></sdw-tool-list>
         <sdw-tool-preview></sdw-tool-preview>
         <sdw-tool-settings></sdw-tool-settings>

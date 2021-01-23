@@ -125,7 +125,7 @@ class SdwToolPreview extends HTMLElement {
             buttonLoad.setAttribute('name', 'buttonLoad')
             buttonLoad.setAttribute('class', 'buttonDrag')
             buttonLoad.addEventListener('click', () => {
-                document.getElementById('fileInput').click()
+                document.getElementById('fileInputRefresh').click()
             })
             buttonLoad.addEventListener('dragover', (e) => {
                 e.preventDefault()
@@ -142,7 +142,7 @@ class SdwToolPreview extends HTMLElement {
                 e.stopPropagation()
                 this.elmRoot.querySelector(`div[name="buttonLoad"]`).classList.remove('dragOver')
                 if(e.dataTransfer.files[0]) {
-                    app.uploadWebtemplate(e.dataTransfer.files[0])
+                    app.uploadWebTemplate(true, e.dataTransfer.files[0])
                 }
             })
             refButtons.appendChild(buttonLoad)
@@ -150,6 +150,36 @@ class SdwToolPreview extends HTMLElement {
                 let LoadIcon = document.createElement('ion-icon')
                 LoadIcon.setAttribute('name', 'cloud-upload-outline')
                 buttonLoad.appendChild(LoadIcon)
+
+            let buttonAppend = document.createElement('div')
+            buttonAppend.setAttribute('name', 'buttonAppend')
+            buttonAppend.setAttribute('class', 'buttonDrag')
+            buttonAppend.addEventListener('click', () => {
+                document.getElementById('fileInputAppend').click()
+            })
+            buttonAppend.addEventListener('dragover', (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                this.elmRoot.querySelector(`div[name="buttonAppend"]`).classList.add('dragOver')
+            })
+            buttonAppend.addEventListener('dragleave', (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                this.elmRoot.querySelector(`div[name="buttonAppend"]`).classList.remove('dragOver')
+            })
+            buttonAppend.addEventListener('drop', (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                this.elmRoot.querySelector(`div[name="buttonAppend"]`).classList.remove('dragOver')
+                if(e.dataTransfer.files[0]) {
+                    app.uploadWebTemplate(false, e.dataTransfer.files[0])
+                }
+            })
+            refButtons.appendChild(buttonAppend)
+            
+                let AppendIcon = document.createElement('ion-icon')
+                AppendIcon.setAttribute('name', 'add-outline')
+                buttonAppend.appendChild(AppendIcon)
 
             let buttonCode = document.createElement('div')
             buttonCode.addEventListener('click', () => {

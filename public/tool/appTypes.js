@@ -756,20 +756,20 @@ let linkInline = {
     childs: []
 }
 
-let carouselImage = { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image0.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], script: ``, text: ``, childs: [] }
+let carouselImage = { typeName: 'carouselImage', description: 'Carousel image', image: '', tag: 'div', childsAllowed: 'all', style: [ ['background', 'lightgrey', true], ['background-image','url(\'/tool/images/image0.jpg\')', true], ['background-position', 'center', true],  ['background-repeat','no-repeat', true], ['background-size', 'cover', true] ], phone: [], attributes: [['data-name', 'carouselImage']], text: ``, childs: [] }
 let carouselImageA = JSON.parse(JSON.stringify(carouselImage))
     carouselImageA.style[1][1] = 'url(\'/tool/images/image4.jpg\')'
 let carouselImageB = JSON.parse(JSON.stringify(carouselImage))
     carouselImageB.style[1][1] = 'url(\'/tool/images/image8.jpg\')'
 
-let carouselImages = { typeName: 'carouselImages', description: 'Carousel images', tag: 'div', childsAllowed: 'carouselImage', style: [], phone: [], attributes: [['data-name', 'images']], script: ``, text: ``, childs: [carouselImageA, carouselImageB] }
-let carouselFrame = { typeName: 'carouselFrame', description: 'Carousel frame', tag: 'div', childsAllowed: 'none', style: [['border-radius', 'initial', true], ['box-shadow', 'initial', true], ['height', '350px', true]], phone: [['height', 'initial', true]], attributes: [], script: ``, text: ``, childs: [carouselImages]}
-let carouselArrowLeft = { typeName: 'carouselArrowLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'left\')'] ], script: ``, text: ``, childs: [] }
-let carouselArrowLeftBox = { typeName: 'carouselArrowLeftBox', description: 'Left arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow'] ], script: ``, text: ``, childs: [carouselArrowLeft] }
-let carouselArrowRight = { typeName: 'carouselArrowRight', description: 'Right arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'right\')'] ], script: ``, text: ``, childs: [] }
-let carouselArrowRightBox = { typeName: 'carouselArrowRightBox', description: 'Right arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow carouselArrowRight'] ], script: ``, text: ``, childs: [carouselArrowRight] }
-let carouselDotsIndicator = { typeName: 'carouselDotsIndicator', description: 'Carousel indicator', image: '', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['data-name', 'indicator'], ['onclick', 'setCarouselDots(this)'] ], script: ``, text: ``, childs: [] }
-let carouselDotsIndicators = { typeName: 'carouselDotsIndicators', description: 'Carousel indicators', tag: 'div', childsAllowed: 'carouselDotsIndicator', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [carouselDotsIndicator, carouselDotsIndicator] }
+let carouselImages = { typeName: 'carouselImages', description: 'Carousel images', tag: 'div', childsAllowed: 'carouselImage', style: [], phone: [], attributes: [['data-name', 'images']], text: ``, childs: [carouselImageA, carouselImageB] }
+let carouselFrame = { typeName: 'carouselFrame', description: 'Carousel frame', tag: 'div', childsAllowed: 'none', style: [['border-radius', 'initial', true], ['box-shadow', 'initial', true], ['height', '350px', true]], phone: [['height', 'initial', true]], attributes: [], text: ``, childs: [carouselImages]}
+let carouselArrowLeft = { typeName: 'carouselArrowLeft', description: 'Left arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'left\')'] ], text: ``, childs: [] }
+let carouselArrowLeftBox = { typeName: 'carouselArrowLeftBox', description: 'Left arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow'] ], text: ``, childs: [carouselArrowLeft] }
+let carouselArrowRight = { typeName: 'carouselArrowRight', description: 'Right arrow', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['onclick', 'setCarouselArrows(this, \'right\')'] ], text: ``, childs: [] }
+let carouselArrowRightBox = { typeName: 'carouselArrowRightBox', description: 'Right arrow box', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['class', 'carouselArrow carouselArrowRight'] ], text: ``, childs: [carouselArrowRight] }
+let carouselDotsIndicator = { typeName: 'carouselDotsIndicator', description: 'Carousel indicator', image: '', tag: 'div', childsAllowed: 'none', style: [], phone: [], attributes: [ ['data-name', 'indicator'], ['onclick', 'setCarouselDots(this)'] ], text: ``, childs: [] }
+let carouselDotsIndicators = { typeName: 'carouselDotsIndicators', description: 'Carousel indicators', tag: 'div', childsAllowed: 'carouselDotsIndicator', style: [], phone: [], attributes: [], text: ``, childs: [carouselDotsIndicator, carouselDotsIndicator] }
 
 let carouselDots = {
     typeName: 'carouselDots',
@@ -812,7 +812,7 @@ let carouselArrows = {
     ]
 }
 
-let drawerSide = { typeName: 'drawerSide', description: 'Drawer', image: '', tag: 'div', childsAllowed: 'all', style: [], phone: [], attributes: [ ['class', 'drawerSide'] ], script: ``, text: ``, childs: [] }
+let drawerSide = { typeName: 'drawerSide', description: 'Drawer', image: '', tag: 'div', childsAllowed: 'all', style: [], phone: [], attributes: [ ['class', 'drawerSide'] ], text: ``, childs: [] }
 let drawer = {
     typeName: 'drawer',
     description: 'Drawer',
@@ -829,6 +829,25 @@ let drawer = {
     script: ``,
     text: ``,
     childs: [ drawerSide ]
+}
+
+let modalWindow = { typeName: 'modalWindow', description: 'Modal', image: '', tag: 'div', childsAllowed: 'all', style: [], phone: [], attributes: [ ['class', 'modalWindow'] ], text: ``, childs: [] }
+let modal = {
+    typeName: 'modal',
+    description: 'Modal window',
+    image: 'previewModal.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['id', 'modal'],
+        ['class', 'modal'],
+        ['onclick', 'setModal("modal", false, event)']
+    ],
+    script: ``,
+    text: ``,
+    childs: [ modalWindow ]
 }
 
 
@@ -877,9 +896,9 @@ let mapGoogle = {
     childs: []
 }
 
-let formInputTextField = { typeName: 'formInputTextField', description: 'Input text', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formText'], ['type', 'text'], ['placeholder', 'yes'], ['pattern', '[^0-9]*'], ['autocomplete', 'off'], ['onkeyup', 'initial'], ['onchange', 'initial'], ], script: ``, text: ``, childs: [] }
-let formInputTextLabel = { typeName: 'formInputTextLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Name`, childs: [] }
-let formInputTextSpan = { typeName: 'formInputTextSpan', description: 'Error message', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Numbers are not allowed`, childs: [] }
+let formInputTextField = { typeName: 'formInputTextField', description: 'Input text', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formText'], ['type', 'text'], ['placeholder', 'yes'], ['pattern', '[^0-9]*'], ['autocomplete', 'off'], ['onkeyup', 'initial'], ['onchange', 'initial'], ], text: ``, childs: [] }
+let formInputTextLabel = { typeName: 'formInputTextLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], text: `Name`, childs: [] }
+let formInputTextSpan = { typeName: 'formInputTextSpan', description: 'Error message', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], text: `Numbers are not allowed`, childs: [] }
 
 let formInputText = {
     typeName: 'formInputText',
@@ -901,8 +920,32 @@ let formInputText = {
     ]
 }
 
-let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formArea'], ['placeholder', 'yes'], ['rows', 'initial'], ['onkeyup', 'initial'], ['onchange', 'initial'], ], script: ``, text: ``, childs: [] }
-let formInputTextareaLabel = { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], script: ``, text: `Description`, childs: [] }
+let formInputTextPwd = { typeName: 'formInputTextPwd', description: 'Input password', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formPassword'], ['type', 'password'], ['placeholder', 'yes'], ['pattern', '[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?:(?:[a-zA-Z\\u00a1-\\uffff0-9]+-?)*[a-zA-Z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-zA-Z\\u00a1-\\uffff0-9]+-?)*[a-zA-Z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-zA-Z\\u00a1-\\uffff]{2,}))(?::\\d{2,5})?(?:\\/[^\\s]*)?'], ['autocomplete', 'off'], ['onkeyup', 'initial'], ['onchange', 'initial'], ], text: ``, childs: [] }
+let formInputTextLabelPwd = { typeName: 'formInputTextLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], text: `Password`, childs: [] }
+let formInputTextSpanPwd = { typeName: 'formInputTextSpan', description: 'Error message', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], text: `Password not valid`, childs: [] }
+
+let formInputPassword = {
+    typeName: 'formInputPassword',
+    description: 'Input password with pattern validation',
+    image: 'previewFormInputPassword.png',
+    tag: 'div',
+    childsAllowed: 'none',
+    style: [],
+    phone: [],
+    attributes: [
+        ['class', 'formInputText'],
+    ],
+    script: ``,
+    text: ``,
+    childs: [
+        formInputTextPwd,
+        formInputTextLabelPwd,
+        formInputTextSpanPwd
+    ]
+}
+
+let formInputTextareaField = { typeName: 'formInputTextareaField', description: 'Input textarea', image: '', tag: 'textarea', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formArea'], ['placeholder', 'yes'], ['rows', 'initial'], ['onkeyup', 'initial'], ['onchange', 'initial'], ], text: ``, childs: [] }
+let formInputTextareaLabel = { typeName: 'formInputTextareaLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [ ], text: `Description`, childs: [] }
 
 let formInputTextarea = {
     typeName: 'formInputTextarea',
@@ -923,12 +966,12 @@ let formInputTextarea = {
     ]
 }
 
-let formInputSelectEmpty = { typeName: 'formInputSelectEmpty', description: 'Select option empty', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', '']], script: ``, text: ``, childs: [] }
-let formInputSelectOption = { typeName: 'formInputSelectOption', description: 'Select option', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', 'initial']], script: ``, text: `Option`, childs: [] }
-let formInputSelectMain = { typeName: 'formInputSelectMain', description: 'Select main', image: '', tag: 'select', childsAllowed: 'formInputSelectOption', style: [], phone: [], attributes: [['id', 'formSelect'], ['required', 'false'], ['onchange', 'initial'],], script: ``, text: ``, childs: [formInputSelectEmpty,formInputSelectOption] }
-let formInputSelectHighlight = { typeName: 'formInputSelectHighlight', description: 'Select highlight', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [] }
-let formInputSelectBar = { typeName: 'formInputSelectBar', description: 'Select bar', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: ``, childs: [] }
-let formInputSelectLabel = { typeName: 'formInputSelectLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Select`, childs: [] }
+let formInputSelectEmpty = { typeName: 'formInputSelectEmpty', description: 'Select option empty', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', '']], text: ``, childs: [] }
+let formInputSelectOption = { typeName: 'formInputSelectOption', description: 'Select option', image: '', tag: 'option', childsAllowed: 'none', style: [], phone: [], attributes: [['disabled', 'initial'], ['selected', 'initial'], ['value', 'initial']], text: `Option`, childs: [] }
+let formInputSelectMain = { typeName: 'formInputSelectMain', description: 'Select main', image: '', tag: 'select', childsAllowed: 'formInputSelectOption', style: [], phone: [], attributes: [['id', 'formSelect'], ['required', 'false'], ['onchange', 'initial'],], text: ``, childs: [formInputSelectEmpty,formInputSelectOption] }
+let formInputSelectHighlight = { typeName: 'formInputSelectHighlight', description: 'Select highlight', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], text: ``, childs: [] }
+let formInputSelectBar = { typeName: 'formInputSelectBar', description: 'Select bar', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], text: ``, childs: [] }
+let formInputSelectLabel = { typeName: 'formInputSelectLabel', description: 'Label', image: '', tag: 'label', childsAllowed: 'none', style: [], phone: [], attributes: [], text: `Select`, childs: [] }
 
 let formInputSelect = {
     typeName: 'formInputSelect',
@@ -951,8 +994,8 @@ let formInputSelect = {
     ]
 }
 
-let formInputCheckboxMain = { typeName: 'formInputCheckboxMain', description: 'Checkbox main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'initial'], ['type', 'checkbox'], ['onchange', 'initial'], ], script: ``, text: ``, childs: [] }
-let formInputCheckboxSpan = { typeName: 'formInputCheckboxSpan', description: 'Checkbox span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Checkbox`, childs: [] }
+let formInputCheckboxMain = { typeName: 'formInputCheckboxMain', description: 'Checkbox main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'initial'], ['type', 'checkbox'], ['onchange', 'initial'], ], text: ``, childs: [] }
+let formInputCheckboxSpan = { typeName: 'formInputCheckboxSpan', description: 'Checkbox span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], text: `Checkbox`, childs: [] }
 
 let formInputCheckbox = {
     typeName: 'formInputCheckbox',
@@ -973,8 +1016,8 @@ let formInputCheckbox = {
     ]
 }
 
-let formInputRadioMain = { typeName: 'formInputRadioMain', description: 'Radio main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'groupRadio'], ['type', 'radio'], ], script: ``, text: ``, childs: [] }
-let formInputRadioSpan = { typeName: 'formInputRadioSpan', description: 'Radio span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Radio`, childs: [] }
+let formInputRadioMain = { typeName: 'formInputRadioMain', description: 'Radio main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'initial'], ['value', 'initial'], ['checked', 'initial'], ['name', 'groupRadio'], ['type', 'radio'], ], text: ``, childs: [] }
+let formInputRadioSpan = { typeName: 'formInputRadioSpan', description: 'Radio span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], text: `Radio`, childs: [] }
 
 let formInputRadio = {
     typeName: 'formInputRadio',
@@ -995,8 +1038,8 @@ let formInputRadio = {
     ]
 }
 
-let formInputRangeMain = { typeName: 'formInputRangeMain', description: 'Range main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formRange'], ['value', 'initial'], ['list', 'initial'], ['min', '0'], ['max', '100'], ['step', 'initial'], ['type', 'range'], ['oninput', 'initial'], ['onchange', 'initial'], ], script: ``, text: ``, childs: [] }
-let formInputRangeSpan = { typeName: 'formInputRangeSpan', description: 'Range span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], script: ``, text: `Range slider`, childs: [] }
+let formInputRangeMain = { typeName: 'formInputRangeMain', description: 'Range main', image: '', tag: 'input', childsAllowed: 'none', style: [], phone: [], attributes: [ ['id', 'formRange'], ['value', 'initial'], ['list', 'initial'], ['min', '0'], ['max', '100'], ['step', 'initial'], ['type', 'range'], ['oninput', 'initial'], ['onchange', 'initial'], ], text: ``, childs: [] }
+let formInputRangeSpan = { typeName: 'formInputRangeSpan', description: 'Range span', image: '', tag: 'span', childsAllowed: 'none', style: [], phone: [], attributes: [], text: `Range slider`, childs: [] }
 
 let formInputRange = {
     typeName: 'formInputRange',
@@ -1039,8 +1082,8 @@ let formButton = {
     childs: []
 }
 
-let waitSpinnerCircle = { typeName: 'waitSpinnerCircle', description: 'Spinner circle', image: '', tag: 'circle', childsAllowed: 'none', style: [], phone: [], attributes: [ ['cx', '25'], ['cy', '25'], ['r', '20'], ], script: ``, text: ``, childs: [] }
-let waitSpinnerMain = { typeName: 'waitSpinnerMain', description: 'Spinner main', image: '', tag: 'svg', childsAllowed: 'none', style: [], phone: [], attributes: [ ['viewBox', '0 0 50 50'] ], script: ``, text: ``, childs: [ waitSpinnerCircle ] }
+let waitSpinnerCircle = { typeName: 'waitSpinnerCircle', description: 'Spinner circle', image: '', tag: 'circle', childsAllowed: 'none', style: [], phone: [], attributes: [ ['cx', '25'], ['cy', '25'], ['r', '20'], ], text: ``, childs: [] }
+let waitSpinnerMain = { typeName: 'waitSpinnerMain', description: 'Spinner main', image: '', tag: 'svg', childsAllowed: 'none', style: [], phone: [], attributes: [ ['viewBox', '0 0 50 50'] ], text: ``, childs: [ waitSpinnerCircle ] }
 
 let waitSpinner = {
     typeName: 'waitSpinner',
@@ -1074,6 +1117,23 @@ let waitProgressUnknown = {
     childs: [ waitSpinnerMain ]
 }
 
+let formTagForm = {
+    typeName: 'formTagForm',
+    description: 'Tag form',
+    image: 'previewTagForm.png',
+    tag: 'form',
+    childsAllowed: 'all',
+    style: [],
+    phone: [],
+    attributes: [
+        ['action', 'initial'],
+        ['method', 'initial'],
+        ['onsubmit', 'return false']
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
 
 /*
 let div = {

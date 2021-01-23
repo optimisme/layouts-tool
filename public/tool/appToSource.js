@@ -90,7 +90,7 @@ class Source {
         }
 
         if (['textarea'].indexOf(item.tag) >= 0) str = str + '</' + item.tag + '>'
-        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe', 'select', 'option', 'button', 'svg'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
+        if (['body', 'div', 'a', 'h1', 'h2', 'h3', 'span', 'label', 'iframe', 'select', 'option', 'button', 'svg', 'form'].indexOf(item.tag) >= 0) str = str + '\n' + ident + '</' + item.tag + '>'
 
         return str
     }

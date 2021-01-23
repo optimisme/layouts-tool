@@ -12,8 +12,9 @@
   "dependencies": {
     "express": "latest",
     "forever": "latest",
-    "supervisor": "latest",
-    "sqlite3": "latest"
+    "md5": "latest",
+    "sqlite3-lite": "latest",
+    "supervisor": "latest"
   },
   "devDependencies": {},
   "bundleDependencies": [],
