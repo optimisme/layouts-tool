@@ -188,6 +188,12 @@ body { background-color: ${app.backgroundColor}; font-family: 'Open Sans', sans-
 .drawer > .drawerSide { background-color: white; height: 100%; overflow-x: hidden; overflow-y: auto; transform: translate3d(-251px, 0, 0); transition: transform 0.3s ease; width: 250px; }`
         }
 
+        if (bodyStr.indexOf('modal') >= 0) {
+            str = str + `
+.modal { align-items: center; display: none; background-color: rgb(100, 100, 100, 0.75); backdrop-filter: blur(2px) saturate(200%); bottom: 0; filter: blud(3px) saturate(200%); justify-content: center; left: 0; opacity: 0; position: fixed; right: 0; top: 0; transition: opacity 0.3s ease; z-index: 10000; }
+.modal > .modalWindow { background-color: white; border-radius: 5px; height: max-content; overflow-x: hidden; overflow-y: auto; padding: 8px; transform: translateY(-100vh); transition: transform 0.3s ease; width: max-content; }`
+        }
+
         if (bodyStr.indexOf('formInputText') >= 0) {
             str = str + `
 .formInputText { padding: 15px 0 0; position: relative; width: 100%; }
@@ -395,12 +401,41 @@ async function setDrawer (id, show, event) {
         } else {
             refDrawer.style.opacity = '0'
             refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(-250px, 0, 0)'
-            await promiseTransitionEnd(refDrawer)
+            await promiseWait(300)
             refBody.style.overflow = 'initial'
             refDrawer.style.display = 'none'
         }
     }
-}
+}`
+        }
+
+        if (bodyStr.indexOf('setModal') >= 0) {
+            str = str + `
+async function setModal (id, show, event) {
+    let refBody = document.getElementsByTagName('body')[0]
+    let refModal = document.getElementById(id)
+    let performAction = false
+
+    if (typeof event == 'undefined' || (event.target && event.target.getAttribute('id') == id)) {
+        if (show) {
+            refBody.style.overflow = 'hidden'
+            refModal.style.display = 'flex'
+            await promiseWaitUntilPropertyValue(refModal, 'display', 'flex')  
+            refModal.style.opacity = '1'
+            refModal.querySelector('.modalWindow').style.transform = 'translateY(0)'
+        } else {
+            refModal.style.opacity = '0'
+            refModal.querySelector('.modalWindow').style.transform = 'translateY(-100vh)'
+            await promiseWait(300)
+            refBody.style.overflow = 'initial'
+            refModal.style.display = 'none'
+        }
+    }
+}`
+        }
+
+        if (bodyStr.indexOf('setDrawer') >= 0 || bodyStr.indexOf('setModal') >= 0) {
+            str = str + `
 async function promiseWait (time) {
     return new Promise((resolve, reject) => {
         setTimeout(() => { resolve() }, time)
@@ -418,13 +453,6 @@ function promiseWaitUntilPropertyValue (ref, property, value) {
             await promiseWaitUntilPropertyValue(ref, property, value)
         }
     }) 
-}
-function promiseTransitionEnd (ref) {
-    return new Promise(async (resolve, reject) => {
-        ref.addEventListener('transitionend', () => {
-            resolve()
-        })
-    })  
 }`
         }
 

@@ -1,0 +1,10 @@
+.root {
+    cursor: pointer;
+    font-size: 0.85em;
+    height: 24px;
+    overflow: hidden;
+    padding: 4px 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: calc(500px - 16px);
+}

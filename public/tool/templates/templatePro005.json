@@ -517,7 +517,7 @@
                 "attributes": [
                   [
                     "onclick",
-                    "setCarouselArrows(this, 'left')"
+                    "setCarouselArrows(this, 'left');"
                   ]
                 ],
                 "childs": []
@@ -550,7 +550,7 @@
                 "attributes": [
                   [
                     "onclick",
-                    "setCarouselArrows(this, 'right')"
+                    "setCarouselArrows(this, 'right');"
                   ]
                 ],
                 "childs": []

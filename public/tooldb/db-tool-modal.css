@@ -1,0 +1,28 @@
+.root {
+    align-items: center;
+    display: none;
+    background-color: rgb(100, 100, 100, 0.75);
+    backdrop-filter: blur(2px) saturate(200%);
+    bottom: 0;
+    filter: blud(3px) saturate(200%);
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10000;
+}
+
+.root > .content {
+    background-color: white;
+    border-radius: 5px;
+    height: max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 8px;
+    transform: translateY(-100vh);
+    transition: transform 0.3s ease;
+    width: max-content;
+}

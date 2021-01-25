@@ -11,9 +11,9 @@ User = class {
     }
 
     async checkFormSignIn () {
-        let refFormMail = document.getElementById('formMail')
-        let refFormPassword = document.getElementById('formPassword')
-        let refFormButton = document.getElementById('formButton')
+        let refFormMail = document.getElementById('formSignInMail')
+        let refFormPassword = document.getElementById('formSignInPassword')
+        let refFormButton = document.getElementById('formSignInButton')
 
         let validMail = refFormMail.checkValidity()
         let validPassword = refFormPassword.checkValidity()
@@ -29,11 +29,11 @@ User = class {
     }
 
     async signIn () {
-        let refFormMail = document.getElementById('formMail')
-        let refFormPassword = document.getElementById('formPassword')
-        let refBoxButton = document.getElementById('boxButton')
-        let refBoxSpinner = document.getElementById('boxSpinner')
-        let refBoxError = document.getElementById('boxError')
+        let refFormMail = document.getElementById('formSignInMail')
+        let refFormPassword = document.getElementById('formSignInPassword')
+        let refBoxButton = document.getElementById('boxSignInButton')
+        let refBoxSpinner = document.getElementById('boxSignInSpinner')
+        let refBoxError = document.getElementById('boxSignInError')
         let response = {}
 
         let obj = {
@@ -62,8 +62,6 @@ User = class {
             refBoxError.style.display = 'block'
             await this.wait(3000)
             refBoxError.style.display = 'none'
-
-            this.signOut()
         }
 
         refBoxButton.style.display = 'block'
@@ -97,11 +95,11 @@ User = class {
     }
 
     async checkFormSignUp () {
-        let refFormMail = document.getElementById('formMail')
-        let refFormPassword = document.getElementById('formPassword')
-        let refFormName = document.getElementById('formName')
-        let refFormSurname = document.getElementById('formSurname')
-        let refFormButton = document.getElementById('formButton')
+        let refFormMail = document.getElementById('formSignUpMail')
+        let refFormPassword = document.getElementById('formSignUpPassword')
+        let refFormName = document.getElementById('formSignUpName')
+        let refFormSurname = document.getElementById('formSignUpSurname')
+        let refFormButton = document.getElementById('formSignUpButton')
 
         let validMail = refFormMail.checkValidity()
         let validPassword = refFormPassword.checkValidity()
@@ -121,13 +119,13 @@ User = class {
     }
 
     async signUp () {
-        let refFormMail = document.getElementById('formMail')
-        let refFormPassword = document.getElementById('formPassword')
-        let refFormName = document.getElementById('formName')
-        let refFormSurname = document.getElementById('formSurname')
-        let refBoxButton = document.getElementById('boxButton')
-        let refBoxSpinner = document.getElementById('boxSpinner')
-        let refBoxError = document.getElementById('boxError')
+        let refFormMail = document.getElementById('formSignUpMail')
+        let refFormPassword = document.getElementById('formSignUpPassword')
+        let refFormName = document.getElementById('formSignUpName')
+        let refFormSurname = document.getElementById('formSignUpSurname')
+        let refBoxButton = document.getElementById('boxSignUpButton')
+        let refBoxSpinner = document.getElementById('boxSignUpSpinner')
+        let refBoxError = document.getElementById('boxSignUpError')
         let response = {}
 
         let obj = {
@@ -160,8 +158,6 @@ User = class {
             refBoxError.style.display = 'block'
             await this.wait(3000)
             refBoxError.style.display = 'none'
-
-            this.signOut()
         }
 
         refBoxButton.style.display = 'block'
@@ -188,6 +184,27 @@ User = class {
         if (fromForm) {
             setModal('modalSignUp', false)
             setModal('modalSignIn', false)
+        }
+
+        try {
+            let refFormMail = document.getElementById('formUserEditMail')
+            let refFormPassword = document.getElementById('formUserEditPassword')
+            let refFormName = document.getElementById('formUserEditName')
+            let refFormSurname = document.getElementById('formUserEditSurname')
+
+            refFormMail.value = this.userData.email
+            refFormPassword.value = ''
+            refFormName.value = this.userData.name
+            refFormSurname.value = this.userData.surname
+
+            let refBoxUserMessage = document.getElementById('boxEditUserMessage')
+            let refBoxUserForm = document.getElementById('boxEditUserForm')
+
+            refBoxUserMessage.style.display = 'none'
+            refBoxUserForm.style.display = 'block'
+
+        } catch (err) {
+            console.log(err)
         }
     }
 
@@ -224,19 +241,105 @@ User = class {
         } catch (err) {
             console.log(err)
         }
+
+        try {
+            let refFormMail = document.getElementById('formUserEditMail')
+            let refFormPassword = document.getElementById('formUserEditPassword')
+            let refFormName = document.getElementById('formUserEditName')
+            let refFormSurname = document.getElementById('formUserEditSurname')
+
+            refFormMail.value = ''
+            refFormPassword.value = ''
+            refFormName.value = ''
+            refFormSurname.value = ''
+
+            let refBoxUserMessage = document.getElementById('boxEditUserMessage')
+            let refBoxUserForm = document.getElementById('boxEditUserForm')
+
+            refBoxUserMessage.style.display = 'block'
+            refBoxUserForm.style.display = 'none'
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    async checkFormUserEdit () {
+        let refFormMail = document.getElementById('formUserEditMail')
+        let refFormPassword = document.getElementById('formUserEditPassword')
+        let refFormName = document.getElementById('formUserEditName')
+        let refFormSurname = document.getElementById('formUserEditSurname')
+        let refFormButton = document.getElementById('formUserEditButton')
+
+        let validMail = refFormMail.checkValidity()
+        let validPassword = refFormPassword.checkValidity()
+        let validName = refFormName.checkValidity()
+        let validSurname = refFormSurname.checkValidity()
+
+        if (refFormMail.value == '') validMail = false
+        if (refFormName.value == '') validName = false
+        if (refFormSurname.value == '') validSurname = false
+
+        if (validMail && validPassword && validName && validSurname) {
+            refFormButton.removeAttribute('disabled')
+        } else {
+            refFormButton.setAttribute('disabled', 'true')
+        }
+    }
+
+    async userEdit () {
+        let storageId = localStorage.getItem('loginId')
+        let storageToken = localStorage.getItem('loginToken')
+        let refFormMail = document.getElementById('formUserEditMail')
+        let refFormPassword = document.getElementById('formUserEditPassword')
+        let refFormName = document.getElementById('formUserEditName')
+        let refFormSurname = document.getElementById('formUserEditSurname')
+        let refBoxButton = document.getElementById('boxUserEditButton')
+        let refBoxSpinner = document.getElementById('boxUserEditSpinner')
+        let refBoxError = document.getElementById('boxUserEditError')
+        let response = {}
+
+        let obj = {
+            type: 'userEdit',
+            signInId: parseInt(storageId),
+            signInToken: storageToken,
+            email: refFormMail.value,
+            password: refFormPassword.value,
+            name: refFormName.value,
+            surname: refFormSurname.value
+        }
+
+        refBoxButton.style.display = 'none'
+        refBoxSpinner.style.display = 'block'
+        await this.wait(500)
+
+        try {
+            response = await this.queryServer('/query', obj)
+        } catch (e) {
+            console.log(e)
+        }
+
+        refBoxSpinner.style.display = 'none'
+
+        if (response.status == 'ok') {
+            refFormMail.value = ''
+            refFormPassword.value = ''
+            refFormName.value = ''
+            refFormSurname.value = ''
+            this.signedIn(true, response.result[0])
+        } else {
+            refBoxError.style.display = 'block'
+            await this.wait(3000)
+            refBoxError.style.display = 'none'
+        }
+
+        refBoxButton.style.display = 'block'
     }
 
     async swapModal (modalId) {
-        if (modalId == 'modalSignIn') {
-            setModal('modalSignUp', false)
-            await this.wait(250)
-            setModal('modalSignIn', true)
-        }
-        if (modalId == 'modalSignUp') {
-            setModal('modalSignIn', false)
-            await this.wait(250)
-            setModal('modalSignUp', true)
-        }
+        if (modalId != 'modalSignIn') await setModal('modalSignIn', false)
+        if (modalId != 'modalSignUp') await setModal('modalSignUp', false)
+        await setModal(modalId, true)
     }
 
     async queryServer (url, obj) {

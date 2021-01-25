@@ -1,0 +1,12 @@
+<div class='window'>
+    <div class='title'>Edit row "<span id='name'></span>"</div>
+    <db-tool-form-input-text pattern='[a-zA-Z][a-zA-Z0-9_]*' error='Begin with letter. Letters, numbers and underscore allowed'>ABC</db-tool-form-input-text>
+    <div class='msgKo'>Could not perform request</div>
+    <div class='wait'>
+        <db-tool-form-spinner></db-tool-form-spinner>
+    </div>
+    <div class='buttons'>
+        <ion-icon id='deleteButton' name="trash-outline"></ion-icon>
+        <db-tool-form-button id='renameButton' disabled='true'>Rename</db-tool-form-button>
+    </div>
+</div>

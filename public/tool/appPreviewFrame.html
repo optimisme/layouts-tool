@@ -364,7 +364,7 @@
             } else {
                 refDrawer.style.opacity = '0'
                 refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(-250px, 0, 0)'
-                await promiseTransitionEnd(refDrawer)
+                await promiseWait(300)
                 refBody.style.overflow = 'initial'
                 refDrawer.style.display = 'none'
             }
@@ -386,7 +386,7 @@
             } else {
                 refModal.style.opacity = '0'
                 refModal.querySelector('.modalWindow').style.transform = 'translateY(-100vh)'
-                await promiseTransitionEnd(refModal)
+                await promiseWait(300)
                 refBody.style.overflow = 'initial'
                 refModal.style.display = 'none'
             }
@@ -413,14 +413,6 @@
         }) 
     }
     
-    function promiseTransitionEnd (ref) {
-        return new Promise(async (resolve, reject) => {
-            ref.addEventListener('transitionend', () => {
-                resolve()
-            })
-        })  
-    }
-
     function getForm (id) {
         let ref = document.getElementById(id)
         let type = (ref.tagName).toLowerCase()

@@ -1,0 +1,107 @@
+class DbToolTableEdit extends HTMLElement {
+
+    constructor() {
+        super()
+        this.shadow = this.attachShadow({ mode: 'open' })
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) { }
+    async waitUntilConnected() { while (!this.connected) { await appDb.wait(1) } }
+
+    async connectedCallback () {
+
+        appDb.refTableEdit = this
+
+        this.shadow.innerHTML = appDb.shadowElements[this.constructor.name][1]
+        this.elmStyle = document.createElement('style')
+        this.elmStyle.textContent = appDb.shadowElements[this.constructor.name][2]
+        this.shadow.appendChild(this.elmStyle)
+
+        let refAddColumn = this.shadow.querySelector('#addColumn')
+        refAddColumn.addEventListener('click', () => {
+            appDb.addColumn()
+        })
+
+        let refAddRow = this.shadow.querySelector('#addRow')
+        refAddRow.addEventListener('click', () => {
+            appDb.addRow()
+        })
+    }
+
+    async selectTable () {
+        let refContainer = this.shadow.querySelector('.container')
+        refContainer.style.display = 'grid'
+
+        let columns = await this.reloadTable()
+        return columns
+    }
+
+    async unselectTable () {
+        let refContainer = this.shadow.querySelector('.container')
+        refContainer.style.display = 'none'
+        this.clearTable()
+    }
+
+    clearTable () {
+        let refTable = this.shadow.querySelector('.table')
+        while (refTable.firstChild) { refTable.removeChild(refTable.lastChild) }
+    }
+
+    async reloadTable () {
+        let tableName = appDb.refTableSelected.textContent
+        let rstColumns = JSON.parse(await appDb.callServer('POST',  '/query', { type: 'dbGetTableColumns',  name: tableName }))
+        let rstData =    JSON.parse(await appDb.callServer('POST',  '/query', { type: 'dbGetTableData',     name: tableName }))
+        let objTable = document.createElement('table')
+        let columns = []
+
+        this.clearTable()
+        if (rstColumns.status == 'ok' && rstData.status == 'ok') {
+            let objTr = document.createElement('tr')
+            columns = rstColumns.result
+
+            for (let cnt = 0; cnt < columns.length; cnt = cnt + 1) {
+                let objTd = document.createElement('td')
+                let column = columns[cnt]
+                let tmp = document.createElement('db-tool-table-edit-column')
+                
+                tmp.textContent = column.name
+                tmp.valueType = column.type
+                tmp.valueNotNull = column.notnull
+                tmp.valueDefault = column.dflt_value
+                tmp.valuePrimaryKey = column.pk
+
+                objTd.appendChild(tmp)
+                objTr.appendChild(objTd)
+            }
+            objTable.appendChild(objTr)
+            objTr = document.createElement('tr')
+
+            let data = rstData.result
+            for (let cntRow = 0; cntRow < data.length; cntRow = cntRow + 1) {
+                let objTr = document.createElement('tr')
+                let columns = Object.keys(data[cntRow])
+                let row = data[cntRow]
+                for (let cntColumn = 0; cntColumn < columns.length; cntColumn = cntColumn + 1) {
+                    let objTd = document.createElement('td')
+                    let columnName = columns[cntColumn]
+                    let cell = row[columnName]
+                    let tmp = document.createElement('db-tool-table-edit-cell')
+                    tmp.textContent = cell
+                    tmp.valueId = row['id']
+                    tmp.valueColumn = columnName
+
+                    objTd.appendChild(tmp)
+                    objTr.appendChild(objTd)
+                }
+                objTable.appendChild(objTr)
+                objTr = document.createElement('tr')
+            }
+        }
+
+        let refTable = this.shadow.querySelector('.table')
+        refTable.appendChild(objTable)
+        refTable.style.gridTemplateColumns = (new Array(columns.length + 1)).join('auto ')  
+
+        return columns
+    }
+}

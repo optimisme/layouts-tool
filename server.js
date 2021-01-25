@@ -21,59 +21,13 @@ async function main () {
 main()
 
 async function answerQuery (request, response) {
-
   let data = await utils.getPostData(request) 
+  let hasPermission = true // TODO: Set permissions to perform actions
   let rst = {}
-  let hasPermission = false
-  let queryUser = await utils.getUser(data)
-  let loggedUser = null
 
-  if (queryUser.status == 'ok') {
-    loggedUser = queryUser.result 
-    if (loggedUser.type == 'admin') {
-      hasPermission = true
-    }
-    // TODO: modificar dades de usuari propies
-    // TODO: gestionar tokens de sessions obertes
-    // TODO: guardar informació del dispositiu de cada sessió
-  }
-
-  if (data.table == 'products' && data.type == 'get') {
-    hasPermission = true
-  }
-
-  if (data.type == 'signIn' || data.type == 'signInToken' || data.type == 'signUp') {
-    hasPermission = true
-  }
- 
   if (hasPermission) {
     try {
-      switch (data.type) {
-      case 'signIn':
-        rst = await utils.signIn(data)
-        break
-      case 'signInToken':
-        rst = await utils.signInToken(data)
-        break
-      case 'signOut':
-        rst = await utils.signOut(data)
-        break
-      case 'signUp':
-        rst = await utils.signUp(data)
-        break
-      case 'get':
-        rst = await utils.get(data)
-        break
-      case 'add':
-        rst = await utils.add(data)
-        break
-      case 'del':
-        rst = await utils.del(data)
-        break
-      case 'update':
-        rst = await utils.update(data)
-        break
-      }
+      rst = await eval(`utils.${data.type}(data)`)
     } catch (err) {
       console.log(err)
       rst = { status: 'ko', result: 'Unknown error' } 

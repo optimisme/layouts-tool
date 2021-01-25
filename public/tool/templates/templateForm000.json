@@ -861,7 +861,7 @@
                       ],
                       [
                         "onclick",
-                        "setValues()"
+                        "setValues();"
                       ]
                     ],
                     "childs": []
@@ -903,7 +903,7 @@
                       ],
                       [
                         "onclick",
-                        "getValues()"
+                        "getValues();"
                       ]
                     ],
                     "childs": []

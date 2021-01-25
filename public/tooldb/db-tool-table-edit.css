@@ -1,0 +1,69 @@
+.root {
+    align-items: center;
+    background-color: lightgray;
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    user-select: unset;
+    width: calc(100% - 250px);
+}
+
+.container {
+    display: none;
+    grid-template-columns: auto auto 24px auto;
+    grid-template-rows: auto auto 24px auto;
+}
+
+table { border-collapse: collapse; }
+td, tr { padding: 0; }
+tr:nth-child(odd) {
+    background-color: #eee;
+}
+tr:hover {
+    background-color: lightgoldenrodyellow;
+}
+td {
+    max-width: calc(500px - 16px);
+}
+
+.table {
+    align-content: start;
+    background-color: white;
+    border: none;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.19);
+    display: grid;
+    grid-column: 2;
+    grid-row: 2;
+    overflow-y: auto;
+    position: relative;
+    transition: width 0.5s ease;
+}
+
+.column {
+    font-size: 24px;
+    grid-column: 3;
+    grid-row: 2;
+    padding: 0 8px;
+    justify-self: start;
+}
+
+.column > #addColumn {
+    cursor: pointer;
+}
+
+.row {
+    font-size: 24px;
+    align-self: start;
+    grid-column: 2;
+    grid-row: 3;
+    padding: 8px 0;
+}
+
+.row > #addRow {
+    cursor: pointer;
+}

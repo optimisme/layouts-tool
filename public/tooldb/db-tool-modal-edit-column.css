@@ -1,0 +1,41 @@
+.window {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    border-bottom: solid 1px lightgrey;
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+
+.msgKo {
+    align-items: center;
+    color: red;
+    display: none;
+    height: 48px;
+    justify-content: center;
+}
+
+.wait {
+    align-items: center;
+    color: red;
+    display: none;
+    height: 48px;
+    justify-content: center;
+    width: 100%;
+}
+
+.buttons {
+    align-items: center;
+    display: flex;
+    height: 48px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#deleteButton {
+    color:rgb(0, 125, 255);
+    cursor: pointer;
+    font-size: 1.5em;
+}

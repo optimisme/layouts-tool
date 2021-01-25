@@ -1,0 +1,18 @@
+.root {
+    flex-grow: 1;
+    font-size: 0.85em;
+    overflow: hidden;
+    padding: 4px 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: calc(100% - 16px);
+}
+
+.root:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: rgba(0, 125, 255, 0.2);
+}

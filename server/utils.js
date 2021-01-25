@@ -14,21 +14,21 @@ class Obj {
         process.on('SIGINT', () => { this.close() })
         process.on('SIGTERM', () => { this.close() })
 
-        await this.query('CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, description TEXT NOT NULL)')
-        await this.query('CREATE TABLE IF NOT EXISTS users    (id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT NOT NULL, name TEXT NOT NULL, surname TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, tokens TEXT NOT NULL)')
-        await this.query('CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, description TEXT NOT NULL, image TEXT NOT NULL, price REAL  NOT NULL)')
-
+        //await this.query('CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, description TEXT NOT NULL)')
+        //await this.query('CREATE TABLE IF NOT EXISTS users    (id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT NOT NULL, name TEXT NOT NULL, surname TEXT NOT NULL, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, tokens TEXT NOT NULL)')
+        //await this.query('CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, description TEXT NOT NULL, image TEXT NOT NULL, price REAL  NOT NULL)')
+/*
         let rst = await this.query('SELECT * FROM users WHERE id="1"')
         if (rst.length == 0) {
             await this.query(`INSERT INTO users (id, name, surname, type, email, password, tokens) VALUES (1, "Admin", "", "admin", "admin@admin.com", "${md5('admin')}", "[]")`)
-        }
+        }*/
     }
-
+/*
     async signIn (data) {
         if (typeof data.email == 'undefined'
          || typeof data.password == 'undefined'
          || data.email.indexOf(';') >= 0 
-         || data.password.indexOf(';') >= 0) { return { status: 'ko', result: 'signIn: Wrong signIn data (X)' } }
+         || data.password.indexOf(';') >= 0) { return { status: 'ko', result: 'signIn: Wrong signIn data' } }
 
         let rst = await this.query(`SELECT * FROM users WHERE email="${data.email}" AND password="${md5(data.password)}"`)
         if (rst.length == 1) {
@@ -48,7 +48,7 @@ class Obj {
 
     async signInToken (data) {
         if (typeof data.signInId != 'number'
-         || typeof data.signInToken == 'undefined') { return { status: 'ko', result: 'signInToken: Wrong signIn data (X)' } }
+         || typeof data.signInToken == 'undefined') { return { status: 'ko', result: 'signInToken: Wrong signIn data' } }
 
         let rst = await this.query(`SELECT * FROM users WHERE id="${data.signInId}"`)
         if (rst.length == 1) {
@@ -66,7 +66,7 @@ class Obj {
 
     async signOut (data) {
         if (typeof data.signInId != 'number'
-         || typeof data.signInToken == 'undefined') { return { status: 'ko', result: 'signOut: Wrong signIn data (X)' } }
+         || typeof data.signInToken == 'undefined') { return { status: 'ko', result: 'signOut: Wrong signIn data' } }
 
         let rst = await this.query(`SELECT * FROM users WHERE id="${data.signInId}"`)
         if (rst.length == 1) {
@@ -92,7 +92,7 @@ class Obj {
          || data.email.indexOf(';') >= 0
          || data.password.indexOf(';') >= 0
          || data.name.indexOf(';') >= 0
-         || data.surname.indexOf(';') >= 0) { return { status: 'ko', result: 'signUp: Wrong data (X)' } }
+         || data.surname.indexOf(';') >= 0) { return { status: 'ko', result: 'signUp: Wrong data' } }
 
         let addObj = {
             tableName: 'users',
@@ -105,7 +105,7 @@ class Obj {
         }
 
         await this.add(addObj)
-
+// TODO: tornar error si hi ha
         let signInObj = {
             email: data.email,
             password: data.password
@@ -114,9 +114,42 @@ class Obj {
         return await this.signIn(signInObj)
     }
 
+    async userEdit (data) {
+
+        if (typeof data.email == 'undefined'
+         || typeof data.password == 'undefined'
+         || typeof data.name == 'undefined'
+         || typeof data.surname == 'undefined'
+         || data.email.indexOf(';') >= 0
+         || data.password.indexOf(';') >= 0
+         || data.name.indexOf(';') >= 0
+         || data.surname.indexOf(';') >= 0) { return { status: 'ko', result: 'userEdit: Wrong data' } }
+
+        let updateObj = {
+            tableName: 'users',
+            id: data.signInId,
+            name: data.name,
+            surname: data.surname,
+            email: data.email
+        }
+
+        if (data.password != '') {
+            updateObj.password = data.password
+        }
+
+        await this.update(updateObj)
+// TODO: tornar error si hi ha
+        let signInObj = {
+            signInId: data.signInId,
+            signInToken: data.signInToken
+        }
+        
+        return await this.signInToken(signInObj)
+    }
+
     async getUser (data) {
         if (typeof data.signInId != 'number'
-         || typeof data.signInToken == 'undefined') { return { status: 'ko', result: 'getUser: Wrong data (X)' } }
+         || typeof data.signInToken == 'undefined') { return { status: 'ko', result: 'getUser: Wrong data' } }
 
         let rst = await this.query(`SELECT * FROM users WHERE id="${data.signInId}"`)
         if (rst.length == 1) {
@@ -130,10 +163,11 @@ class Obj {
             return { status: 'ko', result: 'getUser: Wrong data (2)' }
         }  
     }
-
+*/
+/*
     async get (data) {
         if (typeof data.tableName == 'undefined'
-         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'get: Wrong data (X)' } }
+         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'get: Wrong data' } }
 
         try {
             let queryStr = `SELECT * FROM ${data.tableName}`
@@ -162,9 +196,8 @@ class Obj {
 
     async del (data) {
         if (typeof data.tableName == 'undefined'
-         || typeof data.id == 'undefined'
-         || data.tableName.indexOf(';') >= 0
-         || data.id.indexOf(';')) { return { status: 'ko', result: 'del: Wrong data (X)' } }
+         || typeof data.id != 'number'
+         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'del: Wrong data' } }
 
         if (data.tableName == 'users' && data.id == 1) {
             return { status: 'ko', result: 'Can\'t delete main "admin"' } 
@@ -181,9 +214,8 @@ class Obj {
 
     async update (data) {
         if (typeof data.tableName == 'undefined'
-         || typeof data.id == 'undefined'
-         || data.tableName.indexOf(';') >= 0
-         || data.id.indexOf(';')) { return { status: 'ko', result: 'update: Wrong data (X)' } }
+         || typeof data.id != 'number'
+         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'update: Wrong data' } }
 
         try {
             await this.query(`UPDATE ${data.tableName} SET ${this.getUpdateValues(data)} WHERE id="${data.id}"`)
@@ -258,11 +290,19 @@ class Obj {
 
         return values.join(', ')
     }
-
+*/
     query (query) {
         return new Promise((resolve, reject) => {
             if (query.indexOf('SELECT') >= 0) {
                 this.db.all(query, [], (err, rst) => {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve(rst)
+                    }
+                })
+            } else if (query.indexOf('PRAGMA') >= 0) {
+                this.db.all(query, (err, rst) => {
                     if (err) {
                         reject(err)
                     } else {
@@ -315,6 +355,133 @@ class Obj {
             })
             this.server = undefined
         }
+    }
+
+    async dbGetTablesList (data) {
+        try {
+            return { status: 'ok', result: await this.query('SELECT name FROM sqlite_master WHERE type="table" AND name NOT LIKE "sqlite_%" ORDER BY name') }
+        } catch (err) {
+            return { status: 'ko', result: 'Error "dbGetTablesList"' } 
+        }
+    }
+
+    async dbAddTable (data) {
+        if (typeof data.name == 'undefined'
+         || data.name.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddTable: Wrong data' } }
+
+        try {
+            return { status: 'ok', result: await this.query(`CREATE TABLE IF NOT EXISTS "${data.name}" (id INTEGER PRIMARY KEY AUTOINCREMENT)`) }
+        } catch (err) {
+            return { status: 'ko', result: 'Error "dbAddTable"' } 
+        } 
+    }
+
+    async dbRenameTable (data) {
+        if (typeof data.oldName == 'undefined'
+         || typeof data.newName == 'undefined'
+         || data.oldName.indexOf(';') >= 0
+         || data.newName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbRenameTable: Wrong data' } }
+
+        try {
+            return { status: 'ok', result: await this.query(`ALTER TABLE "${data.oldName}" RENAME TO "${data.newName}"`) }
+        } catch (err) {
+            return { status: 'ko', result: 'Error "dbRenameTable"' } 
+        } 
+    }
+
+    async dbDelTable (data) {
+        if (typeof data.name == 'undefined'
+         || data.name.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelTable: Wrong data' } }
+
+        try {
+            return { status: 'ok', result: await this.query(`DROP TABLE IF EXISTS "${data.name}"`) }
+        } catch (err) {
+            return { status: 'ko', result: 'Error "dbDelTable"' } 
+        } 
+    }
+
+    async dbGetTableColumns (data) {
+        if (typeof data.name == 'undefined'
+         || data.name.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableColumns: Wrong data' } }
+
+        try {
+            return { status: 'ok', result: await this.query(`PRAGMA table_info("${data.name}")`) }
+        } catch (err) {
+            return { status: 'ko', result: 'Error "dbGetTableColumns"' } 
+        }    
+    }
+
+    async dbGetTableData (data) {
+        if (typeof data.name == 'undefined'
+         || data.name.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableData: Wrong data' } }
+
+        try {
+            return { status: 'ok', result: await this.query(`SELECT * FROM "${data.name}"`) }
+        } catch (err) {
+            return { status: 'ko', result: 'Error "dbGetTableData"' } 
+        }     
+    }
+
+    async dbAddColumn (data) {
+        if (typeof data.tableName == 'undefined'
+        || typeof data.columnName == 'undefined'
+        || typeof data.columnType == 'undefined'
+        || data.tableName.indexOf(';') >= 0
+        || data.columnName.indexOf(';') >= 0
+        || data.columnType.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddColumn: Wrong data' } }
+
+       try {
+           return { status: 'ok', result: await this.query(`ALTER TABLE "${data.tableName}" ADD COLUMN "${data.columnName}" ${data.columnType}`) }
+       } catch (err) {
+           return { status: 'ko', result: 'Error "dbAddColumn"' } 
+       }  
+    }
+
+    async dbRenameColumn (data) {
+        if (typeof data.tableName == 'undefined'
+        || typeof data.oldColumnName == 'undefined'
+        || typeof data.newColumnName == 'undefined'
+        || data.tableName.indexOf(';') >= 0
+        || data.oldColumnName.indexOf(';') >= 0
+        || data.newColumnName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbRenameColumn: Wrong data' } }
+
+       try {
+           return { status: 'ok', result: await this.query(`ALTER TABLE "${data.tableName}" RENAME COLUMN "${data.oldColumnName}" TO "${data.newColumnName}"`) }
+       } catch (err) {
+           return { status: 'ko', result: 'Error "dbRenameColumn"' } 
+       }  
+    }
+
+    async dbDelColumn (data) {
+        if (typeof data.tableName == 'undefined'
+        || typeof data.columnName == 'undefined'
+        || data.tableName.indexOf(';') >= 0
+        || data.columnName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelColumn: Wrong data' } }
+
+        try {
+            let oldCreate = (await this.query(`SELECT sql FROM sqlite_master WHERE name = "${data.tableName}"`))[0].sql
+            let columnPosition = oldCreate.indexOf(', ' + data.columnName + ' ')
+            if (columnPosition == -1) { columnPosition = oldCreate.indexOf(`, "${data.columnName}" `) }
+            if (columnPosition == -1) { columnPosition = oldCreate.indexOf(`, '${data.columnName}' `) }
+            let columnEnd = oldCreate.substring(columnPosition + 1)
+            let columnLength = columnEnd.indexOf(',')
+            if (columnLength == - 1) { columnLength = columnEnd.indexOf(')') }
+            let newCreate = oldCreate.substr(0, columnPosition) + oldCreate.substring(columnPosition + columnLength + 1)
+            let tableInfo = await this.query(`PRAGMA table_info("${data.tableName}")`)
+            let columns = (tableInfo.map((x) => { return x.name }))
+            let columnsRemoved = columns.filter((x) => { return (x != data.columnName) })
+            let columnsQuotes = columnsRemoved.map((x) => { return `"${x}"` })
+            let columnsSeparated = columnsQuotes.join(', ')
+
+            await this.query(`ALTER TABLE "${data.tableName}" RENAME TO "${data.tableName}_old"`)
+            await this.query(newCreate)
+            await this.query(`INSERT INTO "${data.tableName}"(${columnsSeparated}) SELECT ${columnsSeparated} FROM "${data.tableName}_old"`)
+            await this.query(`DROP TABLE "${data.tableName}_old"`)
+
+            return { status: 'ok', result: '' }
+        } catch (err) {
+            return { status: 'ko', result: 'Error "dbDelColumn"' } 
+        }  
     }
 }
 

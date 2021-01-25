@@ -1,0 +1,37 @@
+.window {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    border-bottom: solid 1px lightgrey;
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+
+.msgKo {
+    align-items: center;
+    color: red;
+    display: none;
+    height: 48px;
+    justify-content: center;
+}
+
+.wait {
+    align-items: center;
+    color: red;
+    display: none;
+    height: 48px;
+    justify-content: center;
+    width: 100%;
+}
+
+.button {
+    align-items: center;
+    color: red;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    width: 100%;
+}
+

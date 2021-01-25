@@ -1,0 +1,36 @@
+.window {
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+}
+
+.title {
+    font-size: 1.25em;
+    margin-bottom: 8px;
+}
+
+.msgKo {
+    align-items: center;
+    color: red;
+    display: none;
+    height: 48px;
+    justify-content: center;
+}
+
+.wait {
+    align-items: center;
+    color: red;
+    display: none;
+    height: 48px;
+    justify-content: center;
+    width: 100%;
+}
+
+.button {
+    align-items: center;
+    color: red;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    width: 100%;
+}
