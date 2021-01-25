@@ -41,6 +41,7 @@ let appTemplates = {
     templateGrid000: 'Grid',
     templateMenu000: 'Menu with mobile drawer',
     templateMenu001: 'Menu sticky with mobile drawer',
+    templateModal000: 'Modal window',
     templateFooter000: 'Footer',
     templateForm000: 'Form with script',
     templateContact000: 'Contact with map',
