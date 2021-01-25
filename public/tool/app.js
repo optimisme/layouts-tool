@@ -83,7 +83,7 @@ class App {
         this.refPreviewWindow = app.refPreview.shadow.querySelector('iframe').contentWindow
         this.refSettings = document.querySelector('sdw-tool-settings')
 
-        while (!app.refPreview.elmRoot.querySelector('iframe').contentWindow.frameLoaded) { await promiseWait(1) }
+        while (!app.refPreview.elmRoot.querySelector('iframe').contentWindow.frameLoaded) { await this.wait(1) }
         this.refPreviewBody = app.refPreview.elmRoot.querySelector('iframe').contentDocument.body
 
         this.elementsRoot = new AppElement(null, 'body')
@@ -91,6 +91,25 @@ class App {
 
         this.addFont('Dancing Script') // As an example
         this.select(this.elementsRoot)
+    }
+
+    async callServer (method, url, obj) {
+        return new Promise((resolve, reject) => {
+            let req = new XMLHttpRequest()
+            req.onreadystatechange = (res) => {
+                let response = null
+                if (req.readyState === 4) {
+                    response = req.responseText
+                    if (req.status >= 200 && req.status < 300) {
+                        return resolve(response)
+                    } else {
+                        return reject(response)
+                    }
+                }
+            }
+            req.open(method, url, true)
+            req.send(JSON.stringify(obj))
+        })
     }
 
     wait (time) {
@@ -456,6 +475,12 @@ class App {
     capitalize (s) {
         if (typeof s !== 'string') return ''
         return s.charAt(0).toUpperCase() + s.slice(1)
+    }
+
+    wait (time) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => { resolve() }, time)
+        })
     }
 }
 

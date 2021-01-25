@@ -12,7 +12,7 @@ class Obj {
         this.dbShadows = ''
     }
 
-   async init () {
+    async init () {
 
         process.on('SIGHUP', () => { this.close() })
         process.on('SIGINT', () => { this.close() })
