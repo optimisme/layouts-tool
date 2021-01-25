@@ -63,4 +63,9 @@ class DbToolTablesList extends HTMLElement {
         refEdit.classList.add('disabled')
         refDelete.classList.add('disabled')
     }
+
+    show () {
+        let refRoot = this.shadow.querySelector('.root')
+        refRoot.style.transform = 'translateX(0)'
+    }
 }

@@ -2,6 +2,7 @@ body {
     align-items: center;
     background-color: lightgray;
     display: flex;
+    flex-direction: column;
     font-family: 'Open Sans', sans-serif;
     height: 100%;
     justify-content: center;
@@ -10,4 +11,18 @@ body {
     padding: 0;
     user-select: none;
     width: 100%;
+}
+
+.logo {
+    color: rgb(0, 150, 255);
+    font-size: 1.5em;
+    opacity: 1;
+    padding-bottom: 8px;
+    transition: opacity 0.25s ease;
+}
+
+.loading {
+    font-size: 0.9em;
+    opacity: 1;
+    transition: opacity 0.25s ease;
 }

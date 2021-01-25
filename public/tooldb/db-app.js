@@ -34,6 +34,8 @@ class AppDb {
     async init () {
         let refBody = document.getElementsByTagName('body')[0]
         let keys = Object.keys(this.shadowElements)
+        let refLogo = refBody.querySelector('.logo')
+        let refLoading = refBody.querySelector('.loading')
 
         for (let cnt = 0; cnt < keys.length; cnt = cnt + 1) {
             let key = keys[cnt]
@@ -43,9 +45,18 @@ class AppDb {
             eval(`customElements.define("${element[0]}", ${key})`)
             element[1] = await this.callServer('GET',`./${element[0]}.html`, {})
             element[2] = await this.callServer('GET',`./${element[0]}.css`, {})
-            refBody.innerHTML = 'Loading ' + parseInt(cnt * 100 / keys.length) + '%'
+            refLoading.textContent = 'Loading ' + parseInt(cnt * 100 / keys.length) + '%'
         }
-        refBody.innerHTML = '<db-tool></db-tool>'
+        refLoading.textContent = 'Loading 100%'
+        refLogo.style.opacity = 0
+        refLoading.style.opacity = 0
+        await this.wait(250)
+
+        let refTool = document.createElement('db-tool')
+        refBody.appendChild(refTool)
+        await this.wait(1)
+
+        appDb.refTablesList.show()
     }
 
     async callServer (method, url, obj) {
