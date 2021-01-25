@@ -37,14 +37,40 @@ class AppDb {
         let refLogo = refBody.querySelector('.logo')
         let refLoading = refBody.querySelector('.loading')
 
+        let scriptsReady = false
+        try {
+            let rstScripts = JSON.parse(await appDb.callServer('POST', '/query', { type: 'dbGetScripts' }))
+            if (rstScripts.status == 'ok') {
+                eval(rstScripts.result)
+                scriptsReady = true
+            }
+        } catch (e) {
+            console.log(e)
+        }
+
+        let shadowsReady = false
+        try {
+            let rstShadows = JSON.parse(await appDb.callServer('POST', '/query', { type: 'dbGetShadows' }))
+            if (rstShadows.status == 'ok') {
+                this.shadowElements = rstShadows.result
+                shadowsReady = true
+            }
+        } catch (e) {
+            console.log(e)
+        }
+
         for (let cnt = 0; cnt < keys.length; cnt = cnt + 1) {
             let key = keys[cnt]
             let element = this.shadowElements[key]
-            let script = (await this.callServer('GET',`./${element[0]}.js`, {}))
-            eval(`${script}; window.${key} = ${key}`)
+            if (!scriptsReady) {
+                let script = (await this.callServer('GET',`./${element[0]}.js`, {}))
+                eval(`${script}; window.${key} = ${key}`)
+            }
             eval(`customElements.define("${element[0]}", ${key})`)
-            element[1] = await this.callServer('GET',`./${element[0]}.html`, {})
-            element[2] = await this.callServer('GET',`./${element[0]}.css`, {})
+            if (!shadowsReady) {
+                element[1] = await this.callServer('GET',`./${element[0]}.html`, {})
+                element[2] = await this.callServer('GET',`./${element[0]}.css`, {})
+            }
             refLoading.textContent = 'Loading ' + parseInt(cnt * 100 / keys.length) + '%'
         }
         refLoading.textContent = 'Loading 100%'

@@ -11,7 +11,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    transform: translateX(250px);
+    transform: translate3d(250px, 0 ,0);
     transition: transform 0.3s ease;
     width: 250px;
 }

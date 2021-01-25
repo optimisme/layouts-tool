@@ -1,11 +1,15 @@
 const sqlite = require('sqlite3-lite')
 const md5 = require('md5')
+const fs = require('fs')
 
 class Obj {
 
     constructor () { 
         this.server = undefined
         this.db = new sqlite.Database('./server/data.db')
+
+        this.dbScripts = ''
+        this.dbShadows = ''
     }
 
    async init () {
@@ -13,6 +17,9 @@ class Obj {
         process.on('SIGHUP', () => { this.close() })
         process.on('SIGINT', () => { this.close() })
         process.on('SIGTERM', () => { this.close() })
+
+        await this.dbBuildScripts()
+        await this.dbBuildShadows()
 
         //await this.query('CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, description TEXT NOT NULL)')
         //await this.query('CREATE TABLE IF NOT EXISTS users    (id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT NOT NULL, name TEXT NOT NULL, surname TEXT NOT NULL, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, tokens TEXT NOT NULL)')
@@ -354,6 +361,72 @@ class Obj {
                 process.exit(1)
             })
             this.server = undefined
+        }
+    }
+
+    async dbBuildScripts () {
+        let folderFiles = []
+        let scripts = ''
+
+        try {
+            folderFiles = await fs.promises.readdir('./public/tooldb/')
+            folderFiles.sort((a, b) => { return a.length - b.length })
+            for (let cntFile = 0; cntFile < folderFiles.length; cntFile = cntFile + 1) {
+                let fileName = folderFiles[cntFile]
+                if (fileName.indexOf('db-tool') == 0 && fileName.indexOf('.js') > 0) {
+                    let fileContent = await fs.promises.readFile('./public/tooldb/' + fileName, 'utf-8')
+                    let key = (fileContent.substring(0, fileContent.indexOf('extends'))).split(' ')[1]
+                    scripts += fileContent + `;\nwindow.${key} = ${key};\n`
+                }
+            }
+            this.dbScripts = scripts
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    async dbBuildShadows () {
+        let folderFiles = []
+        let shadows = {}
+        try {
+            folderFiles = await fs.promises.readdir('./public/tooldb/')
+            folderFiles.sort((a, b) => { return a.length - b.length })
+            for (let cntFile = 0; cntFile < folderFiles.length; cntFile = cntFile + 1) {
+                let fileName = folderFiles[cntFile]
+                let tagName = fileName.substring(0, fileName.indexOf('.'))
+                if (fileName.indexOf('db-tool') == 0 && fileName.indexOf('.js') > 0) {
+                    let fileContent = await fs.promises.readFile('./public/tooldb/' + fileName, 'utf-8')
+                    let key = (fileContent.substring(0, fileContent.indexOf('extends'))).split(' ')[1]
+                    shadows[key] = [tagName, '', '']
+                    shadows[key][1] = await fs.promises.readFile('./public/tooldb/' + tagName + '.html', 'utf-8')
+                    shadows[key][2] = await fs.promises.readFile('./public/tooldb/' + tagName + '.css', 'utf-8')
+                }
+            }
+            this.dbShadows = shadows
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    async dbGetScripts (data) {
+        if (this.dbScripts == '') {
+            return { status: 'ko', result: 'Error "dbGetScripts" not ready' } 
+        }
+        try {
+            return { status: 'ok', result: this.dbScripts }
+        } catch (err) {
+            return { status: 'ko', result: 'Error "dbGetScripts"' } 
+        }
+    }
+
+    async dbGetShadows (data) {
+        if (this.dbShadows == '') {
+            return { status: 'ko', result: 'Error "dbGetShadows" not ready' } 
+        }
+        try {
+            return { status: 'ok', result: this.dbShadows }
+        } catch (err) {
+            return { status: 'ko', result: 'Error "dbGetShadows"' } 
         }
     }
 

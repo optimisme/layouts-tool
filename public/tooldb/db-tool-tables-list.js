@@ -66,6 +66,6 @@ class DbToolTablesList extends HTMLElement {
 
     show () {
         let refRoot = this.shadow.querySelector('.root')
-        refRoot.style.transform = 'translateX(0)'
+        refRoot.style.transform = 'translate3d(0, 0 ,0)'
     }
 }
