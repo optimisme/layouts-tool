@@ -94,7 +94,7 @@ class AppDb {
         })
     }
 
-    async refreshTables () {
+    async refresh () {
         let rst = JSON.parse(await appDb.callServer('POST', '/query', { type: 'dbGetTablesList' }))
 
         if (rst.status == 'ok') {
@@ -103,7 +103,11 @@ class AppDb {
             this.tables = []
         }
 
-        await this.refTablesList.refreshTables()
+        await this.refTablesList.refresh()
+
+        if (this.refTableSelected != null) {
+            await this.refTableEdit.refresh()
+        }
     }
 
     async selectTable (ref) {
@@ -126,10 +130,6 @@ class AppDb {
         this.refTableEdit.unselectTable()
         this.refTableSelectedColumns = []
         this.refTableSelectedRows = []
-    }
-
-    async reloadTable () {
-        await this.refTableEdit.reloadTable()
     }
 
     async addTable () {

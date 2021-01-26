@@ -21,7 +21,7 @@ class DbToolTableEditColumn extends HTMLElement {
         refRoot.textContent = this.textContent
         refRoot.addEventListener('click', async () => {
             await appDb.editColumn(this.textContent)
-            await appDb.reloadTable()
+            await appDb.refresh()
         })
     }
 }

@@ -17,13 +17,11 @@ class DbToolModalEditRow extends DbToolModal {
         let refDelButton = this.shadow.querySelector('#deleteButton')
         refDelButton.addEventListener('click', async () => { 
             await this.deleteRow()
-            await appDb.reloadTable()
         })
 
         let refUpdateButton = this.shadow.querySelector('db-tool-form-button')
         refUpdateButton.addEventListener('click', async () => { 
             await this.editRow()
-            await appDb.reloadTable()
         })
     }
 

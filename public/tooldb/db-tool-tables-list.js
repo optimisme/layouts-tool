@@ -19,24 +19,24 @@ class DbToolTablesList extends HTMLElement {
         let refAdd = this.shadow.querySelector('div[data-name="buttonAdd"]')
         refAdd.addEventListener('click', async () => {
             await appDb.addTable()
-            await appDb.refreshTables()
+            await appDb.refresh()
         })
 
         let refRefresh = this.shadow.querySelector('div[data-name="buttonRefresh"]')
         refRefresh.addEventListener('click', async () => {
-            await appDb.refreshTables()
+            await appDb.refresh()
         })
 
         let refEdit = this.shadow.querySelector('div[data-name="buttonEdit"]')
         refEdit.addEventListener('click', async () => {
             await appDb.editTable()
-            await appDb.refreshTables()
+            await appDb.refresh()
         })
 
-        await appDb.refreshTables()
+        await appDb.refresh()
     }
 
-    async refreshTables () {
+    async refresh () {
         let refList = this.shadow.querySelector('.list')
 
         while (refList.firstChild) { refList.removeChild(refList.lastChild) }

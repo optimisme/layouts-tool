@@ -19,7 +19,7 @@ class DbToolTableEditCell extends HTMLElement {
         refRoot.textContent = this.textContent
         refRoot.addEventListener('click', async () => {
             await appDb.editRow(this.valueId)
-            await appDb.reloadTable()
+            await appDb.refresh()
         })
     }
 }

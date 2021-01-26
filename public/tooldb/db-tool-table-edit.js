@@ -20,13 +20,13 @@ class DbToolTableEdit extends HTMLElement {
         let refAddColumn = this.shadow.querySelector('#addColumn')
         refAddColumn.addEventListener('click', async () => {
             await appDb.addColumn()
-            await appDb.reloadTable()
+            await appDb.refresh()
         })
 
         let refAddRow = this.shadow.querySelector('#addRow')
         refAddRow.addEventListener('click', async () => {
             await appDb.addRow()
-            await appDb.reloadTable()
+            await appDb.refresh()
         })
     }
 
@@ -34,7 +34,7 @@ class DbToolTableEdit extends HTMLElement {
         let refContainer = this.shadow.querySelector('.container')
         refContainer.style.display = 'grid'
 
-        await this.reloadTable()
+        await this.refresh()
     }
 
     async unselectTable () {
@@ -48,7 +48,7 @@ class DbToolTableEdit extends HTMLElement {
         while (refTable.firstChild) { refTable.removeChild(refTable.lastChild) }
     }
 
-    async reloadTable () {
+    async refresh () {
         let tableName = appDb.refTableSelected.textContent
         let rstColumns = JSON.parse(await appDb.callServer('POST',  '/query', { type: 'dbGetTableColumns',  name: tableName }))
         let rstData =    JSON.parse(await appDb.callServer('POST',  '/query', { type: 'dbGetTableData',     name: tableName }))
