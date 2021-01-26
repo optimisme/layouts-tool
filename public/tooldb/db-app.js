@@ -9,6 +9,7 @@ class AppDb {
         this.refTableEdit = null
         this.refTableSelected = null
         this.refTableSelectedColumns = []
+        this.refTableSelectedRows = []
 
         this.shadowElements = {
             DbTool:                     ['db-tool',                     '', ''],
@@ -113,7 +114,7 @@ class AppDb {
         ref.select()
 
         this.refTablesList.activateButtons()
-        this.refTableSelectedColumns = await this.refTableEdit.selectTable()
+        await this.refTableEdit.selectTable()
     }
 
     unselectTable (ref) {
@@ -124,6 +125,7 @@ class AppDb {
         this.refTablesList.deactivateButtons()
         this.refTableEdit.unselectTable()
         this.refTableSelectedColumns = []
+        this.refTableSelectedRows = []
     }
 
     async reloadTable () {

@@ -17,6 +17,13 @@
     justify-content: center;
 }
 
+.inputs {
+    flex-grow: 1;
+    margin-bottom: 16px;
+    overflow: auto;
+    width: 350px;
+}
+
 .wait {
     align-items: center;
     color: red;
@@ -26,16 +33,12 @@
     width: 100%;
 }
 
-.buttons {
+.button {
     align-items: center;
+    color: red;
     display: flex;
     height: 48px;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
 }
 
-#deleteButton {
-    color:rgb(0, 125, 255);
-    cursor: pointer;
-    font-size: 1.5em;
-}

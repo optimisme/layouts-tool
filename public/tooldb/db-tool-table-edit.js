@@ -32,8 +32,7 @@ class DbToolTableEdit extends HTMLElement {
         let refContainer = this.shadow.querySelector('.container')
         refContainer.style.display = 'grid'
 
-        let columns = await this.reloadTable()
-        return columns
+        await this.reloadTable()
     }
 
     async unselectTable () {
@@ -53,6 +52,7 @@ class DbToolTableEdit extends HTMLElement {
         let rstData =    JSON.parse(await appDb.callServer('POST',  '/query', { type: 'dbGetTableData',     name: tableName }))
         let objTable = document.createElement('table')
         let columns = []
+        let data = []
 
         this.clearTable()
         if (rstColumns.status == 'ok' && rstData.status == 'ok') {
@@ -76,7 +76,7 @@ class DbToolTableEdit extends HTMLElement {
             objTable.appendChild(objTr)
             objTr = document.createElement('tr')
 
-            let data = rstData.result
+            data = rstData.result
             for (let cntRow = 0; cntRow < data.length; cntRow = cntRow + 1) {
                 let objTr = document.createElement('tr')
                 let columns = Object.keys(data[cntRow])
@@ -102,6 +102,7 @@ class DbToolTableEdit extends HTMLElement {
         refTable.appendChild(objTable)
         refTable.style.gridTemplateColumns = (new Array(columns.length + 1)).join('auto ')  
 
-        return columns
+        appDb.refTableSelectedColumns = columns
+        appDb.refTableSelectedRows = data
     }
 }

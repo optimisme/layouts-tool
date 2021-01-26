@@ -3,7 +3,7 @@ class DbToolModalEditRow extends DbToolModal {
     constructor() {
         super()
         this.tableName = ''
-        this.columnName = ''
+        this.rowId = ''
     }
 
     async connectedCallback () {
@@ -14,23 +14,47 @@ class DbToolModalEditRow extends DbToolModal {
         this.elmStyle.textContent = appDb.shadowElements[this.constructor.name][2]
         this.shadow.appendChild(this.elmStyle)
 
-        let refInput = this.shadow.querySelector('db-tool-form-input-text')
-        refInput.addEventListener('keyup', () => { this.checkForm() })
-
-        let refDelButton = this.shadow.querySelector('#deleteButton')
-        refDelButton.addEventListener('click', () => { this.deleteColumn() })
-
-        let refRenameButton = this.shadow.querySelector('#renameButton')
-        refRenameButton.addEventListener('click', () => { this.renameColumn() })
+        let refButton = this.shadow.querySelector('db-tool-form-button')
+        refButton.addEventListener('click', () => { this.addColumn() })
     }
 
-    async show (tableName, columnName) {
+    async show (tableName, rowId) {
         super.show()
+
         this.tableName = tableName
-        this.columnName = columnName
+        this.rowId = rowId
 
         let refName = this.shadow.querySelector('span[id="name"]')
-        refName.textContent = columnName
+        refName.textContent = rowId
+
+        let refInputs = this.shadow.querySelector('.inputs')
+
+        this.tableName = tableName
+
+        let rowData = (appDb.refTableSelectedRows.filter((x) => { return (x.id == rowId) }))[0]
+
+        while (refInputs.firstChild) { refInputs.removeChild(refInputs.lastChild) }
+        for (let cnt = 0; cnt < appDb.refTableSelectedColumns.length; cnt = cnt + 1) {
+            let column = appDb.refTableSelectedColumns[cnt]
+            if (column.name != 'id') {
+                let input = document.createElement('db-tool-form-input-text')
+                refInputs.appendChild(input)
+                input.setAttribute('id', column.name + 'Form')
+                input.addEventListener('keyup', () => { this.checkForm() })
+                input.label = column.name
+                if (column.type == 'INTEGER') {
+                    input.setAttribute('pattern', '[0-9]+')
+                    input.hint = 'Only INTEGER numbers allowed'
+                }
+                if (column.type == 'REAL' || input.type == 'NUMERIC') {
+                    input.setAttribute('pattern', '[0-9]+([\.][0-9]+)?')
+                    input.hint = 'Only REAL numbers allowed (0.0)'
+                }
+                input.value = rowData[column.name]
+            }
+        }
+
+        this.checkForm()
     }
 
     async hide () {
@@ -39,11 +63,19 @@ class DbToolModalEditRow extends DbToolModal {
     }
 
     checkForm () {
-        let refButton = this.shadow.querySelector('#renameButton')
-        let refInput = this.shadow.querySelector('db-tool-form-input-text')
-        let valid = refInput.checkValidity()
+        let refButton = this.shadow.querySelector('db-tool-form-button')
+        let refInputs = this.shadow.querySelector('.inputs')
+        let valid = true
 
-        if (refInput.value == '') valid = false
+        for (let cnt = 0; cnt < appDb.refTableSelectedColumns.length; cnt = cnt + 1) {
+            let column = appDb.refTableSelectedColumns[cnt]
+            if (column.name != 'id') {
+                let input = refInputs.querySelector('#' + column.name + 'Form')
+                valid = input.checkValidity()
+                if (column.notnull == 1 && input.value == '') valid = false
+                if (!valid) break
+            }
+        }
 
         if (valid) {
             refButton.removeAttribute('disabled')
@@ -52,20 +84,27 @@ class DbToolModalEditRow extends DbToolModal {
         }
     }
 
-    async renameColumn () {
-        let refInput = this.shadow.querySelector('db-tool-form-input-text')
-        let refButton = this.shadow.querySelector('.buttons')
+    async addColumn () {
+        let refInputs = this.shadow.querySelector('.inputs')
+        let refButton = this.shadow.querySelector('.button')
         let refWait = this.shadow.querySelector('.wait')
         let refError = this.shadow.querySelector('.msgKo')
         let response = {}
 
         let obj = {
-            type: 'dbRenameColumn',
+            type: 'dbEditRow',
             tableName: this.tableName,
-            oldColumnName: this.columnName,
-            newColumnName: refInput.value
+            columns: {
+                id: this.rowId
+            }
         }
-
+        for (let cnt = 0; cnt < appDb.refTableSelectedColumns.length; cnt = cnt + 1) {
+            let column = appDb.refTableSelectedColumns[cnt]
+            if (column.name != 'id') {
+                let input = refInputs.querySelector('#' + column.name + 'Form')
+                obj.columns[column.name] = input.value
+            }
+        }
         refButton.style.display = 'none'
         refWait.style.display = 'flex'
         await appDb.wait(500)
@@ -80,46 +119,13 @@ class DbToolModalEditRow extends DbToolModal {
         refWait.style.display = 'none'
 
         if (response.status == 'ok') {
-            refInput.value = ''
-            this.hide()
-        } else {
-            refError.style.display = 'flex'
-            await appDb.wait(3000)
-            refError.style.display = 'none'
-        }
-
-        refButton.style.display = 'flex'
-        this.checkForm()
-    }
-
-    async deleteColumn () {
-        let refInput = this.shadow.querySelector('db-tool-form-input-text')
-        let refButton = this.shadow.querySelector('.buttons')
-        let refWait = this.shadow.querySelector('.wait')
-        let refError = this.shadow.querySelector('.msgKo')
-        let response = {}
-
-        let obj = {
-            type: 'dbDelColumn',
-            tableName: this.tableName,
-            columnName: this.columnName,
-        }
-
-        refButton.style.display = 'none'
-        refWait.style.display = 'flex'
-        await appDb.wait(500)
-
-        try {
-            response = JSON.parse(await appDb.callServer('POST', '/query', obj))
-        } catch (e) {
-            console.log(e)
-        }
-        await appDb.reloadTable()
-
-        refWait.style.display = 'none'
-
-        if (response.status == 'ok') {
-            refInput.value = ''
+            for (let cnt = 0; cnt < appDb.refTableSelectedColumns.length; cnt = cnt + 1) {
+                let column = appDb.refTableSelectedColumns[cnt]
+                if (column.name != 'id') {
+                    let input = refInputs.querySelector('#' + column.name + 'Form')
+                    input.value = ''
+                }
+            }
             this.hide()
         } else {
             refError.style.display = 'flex'
