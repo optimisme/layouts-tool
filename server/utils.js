@@ -9,7 +9,6 @@ class Obj {
         this.db = new sqlite.Database('./server/data.db')
 
         this.dbScripts = ''
-        this.dbShadows = ''
     }
 
     async init () {
@@ -19,7 +18,6 @@ class Obj {
         process.on('SIGTERM', () => { this.close() })
 
         await this.dbBuildScripts()
-        await this.dbBuildShadows()
 
         //await this.query('CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, description TEXT NOT NULL)')
         //await this.query('CREATE TABLE IF NOT EXISTS users    (id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT NOT NULL, name TEXT NOT NULL, surname TEXT NOT NULL, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, tokens TEXT NOT NULL)')
@@ -379,6 +377,9 @@ class Obj {
                     scripts += fileContent + `;\nwindow.${key} = ${key};\n`
                 }
             }
+
+            scripts +=  await this.dbBuildShadows()
+
             this.dbScripts = scripts
         } catch (err) {
             console.log(err)
@@ -402,7 +403,7 @@ class Obj {
                     shadows[key][2] = await fs.promises.readFile('./public/tooldb/' + tagName + '.css', 'utf-8')
                 }
             }
-            this.dbShadows = shadows
+            return `appDb.shadowElements = ${JSON.stringify(shadows, null, 4)};\n`
         } catch (err) {
             console.log(err)
         }

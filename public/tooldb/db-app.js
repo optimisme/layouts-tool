@@ -48,35 +48,24 @@ class AppDb {
             console.log(e)
         }
 
-        let shadowsReady = false
-        try {
-            let rstShadows = JSON.parse(await appDb.callServer('POST', '/query', { type: 'dbGetShadows' }))
-            if (rstShadows.status == 'ok') {
-                this.shadowElements = rstShadows.result
-                shadowsReady = true
-            }
-        } catch (e) {
-            console.log(e)
-        }
-
         for (let cnt = 0; cnt < keys.length; cnt = cnt + 1) {
             let key = keys[cnt]
             let element = this.shadowElements[key]
             if (!scriptsReady) {
                 let script = (await this.callServer('GET',`./${element[0]}.js`, {}))
                 eval(`${script}; window.${key} = ${key}`)
-            }
-            eval(`customElements.define("${element[0]}", ${key})`)
-            if (!shadowsReady) {
                 element[1] = await this.callServer('GET',`./${element[0]}.html`, {})
                 element[2] = await this.callServer('GET',`./${element[0]}.css`, {})
             }
+            eval(`customElements.define("${element[0]}", ${key})`)
             refLoading.textContent = 'Loading ' + parseInt(cnt * 100 / keys.length) + '%'
         }
+
         refLoading.textContent = 'Loading 100%'
+        await this.wait(250)
         refLogo.style.opacity = 0
         refLoading.style.opacity = 0
-        await this.wait(250)
+
 
         let refTool = document.createElement('db-tool')
         refBody.appendChild(refTool)
