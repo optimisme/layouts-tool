@@ -59,6 +59,7 @@ class AppDb {
             }
             eval(`customElements.define("${element[0]}", ${key})`)
             refLoading.textContent = 'Loading ' + parseInt(cnt * 100 / keys.length) + '%'
+            await this.wait(1)
         }
 
         refLoading.textContent = 'Loading 100%'
