@@ -14,8 +14,11 @@ class DbToolModalEditRow extends DbToolModal {
         this.elmStyle.textContent = appDb.shadowElements[this.constructor.name][2]
         this.shadow.appendChild(this.elmStyle)
 
-        let refButton = this.shadow.querySelector('db-tool-form-button')
-        refButton.addEventListener('click', () => { this.editRow() })
+         let refDelButton = this.shadow.querySelector('#deleteButton')
+        refDelButton.addEventListener('click', () => { this.deleteRow() })
+
+        let refUpdateButton = this.shadow.querySelector('db-tool-form-button')
+        refUpdateButton.addEventListener('click', () => { this.editRow() })
     }
 
     async show (tableName, rowId) {
@@ -86,7 +89,7 @@ class DbToolModalEditRow extends DbToolModal {
 
     async editRow () {
         let refInputs = this.shadow.querySelector('.inputs')
-        let refButton = this.shadow.querySelector('.button')
+        let refButtons = this.shadow.querySelector('.buttons')
         let refWait = this.shadow.querySelector('.wait')
         let refError = this.shadow.querySelector('.msgKo')
         let response = {}
@@ -105,6 +108,51 @@ class DbToolModalEditRow extends DbToolModal {
                 obj.columns[column.name] = input.value
             }
         }
+        refButtons.style.display = 'none'
+        refWait.style.display = 'flex'
+        await appDb.wait(500)
+
+        try {
+            response = JSON.parse(await appDb.callServer('POST', '/query', obj))
+        } catch (e) {
+            console.log(e)
+        }
+        await appDb.reloadTable()
+
+        refWait.style.display = 'none'
+
+        if (response.status == 'ok') {
+            for (let cnt = 0; cnt < appDb.refTableSelectedColumns.length; cnt = cnt + 1) {
+                let column = appDb.refTableSelectedColumns[cnt]
+                if (column.name != 'id') {
+                    let input = refInputs.querySelector('#' + column.name + 'Form')
+                    input.value = ''
+                }
+            }
+            this.hide()
+        } else {
+            refError.style.display = 'flex'
+            await appDb.wait(3000)
+            refError.style.display = 'none'
+        }
+
+        refButtons.style.display = 'flex'
+        this.checkForm()
+    }
+
+    async deleteRow () {
+        let refInputs = this.shadow.querySelector('.inputs')
+        let refButton = this.shadow.querySelector('.buttons')
+        let refWait = this.shadow.querySelector('.wait')
+        let refError = this.shadow.querySelector('.msgKo')
+        let response = {}
+
+        let obj = {
+            type: 'dbDelRow',
+            tableName: this.tableName,
+            id: this.rowId
+        }
+
         refButton.style.display = 'none'
         refWait.style.display = 'flex'
         await appDb.wait(500)

@@ -19,7 +19,6 @@
 
 .wait {
     align-items: center;
-    color: red;
     display: none;
     height: 48px;
     justify-content: center;
@@ -28,7 +27,6 @@
 
 .button {
     align-items: center;
-    color: red;
     display: flex;
     height: 48px;
     justify-content: center;

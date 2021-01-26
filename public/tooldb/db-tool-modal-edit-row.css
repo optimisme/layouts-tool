@@ -26,19 +26,22 @@
 
 .wait {
     align-items: center;
-    color: red;
     display: none;
     height: 48px;
     justify-content: center;
     width: 100%;
 }
 
-.button {
+.buttons {
     align-items: center;
-    color: red;
     display: flex;
     height: 48px;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
 }
 
+#deleteButton {
+    color:rgb(0, 125, 255);
+    cursor: pointer;
+    font-size: 1.5em;
+}

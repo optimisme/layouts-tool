@@ -605,6 +605,19 @@ class Obj {
             return { status: 'ko', result: 'Error "dbEditRow"' } 
        }
     }
+
+    async dbDelRow (data) {
+        if (typeof data.tableName == 'undefined'
+        || typeof data.id != 'number'
+        || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelRow: Wrong data' } }
+
+        try {
+            return { status: 'ok', result: await this.query(`DELETE FROM "${data.tableName}" WHERE "id" = ${data.id}`) }
+       } catch (err) {
+           console.log(err)
+            return { status: 'ko', result: 'Error "dbDelRow"' } 
+       }
+    }
 }
 
 module.exports = Obj 
