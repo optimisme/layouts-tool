@@ -74,6 +74,7 @@ class DbToolModalAddColumn extends DbToolModal {
 
         if (response.status == 'ok') {
             refInput.value = ''
+            refType.value = 'TEXT'
             this.hide()
         } else {
             refError.style.display = 'flex'
