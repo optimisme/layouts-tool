@@ -13,18 +13,36 @@ class DbToolModalAddRow extends DbToolModal {
         this.elmStyle.textContent = appDb.shadowElements[this.constructor.name][2]
         this.shadow.appendChild(this.elmStyle)
 
-        let refInput = this.shadow.querySelector('db-tool-form-input-text')
-        refInput.addEventListener('keyup', () => { this.checkForm() })
-
         let refButton = this.shadow.querySelector('db-tool-form-button')
         refButton.addEventListener('click', () => { this.addColumn() })
     }
 
     async show (tableName) {
+        let refInputs = this.shadow.querySelector('.inputs')
+
         super.show()
         this.tableName = tableName
 
-        console.log(appDb.refTableSelectedColumns)
+        while (refInputs.firstChild) { refInputs.removeChild(refInputs.lastChild) }
+        for (let cnt = 0; cnt < appDb.refTableSelectedColumns.length; cnt = cnt + 1) {
+            let column = appDb.refTableSelectedColumns[cnt]
+            if (column.name != 'id') {
+                let input = document.createElement('db-tool-form-input-text')
+                refInputs.appendChild(input)
+                input.setAttribute('id', column.name + 'Form')
+                input.addEventListener('keyup', () => { this.checkForm() })
+                input.label = column.name
+                if (column.type == 'INTEGER') {
+                    input.setAttribute('pattern', '[0-9]+')
+                    input.hint = 'Only INTEGER numbers allowed'
+                }
+                if (column.type == 'REAL' || input.type == 'NUMERIC') {
+                    input.setAttribute('pattern', '[0-9]+([\.][0-9]+)?')
+                    input.hint = 'Only REAL numbers allowed (0.0)'
+                }
+                if (column['dflt_value']) input.value = column['dflt_value']
+            }
+        }
     }
 
     async hide () {
@@ -34,10 +52,18 @@ class DbToolModalAddRow extends DbToolModal {
 
     checkForm () {
         let refButton = this.shadow.querySelector('db-tool-form-button')
-        let refInput = this.shadow.querySelector('db-tool-form-input-text')
-        let valid = refInput.checkValidity()
+        let refInputs = this.shadow.querySelector('.inputs')
+        let valid = true
 
-        if (refInput.value == '') valid = false
+        for (let cnt = 0; cnt < appDb.refTableSelectedColumns.length; cnt = cnt + 1) {
+            let column = appDb.refTableSelectedColumns[cnt]
+            if (column.name != 'id') {
+                let input = refInputs.querySelector('#' + column.name + 'Form')
+                valid = input.checkValidity()
+                if (column.notnull == 1 && input.value == '') valid = false
+                if (!valid) break
+            }
+        }
 
         if (valid) {
             refButton.removeAttribute('disabled')
@@ -47,19 +73,24 @@ class DbToolModalAddRow extends DbToolModal {
     }
 
     async addColumn () {
-        let refInput = this.shadow.querySelector('db-tool-form-input-text')
+        let refInputs = this.shadow.querySelector('.inputs')
         let refButton = this.shadow.querySelector('.button')
         let refWait = this.shadow.querySelector('.wait')
         let refError = this.shadow.querySelector('.msgKo')
         let response = {}
 
         let obj = {
-            type: 'dbAddColumn',
+            type: 'dbAddRow',
             tableName: this.tableName,
-            columnName: refInput.value,
-            columnType: 'TEXT'
+            columns: {}
         }
-
+        for (let cnt = 0; cnt < appDb.refTableSelectedColumns.length; cnt = cnt + 1) {
+            let column = appDb.refTableSelectedColumns[cnt]
+            if (column.name != 'id') {
+                let input = refInputs.querySelector('#' + column.name + 'Form')
+                obj.columns[column.name] = input.value
+            }
+        }
         refButton.style.display = 'none'
         refWait.style.display = 'flex'
         await appDb.wait(500)
@@ -74,7 +105,13 @@ class DbToolModalAddRow extends DbToolModal {
         refWait.style.display = 'none'
 
         if (response.status == 'ok') {
-            refInput.value = ''
+            for (let cnt = 0; cnt < appDb.refTableSelectedColumns.length; cnt = cnt + 1) {
+                let column = appDb.refTableSelectedColumns[cnt]
+                if (column.name != 'id') {
+                    let input = refInputs.querySelector('#' + column.name + 'Form')
+                    input.value = ''
+                }
+            }
             this.hide()
         } else {
             refError.style.display = 'flex'

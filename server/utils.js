@@ -420,17 +420,6 @@ class Obj {
         }
     }
 
-    async dbGetShadows (data) {
-        if (this.dbShadows == '') {
-            return { status: 'ko', result: 'Error "dbGetShadows" not ready' } 
-        }
-        try {
-            return { status: 'ok', result: this.dbShadows }
-        } catch (err) {
-            return { status: 'ko', result: 'Error "dbGetShadows"' } 
-        }
-    }
-
     async dbGetTablesList (data) {
         try {
             return { status: 'ok', result: await this.query('SELECT name FROM sqlite_master WHERE type="table" AND name NOT LIKE "sqlite_%" ORDER BY name') }
@@ -549,13 +538,46 @@ class Obj {
 
             await this.query(`ALTER TABLE "${data.tableName}" RENAME TO "${data.tableName}_old"`)
             await this.query(newCreate)
-            await this.query(`INSERT INTO "${data.tableName}"(${columnsSeparated}) SELECT ${columnsSeparated} FROM "${data.tableName}_old"`)
+            await this.query(`INSERT INTO "${data.tableName}" (${columnsSeparated}) SELECT ${columnsSeparated} FROM "${data.tableName}_old"`)
             await this.query(`DROP TABLE "${data.tableName}_old"`)
 
             return { status: 'ok', result: '' }
         } catch (err) {
             return { status: 'ko', result: 'Error "dbDelColumn"' } 
         }  
+    }
+
+    async dbAddRow (data) {
+        if (typeof data.tableName == 'undefined'
+        || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddRow: Wrong data' } }
+
+        let columns = (Object.keys(data.columns))
+        let columnsRemoved = columns.filter((x) => { return (x.indexOf(';') == -1) })
+        let columnsQuotes = columnsRemoved.map((x) => { return `"${x}"` })
+        let columnsSeparated = columnsQuotes.join(', ')
+        let values = []
+        let tableColumns = []
+
+        try {
+            tableColumns = await this.query(`PRAGMA table_info("${data.tableName}")`)
+            for (let cnt = 0; cnt < tableColumns.length; cnt = cnt + 1) {
+                let column = tableColumns[cnt]
+                // TODO: instead of comparing with column.name != 'id', get the definition and ignore if it is 'AUTOINCREMENT'
+                if (column.name != 'id') {
+                    if (column.type == "TEXT") {
+                        values.push(`"${data.columns[column.name]}"`)
+                    } else {
+                        if (data.columns[column.name].indexOf(';') == -1) {
+                            values.push(`${data.columns[column.name]}`)
+                        }
+                    }
+                }
+            }
+
+            return { status: 'ok', result: await this.query(`INSERT INTO "${data.tableName}" (${columnsSeparated}) VALUES (${values.join(', ')})`) }
+       } catch (err) {
+            return { status: 'ko', result: 'Error "dbAddRow"' } 
+       }
     }
 }
 

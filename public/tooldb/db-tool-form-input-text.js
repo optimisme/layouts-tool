@@ -5,7 +5,14 @@ class DbToolFormInputText extends HTMLElement {
         this.shadow = this.attachShadow({ mode: 'open' })
     }
 
-    attributeChangedCallback(name, oldValue, newValue) { }
+    static get observedAttributes() { return ['pattern']; }
+    attributeChangedCallback(name, oldValue, newValue) { 
+        let refRoot = this.shadow.querySelector('.root')
+        if (refRoot) {
+            let refInput = refRoot.querySelector('input')
+            refInput.setAttribute(name, newValue)
+        }
+    }
 
     async connectedCallback () {
 
@@ -17,7 +24,9 @@ class DbToolFormInputText extends HTMLElement {
         let refRoot = this.shadow.querySelector('.root')
 
         let refInput = refRoot.querySelector('input')
-        refInput.setAttribute('pattern', this.getAttribute('pattern'))
+        if (this.getAttribute('pattern') && this.getAttribute('pattern') != 'null') {
+            refInput.setAttribute('pattern', this.getAttribute('pattern'))
+        }
 
         let refLabel = refRoot.querySelector('label')
         refLabel.innerHTML = this.textContent
@@ -41,6 +50,18 @@ class DbToolFormInputText extends HTMLElement {
         return refInput.value
     }
 
+    set label (value) {
+        let refRoot = this.shadow.querySelector('.root')
+        let refLabel = refRoot.querySelector('label')
+        refLabel.textContent = value
+    }
+
+    set hint (value) {
+        let refRoot = this.shadow.querySelector('.root')
+        let refSpan = refRoot.querySelector('span')
+        refSpan.textContent = value
+    }  
+
     addEventListener (name, action) {
         let refRoot = this.shadow.querySelector('.root')
         let refInput = refRoot.querySelector('input')
@@ -56,6 +77,10 @@ class DbToolFormInputText extends HTMLElement {
     checkValidity () {
         let refRoot = this.shadow.querySelector('.root')
         let refInput = refRoot.querySelector('input')
-        return refInput.checkValidity()
+        if (refInput.getAttribute('pattern') && refInput.getAttribute('pattern') != 'null') {
+            return refInput.checkValidity()
+        } else {
+            return true
+        }
     }
 }

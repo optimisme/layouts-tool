@@ -25,7 +25,9 @@ async function answerQuery (request, response) {
   let hasPermission = true // TODO: Set permissions to perform actions
   let rst = {}
 
-  if (hasPermission) {
+  if (data.type.indexOf(';') >= 0) {
+    rst = { status: 'ko', result: 'Injection not allowed' } 
+  }  if (hasPermission) {
     try {
       rst = await eval(`utils.${data.type}(data)`)
     } catch (err) {
@@ -35,6 +37,7 @@ async function answerQuery (request, response) {
   } else {
     rst = { status: 'ko', result: 'Forbidden' } 
   }
+
 
   response.json(rst)
 }

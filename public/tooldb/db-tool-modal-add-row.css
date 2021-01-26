@@ -17,6 +17,13 @@
     justify-content: center;
 }
 
+.inputs {
+    flex-grow: 1;
+    margin-bottom: 16px;
+    overflow: auto;
+    width: 350px;
+}
+
 .wait {
     align-items: center;
     color: red;
