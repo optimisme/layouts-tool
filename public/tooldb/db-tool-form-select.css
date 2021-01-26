@@ -1,0 +1,12 @@
+.root { position: relative; width: 100%; }
+.root:after { border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid rgba(0, 0, 0, 0.12); content: ''; height: 0; padding: 0; pointer-events: none; position: absolute; right: 10px; top: 22px; width: 0; }
+.root > select { appearance: none; -webkit-appearance:none; background-color: transparent; border: none; border-bottom: 1px solid rgba(0,0,0, 0.12); border-radius: 0; font-family: inherit; padding: 15px 10px 10px 0; position: relative; font-size: 18px; width: 100%; }
+.root > select:focus { border-bottom: 1px solid rgba(0,0,0, 0);  outline: none; }
+.root > label { color: rgba(0,0,0, 0.26); font-size: 18px; font-weight: normal; left: 0; position: absolute; pointer-events: none; top: 12px; transition: 0.2s ease all; }
+.root > select:focus ~ label, .root > select:valid ~ label {  color: #2F80ED; font-size: 12px; top: 0px; transition: 0.2s ease all; }
+.root > span:nth-child(2) { height: 60%; left: 0; opacity: 0.5; pointer-events: none; position: absolute; top: 25%; width: 100px; }
+.root > span:nth-child(3) { display: block; position: relative; width: 100%; }
+.root > span:nth-child(3):before, .root > span:nth-child(3):after { background: #2F80ED; bottom: 1px; content: ''; height: 2px; position: absolute; transition: 0.2s ease all; width: 0; }
+.root > span:nth-child(3):before { left: 50%; }
+.root > span:nth-child(3):after { right: 50%; }
+.root > select:focus ~ span:nth-child(3):before, .root > select:focus ~ span:nth-child(3):after { width: 50%; }

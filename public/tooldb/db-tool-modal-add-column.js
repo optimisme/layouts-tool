@@ -47,6 +47,7 @@ class DbToolModalAddColumn extends DbToolModal {
     async addColumn () {
         let refInput = this.shadow.querySelector('db-tool-form-input-text')
         let refButton = this.shadow.querySelector('.button')
+        let refType = this.shadow.querySelector('db-tool-form-select')
         let refWait = this.shadow.querySelector('.wait')
         let refError = this.shadow.querySelector('.msgKo')
         let response = {}
@@ -55,7 +56,7 @@ class DbToolModalAddColumn extends DbToolModal {
             type: 'dbAddColumn',
             tableName: this.tableName,
             columnName: refInput.value,
-            columnType: 'TEXT'
+            columnType: refType.value
         }
 
         refButton.style.display = 'none'

@@ -15,6 +15,7 @@ class AppDb {
             DbTool:                     ['db-tool',                     '', ''],
             DbToolFormButton:           ['db-tool-form-button',         '', ''],
             DbToolFormInputText:        ['db-tool-form-input-text',     '', ''],
+            DbToolFormSelect:           ['db-tool-form-select',         '', ''],
             DbToolFormSpinner:          ['db-tool-form-spinner',        '', ''],
             DbToolModal:                ['db-tool-modal',               '', ''],
             DbToolModalAddColumn:       ['db-tool-modal-add-column',    '', ''],
