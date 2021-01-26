@@ -1,5 +1,3 @@
 node_modules
+ignore
 package-lock.json
-
-googleCredentials.json
-googleToken.json

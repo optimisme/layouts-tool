@@ -424,7 +424,7 @@ class Obj {
         try {
             return { status: 'ok', result: await this.query('SELECT name FROM sqlite_master WHERE type="table" AND name NOT LIKE "sqlite_%" ORDER BY name') }
         } catch (err) {
-            return { status: 'ko', result: 'Error "dbGetTablesList"' } 
+            return { status: 'ko', result: 'Error "dbGetTablesList": ' + err.toString() } 
         }
     }
 
@@ -435,7 +435,7 @@ class Obj {
         try {
             return { status: 'ok', result: await this.query(`CREATE TABLE IF NOT EXISTS "${data.name}" (id INTEGER PRIMARY KEY AUTOINCREMENT)`) }
         } catch (err) {
-            return { status: 'ko', result: 'Error "dbAddTable"' } 
+            return { status: 'ko', result: 'Error "dbAddTable": ' + err.toString() } 
         } 
     }
 
@@ -448,7 +448,7 @@ class Obj {
         try {
             return { status: 'ok', result: await this.query(`ALTER TABLE "${data.oldName}" RENAME TO "${data.newName}"`) }
         } catch (err) {
-            return { status: 'ko', result: 'Error "dbRenameTable"' } 
+            return { status: 'ko', result: 'Error "dbRenameTable": ' + err.toString() } 
         } 
     }
 
@@ -459,7 +459,7 @@ class Obj {
         try {
             return { status: 'ok', result: await this.query(`DROP TABLE IF EXISTS "${data.name}"`) }
         } catch (err) {
-            return { status: 'ko', result: 'Error "dbDelTable"' } 
+            return { status: 'ko', result: 'Error "dbDelTable": ' + err.toString() } 
         } 
     }
 
@@ -470,7 +470,7 @@ class Obj {
         try {
             return { status: 'ok', result: await this.query(`PRAGMA table_info("${data.name}")`) }
         } catch (err) {
-            return { status: 'ko', result: 'Error "dbGetTableColumns"' } 
+            return { status: 'ko', result: 'Error "dbGetTableColumns": ' + err.toString() } 
         }    
     }
 
@@ -481,7 +481,7 @@ class Obj {
         try {
             return { status: 'ok', result: await this.query(`SELECT * FROM "${data.name}"`) }
         } catch (err) {
-            return { status: 'ko', result: 'Error "dbGetTableData"' } 
+            return { status: 'ko', result: 'Error "dbGetTableData": ' + err.toString() } 
         }     
     }
 
@@ -496,7 +496,7 @@ class Obj {
        try {
            return { status: 'ok', result: await this.query(`ALTER TABLE "${data.tableName}" ADD COLUMN "${data.columnName}" ${data.columnType}`) }
        } catch (err) {
-           return { status: 'ko', result: 'Error "dbAddColumn"' } 
+           return { status: 'ko', result: 'Error "dbAddColumn": ' + err.toString() } 
        }  
     }
 
@@ -511,7 +511,7 @@ class Obj {
        try {
            return { status: 'ok', result: await this.query(`ALTER TABLE "${data.tableName}" RENAME COLUMN "${data.oldColumnName}" TO "${data.newColumnName}"`) }
        } catch (err) {
-           return { status: 'ko', result: 'Error "dbRenameColumn"' } 
+           return { status: 'ko', result: 'Error "dbRenameColumn": ' + err.toString() } 
        }  
     }
 
@@ -543,7 +543,7 @@ class Obj {
 
             return { status: 'ok', result: '' }
         } catch (err) {
-            return { status: 'ko', result: 'Error "dbDelColumn"' } 
+            return { status: 'ko', result: 'Error "dbDelColumn": ' + err.toString() } 
         }  
     }
 
@@ -565,17 +565,19 @@ class Obj {
                 if (typeof data.columns[column.name] != 'undefined') {
                     if (column.type == "TEXT") {
                         values.push(`"${data.columns[column.name]}"`)
-                    } else {
-                        if (data.columns[column.name].indexOf(';') == -1) {
-                            values.push(`${data.columns[column.name]}`)
-                        }
+                    } else if (column.type == "REAL" || column.type == "NUMBER") {
+                        values.push(parseFloat(data.columns[column.name]))
+                    } else if (column.type == "INTEGER") {
+                        values.push(parseInt(data.columns[column.name]))
                     }
                 }
             }
 
             return { status: 'ok', result: await this.query(`INSERT INTO "${data.tableName}" (${columnsSeparated}) VALUES (${values.join(', ')})`) }
        } catch (err) {
-            return { status: 'ko', result: 'Error "dbAddRow"' } 
+            let str = await err.toString()
+            console.log(str)
+            return { status: 'ko', result: 'Error "dbAddRow": ' + err.toString() } 
        }
     }
 
@@ -594,15 +596,17 @@ class Obj {
                 if (typeof data.columns[column.name] != 'undefined') {
                     if (column.type == "TEXT") {
                         values.push(`"${column.name}" = "${data.columns[column.name]}"`)
-                    } else {
-                        values.push(`"${column.name}" = ${data.columns[column.name]}`)
+                    } else if (column.type == "REAL" || column.type == "NUMBER") {
+                        values.push(parseFloat(data.columns[column.name]))
+                    } else if (column.type == "INTEGER") {
+                        values.push(parseInt(data.columns[column.name]))
                     }
                 }
             }
             return { status: 'ok', result: await this.query(`UPDATE "${data.tableName}" SET ${values.join(', ')} WHERE "id" = ${data.columns.id}`) }
        } catch (err) {
            console.log(err)
-            return { status: 'ko', result: 'Error "dbEditRow"' } 
+            return { status: 'ko', result: 'Error "dbEditRow": ' + err.toString() } 
        }
     }
 
@@ -615,7 +619,7 @@ class Obj {
             return { status: 'ok', result: await this.query(`DELETE FROM "${data.tableName}" WHERE "id" = ${data.id}`) }
        } catch (err) {
            console.log(err)
-            return { status: 'ko', result: 'Error "dbDelRow"' } 
+            return { status: 'ko', result: 'Error "dbDelRow": ' + err.toString() } 
        }
     }
 }
