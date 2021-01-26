@@ -21,8 +21,7 @@ class AppDb {
             DbToolModalAddColumn:       ['db-tool-modal-add-column',    '', ''],
             DbToolModalAddRow:          ['db-tool-modal-add-row',       '', ''],
             DbToolModalAddTable:        ['db-tool-modal-add-table',     '', ''],
-            DbToolModalRenameTable:     ['db-tool-modal-rename-table',  '', ''],
-            DbToolModalDelTable:        ['db-tool-modal-del-table',     '', ''],
+            DbToolModalEditTable:       ['db-tool-modal-edit-table',    '', ''],
             DbToolTableEdit:            ['db-tool-table-edit',          '', ''],
             DbToolModalEditColumn:      ['db-tool-modal-edit-column',   '', ''],
             DbToolModalEditRow:         ['db-tool-modal-edit-row',      '', ''],
@@ -118,10 +117,10 @@ class AppDb {
         await this.refTableEdit.selectTable()
     }
 
-    unselectTable (ref) {
-        this.refTableSelected = null
+    unselectTable () {
 
-        ref.unselect()
+        this.refTableSelected.unselect()
+        this.refTableSelected = null
 
         this.refTablesList.deactivateButtons()
         this.refTableEdit.unselectTable()
@@ -140,13 +139,7 @@ class AppDb {
 
     renameTable () {
         let name = this.refTableSelected.textContent
-        let refModal = document.querySelector('db-tool').shadow.querySelector('db-tool-modal-rename-table')
-        refModal.show(name)
-    }
-
-    deleteTable () {
-        let name = this.refTableSelected.textContent
-        let refModal = document.querySelector('db-tool').shadow.querySelector('db-tool-modal-del-table')
+        let refModal = document.querySelector('db-tool').shadow.querySelector('db-tool-modal-edit-table')
         refModal.show(name)
     }
 

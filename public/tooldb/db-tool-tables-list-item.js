@@ -18,7 +18,7 @@ class DbToolTablesListItem extends HTMLElement {
         let refRoot = this.shadow.querySelector('.root')
         refRoot.addEventListener('click', async () => {
             if (this.selected) {
-                await appDb.unselectTable(this)
+                await appDb.unselectTable()
             } else {
                 await appDb.selectTable(this)
             }

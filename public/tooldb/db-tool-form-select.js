@@ -5,25 +5,13 @@ class DbToolFormSelect extends HTMLElement {
         this.shadow = this.attachShadow({ mode: 'open' })
     }
 
-    static get observedAttributes() { return ['required']; }
+    static get observedAttributes() { return ['required', 'label']; }
     attributeChangedCallback(name, oldValue, newValue) { 
         let refRoot = this.shadow.querySelector('.root')
         if (refRoot) {
             let refSelect = refRoot.querySelector('select')
             refSelect.setAttribute(name, newValue)
         }
-    }
-
-    set value (value) {
-        let refRoot = this.shadow.querySelector('.root')
-        let refSelect = refRoot.querySelector('select')
-        refSelect.value = value
-    }
-
-    get value () {
-        let refRoot = this.shadow.querySelector('.root')
-        let refSelect = refRoot.querySelector('select')
-        return refSelect.value
     }
 
     async connectedCallback () {
@@ -40,6 +28,29 @@ class DbToolFormSelect extends HTMLElement {
         if (this.getAttribute('required') && this.getAttribute('required') != 'null') {
             refSelect.setAttribute('required', this.getAttribute('required'))
         }
+
+        let refLabel = refRoot.querySelector('label')
+        if (this.getAttribute('label') && this.getAttribute('label') != 'null') {
+            refLabel.innerHTML = this.getAttribute('label')
+        }
+    }
+
+    get value () {
+        let refRoot = this.shadow.querySelector('.root')
+        let refSelect = refRoot.querySelector('select')
+        return refSelect.value
+    }
+
+    set value (value) {
+        let refRoot = this.shadow.querySelector('.root')
+        let refSelect = refRoot.querySelector('select')
+        refSelect.value = value
+    }
+
+    set label (value) {
+        let refRoot = this.shadow.querySelector('.root')
+        let refLabel = refRoot.querySelector('label')
+        refLabel.textContent = value
     }
 
     addEventListener (name, action) {

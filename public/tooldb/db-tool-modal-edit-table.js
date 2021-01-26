@@ -1,4 +1,4 @@
-class DbToolModalRenameTable extends DbToolModal {
+class DbToolModalEditTable extends DbToolModal {
 
     constructor() {
         super()
@@ -16,6 +16,9 @@ class DbToolModalRenameTable extends DbToolModal {
 
         let refInput = this.shadow.querySelector('db-tool-form-input-text')
         refInput.addEventListener('keyup', () => { this.checkForm() })
+
+        let refDelButton = this.shadow.querySelector('#deleteButton')
+        refDelButton.addEventListener('click', () => { this.delTable() })
 
         let refButton = this.shadow.querySelector('db-tool-form-button')
         refButton.addEventListener('click', () => { this.renameTable() })
@@ -50,7 +53,7 @@ class DbToolModalRenameTable extends DbToolModal {
 
     async renameTable () {
         let refInput = this.shadow.querySelector('db-tool-form-input-text')
-        let refButton = this.shadow.querySelector('.button')
+        let refButtons = this.shadow.querySelector('.buttons')
         let refWait = this.shadow.querySelector('.wait')
         let refError = this.shadow.querySelector('.msgKo')
         let response = {}
@@ -61,7 +64,7 @@ class DbToolModalRenameTable extends DbToolModal {
             newName: refInput.value
         }
 
-        refButton.style.display = 'none'
+        refButtons.style.display = 'none'
         refWait.style.display = 'flex'
         await appDb.wait(500)
 
@@ -83,7 +86,43 @@ class DbToolModalRenameTable extends DbToolModal {
             refError.style.display = 'none'
         }
 
-        refButton.style.display = 'flex'
+        refButtons.style.display = 'flex'
         this.checkForm()
+    }
+
+    async delTable () {
+        let refButtons = this.shadow.querySelector('.buttons')
+        let refWait = this.shadow.querySelector('.wait')
+        let refError = this.shadow.querySelector('.msgKo')
+        let response = {}
+
+        let obj = {
+            type: 'dbDelTable',
+            name: this.name
+        }
+
+        refButtons.style.display = 'none'
+        refWait.style.display = 'flex'
+        await appDb.wait(500)
+
+        try {
+            response = JSON.parse(await appDb.callServer('POST', '/query', obj))
+        } catch (e) {
+            console.log(e)
+        }
+        await appDb.refreshTables()
+
+        refWait.style.display = 'none'
+
+        if (response.status == 'ok') {
+            this.hide()
+            appDb.unselectTable()
+        } else {
+            refError.style.display = 'flex'
+            await appDb.wait(3000)
+            refError.style.display = 'none'
+        }
+
+        refButtons.style.display = 'flex'
     }
 }

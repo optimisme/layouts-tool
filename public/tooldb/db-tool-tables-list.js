@@ -31,11 +31,6 @@ class DbToolTablesList extends HTMLElement {
             appDb.renameTable()
         })
 
-        let refDelete = this.shadow.querySelector('div[data-name="buttonDelete"]')
-        refDelete.addEventListener('click', () => {
-            appDb.deleteTable()
-        })
-
         await appDb.refreshTables()
     }
 
@@ -52,16 +47,12 @@ class DbToolTablesList extends HTMLElement {
 
     activateButtons () {
         let refEdit = this.shadow.querySelector('div[data-name="buttonEdit"]')
-        let refDelete = this.shadow.querySelector('div[data-name="buttonDelete"]')
         refEdit.classList.remove('disabled')
-        refDelete.classList.remove('disabled')
     }
 
     deactivateButtons () {
         let refEdit = this.shadow.querySelector('div[data-name="buttonEdit"]')
-        let refDelete = this.shadow.querySelector('div[data-name="buttonDelete"]')
         refEdit.classList.add('disabled')
-        refDelete.classList.add('disabled')
     }
 
     show () {

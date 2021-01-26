@@ -14,7 +14,7 @@ class DbToolModalEditRow extends DbToolModal {
         this.elmStyle.textContent = appDb.shadowElements[this.constructor.name][2]
         this.shadow.appendChild(this.elmStyle)
 
-         let refDelButton = this.shadow.querySelector('#deleteButton')
+        let refDelButton = this.shadow.querySelector('#deleteButton')
         refDelButton.addEventListener('click', () => { this.deleteRow() })
 
         let refUpdateButton = this.shadow.querySelector('db-tool-form-button')
