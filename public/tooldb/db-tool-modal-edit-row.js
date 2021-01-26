@@ -15,7 +15,7 @@ class DbToolModalEditRow extends DbToolModal {
         this.shadow.appendChild(this.elmStyle)
 
         let refButton = this.shadow.querySelector('db-tool-form-button')
-        refButton.addEventListener('click', () => { this.addColumn() })
+        refButton.addEventListener('click', () => { this.editRow() })
     }
 
     async show (tableName, rowId) {
@@ -84,7 +84,7 @@ class DbToolModalEditRow extends DbToolModal {
         }
     }
 
-    async addColumn () {
+    async editRow () {
         let refInputs = this.shadow.querySelector('.inputs')
         let refButton = this.shadow.querySelector('.button')
         let refWait = this.shadow.querySelector('.wait')
