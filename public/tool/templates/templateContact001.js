@@ -35,10 +35,13 @@ async function queryContact () {
     let response = {}
 
     let obj = {
-        type: 'contact',
-        name: refFormName.value,
-        mail: refFormMail.value,
-        description: refFormDescription.value,
+        type: 'dbAddRow',
+        tableName: 'contacte',
+        columns: {
+            nom: refFormName.value,
+            mail: refFormMail.value,
+            descripcio: refFormDescription.value,
+        }
     }
 
     await hideElement('boxButton')
@@ -51,7 +54,7 @@ async function queryContact () {
         console.log(e)
     }
     await hideElement('boxSpinner')
-
+console.log(response)
     if (response.status == 'ok') {
         refFormName.value = ''
         refFormMail.value = ''
