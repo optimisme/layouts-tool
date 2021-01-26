@@ -50,8 +50,8 @@ class DbToolTableEdit extends HTMLElement {
 
     async refresh () {
         let tableName = appDb.refTableSelected.textContent
-        let rstColumns = JSON.parse(await appDb.callServer('POST',  '/query', { type: 'dbGetTableColumns',  name: tableName }))
-        let rstData =    JSON.parse(await appDb.callServer('POST',  '/query', { type: 'dbGetTableData',     name: tableName }))
+        let rstColumns = JSON.parse(await appDb.callServer('POST',  '/query', { type: 'dbGetTableColumns',  tableName: tableName }))
+        let rstData =    JSON.parse(await appDb.callServer('POST',  '/query', { type: 'dbGetTableData',     tableName: tableName }))
         let objTable = document.createElement('table')
         let columns = []
         let data = []

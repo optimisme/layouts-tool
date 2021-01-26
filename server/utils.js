@@ -429,57 +429,57 @@ class Obj {
     }
 
     async dbAddTable (data) {
-        if (typeof data.name == 'undefined'
-         || data.name.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddTable: Wrong data' } }
+        if (typeof data.tableName == 'undefined'
+         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddTable: Wrong data' } }
 
         try {
-            return { status: 'ok', result: await this.query(`CREATE TABLE IF NOT EXISTS "${data.name}" (id INTEGER PRIMARY KEY AUTOINCREMENT)`) }
+            return { status: 'ok', result: await this.query(`CREATE TABLE IF NOT EXISTS "${data.tableName}" (id INTEGER PRIMARY KEY AUTOINCREMENT)`) }
         } catch (err) {
             return { status: 'ko', result: 'Error "dbAddTable": ' + err.toString() } 
         } 
     }
 
     async dbRenameTable (data) {
-        if (typeof data.oldName == 'undefined'
-         || typeof data.newName == 'undefined'
-         || data.oldName.indexOf(';') >= 0
-         || data.newName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbRenameTable: Wrong data' } }
+        if (typeof data.oldTableName == 'undefined'
+         || typeof data.newTableName == 'undefined'
+         || data.oldTableName.indexOf(';') >= 0
+         || data.newTableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbRenameTable: Wrong data' } }
 
         try {
-            return { status: 'ok', result: await this.query(`ALTER TABLE "${data.oldName}" RENAME TO "${data.newName}"`) }
+            return { status: 'ok', result: await this.query(`ALTER TABLE "${data.oldTableName}" RENAME TO "${data.newTableName}"`) }
         } catch (err) {
             return { status: 'ko', result: 'Error "dbRenameTable": ' + err.toString() } 
         } 
     }
 
     async dbDelTable (data) {
-        if (typeof data.name == 'undefined'
-         || data.name.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelTable: Wrong data' } }
+        if (typeof data.tableName == 'undefined'
+         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelTable: Wrong data' } }
 
         try {
-            return { status: 'ok', result: await this.query(`DROP TABLE IF EXISTS "${data.name}"`) }
+            return { status: 'ok', result: await this.query(`DROP TABLE IF EXISTS "${data.tableName}"`) }
         } catch (err) {
             return { status: 'ko', result: 'Error "dbDelTable": ' + err.toString() } 
         } 
     }
 
     async dbGetTableColumns (data) {
-        if (typeof data.name == 'undefined'
-         || data.name.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableColumns: Wrong data' } }
+        if (typeof data.tableName == 'undefined'
+         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableColumns: Wrong data' } }
 
         try {
-            return { status: 'ok', result: await this.query(`PRAGMA table_info("${data.name}")`) }
+            return { status: 'ok', result: await this.query(`PRAGMA table_info("${data.tableName}")`) }
         } catch (err) {
             return { status: 'ko', result: 'Error "dbGetTableColumns": ' + err.toString() } 
         }    
     }
 
     async dbGetTableData (data) {
-        if (typeof data.name == 'undefined'
-         || data.name.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableData: Wrong data' } }
+        if (typeof data.tableName == 'undefined'
+         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableData: Wrong data' } }
 
         try {
-            return { status: 'ok', result: await this.query(`SELECT * FROM "${data.name}"`) }
+            return { status: 'ok', result: await this.query(`SELECT * FROM "${data.tableName}"`) }
         } catch (err) {
             return { status: 'ko', result: 'Error "dbGetTableData": ' + err.toString() } 
         }     
@@ -597,9 +597,9 @@ class Obj {
                     if (column.type == "TEXT") {
                         values.push(`"${column.name}" = "${data.columns[column.name]}"`)
                     } else if (column.type == "REAL" || column.type == "NUMBER") {
-                        values.push(parseFloat(data.columns[column.name]))
+                        values.push(`"${column.name}" = "${parseFloat(data.columns[column.name])}"`)
                     } else if (column.type == "INTEGER") {
-                        values.push(parseInt(data.columns[column.name]))
+                        values.push(`"${column.name}" = "${parseInt(data.columns[column.name])}"`)
                     }
                 }
             }

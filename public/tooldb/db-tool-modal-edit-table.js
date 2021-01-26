@@ -60,8 +60,8 @@ class DbToolModalEditTable extends DbToolModal {
 
         let obj = {
             type: 'dbRenameTable',
-            oldName: this.name,
-            newName: refInput.value
+            oldTableName: this.name,
+            newTableName: refInput.value
         }
 
         refButtons.style.display = 'none'
@@ -97,7 +97,7 @@ class DbToolModalEditTable extends DbToolModal {
 
         let obj = {
             type: 'dbDelTable',
-            name: this.name
+            tableName: this.name
         }
 
         refButtons.style.display = 'none'

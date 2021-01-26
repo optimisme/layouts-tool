@@ -43,7 +43,7 @@ class DbToolModalAddTable extends DbToolModal {
 
         let obj = {
             type: 'dbAddTable',
-            name: refInput.value
+            tableName: refInput.value
         }
 
         refButton.style.display = 'none'

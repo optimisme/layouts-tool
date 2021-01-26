@@ -1,0 +1,309 @@
+{
+  "settings": {
+    "appVersion": 1,
+    "siteName": "template",
+    "backgroundColor": "white",
+    "googleFonts": [
+      "Dancing Script"
+    ],
+    "scripts": [
+      "/listConsoles.js"
+    ]
+  },
+  "elementsRoot": {
+    "typeName": "body",
+    "description": "Body",
+    "styleName": "",
+    "childsAllowed": "all",
+    "tag": "body",
+    "text": "",
+    "style": [],
+    "phone": [],
+    "attributes": [],
+    "childs": [
+      {
+        "typeName": "divAutocenter",
+        "description": "Autocentered div",
+        "childsAllowed": "all",
+        "tag": "div",
+        "text": "",
+        "style": [
+          [
+            "padding",
+            "0 16px",
+            true
+          ]
+        ],
+        "phone": [],
+        "attributes": [],
+        "childs": [
+          {
+            "typeName": "divFlex",
+            "description": "Flex - Button Restore",
+            "childsAllowed": "divFlexChild",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "align-items",
+                "center",
+                true
+              ],
+              [
+                "height",
+                "48px",
+                true
+              ],
+              [
+                "justify-content",
+                "center",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [
+              [
+                "id",
+                "boxButtonRestore"
+              ]
+            ],
+            "childs": [
+              {
+                "typeName": "divFlexChild",
+                "description": "Flex child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "justify-content",
+                    "space-around",
+                    true
+                  ],
+                  [
+                    "min-width",
+                    "100%",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "formButton",
+                    "description": "Button for forms",
+                    "childsAllowed": "none",
+                    "tag": "button",
+                    "text": "Restore",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formButton"
+                      ],
+                      [
+                        "onclick",
+                        "restore()"
+                      ]
+                    ],
+                    "childs": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "typeName": "divFlex",
+            "description": "Flex - Button Get Data",
+            "childsAllowed": "divFlexChild",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "align-items",
+                "center",
+                true
+              ],
+              [
+                "height",
+                "48px",
+                true
+              ],
+              [
+                "justify-content",
+                "center",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [
+              [
+                "id",
+                "boxButtonGetData"
+              ]
+            ],
+            "childs": [
+              {
+                "typeName": "divFlexChild",
+                "description": "Flex child",
+                "childsAllowed": "all",
+                "tag": "div",
+                "text": "",
+                "style": [
+                  [
+                    "justify-content",
+                    "space-around",
+                    true
+                  ],
+                  [
+                    "min-width",
+                    "100%",
+                    true
+                  ]
+                ],
+                "phone": [],
+                "attributes": [],
+                "childs": [
+                  {
+                    "typeName": "formButton",
+                    "description": "Button for forms",
+                    "childsAllowed": "none",
+                    "tag": "button",
+                    "text": "Get data",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "class",
+                        "formButton"
+                      ],
+                      [
+                        "onclick",
+                        "loadData()"
+                      ]
+                    ],
+                    "childs": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "typeName": "div",
+            "description": "Div - Spinner",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "display",
+                "none",
+                true
+              ],
+              [
+                "height",
+                "48px",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [
+              [
+                "id",
+                "boxSpinner"
+              ]
+            ],
+            "childs": [
+              {
+                "typeName": "waitSpinner",
+                "description": "Wait spinner",
+                "childsAllowed": "none",
+                "tag": "div",
+                "text": "",
+                "style": [],
+                "phone": [],
+                "attributes": [
+                  [
+                    "class",
+                    "waitSpinner"
+                  ]
+                ],
+                "childs": [
+                  {
+                    "typeName": "waitSpinnerMain",
+                    "description": "Spinner main",
+                    "childsAllowed": "none",
+                    "tag": "svg",
+                    "text": "",
+                    "style": [],
+                    "phone": [],
+                    "attributes": [
+                      [
+                        "viewBox",
+                        "0 0 50 50"
+                      ]
+                    ],
+                    "childs": [
+                      {
+                        "typeName": "waitSpinnerCircle",
+                        "description": "Spinner circle",
+                        "childsAllowed": "none",
+                        "tag": "circle",
+                        "text": "",
+                        "style": [],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "cx",
+                            "25"
+                          ],
+                          [
+                            "cy",
+                            "25"
+                          ],
+                          [
+                            "r",
+                            "20"
+                          ]
+                        ],
+                        "childs": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "typeName": "div",
+            "description": "Div - List",
+            "childsAllowed": "all",
+            "tag": "div",
+            "text": "",
+            "style": [
+              [
+                "display",
+                "none",
+                true
+              ],
+              [
+                "height",
+                "max-content",
+                true
+              ]
+            ],
+            "phone": [],
+            "attributes": [
+              [
+                "id",
+                "boxList"
+              ]
+            ],
+            "childs": []
+          }
+        ]
+      }
+    ]
+  }
+}
