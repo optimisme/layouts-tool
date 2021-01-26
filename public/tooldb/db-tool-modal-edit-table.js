@@ -25,11 +25,11 @@ class DbToolModalEditTable extends DbToolModal {
     }
 
     async show (name) {
-        super.show()
-
         let refName = this.shadow.querySelector('span[id="name"]')
         refName.textContent = name
         this.name = name
+
+        await super.show()
     }
 
     async hide () {
@@ -73,7 +73,6 @@ class DbToolModalEditTable extends DbToolModal {
         } catch (e) {
             console.log(e)
         }
-        await appDb.refreshTables()
 
         refWait.style.display = 'none'
 
@@ -110,7 +109,6 @@ class DbToolModalEditTable extends DbToolModal {
         } catch (e) {
             console.log(e)
         }
-        await appDb.refreshTables()
 
         refWait.style.display = 'none'
 

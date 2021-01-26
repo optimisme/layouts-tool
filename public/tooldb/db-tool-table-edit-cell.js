@@ -17,8 +17,9 @@ class DbToolTableEditCell extends HTMLElement {
 
         let refRoot = this.shadow.querySelector('.root')
         refRoot.textContent = this.textContent
-        refRoot.addEventListener('click', () => {
-            appDb.editRow(this.valueId)
+        refRoot.addEventListener('click', async () => {
+            await appDb.editRow(this.valueId)
+            await appDb.reloadTable()
         })
     }
 }

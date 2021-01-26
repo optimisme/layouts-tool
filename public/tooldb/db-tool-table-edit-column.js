@@ -19,8 +19,9 @@ class DbToolTableEditColumn extends HTMLElement {
 
         let refRoot = this.shadow.querySelector('.root')
         refRoot.textContent = this.textContent
-        refRoot.addEventListener('click', () => {
-            appDb.editColumn(this.textContent)
+        refRoot.addEventListener('click', async () => {
+            await appDb.editColumn(this.textContent)
+            await appDb.reloadTable()
         })
     }
 }

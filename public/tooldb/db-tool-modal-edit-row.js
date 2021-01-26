@@ -15,14 +15,19 @@ class DbToolModalEditRow extends DbToolModal {
         this.shadow.appendChild(this.elmStyle)
 
         let refDelButton = this.shadow.querySelector('#deleteButton')
-        refDelButton.addEventListener('click', () => { this.deleteRow() })
+        refDelButton.addEventListener('click', async () => { 
+            await this.deleteRow()
+            await appDb.reloadTable()
+        })
 
         let refUpdateButton = this.shadow.querySelector('db-tool-form-button')
-        refUpdateButton.addEventListener('click', () => { this.editRow() })
+        refUpdateButton.addEventListener('click', async () => { 
+            await this.editRow()
+            await appDb.reloadTable()
+        })
     }
 
     async show (tableName, rowId) {
-        super.show()
 
         this.tableName = tableName
         this.rowId = rowId
@@ -58,6 +63,8 @@ class DbToolModalEditRow extends DbToolModal {
         }
 
         this.checkForm()
+
+        await super.show()
     }
 
     async hide () {
@@ -117,7 +124,6 @@ class DbToolModalEditRow extends DbToolModal {
         } catch (e) {
             console.log(e)
         }
-        await appDb.reloadTable()
 
         refWait.style.display = 'none'
 
@@ -162,7 +168,6 @@ class DbToolModalEditRow extends DbToolModal {
         } catch (e) {
             console.log(e)
         }
-        await appDb.reloadTable()
 
         refWait.style.display = 'none'
 

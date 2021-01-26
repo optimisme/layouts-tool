@@ -55,7 +55,6 @@ class DbToolModalAddTable extends DbToolModal {
         } catch (e) {
             console.log(e)
         }
-        await appDb.refreshTables()
 
         refWait.style.display = 'none'
 

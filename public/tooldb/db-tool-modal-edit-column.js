@@ -18,19 +18,24 @@ class DbToolModalEditColumn extends DbToolModal {
         refInput.addEventListener('keyup', () => { this.checkForm() })
 
         let refDelButton = this.shadow.querySelector('#deleteButton')
-        refDelButton.addEventListener('click', () => { this.deleteColumn() })
+        refDelButton.addEventListener('click', async () => {
+            await this.deleteColumn() 
+        })
 
         let refRenameButton = this.shadow.querySelector('#renameButton')
-        refRenameButton.addEventListener('click', () => { this.renameColumn() })
+        refRenameButton.addEventListener('click', async () => { 
+            await this.renameColumn() 
+        })
     }
 
     async show (tableName, columnName) {
-        super.show()
         this.tableName = tableName
         this.columnName = columnName
 
         let refName = this.shadow.querySelector('span[id="name"]')
         refName.textContent = columnName
+
+        await super.show()
     }
 
     async hide () {
@@ -75,7 +80,6 @@ class DbToolModalEditColumn extends DbToolModal {
         } catch (e) {
             console.log(e)
         }
-        await appDb.reloadTable()
 
         refWait.style.display = 'none'
 
@@ -114,7 +118,6 @@ class DbToolModalEditColumn extends DbToolModal {
         } catch (e) {
             console.log(e)
         }
-        await appDb.reloadTable()
 
         refWait.style.display = 'none'
 

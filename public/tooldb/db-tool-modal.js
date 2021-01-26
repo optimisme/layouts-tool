@@ -4,6 +4,7 @@ class DbToolModal extends HTMLElement {
         super()
         this.shadow = this.attachShadow({ mode: 'open' })
         this.mouseDownOnBackground = false
+        this.showing = false
     }
 
     attributeChangedCallback(name, oldValue, newValue) { }
@@ -40,6 +41,10 @@ class DbToolModal extends HTMLElement {
         await appDb.waitUntilPropertyValue(refRoot, 'display', 'flex')  
         refRoot.style.opacity = '1'
         refRoot.querySelector('.content').style.transform = 'translateY(0)'
+        await appDb.wait(300)
+
+        this.showing = true
+        while (this.showing) {await appDb.wait(50) }
     }
 
     async hide () {
@@ -51,5 +56,7 @@ class DbToolModal extends HTMLElement {
         await appDb.wait(300)
         refBody.style.overflow = 'initial'
         refRoot.style.display = 'none'
+
+        this.showing = false
     }
 }

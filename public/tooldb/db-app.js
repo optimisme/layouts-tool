@@ -132,39 +132,40 @@ class AppDb {
         await this.refTableEdit.reloadTable()
     }
 
-    addTable () {
+    async addTable () {
         let refModal = document.querySelector('db-tool').shadow.querySelector('db-tool-modal-add-table')
-        refModal.show()
+        await refModal.show()
     }
 
-    renameTable () {
+    async editTable () {
         let name = this.refTableSelected.textContent
         let refModal = document.querySelector('db-tool').shadow.querySelector('db-tool-modal-edit-table')
-        refModal.show(name)
+
+        await refModal.show(name)
     }
 
-    addColumn () {
+    async addColumn () {
         let name = this.refTableSelected.textContent
         let refModal = document.querySelector('db-tool').shadow.querySelector('db-tool-modal-add-column')
-        refModal.show(name)
+        await refModal.show(name)
     }
 
-    editColumn (columnName) {
+    async editColumn (columnName) {
         let name = this.refTableSelected.textContent
         let refModal = document.querySelector('db-tool').shadow.querySelector('db-tool-modal-edit-column')
-        refModal.show(name, columnName)
+        await refModal.show(name, columnName)
     }
 
-    addRow () {
+    async addRow () {
         let name = this.refTableSelected.textContent
         let refModal = document.querySelector('db-tool').shadow.querySelector('db-tool-modal-add-row')
-        refModal.show(name)
+        await refModal.show(name)
     }
 
-    editRow (id) {
+    async editRow (id) {
         let name = this.refTableSelected.textContent
         let refModal = document.querySelector('db-tool').shadow.querySelector('db-tool-modal-edit-row')
-        refModal.show(name, id)
+        await refModal.show(name, id)
     }
 
     wait (time) {

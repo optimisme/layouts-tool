@@ -21,8 +21,9 @@ class DbToolModalAddColumn extends DbToolModal {
     }
 
     async show (tableName) {
-        super.show()
         this.tableName = tableName
+
+        await super.show()
     }
 
     async hide () {
@@ -68,7 +69,6 @@ class DbToolModalAddColumn extends DbToolModal {
         } catch (e) {
             console.log(e)
         }
-        await appDb.reloadTable()
 
         refWait.style.display = 'none'
 

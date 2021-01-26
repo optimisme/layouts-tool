@@ -18,13 +18,15 @@ class DbToolTableEdit extends HTMLElement {
         this.shadow.appendChild(this.elmStyle)
 
         let refAddColumn = this.shadow.querySelector('#addColumn')
-        refAddColumn.addEventListener('click', () => {
-            appDb.addColumn()
+        refAddColumn.addEventListener('click', async () => {
+            await appDb.addColumn()
+            await appDb.reloadTable()
         })
 
         let refAddRow = this.shadow.querySelector('#addRow')
-        refAddRow.addEventListener('click', () => {
-            appDb.addRow()
+        refAddRow.addEventListener('click', async () => {
+            await appDb.addRow()
+            await appDb.reloadTable()
         })
     }
 

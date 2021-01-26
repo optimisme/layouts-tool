@@ -69,3 +69,7 @@ td {
 .row > #addRow {
     cursor: pointer;
 }
+
+ion-icon {
+    color: rgb(0, 125, 255);
+}

@@ -20,7 +20,6 @@ class DbToolModalAddRow extends DbToolModal {
     async show (tableName) {
         let refInputs = this.shadow.querySelector('.inputs')
 
-        super.show()
         this.tableName = tableName
 
         while (refInputs.firstChild) { refInputs.removeChild(refInputs.lastChild) }
@@ -43,6 +42,8 @@ class DbToolModalAddRow extends DbToolModal {
                 if (column['dflt_value']) input.value = column['dflt_value']
             }
         }
+
+        await super.show()
     }
 
     async hide () {
@@ -100,7 +101,6 @@ class DbToolModalAddRow extends DbToolModal {
         } catch (e) {
             console.log(e)
         }
-        await appDb.reloadTable()
 
         refWait.style.display = 'none'
 
