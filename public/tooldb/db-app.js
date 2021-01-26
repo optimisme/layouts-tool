@@ -67,7 +67,6 @@ class AppDb {
         refLogo.style.opacity = 0
         refLoading.style.opacity = 0
 
-
         let refTool = document.createElement('db-tool')
         refBody.appendChild(refTool)
         await this.wait(1)

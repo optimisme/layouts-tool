@@ -21,6 +21,9 @@ class DbToolFormInputText extends HTMLElement {
 
         let refLabel = refRoot.querySelector('label')
         refLabel.innerHTML = this.textContent
+        refLabel.addEventListener('click', () => {
+            refInput.focus()
+        })
         
         let refSpan = refRoot.querySelector('span')
         refSpan.innerHTML = this.getAttribute('error')
