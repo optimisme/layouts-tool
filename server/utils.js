@@ -563,7 +563,7 @@ class Obj {
             for (let cnt = 0; cnt < tableColumns.length; cnt = cnt + 1) {
                 let column = tableColumns[cnt]
                 // TODO: instead of comparing with column.name != 'id', get the definition and ignore if it is 'AUTOINCREMENT'
-                if (column.name != 'id') {
+                if (column.name != 'id' && typeof data.columns[column.name] != 'undefined') {
                     if (column.type == "TEXT") {
                         values.push(`"${data.columns[column.name]}"`)
                     } else {
@@ -577,6 +577,41 @@ class Obj {
             return { status: 'ok', result: await this.query(`INSERT INTO "${data.tableName}" (${columnsSeparated}) VALUES (${values.join(', ')})`) }
        } catch (err) {
             return { status: 'ko', result: 'Error "dbAddRow"' } 
+       }
+    }
+
+    async dbEditRow (data) {
+        if (typeof data.tableName == 'undefined'
+        || typeof data.colums.id == 'undefined'
+        || data.tableName.indexOf(';') >= 0
+        || data.columns.id.indexOf(';') >= 0) { return { status: 'ko', result: 'dbEditRow: Wrong data' } }
+
+        let columns = (Object.keys(data.columns))
+        let columnsRemoved = columns.filter((x) => { return (x.indexOf(';') == -1) })
+        let columnsQuotes = columnsRemoved.map((x) => { return `"${x}"` })
+        let columnsSeparated = columnsQuotes.join(', ')
+        let values = []
+        let tableColumns = []
+
+        try {
+            tableColumns = await this.query(`PRAGMA table_info("${data.tableName}")`)
+            for (let cnt = 0; cnt < tableColumns.length; cnt = cnt + 1) {
+                let column = tableColumns[cnt]
+                // TODO: instead of comparing with column.name != 'id', get the definition and ignore if it is 'AUTOINCREMENT'
+                if (column.name != 'id' && typeof data.columns[column.name] != 'undefined') {
+                    if (column.type == "TEXT") {
+                        values.push(`"${data.columns[column.name]}"`)
+                    } else {
+                        if (data.columns[column.name].indexOf(';') == -1) {
+                            values.push(`${data.columns[column.name]}`)
+                        }
+                    }
+                }
+            }
+// UPDATE employees SET city = 'Toronto', state = 'ON', postalcode = 'M5P 2N7' WHERE employeeid = 4
+            return { status: 'ok', result: await this.query(`UPDATE "${data.tableName}" SET ${separatedValues} WHERE "id" = ${data.columns.id}`) }
+       } catch (err) {
+            return { status: 'ko', result: 'Error "dbEditRow"' } 
        }
     }
 }
