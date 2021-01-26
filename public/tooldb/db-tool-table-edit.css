@@ -39,7 +39,9 @@ td {
     display: grid;
     grid-column: 2;
     grid-row: 2;
-    overflow-y: auto;
+    overflow: auto;
+    max-height: calc(100vh - 72px);
+    max-width: calc(100vw - 64px - 250px);
     position: relative;
     transition: width 0.5s ease;
 }
