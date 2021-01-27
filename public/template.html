@@ -1,0 +1,261 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Template</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<style>
+body { background-color: white; font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; }
+.drawer { display: none; background-color: rgb(100, 100, 100, 0.75); backdrop-filter: blur(2px) saturate(200%); bottom: 0; filter: blud(3px) saturate(200%); left: 0; opacity: 0; position: fixed; right: 0; top: 0; transition: opacity 0.3s ease; z-index: 10000; }
+.drawer > .drawerSide { background-color: white; height: 100%; overflow-x: hidden; overflow-y: auto; transform: translate3d(-251px, 0, 0); transition: transform 0.3s ease; width: 250px; }
+.modal { align-items: center; display: none; background-color: rgb(100, 100, 100, 0.75); backdrop-filter: blur(2px) saturate(200%); bottom: 0; filter: blud(3px) saturate(200%); justify-content: center; left: 0; opacity: 0; position: fixed; right: 0; top: 0; transition: opacity 0.3s ease; z-index: 10000; }
+.modal > .modalWindow { background-color: white; border-radius: 5px; height: max-content; overflow-x: hidden; overflow-y: auto; padding: 8px; transform: translateY(-100vh); transition: transform 0.3s ease; width: max-content; }
+.formButton             { background-color: rgb(0, 125, 255); border: none; border-radius: 4px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); color: white; cursor: pointer; font-weight: 800; height: 36px; margin: 0; min-width: 64px; outline: none; padding: 0 16px; position: relative; text-align: center; text-transform: uppercase; transition: box-shadow 0.2s; }
+.formButton:hover,
+.formButton:focus       { background-color: rgb(50, 150, 255); box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12); }
+.formButton:active      { box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+.formButton:disabled    { color: #eee; background-color: #aaa; box-shadow: none; cursor: initial; }
+.defDiv { height:max-content; box-sizing:border-box; margin:0; }
+.defDivAutocenter { padding:0 16px; box-sizing:border-box; height:max-content; margin-left:auto; margin-right:auto; max-width:1200px; width:100%; }
+.defDivDesktop { box-sizing:border-box; display:block; height:max-content; margin:0; width:100%; }
+@media only screen and (max-width: 768px) { .defDivDesktop { display:none; } }
+.defDivFlex { box-sizing:border-box; display:flex; margin:0; }
+.defDivFlexChild { box-sizing:border-box; display:flex; margin:0; }
+.defDivMobile { box-sizing:border-box; display:none; height:max-content; margin:0; width:100%; }
+@media only screen and (max-width: 768px) { .defDivMobile { display:block; } }
+.defFormButton { text-transform:uppercase; }
+.defLinkBox { height:max-content; padding:0; text-decoration:none; width:max-content; box-sizing:border-box; cursor:pointer; display:block; margin:0; }
+@media only screen and (max-width: 768px) { .defLinkBox { height:max-content; padding:0; width:max-content; } }
+.defLinkInline { font-size:1em; box-sizing:border-box; cursor:pointer; display:inline; height:max-content; margin:0; width:max-content; }
+.defText { font-size:1em; height:max-content; width:100%; box-sizing:border-box; margin:0; }
+.defTitleh1 { font-size:2em; font-weight:800; height:max-content; padding:0; width:100%; box-sizing:border-box; margin:0; }
+.defTitleh2 { font-size:1.5em; font-weight:300; height:max-content; padding:0; width:100%; box-sizing:border-box; margin:0; }
+.elm10 { align-items:center; box-sizing:border-box; display:flex; margin:0; }
+.elm13 { color:black; font-size:2em; }
+.elm15 { font-size:1.5em; font-weight:800; height:max-content; padding:0; width:100%; box-sizing:border-box; margin:0; }
+.elm16 { flex-grow:1; min-height:48px; box-sizing:border-box; display:flex; margin:0; }
+.elm19 { color:black; font-size:2em; }
+.elm22 { align-items:center; box-sizing:border-box; display:flex; margin:0; }
+.elm25 { color:black; font-size:2em; }
+.elm27 { font-size:1.5em; font-weight:800; height:max-content; padding:0; width:100%; box-sizing:border-box; margin:0; }
+.elm28 { flex-grow:1; min-height:48px; box-sizing:border-box; display:flex; margin:0; }
+.elm3 { flex-direction:column; box-sizing:border-box; display:flex; margin:0; }
+.elm31 { height:max-content; padding:0 16px; box-sizing:border-box; margin:0; }
+.elm32 { color:rgb(0, 150, 255); font-size:1em; height:max-content; width:100%; box-sizing:border-box; margin:0; }
+.elm35 { background:darkgrey; border-radius:15px; height:max-content; padding:4px 16px; box-sizing:border-box; margin:0; }
+.elm36 { color:white; font-size:1em; height:max-content; width:100%; box-sizing:border-box; margin:0; }
+.elm39 { flex-direction:column; box-sizing:border-box; display:flex; margin:0; }
+.elm40 { padding:0 0 16px 0; box-sizing:border-box; display:flex; margin:0; }
+.elm42 { padding:0 0 16px 0; box-sizing:border-box; display:flex; margin:0; }
+.elm44 { justify-content:center; box-sizing:border-box; display:flex; margin:0; }
+.elm46 { color:rgb(0, 150, 255); font-size:1em; box-sizing:border-box; cursor:pointer; display:inline; height:max-content; margin:0; width:max-content; }
+</style>
+<script>
+async function setDrawer (id, show, event) {
+    let refBody = document.getElementsByTagName('body')[0]
+    let refDrawer = document.getElementById(id)
+    let performAction = false
+
+    if (typeof event == 'undefined' || (event.target && event.target.getAttribute('id') == id)) {
+        if (show) {
+            refBody.style.overflow = 'hidden'
+            refDrawer.style.display = 'flex'
+            await promiseWaitUntilPropertyValue(refDrawer, 'display', 'flex')  
+            refDrawer.style.opacity = '1'
+            refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(0px, 0, 0)'
+        } else {
+            refDrawer.style.opacity = '0'
+            refDrawer.querySelector('.drawerSide').style.transform = 'translate3d(-250px, 0, 0)'
+            await promiseWait(300)
+            refBody.style.overflow = 'initial'
+            refDrawer.style.display = 'none'
+        }
+    }
+}
+async function setModal (id, show, event) {
+    let refBody = document.getElementsByTagName('body')[0]
+    let refModal = document.getElementById(id)
+    let performAction = false
+
+    if (typeof event == 'undefined' || (event.target && event.target.getAttribute('id') == id)) {
+        if (show) {
+            refBody.style.overflow = 'hidden'
+            refModal.style.display = 'flex'
+            await promiseWaitUntilPropertyValue(refModal, 'display', 'flex')  
+            refModal.style.opacity = '1'
+            refModal.querySelector('.modalWindow').style.transform = 'translateY(0)'
+        } else {
+            refModal.style.opacity = '0'
+            refModal.querySelector('.modalWindow').style.transform = 'translateY(-100vh)'
+            await promiseWait(300)
+            refBody.style.overflow = 'initial'
+            refModal.style.display = 'none'
+        }
+    }
+}
+async function promiseWait (time) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => { resolve() }, time)
+    })
+}
+async function promiseWaitUntilPropertyValue (ref, property, value) {
+    let style = window.getComputedStyle(ref)
+    let now = style.getPropertyValue(property)
+    if (now != value) {
+        await this.promiseWait(1)
+        await this.promiseWaitUntilPropertyValue(ref, property, value)
+    }
+}
+function getForm (id) {
+    let ref = document.getElementById(id)
+    let type = (ref.tagName).toLowerCase()
+    if (type == 'input') {
+        type = (ref.getAttribute('type')).toLowerCase()
+    }
+    switch (type) {
+    case 'text':
+    case 'textarea':
+    case 'range':
+        return ref.value
+    case 'checkbox':
+    case 'radio':
+        return ref.checked
+    case 'select':
+        // ref.options[ref.selectedIndex].text
+        return ref.value
+    }
+}
+
+function setForm (id, value) {
+    let ref = document.getElementById(id)
+    let type = (ref.tagName).toLowerCase()
+    if (type == 'input') {
+        type = (ref.getAttribute('type')).toLowerCase()
+    }
+    switch (type) {
+    case 'text':
+    case 'textarea':
+    case 'range':
+    case 'select':
+        ref.value = value
+        break
+    case 'checkbox':
+    case 'radio':
+        ref.checked = value
+        break
+    }
+}
+</script>
+
+<body><!-- Body -->
+<div id="drawer" onclick="setDrawer('drawer', false, event)" class="drawer"><!-- Drawer -->
+  <div class="drawerSide"><!-- Drawer side -->
+    <div class="defDivFlex elm3"><!-- Flex -->
+      <div class="defDivFlexChild"><!-- Flex child -->
+        <a href="http://google.com" target="_blank" class="defLinkInline">
+          Google
+        </a>
+      </div>
+      <div class="defDivFlexChild"><!-- Flex child -->
+        <a target="_blank" onclick="setDrawer('drawer', false)" class="defLinkInline">
+          Close
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="defDivMobile"><!-- Div visible on mobile -->
+  <div class="defDivAutocenter"><!-- Autocentered div -->
+    <div class="defDivFlex elm10"><!-- Flex -->
+      <div class="defDivFlexChild"><!-- Flex child -->
+        <a href="/" target="_blank" class="defLinkBox">
+          <span class="elm13 material-icons"><!-- Icon from material components -->
+            storefront
+          </span>
+        </a>
+      </div>
+      <div class="defDivFlexChild"><!-- Flex child -->
+        <h1 class="defTitleh1 elm15"><!-- H1 -->
+          Marmot
+        </h1>
+      </div>
+      <div class="defDivFlexChild elm16"><!-- Flex child -->
+      </div>
+      <div class="defDivFlexChild"><!-- Flex child -->
+        <a href="javascript://" target="_self" onclick="setDrawer('drawer', true)" class="defLinkBox">
+          <span class="elm19 material-icons"><!-- Icon from material components -->
+            menu
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="defDivDesktop"><!-- Div visible on desktop -->
+  <div class="defDivAutocenter"><!-- Autocentered div -->
+    <div class="defDivFlex elm22"><!-- Flex -->
+      <div class="defDivFlexChild"><!-- Flex child -->
+        <a href="/" target="_blank" class="defLinkBox">
+          <span class="elm25 material-icons"><!-- Icon from material components -->
+            storefront
+          </span>
+        </a>
+      </div>
+      <div class="defDivFlexChild"><!-- Flex child -->
+        <h1 class="defTitleh1 elm27"><!-- H1 -->
+          Marmot
+        </h1>
+      </div>
+      <div class="defDivFlexChild elm28"><!-- Flex child -->
+      </div>
+      <div class="defDivFlexChild"><!-- Flex child -->
+        <a href="/" target="_blank" class="defLinkBox">
+          <div class="defDiv elm31"><!-- Div -->
+            <div class="defText elm32"><!-- Text -->
+              Store
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="defDivFlexChild"><!-- Flex child -->
+        <a href="/" target="_blank" class="defLinkBox">
+          <div class="defDiv elm35"><!-- Div -->
+            <div class="defText elm36"><!-- Text -->
+              Log In
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal" onclick="setModal(&quot;modal&quot;, false, event)" class="modal"><!-- Modal window -->
+  <div class="modalWindow"><!-- Modal -->
+    <div class="defDivFlex elm39"><!-- Flex -->
+      <div class="defDivFlexChild elm40"><!-- Flex child -->
+        <h2 class="defTitleh2"><!-- H2 -->
+          Modal Window
+        </h2>
+      </div>
+      <div class="defDivFlexChild elm42"><!-- Flex child -->
+        <div class="defText"><!-- Text -->
+          Where the oportunities find solutions
+        </div>
+      </div>
+      <div class="defDivFlexChild elm44"><!-- Flex child -->
+        <button onclick="setModal(&quot;modal&quot;, false)" class="defFormButton formButton"><!-- Button for forms -->
+          Button
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<a target="_blank" onclick="setModal(&quot;modal&quot;, true)" class="defLinkInline elm46">
+  Show modal
+</a>
+</body>
+</html>

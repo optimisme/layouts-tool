@@ -441,18 +441,13 @@ async function promiseWait (time) {
         setTimeout(() => { resolve() }, time)
     })
 }
-function promiseWaitUntilPropertyValue (ref, property, value) {
-    return new Promise(async (resolve, reject) => {
-        let style = window.getComputedStyle(ref)
-        let now = style.getPropertyValue(property)
-
-        if (now === value) {
-            resolve()
-        } else {
-            await promiseWait(1)
-            await promiseWaitUntilPropertyValue(ref, property, value)
-        }
-    }) 
+async function promiseWaitUntilPropertyValue (ref, property, value) {
+    let style = window.getComputedStyle(ref)
+    let now = style.getPropertyValue(property)
+    if (now != value) {
+        await this.promiseWait(1)
+        await this.promiseWaitUntilPropertyValue(ref, property, value)
+    }
 }`
         }
 
