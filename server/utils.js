@@ -169,133 +169,6 @@ class Obj {
         }  
     }
 */
-/*
-    async get (data) {
-        if (typeof data.tableName == 'undefined'
-         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'get: Wrong data' } }
-
-        try {
-            let queryStr = `SELECT * FROM ${data.tableName}`
-
-            if (typeof data.where != 'undefined' && data.where.indexOf(';') == -1) queryStr += ` WHERE ${data.where}`
-            if (typeof data.order != 'undefined' && data.order.indexOf(';') == -1) queryStr += ` ORDER BY ${data.order}`
-            if (typeof data.limit != 'undefined' && data.limit.indexOf(';') == -1) queryStr += ` LIMIT ${data.limit}`
-
-            let rst = await this.query(queryStr)
-            return { status: 'ok', result: rst } 
-        } catch (err) {
-            console.log('Could not get', err)
-            return { status: 'ko', result: 'Error' } 
-        }
-    }
-
-    async add (data) {
-        try {
-            await this.query(`INSERT INTO ${data.tableName} (${this.getAddFields(data)}) VALUES (${this.getAddValues(data)})`)
-            return { status: 'ok', result: '' } 
-        } catch (err) {
-            console.log('Could not add', err)
-            return { status: 'ko', result: 'Error' } 
-        }
-    }
-
-    async del (data) {
-        if (typeof data.tableName == 'undefined'
-         || typeof data.id != 'number'
-         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'del: Wrong data' } }
-
-        if (data.tableName == 'users' && data.id == 1) {
-            return { status: 'ko', result: 'Can\'t delete main "admin"' } 
-        } else {
-            try {
-                await this.query(`DELETE FROM ${data.tableName} WHERE id=${data.id}`)
-                return { status: 'ok', result: '' } 
-            } catch (err) {
-                console.log('Could not del', err)
-                return { status: 'ko', result: 'Error' } 
-            }
-        }
-    }
-
-    async update (data) {
-        if (typeof data.tableName == 'undefined'
-         || typeof data.id != 'number'
-         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'update: Wrong data' } }
-
-        try {
-            await this.query(`UPDATE ${data.tableName} SET ${this.getUpdateValues(data)} WHERE id="${data.id}"`)
-            return { status: 'ok', result: '' } 
-        } catch (err) {
-            console.log('Could not update', err)
-            return { status: 'ko', result: 'Error' } 
-        }
-    }
-
-    getAddFields (data) {
-        let keys = Object.keys(data)
-
-        if (keys.indexOf('signInId') >= 0) keys.splice(keys.indexOf('signInId'), 1)
-        if (keys.indexOf('signInToken') >= 0) keys.splice(keys.indexOf('signInToken'), 1)
-        if (keys.indexOf('tableName') >= 0) keys.splice(keys.indexOf('tableName'), 1)
-
-        let codeInjected = keys.filter((x) => { return (x.indexOf(';') >= 0) })
-        if (codeInjected.length > 0) return ''
-
-        return keys.join(', ')
-    }
-
-    getAddValues (data) {
-        let keys = Object.keys(data)
-        let values = []
-
-        if (keys.indexOf('signInId') >= 0) keys.splice(keys.indexOf('signInId'), 1)
-        if (keys.indexOf('signInToken') >= 0) keys.splice(keys.indexOf('signInToken'), 1)
-        if (keys.indexOf('tableName') >= 0) keys.splice(keys.indexOf('tableName'), 1)
-
-        for (let cnt = 0; cnt < keys.length; cnt = cnt + 1) {
-            let field = keys[cnt]
-            let value = data[field]
-
-            if (data.tableName == 'users' && field == 'password') {
-                value = md5(value)
-            }
-
-            if (typeof value == 'string') {
-                values.push('"' + value + '"')
-            } else {
-                values.push(value)
-            }
-        }
-
-        return values.join(', ')
-    }
-
-    getUpdateValues (data) {
-        let keys = Object.keys(data)
-        let values = []
-
-        if (keys.indexOf('signInId') >= 0) keys.splice(keys.indexOf('signInId'), 1)
-        if (keys.indexOf('signInToken') >= 0) keys.splice(keys.indexOf('signInToken'), 1)
-        if (keys.indexOf('tableName') >= 0) keys.splice(keys.indexOf('tableName'), 1)
-
-        for (let cnt = 0; cnt < keys.length; cnt = cnt + 1) {
-            let field = keys[cnt]
-            let value = data[field]
-
-            if (data.tableName == 'users' && field == 'password') {
-                value = md5(value)
-            }
-
-            if (typeof value == 'string') {
-                values.push(field + '="' + value + '"')
-            } else {
-                values.push(field + '=' + value)
-            }
-        }
-
-        return values.join(', ')
-    }
-*/
     query (query) {
         return new Promise((resolve, reject) => {
             if (query.indexOf('SELECT') >= 0) {
@@ -478,8 +351,16 @@ class Obj {
         if (typeof data.tableName == 'undefined'
          || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableData: Wrong data' } }
 
+        if (typeof data.queryFilter != 'undefined'
+         && data.queryFilter.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableData: Wrong data filter' } }
+
         try {
-            return { status: 'ok', result: await this.query(`SELECT * FROM "${data.tableName}"`) }
+            if (typeof data.queryFilter == 'undefined') {
+                return { status: 'ok', result: await this.query(`SELECT * FROM "${data.tableName}"`) }
+            } else {
+                console.log(`SELECT * FROM "${data.tableName} ${data.queryFilter}"`)
+                return { status: 'ok', result: await this.query(`SELECT * FROM "${data.tableName}" ${data.queryFilter}`) }
+            }
         } catch (err) {
             return { status: 'ko', result: 'Error "dbGetTableData": ' + err.toString() } 
         }     

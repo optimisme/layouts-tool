@@ -15,6 +15,7 @@ async function main () {
     utils.server = app.listen(port, () => {
       console.log(`Navigate to: http://localhost:${port}`)
       console.log(`Navigate to: http://localhost:${port}/tool`)
+      console.log(`Navigate to: http://localhost:${port}/tooldb`)
     })
 }
 

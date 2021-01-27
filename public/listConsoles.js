@@ -13,6 +13,7 @@ async function loadData () {
     let refButton = document.getElementById('boxButtonGetData')
     let refSpinner = document.getElementById('boxSpinner')
     let refList = document.getElementById('boxList')
+    let serverData = {}
     let html = ''
     let template = `
     <div style='display: flex;'>
@@ -33,13 +34,18 @@ async function loadData () {
     let obj = {
         type: 'dbGetTableData',
         tableName: 'consoles',
+        queryFilter: 'WHERE fabricant = "Nintendo"'
     }
 
     refButton.style.display = 'none'
     refSpinner.style.display = 'flex'
 
     await this.wait(500)
-    let serverData = await queryServer('/query', obj)
+    try {
+        serverData = await queryServer('/query', obj)
+    } catch (err) {
+        console.error(err)
+    }
 
     if (serverData.status == 'ok') {
         let list = serverData.result
