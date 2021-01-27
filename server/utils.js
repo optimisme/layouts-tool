@@ -358,7 +358,6 @@ class Obj {
             if (typeof data.queryFilter == 'undefined') {
                 return { status: 'ok', result: await this.query(`SELECT * FROM "${data.tableName}"`) }
             } else {
-                console.log(`SELECT * FROM "${data.tableName} ${data.queryFilter}"`)
                 return { status: 'ok', result: await this.query(`SELECT * FROM "${data.tableName}" ${data.queryFilter}`) }
             }
         } catch (err) {
@@ -432,11 +431,8 @@ class Obj {
         if (typeof data.tableName == 'undefined'
         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddRow: Wrong data' } }
 
-        let columns = (Object.keys(data.columns))
-        let columnsRemoved = columns.filter((x) => { return (x.indexOf(';') == -1) })
-        let columnsQuotes = columnsRemoved.map((x) => { return `"${x}"` })
-        let columnsSeparated = columnsQuotes.join(', ')
         let values = []
+        let columns = []
         let tableColumns = []
 
         try {
@@ -444,6 +440,7 @@ class Obj {
             for (let cnt = 0; cnt < tableColumns.length; cnt = cnt + 1) {
                 let column = tableColumns[cnt]
                 if (typeof data.columns[column.name] != 'undefined') {
+                    columns.push(column.name)
                     if (column.type == "TEXT") {
                         values.push(`"${data.columns[column.name]}"`)
                     } else if (column.type == "REAL" || column.type == "NUMBER") {
@@ -453,6 +450,10 @@ class Obj {
                     }
                 }
             }
+
+            let columnsRemoved = columns.filter((x) => { return (x.indexOf(';') == -1) })
+            let columnsQuotes = columnsRemoved.map((x) => { return `"${x}"` })
+            let columnsSeparated = columnsQuotes.join(', ')
 
             return { status: 'ok', result: await this.query(`INSERT INTO "${data.tableName}" (${columnsSeparated}) VALUES (${values.join(', ')})`) }
        } catch (err) {
