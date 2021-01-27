@@ -96,18 +96,22 @@ class AppDb {
 
     async refresh () {
         let rst = JSON.parse(await appDb.callServer('POST', '/query', { type: 'dbGetTablesList' }))
-
+        let selected = ''
         if (rst.status == 'ok') {
             this.tables = rst.result
         } else {
             this.tables = []
         }
 
+        if (this.refTableSelected != null) {
+            selected = this.refTableSelected.textContent
+        }
+
+        this.unselectTable()
         await this.refTablesList.refresh()
 
-        if (this.refTableSelected != null) {
-            await this.refTableEdit.refresh()
-            await this.refTablesList.refresh()
+        if (selected != '') {
+            this.selectTableByName(selected)
         }
     }
 
@@ -122,9 +126,21 @@ class AppDb {
         await this.refTableEdit.selectTable()
     }
 
+    async selectTableByName (tableName) {
+        let refItems = this.refTablesList.shadow.querySelectorAll('db-tool-tables-list-item')
+        for (let cnt = 0; cnt < refItems.length; cnt = cnt + 1) {
+            if (refItems[cnt].textContent == tableName) {
+                this.selectTable(refItems[cnt])
+                break
+            }
+        }
+    }
+
     unselectTable () {
 
-        this.refTableSelected.unselect()
+        if (this.refTableSelected != null) {
+            this.refTableSelected.unselect()
+        }
         this.refTableSelected = null
 
         this.refTablesList.deactivateButtons()
