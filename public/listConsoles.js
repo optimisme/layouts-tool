@@ -1,4 +1,4 @@
-async function restore () {
+async function reset () {
     let refButton = document.getElementById('boxButtonGetData')
     let refSpinner = document.getElementById('boxSpinner')
     let refList = document.getElementById('boxList')
@@ -21,7 +21,7 @@ async function loadData () {
             <img src='{{image}}' width='100%'/>
         </div>
         <div style='flex-grow: 1;'>
-            <h2>{{nom}}</h2>
+            <h2>{{name}}</h2>
             Release date: {{date}}
             <br/>
             Processor: {{processor}}

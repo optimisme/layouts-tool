@@ -39,7 +39,7 @@
         "childs": [
           {
             "typeName": "divFlex",
-            "description": "Flex - Button Restore",
+            "description": "Flex - Button Reset",
             "childsAllowed": "divFlexChild",
             "tag": "div",
             "text": "",
@@ -64,7 +64,7 @@
             "attributes": [
               [
                 "id",
-                "boxButtonRestore"
+                "boxButtonReset"
               ]
             ],
             "childs": [
@@ -94,7 +94,7 @@
                     "description": "Button for forms",
                     "childsAllowed": "none",
                     "tag": "button",
-                    "text": "Restore",
+                    "text": "Reset",
                     "style": [],
                     "phone": [],
                     "attributes": [
@@ -104,7 +104,7 @@
                       ],
                       [
                         "onclick",
-                        "restore()"
+                        "reset()"
                       ]
                     ],
                     "childs": []
