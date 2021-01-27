@@ -107,6 +107,7 @@ class AppDb {
 
         if (this.refTableSelected != null) {
             await this.refTableEdit.refresh()
+            await this.refTablesList.refresh()
         }
     }
 

@@ -38,12 +38,19 @@ class DbToolTablesList extends HTMLElement {
 
     async refresh () {
         let refList = this.shadow.querySelector('.list')
+        let selectedName = ''
+
+        if (appDb.refTableSelected != null) {
+            selectedName = appDb.refTableSelected.textContent
+        }
 
         while (refList.firstChild) { refList.removeChild(refList.lastChild) }
         for (let cnt = 0; cnt < appDb.tables.length; cnt = cnt + 1) {
             let tmp = document.createElement('db-tool-tables-list-item')
-            tmp.textContent = appDb.tables[cnt].name
+            let name = appDb.tables[cnt].name
+            tmp.textContent = name
             refList.appendChild(tmp)
+            if (name == selectedName) { tmp.select() }
         }
     }
 
