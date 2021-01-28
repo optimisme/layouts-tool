@@ -13,7 +13,7 @@
     "express": "latest",
     "forever": "latest",
     "md5": "latest",
-    "sqlite3-lite": "^2020.8.19",
+    "sqlite3": "latest",
     "supervisor": "latest"
   },
   "devDependencies": {},
