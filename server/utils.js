@@ -1,4 +1,4 @@
-const sqlite = require('sqlite3')
+const sqlite = require('sqlite3-lite')
 const md5 = require('md5')
 const fs = require('fs')
 

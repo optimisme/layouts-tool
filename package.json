@@ -13,7 +13,7 @@
     "express": "latest",
     "forever": "latest",
     "md5": "latest",
-    "sqlite3": "latest",
+    "sqlite3-lite": "latest",
     "supervisor": "latest"
   },
   "devDependencies": {},
