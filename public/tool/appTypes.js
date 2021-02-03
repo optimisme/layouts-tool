@@ -1135,6 +1135,28 @@ let formTagForm = {
     childs: []
 }
 
+let wgtUpload = {
+    typeName: 'wgtUpload',
+    description: 'Upload field',
+    image: 'previewUpload.png',
+    tag: 'wgt-upload',
+    childsAllowed: 'none',
+    style: [
+        ['box-sizing', 'border-box', false],
+        ['height', '100%', false],
+        ['margin', '0', false],
+        ['width', '100%', false],
+    ],
+    phone: [],
+    attributes: [
+        ['id', 'upload'],
+        ['onload', '']
+    ],
+    script: ``,
+    text: ``,
+    childs: []
+}
+
 /*
 let div = {
     description: 'Div',

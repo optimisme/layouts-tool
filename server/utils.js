@@ -1,4 +1,4 @@
-const sqlite = require('sqlite3-lite')
+const sqlite = require('sqlite3')
 const md5 = require('md5')
 const fs = require('fs')
 
@@ -9,6 +9,7 @@ class Obj {
         this.db = new sqlite.Database('./server/data.db')
 
         this.dbScripts = ''
+        this.uploadsFolder = './public/images'
     }
 
     async init () {
@@ -503,6 +504,53 @@ class Obj {
            console.log(err)
             return { status: 'ko', result: 'Error "dbDelRow": ' + err.toString() } 
        }
+    }
+
+    async uploadFileChunk (data) {
+        if (typeof data.fileName == 'undefined'
+         || typeof data.offset != 'number'
+         || typeof data.chunk == 'undefined'
+         || data.fileName.indexOf(';') >= 0
+         || data.chunk.indexOf(';') >= 0) { return { status: 'ko', result: 'uploadFileChunk: Wrong data' } }
+        let rst = { }
+        try {
+            let buffer = new Buffer.from(data.chunk, 'base64')
+            if (data.offset == 0) {
+                await fs.promises.writeFile(`${this.uploadsFolder}/tmp_${data.fileName}.part`, buffer)
+            } else {
+                await fs.promises.appendFile(`${this.uploadsFolder}/tmp_${data.fileName}.part`, buffer)
+            }
+            rst = { status: 'ok', result: '' } 
+        } catch (err) {
+            rst = { status: 'ko', result: 'Could not upload file chunk' } 
+        }
+        return rst
+    }
+
+    async uploadFileDone (data) {
+        if (typeof data.fileName == 'undefined'
+         || data.fileName.indexOf(';') >= 0) { return { status: 'ko', result: 'uploadFileDone: Wrong data' } }
+        let rst = { }
+        try {
+            await fs.promises.rename(`${this.uploadsFolder}/tmp_${data.fileName}.part`, `${this.uploadsFolder}/${data.fileName}`)
+            rst = { status: 'ok', result: '' } 
+        } catch (err) {
+            rst = { status: 'ko', result: 'Could not rename file' } 
+        }
+        return rst
+    }
+
+    async uploadFileError (data) {
+        if (typeof data.fileName == 'undefined'
+         || data.fileName.indexOf(';') >= 0) { return { status: 'ko', result: 'uploadFileError: Wrong data' } }
+        let rst = { }
+        try {
+            await fs.promises.unlink(`${this.uploadsFolder}/tmp_${data.fileName}.part`)
+            rst = { status: 'ok', result: '' } 
+        } catch (err) {
+            rst = { status: 'ko', result: 'Could not unlink file' } 
+        }
+        return rst
     }
 }
 

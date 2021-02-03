@@ -5,7 +5,7 @@ let appTypeNames = [
     'titleh1', 'titleh2', 'titleh3', 'text', 'textInline', 'textEllipsis', 'linkBox', 'linkInline',
     'image', 'imageBackground', 'divGrid',
     'formInputText', 'formInputPassword', 'formInputTextarea', 'formInputSelect', 'formInputCheckbox', 'formInputRadio', 'formInputRange', 'formButton', 
-    'waitSpinner', 'waitProgressUnknown',
+    'waitSpinner', 'waitProgressUnknown', 'wgtUpload',
     'carouselDots', 'carouselArrows', 'drawer', 'modal', 'iconMaterial', 'mapGoogle'
 ]
 
