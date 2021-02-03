@@ -1150,7 +1150,7 @@ let wgtUpload = {
     phone: [],
     attributes: [
         ['id', 'upload'],
-        ['onload', '']
+        ['onload', 'console.log(fileName)']
     ],
     script: ``,
     text: ``,

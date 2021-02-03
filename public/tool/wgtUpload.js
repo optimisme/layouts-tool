@@ -45,7 +45,7 @@ class WgtUpload extends HTMLElement {
     static get observedAttributes() { return ['onload']; }
     attributeChangedCallback(name, oldValue, newValue) { 
         switch(name) {
-        case 'onload': this.addEventListener('load', () => { eval(newValue) }); break
+        case 'onload': this.addEventListener('load', (fileName) => { eval(newValue) }); break
         }
     }
 
@@ -128,7 +128,7 @@ class WgtUpload extends HTMLElement {
                     await this.uploadChunk({ name: file.name, offset: offset, size: size, chunk: data })
                 })
                 await this.setLoaded(file.name)
-                if (this.onLoad) this.onLoad()
+                if (this.onLoad) this.onLoad(file.name)
             } catch (err) {
                 if (err == 'cancelled') {
                     this.setCancel(file.name)
