@@ -602,23 +602,22 @@ class WgtUpload extends HTMLElement {
         })
         
         this.refRoot.addEventListener('click', (event) => {
-            if (this.showing != 'msgAdd') return
+            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
             this.refInput.click()
         })
-
         this.refRoot.addEventListener('dragover', (event) => {
             event.preventDefault()
-            if (this.showing != 'msgAdd') return
+            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
             this.refRoot.classList.add('dragOver')
         })
         this.refRoot.addEventListener('dragleave', (event) => {
-            if (this.showing != 'msgAdd') return
+            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
             this.refRoot.classList.remove('dragOver')
         })
         this.refRoot.addEventListener('drop', (event) => {
             event.preventDefault()
             event.stopPropagation()
-            if (this.showing != 'msgAdd') return
+            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
             this.refRoot.classList.remove('dragOver')
             if(event.dataTransfer.files[0]) {
                 this.fileUpload(event.dataTransfer.files[0])
