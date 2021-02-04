@@ -537,7 +537,9 @@ let cssWgtUpload=\`
 [data-ref='uploadingProgressValue'] { display: inline-block; min-width: 48px; text-align: right; }
 [data-ref='uploadingName'] { color: black; font-size: 14px;  overflow: hidden; max-width: 100%; min-height: 19px; text-overflow: ellipsis; white-space: nowrap; }
 [data-ref='cancel'] { background-color: #f0f0f0; border-radius: 5px; position: absolute; bottom: 5px; }
-[data-ref='cancel']:hover { background-color: #f5f5f5; }\`
+[data-ref='cancel']:hover { background-color: #f5f5f5; }
+[data-ref='msgDone'] { background-position: center; background-repeat: no-repeat; background-size: cover; background-image: unset; }
+\`
 let htmlWgtUpload=\`
 <div class='root'>
     <input data-ref='input' type="file" style="display:none;" accept="image/*"/>
@@ -556,6 +558,7 @@ let htmlWgtUpload=\`
     </div>
     <div data-ref='msgCancel' class='hide'>Upload cancelled</div>
     <div data-ref='msgError' class='hide'>Error, could not upload file</div>
+    <div data-ref='msgDone' class='hide'></div>
 </div>\`
 class WgtUpload extends HTMLElement {
 
@@ -566,14 +569,15 @@ class WgtUpload extends HTMLElement {
         this.showing = ''
         this.cancel = false
         this.isUploading = false
-        this.onLoad = null
+        this._value = ''
     }
 
-    static get observedAttributes() { return ['onload']; }
-    attributeChangedCallback(name, oldValue, newValue) { 
-        switch(name) {
-        case 'onload': this.addEventListener('load', (fileName) => { eval(newValue) }); break
-        }
+    set value (value) {
+        this._value = value
+    }
+
+    get value () {
+        return this._value
     }
 
     async connectedCallback () {
@@ -593,23 +597,23 @@ class WgtUpload extends HTMLElement {
         })
         
         this.refRoot.addEventListener('click', (event) => {
-            if (this.showing != 'msgAdd') return
+            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
             this.refInput.click()
         })
 
         this.refRoot.addEventListener('dragover', (event) => {
             event.preventDefault()
-            if (this.showing != 'msgAdd') return
+            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
             this.refRoot.classList.add('dragOver')
         })
         this.refRoot.addEventListener('dragleave', (event) => {
-            if (this.showing != 'msgAdd') return
+            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
             this.refRoot.classList.remove('dragOver')
         })
         this.refRoot.addEventListener('drop', (event) => {
             event.preventDefault()
             event.stopPropagation()
-            if (this.showing != 'msgAdd') return
+            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
             this.refRoot.classList.remove('dragOver')
             if(event.dataTransfer.files[0]) {
                 this.fileUpload(event.dataTransfer.files[0])
@@ -634,18 +638,6 @@ class WgtUpload extends HTMLElement {
         }
     }
 
-    addEventListener (name, call) {
-        switch(name) {
-        case 'load': this.onLoad = call; break
-        }
-    }
-
-    removeEventListener (name, call) {
-        switch(name) {
-        case 'load': this.onLoad = null; break
-        }
-    }
-
     async fileUpload(file) {
         if (file) {
             try {
@@ -655,7 +647,8 @@ class WgtUpload extends HTMLElement {
                     await this.uploadChunk({ name: file.name, offset: offset, size: size, chunk: data })
                 })
                 await this.setLoaded(file.name)
-                if (this.onLoad) this.onLoad(file.name)
+                this.value = '/images/' + file.name
+                this.showElement('msgDone')
             } catch (err) {
                 if (err == 'cancelled') {
                     this.setCancel(file.name)
@@ -674,17 +667,23 @@ class WgtUpload extends HTMLElement {
         if (ref != 'uploading') this.refUploading.classList.add('hide')
         if (ref != 'msgCancel') this.refMsgCancel.classList.add('hide')
         if (ref != 'msgError')  this.refMsgError.classList.add('hide')
+        if (ref != 'msgDone')  this.refMsgDone.classList.add('hide')
 
         if (ref == 'msgAdd')    this.refMsgAdd.classList.remove('hide')
         if (ref == 'uploading') this.refUploading.classList.remove('hide')
         if (ref == 'msgCancel') this.refMsgCancel.classList.remove('hide')
         if (ref == 'msgError')  this.refMsgError.classList.remove('hide')
+        if (ref == 'msgDone')  this.refMsgDone.classList.remove('hide')
 
         if (ref == 'msgAdd') {
             this.refRoot.setAttribute('data-add', 'true')
             this.refInput.value = ''
         } else {
             this.refRoot.removeAttribute('data-add')
+        }
+
+        if (ref == 'msgDone') {
+            this.refMsgDone.style.backgroundImage = \`url("\${this.value}")\`
         }
     }
 

@@ -1,3 +1,18 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Template</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<style>
+body { background-color: white; font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; }
+.defWgtUpload { box-sizing:border-box; height:100%; margin:0; width:100%; }
+</style>
+<script>
 let cssWgtUpload=`
 .root { --accent: rgb(0, 155, 255); --accent-over: rgb(25, 180, 255); --accent-background: #e8f6fe; border: dashed 2px grey; border-radius: 10px; box-sizing: border-box; height: 100%; padding: 8px; position: relative; user-select: none; width: 100%; }
 .root[data-add="true"]:hover { background-color: var(--accent-background); border: dashed 2px var(--accent); color: var(--accent); cursor: pointer; }
@@ -360,3 +375,9 @@ class WgtUpload extends HTMLElement {
     }
 }
 customElements.define("wgt-upload", WgtUpload)
+</script>
+
+<body><!-- Body -->
+<wgt-upload id="upload" class="defWgtUpload"><!-- Upload image -->
+</body>
+</html>

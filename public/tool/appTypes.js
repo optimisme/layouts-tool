@@ -1137,7 +1137,7 @@ let formTagForm = {
 
 let wgtUpload = {
     typeName: 'wgtUpload',
-    description: 'Upload field',
+    description: 'Upload image',
     image: 'previewUpload.png',
     tag: 'wgt-upload',
     childsAllowed: 'none',
@@ -1149,8 +1149,7 @@ let wgtUpload = {
     ],
     phone: [],
     attributes: [
-        ['id', 'upload'],
-        ['onload', 'console.log(fileName)']
+        ['id', 'upload']
     ],
     script: ``,
     text: ``,
