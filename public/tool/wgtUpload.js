@@ -1,7 +1,7 @@
 let cssWgtUpload=`
-.root { --accent: rgb(0, 155, 255); --accent-over: rgb(25, 180, 255); --accent-background: #e8f6fe; border: dashed 2px grey; border-radius: 10px; box-sizing: border-box; height: 100%; padding: 8px; position: relative; user-select: none; width: 100%; }
-.root[data-add="true"]:hover { background-color: var(--accent-background); border: dashed 2px var(--accent); color: var(--accent); cursor: pointer; }
-.dragOver { background-color: var(--accent-background); border: dashed 2px var(--accent); }
+.root { --accent: rgb(0, 155, 255); --accent-over: rgb(25, 180, 255); --accent-background: #e8f6fe; border: solid 2px grey; border-radius: 10px; box-sizing: border-box; height: 100%; padding: 8px; position: relative; user-select: none; width: 100%; }
+.root[data-add="true"]:hover { background-color: var(--accent-background); border: solid 2px var(--accent); color: var(--accent); cursor: pointer; }
+.dragOver { background-color: var(--accent-background); border: solid 2px var(--accent); }
 .hide { display: none !important; }
 .root > div { align-items: center; box-sizing: border-box; display: flex; flex-direction: column; height: 100%; justify-content: center; text-align: center; width: 100%; }
 [data-ref='uploadingTitle'] { color: grey; font-size: 12px; }
@@ -47,6 +47,11 @@ class WgtUpload extends HTMLElement {
 
     set value (value) {
         this._value = value
+        if (value == '') {
+            this.showElement('msgAdd')
+        } else {
+            this.refMsgDone.style.backgroundImage = `url("${this.value}")`
+        }
     }
 
     get value () {
@@ -70,23 +75,23 @@ class WgtUpload extends HTMLElement {
         })
         
         this.refRoot.addEventListener('click', (event) => {
-            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
+            if (this.showing != 'msgAdd') return
             this.refInput.click()
         })
 
         this.refRoot.addEventListener('dragover', (event) => {
             event.preventDefault()
-            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
+            if (this.showing != 'msgAdd') return
             this.refRoot.classList.add('dragOver')
         })
         this.refRoot.addEventListener('dragleave', (event) => {
-            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
+            if (this.showing != 'msgAdd') return
             this.refRoot.classList.remove('dragOver')
         })
         this.refRoot.addEventListener('drop', (event) => {
             event.preventDefault()
             event.stopPropagation()
-            if (this.showing != 'msgAdd' && this.showing != 'msgDone') return
+            if (this.showing != 'msgAdd') return
             this.refRoot.classList.remove('dragOver')
             if(event.dataTransfer.files[0]) {
                 this.fileUpload(event.dataTransfer.files[0])
@@ -150,6 +155,7 @@ class WgtUpload extends HTMLElement {
 
         if (ref == 'msgAdd') {
             this.refRoot.setAttribute('data-add', 'true')
+            this.refMsgDone.style.backgroundImage = `unset`
             this.refInput.value = ''
         } else {
             this.refRoot.removeAttribute('data-add')
@@ -291,7 +297,7 @@ class WgtUpload extends HTMLElement {
         } catch (e) {
             console.log(e)
         }
-        await this.wait(1000)
+        await this.wait(500)
         if (response.status == 'ok') {
             this.showElement('msgAdd')
         } else {

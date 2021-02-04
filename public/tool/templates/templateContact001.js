@@ -54,7 +54,7 @@ async function queryContact () {
         console.log(e)
     }
     await hideElement('boxSpinner')
-console.log(response)
+
     if (response.status == 'ok') {
         refFormName.value = ''
         refFormMail.value = ''
