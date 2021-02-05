@@ -11,7 +11,7 @@ let cssWgtUpload=`
 [data-ref='uploadingName'] { color: black; font-size: 14px;  overflow: hidden; max-width: 100%; min-height: 19px; text-overflow: ellipsis; white-space: nowrap; }
 [data-ref='cancel'] { background-color: #f0f0f0; border-radius: 5px; position: absolute; bottom: 5px; }
 [data-ref='cancel']:hover { background-color: #f5f5f5; }
-[data-ref='msgDone'] { background-position: center; background-repeat: no-repeat; background-size: cover; background-image: unset; }
+[data-ref='msgDone'] { background-position: center; background-repeat: no-repeat; background-size: contain; background-image: unset; }
 `
 let htmlWgtUpload=`
 <div class='root'>
