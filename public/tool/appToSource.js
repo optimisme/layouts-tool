@@ -200,6 +200,7 @@ body { background-color: ${app.backgroundColor}; font-family: 'Open Sans', sans-
 .formInputText > input { background: transparent; border: 0; border-bottom: 1px solid #d2d2d2; color: #212121; font-family: inherit; font-size: 16px; outline: 0; padding: 7px 0; transition: border-color 0.2s; width: 100%; }
 .formInputText > input::placeholder { color: transparent; }
 .formInputText > input:placeholder-shown ~ label { cursor: text; font-size: 16px; top: 20px; }
+.formInputText > label { pointer-events: none; }
 .formInputText > label, 
 .formInputText > input:focus ~ label { color: #9b9b9b; display: block; font-size: 12px; position: absolute; top: 0; transition: 0.2s; }
 .formInputText > input:focus ~ label { color: rgb(0, 125, 255); }

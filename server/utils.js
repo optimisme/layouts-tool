@@ -20,156 +20,54 @@ class Obj {
 
         await this.dbBuildScripts()
 
-        //await this.query('CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, description TEXT NOT NULL)')
-        //await this.query('CREATE TABLE IF NOT EXISTS users    (id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT NOT NULL, name TEXT NOT NULL, surname TEXT NOT NULL, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, tokens TEXT NOT NULL)')
-        //await this.query('CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, description TEXT NOT NULL, image TEXT NOT NULL, price REAL  NOT NULL)')
-/*
-        let rst = await this.query('SELECT * FROM users WHERE id="1"')
+        await this.query('CREATE TABLE IF NOT EXISTS usuaris (id INTEGER PRIMARY KEY AUTOINCREMENT, nom TEXT NOT NULL, cognom TEXT NOT NULL, mail TEXT NOT NULL UNIQUE, contrasenya TEXT NOT NULL, token TEXT NOT NULL)')
+
+        let rst = await this.query('SELECT * FROM usuaris WHERE mail="admin@admin.com"')
         if (rst.length == 0) {
-            await this.query(`INSERT INTO users (id, name, surname, type, email, password, tokens) VALUES (1, "Admin", "", "admin", "admin@admin.com", "${md5('admin')}", "[]")`)
-        }*/
-    }
-/*
-    async signIn (data) {
-        if (typeof data.email == 'undefined'
-         || typeof data.password == 'undefined'
-         || data.email.indexOf(';') >= 0 
-         || data.password.indexOf(';') >= 0) { return { status: 'ko', result: 'signIn: Wrong signIn data' } }
-
-        let rst = await this.query(`SELECT * FROM users WHERE email="${data.email}" AND password="${md5(data.password)}"`)
-        if (rst.length == 1) {
-            let token = md5((Math.random()).toString())
-            let arrTokens = JSON.parse(rst[0].tokens)
-            while (arrTokens.indexOf(token) >= 0) {
-                token = md5((Math.random()).toString())
-            }
-            arrTokens.push(token)
-            await this.query(`UPDATE users SET tokens='${JSON.stringify(arrTokens)}' WHERE id=${rst[0].id}`)
-            rst[0].tokens=[token]
-            return { status: 'ok', result: rst }
-        } else {
-            return { status: 'ko', result: 'signIn: Wrong data (1)' }
+            await this.query(`INSERT INTO usuaris (nom, cognom, mail, contrasenya, token) VALUES ("Admin", "Master", "admin@admin.com", "${md5('admin123')}", "")`)
         }
     }
 
-    async signInToken (data) {
-        if (typeof data.signInId != 'number'
-         || typeof data.signInToken == 'undefined') { return { status: 'ko', result: 'signInToken: Wrong signIn data' } }
+    async appLogIn (data) {
+        if (typeof data.mail == 'undefined'
+         || typeof data.contrasenya == 'undefined'
+         || data.mail.indexOf(';') >= 0 
+         || data.contrasenya.indexOf(';') >= 0) { return { status: 'ko', result: 'appLogIn: Wrong data' } }
 
-        let rst = await this.query(`SELECT * FROM users WHERE id="${data.signInId}"`)
-        if (rst.length == 1) {
-            let arrTokens = JSON.parse(rst[0].tokens)
-            if (arrTokens.indexOf(data.signInToken) >= 0) {
-                rst[0].tokens=[data.signInToken]
-                return { status: 'ok', result: rst }
+        try {
+            let rst = await this.query(`SELECT * FROM usuaris WHERE mail="${data.mail}" AND contrasenya="${md5(data.contrasenya)}"`)
+            if (rst.length == 1) {
+                let token = md5((Math.random()).toString())
+                await this.query(`UPDATE usuaris SET token='${token}' WHERE id=${rst[0].id}`)
+                rst[0].token=[token]
+                return { status: 'ok', result: { id: rst[0].id, nom: rst[0].nom, cognom: rst[0].cognom, mail: rst[0].mail, token: token } }
             } else {
-                return { status: 'ko', result: 'signInToken: Wrong data (1)' }
+                return { status: 'ko', result: 'appLogIn: Impossible more than one user with same mail' }
             }
-        } else {
-            return { status: 'ko', result: 'signInToken: Wrong data (2)' }
-        }  
+        } catch (err) {
+            return { status: 'ko', result: 'appLogIn: Could not log in' }
+        }
+
     }
 
-    async signOut (data) {
-        if (typeof data.signInId != 'number'
-         || typeof data.signInToken == 'undefined') { return { status: 'ko', result: 'signOut: Wrong signIn data' } }
+    async appGetTokenUser (data) {
+        if (typeof data.logInId != 'string'
+         || typeof data.logInToken != 'string'
+         || data.logInId.indexOf(';') >= 0
+         || data.logInToken.indexOf(';') >= 0) { return { status: 'ko', result: 'appLogInToken: Wrong data' } }
 
-        let rst = await this.query(`SELECT * FROM users WHERE id="${data.signInId}"`)
-        if (rst.length == 1) {
-            let arrTokens = JSON.parse(rst[0].tokens)
-            let position = arrTokens.indexOf(data.signInToken)
-            if (position >= 0) {
-                arrTokens.splice(position, 1)
-                await this.query(`UPDATE users SET tokens="${JSON.stringify(arrTokens)}" WHERE id=${rst[0].id}`)
+        try {
+            let rst = await this.query(`SELECT * FROM usuaris WHERE id="${data.logInId}" AND token="${data.logInToken}"`)
+            if (rst.length == 1) {
+                return { id: rst[0].id, nom: rst[0].nom, cognom: rst[0].cognom, mail: rst[0].mail, token: rst[0].token }
             } else {
-                return { status: 'ko', result: 'signOut: Wrong data (1)' }
-            }
-        } else {
-            return { status: 'ko', result: 'signOut: Wrong data (2)' }
-        }  
+                return null
+            } 
+        } catch (err) {
+            return null
+        }
     }
 
-    async signUp (data) {
-
-        if (typeof data.email == 'undefined'
-         || typeof data.password == 'undefined'
-         || typeof data.name == 'undefined'
-         || typeof data.surname == 'undefined'
-         || data.email.indexOf(';') >= 0
-         || data.password.indexOf(';') >= 0
-         || data.name.indexOf(';') >= 0
-         || data.surname.indexOf(';') >= 0) { return { status: 'ko', result: 'signUp: Wrong data' } }
-
-        let addObj = {
-            tableName: 'users',
-            name: data.name,
-            surname: data.surname,
-            type: 'user',
-            email: data.email,
-            password: data.password,
-            tokens: "[]"
-        }
-
-        await this.add(addObj)
-// TODO: tornar error si hi ha
-        let signInObj = {
-            email: data.email,
-            password: data.password
-        }
-        
-        return await this.signIn(signInObj)
-    }
-
-    async userEdit (data) {
-
-        if (typeof data.email == 'undefined'
-         || typeof data.password == 'undefined'
-         || typeof data.name == 'undefined'
-         || typeof data.surname == 'undefined'
-         || data.email.indexOf(';') >= 0
-         || data.password.indexOf(';') >= 0
-         || data.name.indexOf(';') >= 0
-         || data.surname.indexOf(';') >= 0) { return { status: 'ko', result: 'userEdit: Wrong data' } }
-
-        let updateObj = {
-            tableName: 'users',
-            id: data.signInId,
-            name: data.name,
-            surname: data.surname,
-            email: data.email
-        }
-
-        if (data.password != '') {
-            updateObj.password = data.password
-        }
-
-        await this.update(updateObj)
-// TODO: tornar error si hi ha
-        let signInObj = {
-            signInId: data.signInId,
-            signInToken: data.signInToken
-        }
-        
-        return await this.signInToken(signInObj)
-    }
-
-    async getUser (data) {
-        if (typeof data.signInId != 'number'
-         || typeof data.signInToken == 'undefined') { return { status: 'ko', result: 'getUser: Wrong data' } }
-
-        let rst = await this.query(`SELECT * FROM users WHERE id="${data.signInId}"`)
-        if (rst.length == 1) {
-            let arrTokens = JSON.parse(rst[0].tokens)
-            if (arrTokens.indexOf(data.signInToken) >= 0) {
-                return { status: 'ok', result: rst[0] }
-            } else {
-                return { status: 'ko', result: 'getUser: Wrong data (1)' }
-            }
-        } else {
-            return { status: 'ko', result: 'getUser: Wrong data (2)' }
-        }  
-    }
-*/
     query (query) {
         return new Promise((resolve, reject) => {
             if (query.indexOf('SELECT') >= 0) {
@@ -443,7 +341,11 @@ class Obj {
                 if (typeof data.columns[column.name] != 'undefined') {
                     columns.push(column.name)
                     if (column.type == "TEXT") {
-                        values.push(`"${data.columns[column.name]}"`)
+                        if (data.tableName == 'usuaris' && column.name == 'contrasenya') {
+                            values.push(`"${md5(data.columns[column.name])}"`)
+                        } else {
+                            values.push(`"${data.columns[column.name]}"`)
+                        }
                     } else if (column.type == "REAL" || column.type == "NUMBER") {
                         values.push(parseFloat(data.columns[column.name]))
                     } else if (column.type == "INTEGER") {
@@ -478,7 +380,11 @@ class Obj {
                 let column = tableColumns[cnt]
                 if (typeof data.columns[column.name] != 'undefined') {
                     if (column.type == "TEXT") {
-                        values.push(`"${column.name}" = "${data.columns[column.name]}"`)
+                        if (data.tableName == 'usuaris' && column.name == 'contrasenya') {
+                            values.push(`"${column.name}" = "${md5(data.columns[column.name])}"`)
+                        } else {
+                            values.push(`"${column.name}" = "${data.columns[column.name]}"`)
+                        }
                     } else if (column.type == "REAL" || column.type == "NUMBER") {
                         values.push(`"${column.name}" = "${parseFloat(data.columns[column.name])}"`)
                     } else if (column.type == "INTEGER") {

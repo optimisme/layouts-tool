@@ -23,12 +23,20 @@ main()
 
 async function answerQuery (request, response) {
   let data = await utils.getPostData(request) 
-  let hasPermission = true // TODO: Set permissions to perform actions
+  let hasPermission = true
+  let knownUser = false
+  let user = {}
   let rst = {}
 
-  if (data.type.indexOf(';') >= 0) {
-    rst = { status: 'ko', result: 'Injection not allowed' } 
-  }  if (hasPermission) {
+  if (typeof data.logInId == 'string' && typeof data.logInToken == 'string') {
+    if (await utils.appGetTokenUser(data) != null) knownUser = true
+  }
+
+  if (knownUser == false && data.type == 'dbGetTableData' && data.tableName == 'consoles') hasPermission = false 
+
+  if (data.type.indexOf(';') >= 0) { hasPermission = false } // Important, evita atacs per injecció de codi
+  
+  if (hasPermission) {
     try {
       rst = await eval(`utils.${data.type}(data)`)
     } catch (err) {
@@ -38,7 +46,6 @@ async function answerQuery (request, response) {
   } else {
     rst = { status: 'ko', result: 'Forbidden' } 
   }
-
 
   response.json(rst)
 }
