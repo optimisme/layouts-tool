@@ -27,7 +27,6 @@ async function answerQuery (request, response) {
   let knownUser = false
   let user = {}
   let rst = {}
-
   
   if (typeof data.logInId == 'string' && typeof data.logInToken == 'string') {
     user = await utils.appGetTokenUser(data)
