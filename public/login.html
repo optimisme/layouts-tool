@@ -1,0 +1,152 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Template</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/login.js"></script>
+</head>
+<style>
+body { background-color: white; font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; }
+.formInputText { padding: 15px 0 0; position: relative; width: 100%; }
+.formInputText > input { background: transparent; border: 0; border-bottom: 1px solid #d2d2d2; color: #212121; font-family: inherit; font-size: 16px; outline: 0; padding: 7px 0; transition: border-color 0.2s; width: 100%; }
+.formInputText > input::placeholder { color: transparent; }
+.formInputText > input:placeholder-shown ~ label { cursor: text; font-size: 16px; top: 20px; }
+.formInputText > label { pointer-events: none; }
+.formInputText > label, 
+.formInputText > input:focus ~ label { color: #9b9b9b; display: block; font-size: 12px; position: absolute; top: 0; transition: 0.2s; }
+.formInputText > input:focus ~ label { color: rgb(0, 125, 255); }
+.formInputText > input:focus { border-bottom: 2px solid rgb(0, 125, 255); padding-bottom: 6px; }
+.formInputText > input:valid ~ span { color: transparent; }
+.formInputText > input:invalid ~ span { color: red; }
+.formButton             { background-color: rgb(0, 125, 255); border: none; border-radius: 4px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); color: white; cursor: pointer; font-weight: 800; height: 36px; margin: 0; min-width: 64px; outline: none; padding: 0 16px; position: relative; text-align: center; text-transform: uppercase; transition: box-shadow 0.2s; }
+.formButton:hover,
+.formButton:focus       { background-color: rgb(50, 150, 255); box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12); }
+.formButton:active      { box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+.formButton:disabled    { color: #eee; background-color: #aaa; box-shadow: none; cursor: initial; }
+.waitSpinner { height: 100%; overflow: hidden; width: 100%; }
+.waitSpinner svg { animation: spinnerRotate 1.5s linear infinite; height: 100%; width: 100%; }
+.waitSpinner circle { animation: spinnerDash 1.5s ease-in-out infinite 0s, spinnerColor 6s ease-in-out infinite -0.75s; stroke-dasharray: 1,200; stroke-dashoffset: 0; stroke-linecap: round; fill: none; stroke-width: 5; }
+@keyframes spinnerRotate { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@keyframes spinnerDash { 0% { stroke-dasharray: 1,200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 89,200; stroke-dashoffset: -45; } 100% { stroke-dasharray: 89,200; stroke-dashoffset: -124; } }
+@keyframes spinnerColor { 100%, 0% { stroke: #4285F4; } 25% {  stroke: #DE3E35; } 50% { stroke: #F7C223; } 75% { stroke: #1DA760; } }
+.defDiv { height:max-content; box-sizing:border-box; margin:0; }
+.defDivAutocenter { padding:0 16px; box-sizing:border-box; height:max-content; margin-left:auto; margin-right:auto; max-width:1200px; width:100%; }
+.defDivFlex { box-sizing:border-box; display:flex; margin:0; }
+.defDivFlexChild { box-sizing:border-box; display:flex; margin:0; }
+.defFormButton { text-transform:uppercase; }
+.defText { font-size:1em; height:max-content; width:100%; box-sizing:border-box; margin:0; }
+.defTitleh1 { font-size:2em; font-weight:800; height:max-content; padding:0; width:100%; box-sizing:border-box; margin:0; }
+.elm12 { padding:0 0 16px 0; box-sizing:border-box; display:flex; margin:0; }
+.elm17 { align-items:center; flex-direction:column; justify-content:center; min-height:48px; box-sizing:border-box; display:flex; margin:0; }
+.elm25 { color:red; font-size:1em; height:max-content; padding:8px 0 0 0; width:100%; box-sizing:border-box; margin:0; }
+.elm3 { justify-content:center; min-width:100%; box-sizing:border-box; display:flex; margin:0; }
+.elm4 { flex-direction:column; padding:32px 0 0 0; box-sizing:border-box; display:flex; margin:0; }
+.elm5 { justify-content:center; box-sizing:border-box; display:flex; margin:0; }
+.elm6 { font-size:2em; font-weight:800; height:max-content; padding:0; width:max-content; box-sizing:border-box; margin:0; }
+.elmBoxButton { height:48px; box-sizing:border-box; margin:0; }
+.elmBoxError { display:none; height:48px; box-sizing:border-box; margin:0; }
+.elmBoxSpinner { display:none; height:48px; box-sizing:border-box; margin:0; }
+</style>
+<script>
+function getForm (id) {
+    let ref = document.getElementById(id)
+    let type = (ref.tagName).toLowerCase()
+    if (type == 'input') {
+        type = (ref.getAttribute('type')).toLowerCase()
+    }
+    switch (type) {
+    case 'text':
+    case 'textarea':
+    case 'range':
+        return ref.value
+    case 'checkbox':
+    case 'radio':
+        return ref.checked
+    case 'select':
+        // ref.options[ref.selectedIndex].text
+        return ref.value
+    }
+}
+
+function setForm (id, value) {
+    let ref = document.getElementById(id)
+    let type = (ref.tagName).toLowerCase()
+    if (type == 'input') {
+        type = (ref.getAttribute('type')).toLowerCase()
+    }
+    switch (type) {
+    case 'text':
+    case 'textarea':
+    case 'range':
+    case 'select':
+        ref.value = value
+        break
+    case 'checkbox':
+    case 'radio':
+        ref.checked = value
+        break
+    }
+}
+</script>
+
+<body><!-- Body -->
+<div class="defDivAutocenter"><!-- Autocentered div -->
+  <div class="defDivFlex"><!-- Flex -->
+    <div class="defDivFlexChild elm3"><!-- Flex child -->
+      <div class="defDivFlex elm4"><!-- Flex -->
+        <div class="defDivFlexChild elm5"><!-- Flex child - Title -->
+          <h1 class="defTitleh1 elm6"><!-- H1 -->
+            Log In
+          </h1>
+        </div>
+        <div class="defDivFlexChild"><!-- Flex child - Mail -->
+          <div class="formInputText"><!-- Input text with pattern validation -->
+            <input id="formMail" type="text" placeholder="yes" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" autocomplete="off" onkeyup="checkForm()"><!-- Input text -->
+            <label><!-- Label -->
+              Mail
+            </label>
+            <span><!-- Error message -->
+              This is not a valid email
+            </span>
+          </div>
+        </div>
+        <div class="defDivFlexChild elm12"><!-- Flex child - Password -->
+          <div class="formInputText"><!-- Input password with pattern validation -->
+            <input id="formPassword" type="password" placeholder="yes" pattern="[\S\s]{1,}" autocomplete="off" onkeyup="checkForm()"><!-- Input password -->
+            <label><!-- Label -->
+              Password
+            </label>
+            <span><!-- Error message -->
+              Password not valid
+            </span>
+          </div>
+        </div>
+        <div class="defDivFlexChild elm17"><!-- Flex child -->
+          <div id="boxButton" class="defDiv elmBoxButton"><!-- Div - Button -->
+            <button id="formButton" onclick="queryLogIn()" disabled="true" class="defFormButton formButton"><!-- Button for forms -->
+              Log In
+            </button>
+          </div>
+          <div id="boxSpinner" class="defDiv elmBoxSpinner"><!-- Div - Wait Spinner -->
+            <div class="waitSpinner"><!-- Wait spinner -->
+              <svg viewBox="0 0 50 50"><!-- Spinner main -->
+                <circle cx="25" cy="25" r="20"/>
+              </svg>
+            </div>
+          </div>
+          <div id="boxError" class="defDiv elmBoxError"><!-- Div - Error -->
+            <div class="defText elm25"><!-- Text -->
+              Could not Log In
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

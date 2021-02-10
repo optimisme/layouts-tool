@@ -1,0 +1,65 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Template</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/listConsoles2.js"></script>
+</head>
+<style>
+body { background-color: white; font-family: 'Open Sans', sans-serif; margin: 0; padding: 0; }
+.waitSpinner { height: 100%; overflow: hidden; width: 100%; }
+.waitSpinner svg { animation: spinnerRotate 1.5s linear infinite; height: 100%; width: 100%; }
+.waitSpinner circle { animation: spinnerDash 1.5s ease-in-out infinite 0s, spinnerColor 6s ease-in-out infinite -0.75s; stroke-dasharray: 1,200; stroke-dashoffset: 0; stroke-linecap: round; fill: none; stroke-width: 5; }
+@keyframes spinnerRotate { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@keyframes spinnerDash { 0% { stroke-dasharray: 1,200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 89,200; stroke-dashoffset: -45; } 100% { stroke-dasharray: 89,200; stroke-dashoffset: -124; } }
+@keyframes spinnerColor { 100%, 0% { stroke: #4285F4; } 25% {  stroke: #DE3E35; } 50% { stroke: #F7C223; } 75% { stroke: #1DA760; } }
+.defDiv { height:max-content; box-sizing:border-box; margin:0; }
+.defDivAutocenter { padding:0 16px; box-sizing:border-box; height:max-content; margin-left:auto; margin-right:auto; max-width:1200px; width:100%; }
+.defDivFlex { box-sizing:border-box; display:flex; margin:0; }
+.defDivFlexChild { box-sizing:border-box; display:flex; margin:0; }
+.defLinkInline { font-size:1em; box-sizing:border-box; cursor:pointer; display:inline; height:max-content; margin:0; width:max-content; }
+.defText { font-size:1em; height:max-content; width:100%; box-sizing:border-box; margin:0; }
+.elm3 { flex-direction:column; padding:32px 0 0 0; box-sizing:border-box; display:flex; margin:0; }
+.elm4 { justify-content:center; box-sizing:border-box; display:flex; margin:0; }
+.elm5 { color:rgb(0, 150, 255); font-size:1em; text-decoration:none; box-sizing:border-box; cursor:pointer; display:inline; height:max-content; margin:0; width:max-content; }
+.elm6 { justify-content:center; box-sizing:border-box; display:flex; margin:0; }
+.elm7 { font-size:1em; height:max-content; width:max-content; box-sizing:border-box; margin:0; }
+.elmBoxList { display:none; height:max-content; box-sizing:border-box; margin:0; }
+.elmBoxSpinner { display:none; height:48px; box-sizing:border-box; margin:0; }
+.elmBoxUserError { display:none; height:max-content; box-sizing:border-box; margin:0; }
+</style>
+<script>
+</script>
+
+<body><!-- Body -->
+<div class="defDivAutocenter"><!-- Autocentered div -->
+  <div id="boxUserError" class="defDiv elmBoxUserError"><!-- Div - User not valid -->
+    <div class="defDivFlex elm3"><!-- Flex -->
+      <div class="defDivFlexChild elm4"><!-- Flex child -->
+        <a href="/login.html" target="_self" class="defLinkInline elm5">
+          Log in
+        </a>
+      </div>
+      <div class="defDivFlexChild elm6"><!-- Flex child -->
+        <div class="defText elm7"><!-- Text -->
+          To view this site
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="boxSpinner" class="defDiv elmBoxSpinner"><!-- Div - Spinner -->
+    <div class="waitSpinner"><!-- Wait spinner -->
+      <svg viewBox="0 0 50 50"><!-- Spinner main -->
+        <circle cx="25" cy="25" r="20"/>
+      </svg>
+    </div>
+  </div>
+  <div id="boxList" class="defDiv elmBoxList"><!-- Div - List -->
+  </div>
+</div>
+</body>
+</html>
