@@ -100,6 +100,7 @@ class DbToolModalEditRow extends DbToolModal {
         let response = {}
 
         let obj = {
+            loginInId: 'tooldb', 
             type: 'dbEditRow',
             tableName: this.tableName,
             columns: {
@@ -152,6 +153,7 @@ class DbToolModalEditRow extends DbToolModal {
         let response = {}
 
         let obj = {
+            loginInId: 'tooldb', 
             type: 'dbDelRow',
             tableName: this.tableName,
             id: this.rowId

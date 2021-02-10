@@ -4,30 +4,6 @@ async function init () {
     loadData()
 }
 
-async function userIsValid() {
-
-    if (typeof storageId != 'string' || typeof storageToken != 'string') return false
-
-    let obj = {
-        type: 'appLogInToken',
-        id: storageId,
-        token: storageToken
-    }
-
-    try {
-        serverData = await queryServer('/query', obj)
-    } catch (err) {
-        console.error(err)
-    }
-
-    if (serverData.status == 'ok') {
-        return true
-    } else {
-        localStorage.removeItem('id')
-        localStorage.removeItem('token')
-    }
-}
-
 async function loadData () {
     let refBoxUserError = document.getElementById('boxUserError')
     let refSpinner = document.getElementById('boxSpinner')

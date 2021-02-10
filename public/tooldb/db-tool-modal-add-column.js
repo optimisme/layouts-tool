@@ -54,6 +54,7 @@ class DbToolModalAddColumn extends DbToolModal {
         let response = {}
 
         let obj = {
+            loginInId: 'tooldb', 
             type: 'dbAddColumn',
             tableName: this.tableName,
             columnName: refInput.value,

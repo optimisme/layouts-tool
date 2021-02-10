@@ -59,6 +59,7 @@ class DbToolModalEditTable extends DbToolModal {
         let response = {}
 
         let obj = {
+            loginInId: 'tooldb', 
             type: 'dbRenameTable',
             oldTableName: this.name,
             newTableName: refInput.value
@@ -96,6 +97,7 @@ class DbToolModalEditTable extends DbToolModal {
         let response = {}
 
         let obj = {
+            loginInId: 'tooldb', 
             type: 'dbDelTable',
             tableName: this.name
         }

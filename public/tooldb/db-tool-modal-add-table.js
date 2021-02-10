@@ -42,6 +42,7 @@ class DbToolModalAddTable extends DbToolModal {
         let response = {}
 
         let obj = {
+            loginInId: 'tooldb', 
             type: 'dbAddTable',
             tableName: refInput.value
         }

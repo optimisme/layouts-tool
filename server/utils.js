@@ -47,7 +47,6 @@ class Obj {
         } catch (err) {
             return { status: 'ko', result: 'appLogIn: Could not log in' }
         }
-
     }
 
     async appGetTokenUser (data) {

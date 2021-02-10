@@ -65,6 +65,7 @@ class DbToolModalEditColumn extends DbToolModal {
         let response = {}
 
         let obj = {
+            loginInId: 'tooldb', 
             type: 'dbRenameColumn',
             tableName: this.tableName,
             oldColumnName: this.columnName,
@@ -104,6 +105,7 @@ class DbToolModalEditColumn extends DbToolModal {
         let response = {}
 
         let obj = {
+            loginInId: 'tooldb', 
             type: 'dbDelColumn',
             tableName: this.tableName,
             columnName: this.columnName,

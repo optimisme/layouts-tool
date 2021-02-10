@@ -81,6 +81,7 @@ class DbToolModalAddRow extends DbToolModal {
         let response = {}
 
         let obj = {
+            loginInId: 'tooldb', 
             type: 'dbAddRow',
             tableName: this.tableName,
             columns: {}

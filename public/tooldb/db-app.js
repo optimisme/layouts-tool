@@ -40,7 +40,7 @@ class AppDb {
 
         let scriptsReady = false
         try {
-            let rstScripts = JSON.parse(await appDb.callServer('POST', '/query', { type: 'dbGetScripts' }))
+            let rstScripts = JSON.parse(await appDb.callServer('POST', '/query', { loginInId: 'tooldb', type: 'dbGetScripts' }))
             if (rstScripts.status == 'ok') {
                 eval(rstScripts.result)
                 scriptsReady = true
@@ -95,7 +95,7 @@ class AppDb {
     }
 
     async refresh () {
-        let rst = JSON.parse(await appDb.callServer('POST', '/query', { type: 'dbGetTablesList' }))
+        let rst = JSON.parse(await appDb.callServer('POST', '/query', { loginInId: 'tooldb', type: 'dbGetTablesList' }))
         let selected = ''
         if (rst.status == 'ok') {
             this.tables = rst.result

@@ -23,17 +23,21 @@ main()
 
 async function answerQuery (request, response) {
   let data = await utils.getPostData(request) 
-  let hasPermission = true
+  let hasPermission = false
   let knownUser = false
+  let isToolDb = false
   let user = {}
   let rst = {}
 
+  
   if (typeof data.logInId == 'string' && typeof data.logInToken == 'string') {
     if (await utils.appGetTokenUser(data) != null) knownUser = true
   }
 
-  if (knownUser == false && data.type == 'dbGetTableData' && data.tableName == 'consoles') hasPermission = false 
+  if (data.type == 'appLogIn') hasPermission = true
+  if (knownUser == true && data.type == 'dbGetTableData' && data.tableName == 'consoles') hasPermission = true 
 
+  if (typeof data.loginInId == 'string' && data.loginInId == 'tooldb') hasPermission = true // Hack per permetre el funcionament de la 'tooldb'
   if (data.type.indexOf(';') >= 0) { hasPermission = false } // Important, evita atacs per injecció de codi
 
   if (hasPermission) {
