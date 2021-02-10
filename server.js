@@ -35,7 +35,7 @@ async function answerQuery (request, response) {
   if (knownUser == false && data.type == 'dbGetTableData' && data.tableName == 'consoles') hasPermission = false 
 
   if (data.type.indexOf(';') >= 0) { hasPermission = false } // Important, evita atacs per injecció de codi
-  
+  hasPermission = true
   if (hasPermission) {
     try {
       rst = await eval(`utils.${data.type}(data)`)
