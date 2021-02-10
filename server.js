@@ -25,13 +25,13 @@ async function answerQuery (request, response) {
   let data = await utils.getPostData(request) 
   let hasPermission = false
   let knownUser = false
-  let isToolDb = false
   let user = {}
   let rst = {}
 
   
   if (typeof data.logInId == 'string' && typeof data.logInToken == 'string') {
-    if (await utils.appGetTokenUser(data) != null) knownUser = true
+    user = await utils.appGetTokenUser(data)
+    if (user != null) knownUser = true
   }
 
   if (data.type == 'appLogIn') hasPermission = true
