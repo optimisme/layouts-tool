@@ -1,4 +1,4 @@
-window.addEventListener('load', init())
+window.addEventListener('load', () => { init() })
 
 async function init () {
     loadData()
@@ -6,10 +6,8 @@ async function init () {
 
 async function userIsValid() {
 
-
-
     if (typeof storageId != 'string' || typeof storageToken != 'string') return false
-console.log(storageid, storageToken)
+
     let obj = {
         type: 'appLogInToken',
         id: storageId,
