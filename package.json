@@ -13,7 +13,7 @@
     "express": "latest",
     "forever": "^3.0.4",
     "md5": "latest",
-    "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master",
+    "sqlite3": "^5.0.1",
     "supervisor": "latest"
   },
   "bundleDependencies": [],
