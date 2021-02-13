@@ -20,7 +20,7 @@ class Obj {
 
         await this.dbBuildScripts()
 
-        await this.query('CREATE TABLE IF NOT EXISTS usuaris (id INTEGER PRIMARY KEY AUTOINCREMENT, nom TEXT NOT NULL, cognom TEXT NOT NULL, mail TEXT NOT NULL UNIQUE, contrasenya TEXT NOT NULL, token TEXT NOT NULL)')
+        await this.query('CREATE TABLE IF NOT EXISTS usuaris (id INTEGER PRIMARY KEY AUTOINCREMENT, nom TEXT NOT NULL, cognom TEXT NOT NULL, mail TEXT NOT NULL UNIQUE, contrasenya TEXT NOT NULL, token TEXT)')
 
         let rst = await this.query('SELECT * FROM usuaris WHERE mail="admin@admin.com"')
         if (rst.length == 0) {
