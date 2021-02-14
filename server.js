@@ -35,6 +35,7 @@ async function answerQuery (request, response) {
 
   if (data.type == 'appLogIn') hasPermission = true
   if (knownUser == true && data.type == 'dbGetTableData' && data.tableName == 'consoles') hasPermission = true 
+  if (knownUser == true && ['uploadFileChunk', 'uploadFileDone', 'uploadFileError'].indexOf(data.type) != -1) hasPermission = true
 
   if (typeof data.loginInId == 'string' && data.loginInId == 'tooldb') hasPermission = true // Hack per permetre el funcionament de la 'tooldb'
   if (data.type.indexOf(';') >= 0) { hasPermission = false } // Important, evita atacs per injecció de codi

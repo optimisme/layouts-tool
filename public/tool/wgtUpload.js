@@ -266,7 +266,9 @@ class WgtUpload extends HTMLElement {
             type: 'uploadFileChunk',
             fileName: part.name,
             offset: part.offset,
-            chunk: await this.bytesToBase64(new Uint8Array(part.chunk))
+            chunk: await this.bytesToBase64(new Uint8Array(part.chunk)),
+            logInId: localStorage.getItem('id'),
+            logInToken: localStorage.getItem('token')
         }
         let response = {}
         try {
@@ -287,7 +289,9 @@ class WgtUpload extends HTMLElement {
     async setLoaded (fileName) {
         let obj = {
             type: 'uploadFileDone',
-            fileName: fileName
+            fileName: fileName,
+            logInId: localStorage.getItem('id'),
+            logInToken: localStorage.getItem('token')
         }
         this.setLoading(fileName, 100)
         let response = {}
@@ -307,7 +311,9 @@ class WgtUpload extends HTMLElement {
     async setCancel (fileName) {
         let obj = {
             type: 'uploadFileError',
-            fileName: fileName
+            fileName: fileName,
+            logInId: localStorage.getItem('id'),
+            logInToken: localStorage.getItem('token')
         }
         let response = {}
         try {
@@ -323,7 +329,9 @@ class WgtUpload extends HTMLElement {
     async setError (fileName) {
         let obj = {
             type: 'uploadFileError',
-            fileName: fileName
+            fileName: fileName,
+            logInId: localStorage.getItem('id'),
+            logInToken: localStorage.getItem('token')
         }
         let response = {}
         try {
