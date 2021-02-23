@@ -1,6 +1,5 @@
 const md5 = require('md5')
 const fs = require('fs')
-const { fail } = require('assert')
 
 class Obj {
 

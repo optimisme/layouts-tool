@@ -89,14 +89,7 @@
                     "default": ""
                 }
             ],
-            "data": [
-                {
-                    "id": 0,
-                    "nom": "ab",
-                    "mail": "a@b.com",
-                    "descripcio": "abc"
-                }
-            ]
+            "data": []
         },
         {
             "name": "consoles",
