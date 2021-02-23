@@ -29,7 +29,7 @@ async function loadData () {
     let obj = {
         type: 'dbGetTableData',
         tableName: 'consoles',
-        queryFilter: 'WHERE manufacturer = "Nintendo"',
+        queryFilter: 'row.manufacturer == "Nintendo"',
         logInId: localStorage.getItem('id'),
         logInToken: localStorage.getItem('token')
     }

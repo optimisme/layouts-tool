@@ -13,7 +13,6 @@
     "express": "latest",
     "forever": "^3.0.4",
     "md5": "latest",
-    "sqlite3": "^5.0.1",
     "supervisor": "latest"
   },
   "bundleDependencies": [],
@@ -23,7 +22,7 @@
     "foreverStart": "forever start ./server.js",
     "foreverList": "forever list",
     "foreverStop": "forever stop ./server.js",
-    "supervisor": "supervisor --extensions js,html,css --ignore .git,node_modules --ignore-symlinks node -- ./server.js",
+    "supervisor": "supervisor --extensions js,html,css --ignore .git,node_modules,jdb.json,jdb.json.tmp --ignore-symlinks node -- ./server.js",
     "postinstall": ""
   }
 }

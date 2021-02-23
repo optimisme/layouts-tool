@@ -1,0 +1,436 @@
+{
+    "tables": [
+        {
+            "name": "usuaris",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "number",
+                    "unique": true,
+                    "md5": false,
+                    "default": "AUTOINCREMENT"
+                },
+                {
+                    "name": "nom",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "cognom",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "mail",
+                    "type": "string",
+                    "unique": true,
+                    "md5": false,
+                    "default": "NOTNULL"
+                },
+                {
+                    "name": "contrasenya",
+                    "type": "string",
+                    "unique": false,
+                    "md5": true,
+                    "default": ""
+                },
+                {
+                    "name": "token",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                }
+            ],
+            "data": [
+                {
+                    "id": 0,
+                    "nom": "Admin",
+                    "cognom": "Master",
+                    "mail": "admin@admin.com",
+                    "contrasenya": "0192023a7bbd73250516f069df18b500",
+                    "token": "e144aeff41f1fe68e97b82c2dc3e050f"
+                }
+            ]
+        },
+        {
+            "name": "contacte",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "number",
+                    "unique": true,
+                    "md5": false,
+                    "default": "AUTOINCREMENT"
+                },
+                {
+                    "name": "nom",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "mail",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "descripcio",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                }
+            ],
+            "data": [
+                {
+                    "id": 0,
+                    "nom": "ab",
+                    "mail": "a@b.com",
+                    "descripcio": "abc"
+                }
+            ]
+        },
+        {
+            "name": "consoles",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "number",
+                    "unique": true,
+                    "md5": false,
+                    "default": "AUTOINCREMENT"
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "processor",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "manufacturer",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "color",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "image",
+                    "type": "string",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "units",
+                    "type": "number",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                },
+                {
+                    "name": "speed",
+                    "type": "number",
+                    "unique": false,
+                    "md5": false,
+                    "default": ""
+                }
+            ],
+            "data": [
+                {
+                    "id": 0,
+                    "name": "Xbox Series X",
+                    "processor": "8-Core AMD Zen 2",
+                    "date": "2020-11-10",
+                    "manufacturer": "Microsoft",
+                    "color": "black",
+                    "image": "/images/consoles/microsoft-sx.png",
+                    "units": "",
+                    "speed": 3.8
+                },
+                {
+                    "id": 1,
+                    "name": "Playstation 5",
+                    "processor": "8-Core AMD Zen 2",
+                    "date": "2020-11-12",
+                    "manufacturer": "Sony",
+                    "color": "white",
+                    "image": "/images/consoles/sony-ps5.png",
+                    "units": "",
+                    "speed": 3.5
+                },
+                {
+                    "id": 2,
+                    "name": "Nintendo Switch",
+                    "processor": "4xARM Cortex-A57",
+                    "date": "2017-3-3",
+                    "manufacturer": "Nintendo",
+                    "color": "black",
+                    "image": "/images/consoles/nintendo-switch.png",
+                    "units": 70000000,
+                    "speed": 1.02
+                },
+                {
+                    "id": 3,
+                    "name": "Xbox One",
+                    "processor": "Custom 8-core AMD",
+                    "date": "2013-11-22",
+                    "manufacturer": "Microsoft",
+                    "color": "black",
+                    "image": "/images/consoles/microsoft-xboxone.png",
+                    "units": 50000000,
+                    "speed": 1.75
+                },
+                {
+                    "id": 4,
+                    "name": "Playstation 4",
+                    "processor": "Semi-custom 8-core AMD",
+                    "date": "2013-11-15",
+                    "manufacturer": "Sony",
+                    "color": "black",
+                    "image": "/images/consoles/sony-ps4.png",
+                    "units": 112000000,
+                    "speed": 1.6
+                },
+                {
+                    "id": 5,
+                    "name": "Wii U",
+                    "processor": "IBM PowerPC 750",
+                    "date": "2012-11-18",
+                    "manufacturer": "Nintendo",
+                    "color": "black",
+                    "image": "/images/consoles/nintendo-wiiu.png",
+                    "units": 14000000,
+                    "speed": 1.24
+                },
+                {
+                    "id": 6,
+                    "name": "Wii",
+                    "processor": "IBM PowerPC 750",
+                    "date": "2006-11-19",
+                    "manufacturer": "Nintendo",
+                    "color": "white",
+                    "image": "/images/consoles/nintendo-wii.png",
+                    "units": 101000000,
+                    "speed": 0.72
+                },
+                {
+                    "id": 7,
+                    "name": "Playstation 3",
+                    "processor": "IBM PowerPC Cell",
+                    "date": "2006-11-11",
+                    "manufacturer": "Sony",
+                    "color": "black",
+                    "image": "/images/consoles/sony-ps3.png",
+                    "units": 87000000,
+                    "speed": 3.2
+                },
+                {
+                    "id": 8,
+                    "name": "Xbox 360",
+                    "processor": "IBM PowerPC Tri-core Xenon",
+                    "date": "2005-11-22",
+                    "manufacturer": "Microsoft",
+                    "color": "white",
+                    "image": "/images/consoles/microsoft-360.png",
+                    "units": 84000000,
+                    "speed": 3.2
+                },
+                {
+                    "id": 9,
+                    "name": "Xbox",
+                    "processor": "Intel Pentium III",
+                    "date": "2001-11-15",
+                    "manufacturer": "Microsoft",
+                    "color": "black",
+                    "image": "/images/consoles/microsoft-xbox.png",
+                    "units": 24000000,
+                    "speed": 0.733
+                },
+                {
+                    "id": 10,
+                    "name": "GameCube",
+                    "processor": "IBM PowerPC Gekko",
+                    "date": "2001-11-14",
+                    "manufacturer": "Nintendo",
+                    "color": "purple",
+                    "image": "/images/consoles/nintendo-gamecube.png",
+                    "units": 22000000,
+                    "speed": 0.486
+                },
+                {
+                    "id": 11,
+                    "name": "Playstation 2",
+                    "processor": "Emotion engine",
+                    "date": "2000-3-4",
+                    "manufacturer": "Sony",
+                    "color": "black",
+                    "image": "/images/consoles/sony-ps2.png",
+                    "units": 155000000,
+                    "speed": 0.294
+                },
+                {
+                    "id": 12,
+                    "name": "Dreamcast",
+                    "processor": "Hitachi SH-4",
+                    "date": "1998-11-27",
+                    "manufacturer": "Sega",
+                    "color": "white",
+                    "image": "/images/consoles/sega-dreamcast.png",
+                    "units": 9000000,
+                    "speed": 0.2
+                },
+                {
+                    "id": 13,
+                    "name": "Nintendo 64",
+                    "processor": "NEC VR4300",
+                    "date": "1996-6-23",
+                    "manufacturer": "Nintendo",
+                    "color": "black",
+                    "image": "/images/consoles/nintendo-64.png",
+                    "units": 33000000,
+                    "speed": 0.093
+                },
+                {
+                    "id": 14,
+                    "name": "Apple Bandai",
+                    "processor": "PowerPC 630",
+                    "date": "1993-3-28",
+                    "manufacturer": "Apple",
+                    "color": "white",
+                    "image": "/images/consoles/apple-bandai.png",
+                    "units": 42000,
+                    "speed": 0.066
+                },
+                {
+                    "id": 15,
+                    "name": "Playstation",
+                    "processor": "R3000",
+                    "date": "1994-12-3",
+                    "manufacturer": "Sony",
+                    "color": "grey",
+                    "image": "/images/consoles/sony-playstation.png",
+                    "units": 102000000,
+                    "speed": 0.033
+                },
+                {
+                    "id": 16,
+                    "name": "Sega Saturn",
+                    "processor": "2x Hitachi SH2",
+                    "date": "1994-11-22",
+                    "manufacturer": "Sega",
+                    "color": "black",
+                    "image": "/images/consoles/sega-saturn.png",
+                    "units": 9000000,
+                    "speed": 0.028
+                },
+                {
+                    "id": 17,
+                    "name": "Amiga",
+                    "processor": "Motorola 68EC020",
+                    "date": "1993-9-17",
+                    "manufacturer": "Commodore",
+                    "color": "black",
+                    "image": "/images/consoles/commodore-amiga.png",
+                    "units": 4000000,
+                    "speed": 0.014
+                },
+                {
+                    "id": 18,
+                    "name": "Sega 32X",
+                    "processor": "2x SH-2",
+                    "date": "1994-11-21",
+                    "manufacturer": "Sega",
+                    "color": "black",
+                    "image": "/images/consoles/sega-32x.png",
+                    "units": 650000,
+                    "speed": 0.023
+                },
+                {
+                    "id": 19,
+                    "name": "Mega Drive",
+                    "processor": "Motorola 68000",
+                    "date": "1988-11-29",
+                    "manufacturer": "Sega",
+                    "color": "black",
+                    "image": "/images/consoles/sega-md.png",
+                    "units": 30000000,
+                    "speed": 0.00358
+                },
+                {
+                    "id": 20,
+                    "name": "Super Nintendo",
+                    "processor": "Ricoh 5A22",
+                    "date": "1990-11-21",
+                    "manufacturer": "Nintendo",
+                    "color": "grey",
+                    "image": "/images/consoles/nintendo-sn.png",
+                    "units": 50000000,
+                    "speed": 0.00358
+                },
+                {
+                    "id": 21,
+                    "name": "NES",
+                    "processor": "Ricoh 2A03",
+                    "date": "1983-6-15",
+                    "manufacturer": "Nintendo",
+                    "color": "white",
+                    "image": "/images/consoles/nintendo-nes.png",
+                    "units": 62000000,
+                    "speed": 0.00179
+                },
+                {
+                    "id": 22,
+                    "name": "Master System",
+                    "processor": "Zilog Z80",
+                    "date": "1985-10-20",
+                    "manufacturer": "Sega",
+                    "color": "black",
+                    "image": "/images/consoles/sega-ms.png",
+                    "units": 12000000,
+                    "speed": 0.004
+                },
+                {
+                    "id": 23,
+                    "name": "Atari 7800",
+                    "processor": "6502C",
+                    "date": "1986-5-1",
+                    "manufacturer": "Atari",
+                    "color": "black",
+                    "image": "/images/consoles/atari-7800.png",
+                    "units": 4000000,
+                    "speed": 0.00179
+                }
+            ]
+        }
+    ]
+}

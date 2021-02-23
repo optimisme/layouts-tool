@@ -14,7 +14,7 @@ class DbToolModalAddRow extends DbToolModal {
         this.shadow.appendChild(this.elmStyle)
 
         let refButton = this.shadow.querySelector('db-tool-form-button')
-        refButton.addEventListener('click', () => { this.addColumn() })
+        refButton.addEventListener('click', () => { this.addRow() })
     }
 
     async show (tableName) {
@@ -31,13 +31,9 @@ class DbToolModalAddRow extends DbToolModal {
                 input.setAttribute('id', column.name + 'Form')
                 input.addEventListener('keyup', () => { this.checkForm() })
                 input.label = column.name
-                if (column.type == 'INTEGER') {
-                    input.setAttribute('pattern', '[0-9]+')
-                    input.hint = 'Only INTEGER numbers allowed'
-                }
-                if (column.type == 'REAL' || input.type == 'NUMERIC') {
+                if (column.type == 'number') {
                     input.setAttribute('pattern', '[0-9]+([\.][0-9]+)?')
-                    input.hint = 'Only REAL numbers allowed (0.0)'
+                    input.hint = 'Only numbers allowed (0.0)'
                 }
                 if (column['dflt_value']) input.value = column['dflt_value']
             }
@@ -73,7 +69,7 @@ class DbToolModalAddRow extends DbToolModal {
         }
     }
 
-    async addColumn () {
+    async addRow () {
         let refInputs = this.shadow.querySelector('.inputs')
         let refButton = this.shadow.querySelector('.button')
         let refWait = this.shadow.querySelector('.wait')
@@ -90,7 +86,11 @@ class DbToolModalAddRow extends DbToolModal {
             let column = appDb.refTableSelectedColumns[cnt]
             if (column.name != 'id') {
                 let input = refInputs.querySelector('#' + column.name + 'Form')
-                obj.columns[column.name] = input.value
+                if (column.type == 'number') {
+                    obj.columns[column.name] = parseFloat(input.value)
+                } else {
+                    obj.columns[column.name] = input.value
+                }
             }
         }
         refButton.style.display = 'none'

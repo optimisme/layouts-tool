@@ -47,7 +47,7 @@ class DbToolTablesList extends HTMLElement {
         while (refList.firstChild) { refList.removeChild(refList.lastChild) }
         for (let cnt = 0; cnt < appDb.tables.length; cnt = cnt + 1) {
             let tmp = document.createElement('db-tool-tables-list-item')
-            let name = appDb.tables[cnt].name
+            let name = appDb.tables[cnt]
             tmp.textContent = name
             refList.appendChild(tmp)
             if (name == selectedName) { tmp.select() }

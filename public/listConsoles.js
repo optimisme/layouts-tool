@@ -34,7 +34,7 @@ async function loadData () {
     let obj = {
         type: 'dbGetTableData',
         tableName: 'consoles',
-        queryFilter: 'WHERE manufacturer = "Nintendo"'
+        queryFilter: 'row.manufacturer == "Nintendo"',
     }
 
     refButton.style.display = 'none'
@@ -140,28 +140,28 @@ async function addConsoles () {
     obj = { type: 'dbAddTable', tableName: 'consoles' }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'name', columnType: 'TEXT' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'name', columnType: 'string' }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'processor', columnType: 'TEXT' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'processor', columnType: 'string' }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'date', columnType: 'TEXT' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'date', columnType: 'string' }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'manufacturer', columnType: 'TEXT' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'manufacturer', columnType: 'string' }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'color', columnType: 'TEXT' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'color', columnType: 'string' }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'image', columnType: 'TEXT' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'image', columnType: 'string' }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'units', columnType: 'INTEGER' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'units', columnType: 'number' }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'speed', columnType: 'REAL' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'speed', columnType: 'number' }
     await queryServer('/query', obj)
 
     for (let cnt = 0; cnt < dadesConsoles.length; cnt = cnt + 1) {

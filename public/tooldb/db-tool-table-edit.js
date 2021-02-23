@@ -68,9 +68,9 @@ class DbToolTableEdit extends HTMLElement {
                 
                 tmp.textContent = column.name
                 tmp.valueType = column.type
-                tmp.valueNotNull = column.notnull
-                tmp.valueDefault = column.dflt_value
-                tmp.valuePrimaryKey = column.pk
+                tmp.valueUnique = column.unique
+                tmp.valueMd5 = column.md5
+                tmp.valueDefault = column.default
 
                 objTd.appendChild(tmp)
                 objTr.appendChild(objTd)

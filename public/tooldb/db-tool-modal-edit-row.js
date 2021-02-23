@@ -48,13 +48,9 @@ class DbToolModalEditRow extends DbToolModal {
                 input.setAttribute('id', column.name + 'Form')
                 input.addEventListener('keyup', () => { this.checkForm() })
                 input.label = column.name
-                if (column.type == 'INTEGER') {
-                    input.setAttribute('pattern', '[0-9]+')
-                    input.hint = 'Only INTEGER numbers allowed'
-                }
-                if (column.type == 'REAL' || input.type == 'NUMERIC') {
+                if (column.type == 'number') {
                     input.setAttribute('pattern', '[0-9]+([\.][0-9]+)?')
-                    input.hint = 'Only REAL numbers allowed (0.0)'
+                    input.hint = 'Only numbers allowed (0.0)'
                 }
                 input.value = rowData[column.name]
             }
@@ -111,7 +107,11 @@ class DbToolModalEditRow extends DbToolModal {
             let column = appDb.refTableSelectedColumns[cnt]
             if (column.name != 'id') {
                 let input = refInputs.querySelector('#' + column.name + 'Form')
-                obj.columns[column.name] = input.value
+                if (column.type == 'number') {
+                    obj.columns[column.name] = parseFloat(input.value)
+                } else {
+                    obj.columns[column.name] = input.value
+                }
             }
         }
         refButtons.style.display = 'none'

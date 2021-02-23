@@ -34,6 +34,7 @@ async function answerQuery (request, response) {
   }
 
   if (data.type == 'appLogIn') hasPermission = true
+  if (data.type == 'dbAddRow' && data.tableName == 'contacte') hasPermission = true 
   if (knownUser == true && data.type == 'dbGetTableData' && data.tableName == 'consoles') hasPermission = true 
   if (knownUser == true && ['uploadFileChunk', 'uploadFileDone', 'uploadFileError'].indexOf(data.type) != -1) hasPermission = true
 

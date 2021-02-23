@@ -1,30 +1,58 @@
-const sqlite = require('sqlite3')
 const md5 = require('md5')
 const fs = require('fs')
+const jdbLib = require('./jdb.js')
 
 class Obj {
 
     constructor () { 
         this.server = undefined
-        this.db = new sqlite.Database('./server/data.db')
+        this.jdb = new jdbLib('./server/jdb.json')
+        this.closing = false
 
-        this.dbScripts = ''
+        this.dbToolScripts = ''
         this.uploadsFolder = './public/images'
     }
 
     async init () {
 
-        process.on('SIGHUP', () => { this.close() })
-        process.on('SIGINT', () => { this.close() })
-        process.on('SIGTERM', () => { this.close() })
+        await this.jdb.init()
 
-        await this.dbBuildScripts()
+        await this.jdb.createTableIfNotExists('usuaris', [
+            { name: 'id',           type: 'number', unique: true,  md5: false, default: 'AUTOINCREMENT' },
+            { name: 'nom',          type: 'string', unique: false, md5: false, default: '' },
+            { name: 'cognom',       type: 'string', unique: false, md5: false, default: '' },
+            { name: 'mail',         type: 'string', unique: true,  md5: false, default: 'NOTNULL' },
+            { name: 'contrasenya',  type: 'string', unique: false, md5: true,  default: '' },
+            { name: 'token',        type: 'string', unique: false, md5: false, default: '' },
+        ])
+        let users = await this.jdb.getRows('usuaris', 'row.mail == "admin@admin.com"')
+        if (users.result.length == 0) {
+            await this.jdb.insertRow('usuaris', {
+                'nom': 'Admin',
+                'cognom': 'Master',
+                'mail': 'admin@admin.com',
+                'contrasenya': 'admin123'
+            })
+        }
 
-        await this.query('CREATE TABLE IF NOT EXISTS usuaris (id INTEGER PRIMARY KEY AUTOINCREMENT, nom TEXT NOT NULL, cognom TEXT NOT NULL, mail TEXT NOT NULL UNIQUE, contrasenya TEXT NOT NULL, token TEXT)')
+        process.on('SIGHUP', async () => { await this.close() })
+        process.on('SIGINT', async () => { await this.close() })
+        process.on('SIGTERM', async () => { await this.close() })
 
-        let rst = await this.query('SELECT * FROM usuaris WHERE mail="admin@admin.com"')
-        if (rst.length == 0) {
-            await this.query(`INSERT INTO usuaris (nom, cognom, mail, contrasenya, token) VALUES ("Admin", "Master", "admin@admin.com", "${md5('admin123')}", "")`)
+        await this.dbToolBuildScripts()
+    }
+
+    async close () {
+        if (this.closing) return
+        this.closing = true
+
+        await this.jdb.close()
+        if (this.server) {
+            this.server.close(() => {
+                console.log('Exit')
+                process.exit(1)
+            })
+            this.server = undefined
         }
     }
 
@@ -35,16 +63,17 @@ class Obj {
          || data.contrasenya.indexOf(';') >= 0) { return { status: 'ko', result: 'appLogIn: Wrong data' } }
 
         try {
-            let rst = await this.query(`SELECT * FROM usuaris WHERE mail="${data.mail}" AND contrasenya="${md5(data.contrasenya)}"`)
-            if (rst.length == 1) {
+            let rst = await this.jdb.getRows('usuaris', `row.mail == "${data.mail}" && row.contrasenya == "${md5(data.contrasenya)}"`)
+            if (rst.status == 'ok' && rst.result.length == 1) {
                 let token = md5((Math.random()).toString())
-                await this.query(`UPDATE usuaris SET token='${token}' WHERE id=${rst[0].id}`)
-                rst[0].token=[token]
-                return { status: 'ok', result: { id: rst[0].id, nom: rst[0].nom, cognom: rst[0].cognom, mail: rst[0].mail, token: token } }
+                this.jdb.editRow('usuaris', { token: token }, `row.id == ${rst.result[0].id}`)
+                rst.result[0].token=[token]
+                return { status: 'ok', result: { id: rst.result[0].id, nom: rst.result[0].nom, cognom: rst.result[0].cognom, mail: rst.result[0].mail, token: token } }
             } else {
                 return { status: 'ko', result: 'appLogIn: Impossible more than one user with same mail' }
             }
         } catch (err) {
+            console.log(err)
             return { status: 'ko', result: 'appLogIn: Could not log in' }
         }
     }
@@ -56,45 +85,15 @@ class Obj {
          || data.logInToken.indexOf(';') >= 0) { return { status: 'ko', result: 'appLogInToken: Wrong data' } }
 
         try {
-            let rst = await this.query(`SELECT * FROM usuaris WHERE id="${data.logInId}" AND token="${data.logInToken}"`)
-            if (rst.length == 1) {
-                return { id: rst[0].id, nom: rst[0].nom, cognom: rst[0].cognom, mail: rst[0].mail, token: rst[0].token }
+            let rst = await this.jdb.getRows('usuaris', `row.id == "${data.logInId}" && row.token == "${data.logInToken}"`)
+            if (rst.status == 'ok' && rst.result.length == 1) {
+                return { id: rst.result[0].id, nom: rst.result[0].nom, cognom: rst.result[0].cognom, mail: rst.result[0].mail, token: rst.result[0].token }
             } else {
                 return null
             } 
         } catch (err) {
             return null
         }
-    }
-
-    query (query) {
-        return new Promise((resolve, reject) => {
-            if (query.indexOf('SELECT') >= 0) {
-                this.db.all(query, [], (err, rst) => {
-                    if (err) {
-                        reject(err)
-                    } else {
-                        resolve(rst)
-                    }
-                })
-            } else if (query.indexOf('PRAGMA') >= 0) {
-                this.db.all(query, (err, rst) => {
-                    if (err) {
-                        reject(err)
-                    } else {
-                        resolve(rst)
-                    }
-                })
-            } else {
-                this.db.run(query, [], (err) => {
-                    if (err) {
-                        reject(err)
-                    } else {
-                        resolve()
-                    }
-                })
-            }
-        })
     }
 
     async getPostData (request) {
@@ -122,18 +121,7 @@ class Obj {
         })
     }
 
-    close () {
-        this.db.close()
-        if (this.server) {
-            this.server.close(() => {
-                console.log('Exit')
-                process.exit(1)
-            })
-            this.server = undefined
-        }
-    }
-
-    async dbBuildScripts () {
+    async dbToolBuildScripts () {
         let folderFiles = []
         let scripts = ''
 
@@ -149,15 +137,15 @@ class Obj {
                 }
             }
 
-            scripts +=  await this.dbBuildShadows()
+            scripts +=  await this.dbToolBuildShadows()
 
-            this.dbScripts = scripts
+            this.dbToolScripts = scripts
         } catch (err) {
             console.log(err)
         }
     }
 
-    async dbBuildShadows () {
+    async dbToolBuildShadows () {
         let folderFiles = []
         let shadows = {}
         try {
@@ -181,33 +169,25 @@ class Obj {
     }
 
     async dbGetScripts (data) {
-        if (this.dbScripts == '') {
+        if (this.dbToolScripts == '') {
             return { status: 'ko', result: 'Error "dbGetScripts" not ready' } 
         }
         try {
-            return { status: 'ok', result: this.dbScripts }
+            return { status: 'ok', result: this.dbToolScripts }
         } catch (err) {
             return { status: 'ko', result: 'Error "dbGetScripts"' } 
         }
     }
 
     async dbGetTablesList (data) {
-        try {
-            return { status: 'ok', result: await this.query('SELECT name FROM sqlite_master WHERE type="table" AND name NOT LIKE "sqlite_%" ORDER BY name') }
-        } catch (err) {
-            return { status: 'ko', result: 'Error "dbGetTablesList": ' + err.toString() } 
-        }
+        return await this.jdb.getTables()
     }
 
     async dbAddTable (data) {
         if (typeof data.tableName == 'undefined'
          || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddTable: Wrong data' } }
 
-        try {
-            return { status: 'ok', result: await this.query(`CREATE TABLE IF NOT EXISTS "${data.tableName}" (id INTEGER PRIMARY KEY AUTOINCREMENT)`) }
-        } catch (err) {
-            return { status: 'ko', result: 'Error "dbAddTable": ' + err.toString() } 
-        } 
+        return await this.jdb.createTable(data.tableName, [ { name: 'id', type: 'number', unique: true,  md5: false, default: 'AUTOINCREMENT' } ])
     }
 
     async dbRenameTable (data) {
@@ -216,33 +196,21 @@ class Obj {
          || data.oldTableName.indexOf(';') >= 0
          || data.newTableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbRenameTable: Wrong data' } }
 
-        try {
-            return { status: 'ok', result: await this.query(`ALTER TABLE "${data.oldTableName}" RENAME TO "${data.newTableName}"`) }
-        } catch (err) {
-            return { status: 'ko', result: 'Error "dbRenameTable": ' + err.toString() } 
-        } 
+        return await this.jdb.renameTable(data.oldTableName, data.newTableName)
     }
 
     async dbDelTable (data) {
         if (typeof data.tableName == 'undefined'
          || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelTable: Wrong data' } }
 
-        try {
-            return { status: 'ok', result: await this.query(`DROP TABLE IF EXISTS "${data.tableName}"`) }
-        } catch (err) {
-            return { status: 'ko', result: 'Error "dbDelTable": ' + err.toString() } 
-        } 
+        return await this.jdb.deleteTable(data.tableName)
     }
 
     async dbGetTableColumns (data) {
         if (typeof data.tableName == 'undefined'
          || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableColumns: Wrong data' } }
 
-        try {
-            return { status: 'ok', result: await this.query(`PRAGMA table_info("${data.tableName}")`) }
-        } catch (err) {
-            return { status: 'ko', result: 'Error "dbGetTableColumns": ' + err.toString() } 
-        }    
+        return await this.jdb.getTableColumns(data.tableName)
     }
 
     async dbGetTableData (data) {
@@ -252,117 +220,53 @@ class Obj {
         if (typeof data.queryFilter != 'undefined'
          && data.queryFilter.indexOf(';') >= 0) { return { status: 'ko', result: 'dbGetTableData: Wrong data filter' } }
 
-        try {
-            if (typeof data.queryFilter == 'undefined') {
-                return { status: 'ok', result: await this.query(`SELECT * FROM "${data.tableName}"`) }
-            } else {
-                return { status: 'ok', result: await this.query(`SELECT * FROM "${data.tableName}" ${data.queryFilter}`) }
-            }
-        } catch (err) {
-            return { status: 'ko', result: 'Error "dbGetTableData": ' + err.toString() } 
-        }     
+        return await this.jdb.getRows(data.tableName, data.queryFilter)
     }
 
     async dbAddColumn (data) {
         if (typeof data.tableName == 'undefined'
-        || typeof data.columnName == 'undefined'
-        || typeof data.columnType == 'undefined'
-        || data.tableName.indexOf(';') >= 0
-        || data.columnName.indexOf(';') >= 0
-        || data.columnType.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddColumn: Wrong data' } }
+         || typeof data.columnName == 'undefined'
+         || typeof data.columnType == 'undefined'
+         || data.tableName.indexOf(';') >= 0
+         || data.columnName.indexOf(';') >= 0
+         || data.columnType.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddColumn: Wrong data' } }
 
-       try {
-           return { status: 'ok', result: await this.query(`ALTER TABLE "${data.tableName}" ADD COLUMN "${data.columnName}" ${data.columnType}`) }
-       } catch (err) {
-           return { status: 'ko', result: 'Error "dbAddColumn": ' + err.toString() } 
-       }  
+        return await this.jdb.addTableColumn(data.tableName, { name: data.columnName, type: data.columnType, unique: false, md5: false, default: '' })
     }
 
     async dbRenameColumn (data) {
         if (typeof data.tableName == 'undefined'
-        || typeof data.oldColumnName == 'undefined'
-        || typeof data.newColumnName == 'undefined'
-        || data.tableName.indexOf(';') >= 0
-        || data.oldColumnName.indexOf(';') >= 0
-        || data.newColumnName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbRenameColumn: Wrong data' } }
+         || typeof data.oldColumnName == 'undefined'
+         || typeof data.newColumnName == 'undefined'
+         || data.tableName.indexOf(';') >= 0
+         || data.oldColumnName.indexOf(';') >= 0
+         || data.newColumnName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbRenameColumn: Wrong data' } }
 
-       try {
-           return { status: 'ok', result: await this.query(`ALTER TABLE "${data.tableName}" RENAME COLUMN "${data.oldColumnName}" TO "${data.newColumnName}"`) }
-       } catch (err) {
-           return { status: 'ko', result: 'Error "dbRenameColumn": ' + err.toString() } 
-       }  
+        return await this.jdb.renameTableColumn(data.tableName, data.oldColumnName, data.newColumnName)
     }
 
     async dbDelColumn (data) {
         if (typeof data.tableName == 'undefined'
-        || typeof data.columnName == 'undefined'
-        || data.tableName.indexOf(';') >= 0
-        || data.columnName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelColumn: Wrong data' } }
+         || typeof data.columnName == 'undefined'
+         || data.tableName.indexOf(';') >= 0
+         || data.columnName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelColumn: Wrong data' } }
 
-        try {
-            let oldCreate = (await this.query(`SELECT sql FROM sqlite_master WHERE name = "${data.tableName}"`))[0].sql
-            let columnPosition = oldCreate.indexOf(', ' + data.columnName + ' ')
-            if (columnPosition == -1) { columnPosition = oldCreate.indexOf(`, "${data.columnName}" `) }
-            if (columnPosition == -1) { columnPosition = oldCreate.indexOf(`, '${data.columnName}' `) }
-            let columnEnd = oldCreate.substring(columnPosition + 1)
-            let columnLength = columnEnd.indexOf(',')
-            if (columnLength == - 1) { columnLength = columnEnd.indexOf(')') }
-            let newCreate = oldCreate.substr(0, columnPosition) + oldCreate.substring(columnPosition + columnLength + 1)
-            let tableInfo = await this.query(`PRAGMA table_info("${data.tableName}")`)
-            let columns = (tableInfo.map((x) => { return x.name }))
-            let columnsRemoved = columns.filter((x) => { return (x != data.columnName) })
-            let columnsQuotes = columnsRemoved.map((x) => { return `"${x}"` })
-            let columnsSeparated = columnsQuotes.join(', ')
-
-            await this.query(`ALTER TABLE "${data.tableName}" RENAME TO "${data.tableName}_old"`)
-            await this.query(newCreate)
-            await this.query(`INSERT INTO "${data.tableName}" (${columnsSeparated}) SELECT ${columnsSeparated} FROM "${data.tableName}_old"`)
-            await this.query(`DROP TABLE "${data.tableName}_old"`)
-
-            return { status: 'ok', result: '' }
-        } catch (err) {
-            return { status: 'ko', result: 'Error "dbDelColumn": ' + err.toString() } 
-        }  
+        return await this.jdb.deleteTableColumn(data.tableName, data.columnName)
     }
 
     async dbAddRow (data) {
         if (typeof data.tableName == 'undefined'
         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbAddRow: Wrong data' } }
 
-        let values = []
-        let columns = []
-        let tableColumns = []
-
-        try {
-            tableColumns = await this.query(`PRAGMA table_info("${data.tableName}")`)
-            for (let cnt = 0; cnt < tableColumns.length; cnt = cnt + 1) {
-                let column = tableColumns[cnt]
-                if (typeof data.columns[column.name] != 'undefined') {
-                    columns.push(column.name)
-                    if (column.type == "TEXT") {
-                        if (data.tableName == 'usuaris' && column.name == 'contrasenya') {
-                            values.push(`"${md5(data.columns[column.name])}"`)
-                        } else {
-                            values.push(`"${data.columns[column.name]}"`)
-                        }
-                    } else if (column.type == "REAL" || column.type == "NUMBER") {
-                        values.push(parseFloat(data.columns[column.name]))
-                    } else if (column.type == "INTEGER") {
-                        values.push(parseInt(data.columns[column.name]))
-                    }
-                }
+        let keys = Object.keys(data.columns) 
+        for (let cnt = 0; cnt < keys.length; cnt = cnt + 1) {
+            let key = keys[cnt]
+            let value = data.columns[key]
+            if (key.indexOf(';') >= 0) {
+                return { status: 'ko', result: `dbAddRow: Wrong data at key: "${key}"` }
             }
-
-            let columnsRemoved = columns.filter((x) => { return (x.indexOf(';') == -1) })
-            let columnsQuotes = columnsRemoved.map((x) => { return `"${x}"` })
-            let columnsSeparated = columnsQuotes.join(', ')
-
-            return { status: 'ok', result: await this.query(`INSERT INTO "${data.tableName}" (${columnsSeparated}) VALUES (${values.join(', ')})`) }
-       } catch (err) {
-            let str = await err.toString()
-            console.log(str)
-            return { status: 'ko', result: 'Error "dbAddRow": ' + err.toString() } 
-       }
+        }
+        return await this.jdb.insertRow(data.tableName, data.columns)
     }
 
     async dbEditRow (data) {
@@ -370,45 +274,23 @@ class Obj {
         || typeof data.columns.id != 'number'
         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbEditRow: Wrong data' } }
 
-        let values = []
-        let tableColumns = []
-
-        try {
-            tableColumns = await this.query(`PRAGMA table_info("${data.tableName}")`)
-            for (let cnt = 0; cnt < tableColumns.length; cnt = cnt + 1) {
-                let column = tableColumns[cnt]
-                if (typeof data.columns[column.name] != 'undefined') {
-                    if (column.type == "TEXT") {
-                        if (data.tableName == 'usuaris' && column.name == 'contrasenya') {
-                            values.push(`"${column.name}" = "${md5(data.columns[column.name])}"`)
-                        } else {
-                            values.push(`"${column.name}" = "${data.columns[column.name]}"`)
-                        }
-                    } else if (column.type == "REAL" || column.type == "NUMBER") {
-                        values.push(`"${column.name}" = "${parseFloat(data.columns[column.name])}"`)
-                    } else if (column.type == "INTEGER") {
-                        values.push(`"${column.name}" = "${parseInt(data.columns[column.name])}"`)
-                    }
-                }
+        let keys = Object.keys(data.columns) 
+        for (let cnt = 0; cnt < keys.length; cnt = cnt + 1) {
+            let key = keys[cnt]
+            let value = data.columns[key]
+            if (key.indexOf(';') >= 0) {
+                return { status: 'ko', result: `dbEditRow: Wrong data at key: "${key}"` }
             }
-            return { status: 'ok', result: await this.query(`UPDATE "${data.tableName}" SET ${values.join(', ')} WHERE "id" = ${data.columns.id}`) }
-       } catch (err) {
-           console.log(err)
-            return { status: 'ko', result: 'Error "dbEditRow": ' + err.toString() } 
-       }
+        }
+        return await this.jdb.editRow(data.tableName, data.columns, `row.id == ${data.columns.id}`)
     }
 
     async dbDelRow (data) {
         if (typeof data.tableName == 'undefined'
-        || typeof data.id != 'number'
-        || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelRow: Wrong data' } }
+         || typeof data.id != 'number'
+         || data.tableName.indexOf(';') >= 0) { return { status: 'ko', result: 'dbDelRow: Wrong data' } }
 
-        try {
-            return { status: 'ok', result: await this.query(`DELETE FROM "${data.tableName}" WHERE "id" = ${data.id}`) }
-       } catch (err) {
-           console.log(err)
-            return { status: 'ko', result: 'Error "dbDelRow": ' + err.toString() } 
-       }
+        return await this.jdb.deleteRow(data.tableName, `row.id == ${data.id}`)
     }
 
     async uploadFileChunk (data) {
