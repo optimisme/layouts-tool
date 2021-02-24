@@ -1,16 +1,11 @@
-async function reset () {
-    let refButton = document.getElementById('boxButtonGetData')
-    let refSpinner = document.getElementById('boxSpinner')
-    let refList = document.getElementById('boxList')
+window.addEventListener('load', () => { init() })
 
-    refButton.style.display = 'flex'
-    refSpinner.style.display = 'none'
-    refList.style.display = 'none'
-    refList.innerHTML = ''
+async function init () {
+    loadData()
 }
 
 async function loadData () {
-    let refButton = document.getElementById('boxButtonGetData')
+    let refBoxUserError = document.getElementById('boxUserError')
     let refSpinner = document.getElementById('boxSpinner')
     let refList = document.getElementById('boxList')
     let serverData = {}
@@ -35,10 +30,12 @@ async function loadData () {
         type: 'dbGetTableData',
         tableName: 'consoles',
         queryFilter: 'row.manufacturer == "Nintendo"',
+        logInId: localStorage.getItem('id'),
+        logInToken: localStorage.getItem('token')
     }
 
-    refButton.style.display = 'none'
     refSpinner.style.display = 'flex'
+    refList.style.display = 'none'
 
     await this.wait(500)
     try {
@@ -57,10 +54,13 @@ async function loadData () {
                                     .replace('{{processor}}', item.processor)
                                     .replace('{{manufacturer}}', item.manufacturer)
         }
+    } else {
+        refBoxUserError.style.display = 'block'
     }
 
     refSpinner.style.display = 'none'
     refList.style.display = 'block'
+
     refList.innerHTML = html
 }
 
@@ -134,41 +134,43 @@ async function addConsoles () {
         { "name": "Atari 7800", "date": "1986-5-1", "processor": "6502C", "speed": 0.00179, "manufacturer": "Atari", "color": "black", "units": 4000000, "image": "/images/consoles/atari-7800.png" }
     ]
 
-    obj = { type: 'dbDelTable', tableName: 'consoles' }
+    obj = { type: 'dbDelTable', tableName: 'consoles', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddTable', tableName: 'consoles' }
+    obj = { type: 'dbAddTable', tableName: 'consoles', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'name', columnType: 'string' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'name', columnType: 'string', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'processor', columnType: 'string' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'processor', columnType: 'string', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'date', columnType: 'string' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'date', columnType: 'string', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'manufacturer', columnType: 'string' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'manufacturer', columnType: 'string', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'color', columnType: 'string' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'color', columnType: 'string', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'image', columnType: 'string' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'image', columnType: 'string', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'units', columnType: 'number' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'units', columnType: 'number', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
-    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'speed', columnType: 'number' }
+    obj = { type: 'dbAddColumn', tableName: 'consoles', columnName: 'speed', columnType: 'number', logInId: localStorage.getItem('id'), logInToken: localStorage.getItem('token') }
     await queryServer('/query', obj)
 
     for (let cnt = 0; cnt < dadesConsoles.length; cnt = cnt + 1) {
         obj = {
             type: 'dbAddRow',
             tableName: 'consoles',
-            columns: dadesConsoles[cnt]
+            columns: dadesConsoles[cnt], 
+            logInId: localStorage.getItem('id'), 
+            logInToken: localStorage.getItem('token')
         }
         await queryServer('/query', obj)
     }

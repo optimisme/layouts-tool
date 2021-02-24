@@ -7,7 +7,7 @@
       "Dancing Script"
     ],
     "scripts": [
-      "/listConsoles.js"
+      "/listConsoles2.js"
     ]
   },
   "elementsRoot": {
@@ -38,25 +38,20 @@
         "attributes": [],
         "childs": [
           {
-            "typeName": "divFlex",
-            "description": "Flex - Button Reset",
-            "childsAllowed": "divFlexChild",
+            "typeName": "div",
+            "description": "Div - User not valid",
+            "childsAllowed": "all",
             "tag": "div",
             "text": "",
             "style": [
               [
-                "align-items",
-                "center",
+                "display",
+                "none",
                 true
               ],
               [
                 "height",
-                "48px",
-                true
-              ],
-              [
-                "justify-content",
-                "center",
+                "max-content",
                 true
               ]
             ],
@@ -64,25 +59,25 @@
             "attributes": [
               [
                 "id",
-                "boxButtonReset"
+                "boxUserError"
               ]
             ],
             "childs": [
               {
-                "typeName": "divFlexChild",
-                "description": "Flex child",
-                "childsAllowed": "all",
+                "typeName": "divFlex",
+                "description": "Flex",
+                "childsAllowed": "divFlexChild",
                 "tag": "div",
                 "text": "",
                 "style": [
                   [
-                    "justify-content",
-                    "space-around",
+                    "flex-direction",
+                    "column",
                     true
                   ],
                   [
-                    "min-width",
-                    "100%",
+                    "padding",
+                    "32px 0 0 0",
                     true
                   ]
                 ],
@@ -90,100 +85,103 @@
                 "attributes": [],
                 "childs": [
                   {
-                    "typeName": "formButton",
-                    "description": "Button for forms",
-                    "childsAllowed": "none",
-                    "tag": "button",
-                    "text": "Reset",
-                    "style": [],
-                    "phone": [],
-                    "attributes": [
+                    "typeName": "divFlexChild",
+                    "description": "Flex child",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
                       [
-                        "class",
-                        "formButton"
-                      ],
-                      [
-                        "onclick",
-                        "reset()"
+                        "justify-content",
+                        "center",
+                        true
                       ]
                     ],
-                    "childs": []
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "typeName": "divFlex",
-            "description": "Flex - Button Get Data",
-            "childsAllowed": "divFlexChild",
-            "tag": "div",
-            "text": "",
-            "style": [
-              [
-                "align-items",
-                "center",
-                true
-              ],
-              [
-                "height",
-                "48px",
-                true
-              ],
-              [
-                "justify-content",
-                "center",
-                true
-              ]
-            ],
-            "phone": [],
-            "attributes": [
-              [
-                "id",
-                "boxButtonGetData"
-              ]
-            ],
-            "childs": [
-              {
-                "typeName": "divFlexChild",
-                "description": "Flex child",
-                "childsAllowed": "all",
-                "tag": "div",
-                "text": "",
-                "style": [
-                  [
-                    "justify-content",
-                    "space-around",
-                    true
-                  ],
-                  [
-                    "min-width",
-                    "100%",
-                    true
-                  ]
-                ],
-                "phone": [],
-                "attributes": [],
-                "childs": [
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "linkInline",
+                        "description": "Inline link",
+                        "childsAllowed": "none",
+                        "tag": "a",
+                        "text": "Log in",
+                        "style": [
+                          [
+                            "color",
+                            "rgb(0, 150, 255)",
+                            true
+                          ],
+                          [
+                            "font-size",
+                            "1em",
+                            true
+                          ],
+                          [
+                            "text-decoration",
+                            "none",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [
+                          [
+                            "href",
+                            "/login.html"
+                          ],
+                          [
+                            "target",
+                            "_self"
+                          ]
+                        ],
+                        "childs": []
+                      }
+                    ]
+                  },
                   {
-                    "typeName": "formButton",
-                    "description": "Button for forms",
-                    "childsAllowed": "none",
-                    "tag": "button",
-                    "text": "Get data",
-                    "style": [],
-                    "phone": [],
-                    "attributes": [
+                    "typeName": "divFlexChild",
+                    "description": "Flex child",
+                    "childsAllowed": "all",
+                    "tag": "div",
+                    "text": "",
+                    "style": [
                       [
-                        "class",
-                        "formButton"
-                      ],
-                      [
-                        "onclick",
-                        "loadData()"
+                        "justify-content",
+                        "center",
+                        true
                       ]
                     ],
-                    "childs": []
+                    "phone": [],
+                    "attributes": [],
+                    "childs": [
+                      {
+                        "typeName": "text",
+                        "description": "Text",
+                        "childsAllowed": "none",
+                        "tag": "div",
+                        "text": "To view this site",
+                        "style": [
+                          [
+                            "font-size",
+                            "1em",
+                            true
+                          ],
+                          [
+                            "height",
+                            "max-content",
+                            true
+                          ],
+                          [
+                            "width",
+                            "max-content",
+                            true
+                          ]
+                        ],
+                        "phone": [],
+                        "attributes": [],
+                        "childs": []
+                      }
+                    ]
                   }
                 ]
               }
