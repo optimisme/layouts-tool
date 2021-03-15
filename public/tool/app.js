@@ -354,7 +354,7 @@ class App {
 
         if (!file) { return }
 
-        reader.onload = (e) => {
+        reader.onload = async (e) => {
             try {
                 let obj = JSON.parse(e.target.result)
 
@@ -384,6 +384,10 @@ class App {
                 }
 
                 this.select(this.elementsRoot)
+
+                await this.wait(250)
+                let refWindow = app.refPreview.shadow.querySelector('iframe').contentWindow
+                if (typeof refWindow.init == 'function') refWindow.init()
 
             } catch (e) {
                 console.error('Could not parse file')
@@ -442,7 +446,7 @@ class App {
         app.refSettings.setSettings(this.elementsRoot)
     }
 
-    addScript (value) {
+    async addScript (value) {
 
         if (this.scripts.indexOf(value) == -1) {
 
@@ -463,7 +467,7 @@ class App {
         app.refSettings.setSettings(this.elementsRoot)
     }
 
-    reloadScript (value) {
+    async reloadScript (value) {
 
         let srcScript = document.createElement('script')
         srcScript.setAttribute('src', value + '?' + parseInt(Math.random() * 1000000000))
@@ -471,6 +475,10 @@ class App {
         app.refPreview.shadow.querySelector('iframe').contentDocument.head.appendChild(srcScript)
         // TODO: Detect if properly added and remove it from 'this.scripts' if not
         app.refSettings.setSettings(this.elementsRoot)
+
+        await this.wait(250)
+        let refWindow = app.refPreview.shadow.querySelector('iframe').contentWindow
+        if (typeof refWindow.init == 'function') refWindow.init()
     }
 
     capitalize (s) {

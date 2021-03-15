@@ -189,7 +189,7 @@
           },
           {
             "typeName": "div",
-            "description": "Div - Spinner",
+            "description": "Div - Form",
             "childsAllowed": "all",
             "tag": "div",
             "text": "",
